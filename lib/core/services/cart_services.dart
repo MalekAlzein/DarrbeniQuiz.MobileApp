@@ -73,14 +73,7 @@
 //         0, (previousValue, element) => previousValue + element.count!);
 //   }
 
-//   int getIndex(CartModel model) => cartList.indexOf(model);
-//   //الاندكس منشان ما ضل اكتبا
-// }
-// //بعد كل عملية بدي اجفظ وعدل
-// //سرفس هي بتستعي وبتحفظ وبروح اعملا غيت
-import 'package:flutter_templete/core/data/models/cart_model.dart';
-import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:get/get.dart';
+
 
 class CartService {
   // RxList<CartModel> cartList = storage.getCartList().obs;

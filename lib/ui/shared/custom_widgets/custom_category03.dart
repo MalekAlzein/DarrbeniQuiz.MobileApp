@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_templete/main.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+
 
 class CustomCategory03 extends StatelessWidget {
   const CustomCategory03({
@@ -54,53 +55,49 @@ class CustomCategory03 extends StatelessWidget {
                 textAlign: TextAlign.start,
                 text: text,
                 // text: mealList[index].name ?? '',
-                textColor: textColor ?? AppColors.mainGrey,
+                textColor: textColor ?? AppColors.mainGreyColor,
                 fontSize: screenWidth(17),
+                fontWeight: FontWeight.bold,
               ),
               (screenWidth(35)).ph,
               Row(
                 children: [
                   CustomText(
-                    textAlign: TextAlign.start,
                     text: 'Café  ',
-                    textColor: AppColors.mainlightgrey,
+                    textColor: AppColors.placeholderGreyColor,
                     // fontSize: ,
                   ),
                   CustomText(
-                    textAlign: TextAlign.start,
                     text: ' . ',
                     textColor: AppColors.mainOrangeColor,
                     // fontSize: ,
                   ),
                   CustomText(
-                    textAlign: TextAlign.start,
                     text: 'Western Food',
-                    textColor: AppColors.mainlightgrey,
+                    textColor: AppColors.placeholderGreyColor,
                     // fontSize: ,
                   ),
                   (screenWidth(6)).pw,
                 ],
               ),
-              (screenWidth(1000)).ph,
+              (screenWidth(35)).ph,
               Row(
                 children: [
-                  Image.asset(
-                    'assets/images/star.png',
+                  SvgPicture.asset(
+                    'assets/images/ic_star.svg',
                     color: AppColors.mainOrangeColor,
                     width: screenWidth(18),
                     height: screenWidth(18),
                   ),
                   CustomText(
-                    textAlign: TextAlign.start,
                     text: ' 4.9 ',
                     textColor: AppColors.mainOrangeColor,
                     // fontSize: ,
                   ),
                   (screenWidth(35)).pw,
                   CustomText(
-                    textAlign: TextAlign.start,
                     text: '(124 ratings)',
-                    textColor: AppColors.mainlightgrey,
+                    textColor: AppColors.placeholderGreyColor,
                     // fontSize: ,
                   ),
                 ],

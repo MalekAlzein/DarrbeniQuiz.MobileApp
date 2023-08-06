@@ -5,7 +5,6 @@ import 'package:flutter_templete/core/data/models/notification_model.dart';
 import 'package:flutter_templete/core/enums/app_state_enum.dart';
 import 'package:flutter_templete/core/enums/notification_type.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
-import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:get/utils.dart';
 
 class NotificationService {

@@ -1,9 +1,9 @@
-class TokenInfo {
+class TokenInfoModel {
   String? accessToken;
 
-  TokenInfo({this.accessToken});
+  TokenInfoModel({this.accessToken});
 
-  TokenInfo.fromJson(Map<String, dynamic> json) {
+  TokenInfoModel.fromJson(Map<String, dynamic> json) {
     accessToken = json['accessToken'];
   }
 

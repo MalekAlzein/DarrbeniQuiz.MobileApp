@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/main.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+
 
 class CustomMeal extends StatelessWidget {
   const CustomMeal({
@@ -22,7 +24,7 @@ class CustomMeal extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: screenHieght(3),
+          height: screenHeight(3),
           width: screenWidth(1),
           child: CachedNetworkImage(
             fit: BoxFit.cover,
@@ -40,48 +42,44 @@ class CustomMeal extends StatelessWidget {
             horizontal: screenWidth(22),
           ),
           child: CustomText(
-            textAlign: TextAlign.start,
             text: text,
             // text: mealList[index].name ?? '',
-            textColor: textColor ?? AppColors.mainGrey,
+            textColor: textColor ?? AppColors.mainGreyColor,
             fontSize: screenWidth(20),
+            fontWeight: FontWeight.bold,
           ),
         ),
         (screenWidth(30)).ph,
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: screenWidth(2),
+            horizontal: screenWidth(22),
           ),
           child: Row(
             children: [
-              Image.asset(
-                'assets/images/star.png',
+              SvgPicture.asset(
+                'assets/images/ic_star.svg',
                 color: AppColors.mainOrangeColor,
                 width: screenWidth(18),
                 height: screenWidth(18),
               ),
               CustomText(
-                textAlign: TextAlign.start,
                 text: ' 4.9 ',
                 textColor: AppColors.mainOrangeColor,
                 // fontSize: ,
               ),
               CustomText(
-                textAlign: TextAlign.start,
                 text: '(124 ratings) Café',
-                textColor: AppColors.mainlightgrey,
+                textColor: AppColors.placeholderGreyColor,
                 // fontSize: ,
               ),
               CustomText(
-                textAlign: TextAlign.start,
                 text: ' . ',
                 textColor: AppColors.mainOrangeColor,
                 // fontSize: ,
               ),
               CustomText(
-                textAlign: TextAlign.start,
                 text: 'Western Food',
-                textColor: AppColors.mainlightgrey,
+                textColor: AppColors.placeholderGreyColor,
                 // fontSize: ,
               )
             ],

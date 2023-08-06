@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/core/data/reposotories/shared_prefernces.dart';
+import 'package:flutter_templete/app/my_app.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/splash_screen/spalsh_screen_view.dart';
+import 'package:flutter_templete/ui/views/splash_screen/splash_screen_controller.dart';
 import 'package:get/get.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -27,13 +32,55 @@ class CustomDrawer extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {
-                SharedPrefrenceRepostory().clearTokenInfo();
-                Get.off(SplashSceenView());
+                storage.clearTokenInfo();
+                Get.delete<SplashScreenController>();
+                Get.off(() => SplashScreenView());
               },
               icon: Icon(Icons.logout),
             ),
             Text('Options 1'),
             Text('Options 2'),
+            InkWell(
+              onTap: () {
+                Get.defaultDialog(
+                  title: 'Choose App Language',
+                  content: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          storage.setAppLanguage('en');
+                          Get.updateLocale(getLocale());
+                          Get.back();
+                        },
+                        child: CustomText(text: 'English'),
+                      ),
+                      (screenWidth(20)).ph,
+                      InkWell(
+                        onTap: () {
+                          storage.setAppLanguage('ar');
+                          Get.updateLocale(getLocale());
+                          Get.back();
+                        },
+                        child: CustomText(text: 'العربية'),
+                      ),
+                      (screenWidth(20)).ph,
+                      InkWell(
+                        onTap: () {
+                          storage.setAppLanguage('tr');
+                          Get.updateLocale(getLocale());
+                          Get.back();
+                        },
+                        child: CustomText(text: 'Türkçe'),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.language,
+                color: AppColors.mainOrangeColor,
+              ),
+            ),
           ],
         ),
       ),

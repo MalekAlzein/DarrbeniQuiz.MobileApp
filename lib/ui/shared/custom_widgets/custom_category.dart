@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/main.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+
 
 class CustomCategory extends StatelessWidget {
   const CustomCategory({
@@ -40,11 +41,11 @@ class CustomCategory extends StatelessWidget {
               ),
             ),
           ),
-          (screenHieght(100)).ph,
+          (screenHeight(100)).ph,
           CustomText(
-            textAlign: TextAlign.start,
             text: text,
-            textColor: AppColors.mainGrey,
+            fontWeight: FontWeight.bold,
+            textColor: AppColors.mainGreyColor,
           ),
         ],
       ),

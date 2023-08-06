@@ -1,30 +1,39 @@
 import 'package:flutter/material.dart';
-import '../colors.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
+
 
 class CustomText extends StatelessWidget {
   const CustomText({
     super.key,
-    this.textColor,
-    this.fontSize,
-    this.bold = false,
     required this.text,
-    required TextAlign textAlign,
+    this.textColor,
+    this.textAlign,
+    this.fontSize,
+    this.fontWeight,
   });
-  final Color? textColor;
-  final double? fontSize;
-  final bool? bold;
+
   final String text;
+  final Color? textColor;
+  final TextAlign? textAlign;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+
   @override
   Widget build(BuildContext context) {
     return Text(
-        textAlign: TextAlign.center,
-        text,
-        style: TextStyle(
-          fontWeight: bold == true ? FontWeight.bold : FontWeight.normal,
-          fontSize: fontSize ?? 16,
-          color: textColor ?? AppColors.mainback,
-        ));
+      text,
+      textAlign: textAlign ?? TextAlign.center,
+      style: TextStyle(
+        color: textColor,
+        fontSize: fontSize ?? screenWidth(25), // fontsize 14p in xD
+        fontWeight: fontWeight,
+      ),
+    );
   }
 }
+
+
+
+
 // Big Text size fontSize: size.width * 0.1,
 // Small text size fontSize: size.width * 0.04,

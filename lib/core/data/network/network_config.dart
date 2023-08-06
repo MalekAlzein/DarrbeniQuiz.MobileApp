@@ -1,25 +1,25 @@
+
+
 import 'package:flutter_templete/core/enums/request_type.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 
-//ملف الاعدادادتى لكامل ال api
 class NetworkConfig {
   static String BASE_API = 'api/web/';
-  static String getFullApiRoute(String apiroute) {
-    return BASE_API + apiroute;
+
+  static String getFullApiRoute(String apiRoute) {
+    return BASE_API + apiRoute;
   }
 
-  static Map<String, String>? getHeaders(
-      {bool needAuth = true,
-      RequestType? type,
-      Map<String, String>? extraHeaders}) {
+  static Map<String, String> getHeaders({
+    bool? needAuth = true,
+    required RequestType requestType,
+    Map<String, String>? extraHeaders = const {},
+  }) {
     return {
-      if (needAuth)
+      if (needAuth!)
         "Authorization": "Bearer ${storage.getTokenInfo()?.accessToken ?? ''}",
-      if (type != RequestType.GET)
-        "Content-Type": type == RequestType.MULTIPART
-            ? "multipart/form-data"
-            : "application/json",
-      ...extraHeaders ?? {}
+      if (requestType != RequestType.GET) "Content-Type": "application/json",
+      ...extraHeaders!
     };
   }
 }

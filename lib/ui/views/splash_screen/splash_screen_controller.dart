@@ -1,11 +1,6 @@
-import 'package:flutter_templete/core/enums/message_type.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
-
 import 'package:get/get.dart';
 
-import '../../shared/utils.dart';
-
-class SplashSceenController extends GetxController {
+class SplashScreenController extends GetxController {
   @override
   void onInit() {
     // Future.delayed(Duration(seconds: 2)).then((value) {

@@ -141,7 +141,7 @@ class SharedPreferencesRepository {
     if (globalSharedPreferences.containsKey(PREF_SUB_STATUS)) {
       return getPreference(key: PREF_SUB_STATUS);
     } else {
-      return AppConfig.scriptionStatus;
+      return AppConfig.subscriptionStatus;
     }
   }
 

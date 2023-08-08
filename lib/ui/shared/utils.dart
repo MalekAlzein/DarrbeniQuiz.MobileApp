@@ -11,7 +11,7 @@ double height = Get.size.longestSide;
 Size size = Get.size;
 
 double screenWidth(double percent) {
- return width / percent;
+  return width / percent;
 }
 
 double screenHeight(double percent) {
@@ -28,7 +28,6 @@ void customLoader() => BotToast.showCustomLoading(toastBuilder: (context) {
           child: SpinKitCircle());
     });
 
-
 void showAlertDialoug({
   String? title,
   required String? middleText,
@@ -39,6 +38,7 @@ void showAlertDialoug({
     title: title ?? "",
     middleText: middleText ?? "",
     cancel: CustomButton(
+      buttonTypeEnum: ButtonTypeEnum.NORMAL,
       onPressed: () {
         if (onCancel != null) onCancel();
       },
@@ -47,6 +47,7 @@ void showAlertDialoug({
       backgroundColor: AppColors.mainRedColor,
     ),
     confirm: CustomButton(
+      buttonTypeEnum: ButtonTypeEnum.NORMAL,
       onPressed: () {
         if (onConfirm != null) onConfirm();
       },

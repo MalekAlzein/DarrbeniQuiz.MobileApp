@@ -4,7 +4,6 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-
 class CustomNotificationWidget extends StatefulWidget {
   const CustomNotificationWidget({
     super.key,
@@ -47,6 +46,7 @@ class _CustomNotificationWidgetState extends State<CustomNotificationWidget> {
             child: Container(
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: CustomText(
+                textType: TextStyleType.BODY,
                 text: '${widget.count}',
                 textColor: AppColors.whiteColor,
                 fontSize: screenWidth(30),

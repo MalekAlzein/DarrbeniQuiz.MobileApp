@@ -5,9 +5,17 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
+enum ButtonTypeEnum {
+  BIG,
+  NORMAL,
+  SMALL,
+  CUSTOM,
+}
+
 class CustomButton extends StatelessWidget {
   CustomButton({
     super.key,
+    required this.buttonTypeEnum,
     this.text,
     this.textColor,
     this.backgroundColor,
@@ -23,6 +31,7 @@ class CustomButton extends StatelessWidget {
     this.fontSize,
   });
 
+  final ButtonTypeEnum buttonTypeEnum;
   final String? text;
   final String? imageName;
   final Color? imageColor;
@@ -59,6 +68,7 @@ class CustomButton extends StatelessWidget {
               (screenWidth(20)).pw,
             ],
             CustomText(
+              textType: TextStyleType.BODY,
               text: text ?? "",
               textColor: textColor,
               fontWeight: fontWeight ?? FontWeight.bold,

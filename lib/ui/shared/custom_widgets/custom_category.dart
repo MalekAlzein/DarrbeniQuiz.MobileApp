@@ -5,7 +5,6 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-
 class CustomCategory extends StatelessWidget {
   const CustomCategory({
     super.key,
@@ -43,6 +42,7 @@ class CustomCategory extends StatelessWidget {
           ),
           (screenHeight(100)).ph,
           CustomText(
+            textType: TextStyleType.BODY,
             text: text,
             fontWeight: FontWeight.bold,
             textColor: AppColors.mainGreyColor,

@@ -6,7 +6,6 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-
 class CustomMeal extends StatelessWidget {
   const CustomMeal({
     super.key,
@@ -42,6 +41,7 @@ class CustomMeal extends StatelessWidget {
             horizontal: screenWidth(22),
           ),
           child: CustomText(
+            textType: TextStyleType.BODY,
             text: text,
             // text: mealList[index].name ?? '',
             textColor: textColor ?? AppColors.mainGreyColor,
@@ -63,21 +63,25 @@ class CustomMeal extends StatelessWidget {
                 height: screenWidth(18),
               ),
               CustomText(
+                textType: TextStyleType.BODY,
                 text: ' 4.9 ',
                 textColor: AppColors.mainOrangeColor,
                 // fontSize: ,
               ),
               CustomText(
+                textType: TextStyleType.BODY,
                 text: '(124 ratings) Café',
                 textColor: AppColors.placeholderGreyColor,
                 // fontSize: ,
               ),
               CustomText(
+                textType: TextStyleType.BODY,
                 text: ' . ',
                 textColor: AppColors.mainOrangeColor,
                 // fontSize: ,
               ),
               CustomText(
+                textType: TextStyleType.BODY,
                 text: 'Western Food',
                 textColor: AppColors.placeholderGreyColor,
                 // fontSize: ,

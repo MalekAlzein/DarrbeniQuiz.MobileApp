@@ -52,7 +52,10 @@ class CustomDrawer extends StatelessWidget {
                           Get.updateLocale(getLocale());
                           Get.back();
                         },
-                        child: CustomText(text: 'English'),
+                        child: CustomText(
+                          textType: TextStyleType.BODY,
+                          text: 'English',
+                        ),
                       ),
                       (screenWidth(20)).ph,
                       InkWell(
@@ -61,7 +64,10 @@ class CustomDrawer extends StatelessWidget {
                           Get.updateLocale(getLocale());
                           Get.back();
                         },
-                        child: CustomText(text: 'العربية'),
+                        child: CustomText(
+                          textType: TextStyleType.BODY,
+                          text: 'العربية',
+                        ),
                       ),
                       (screenWidth(20)).ph,
                       InkWell(
@@ -70,7 +76,10 @@ class CustomDrawer extends StatelessWidget {
                           Get.updateLocale(getLocale());
                           Get.back();
                         },
-                        child: CustomText(text: 'Türkçe'),
+                        child: CustomText(
+                          textType: TextStyleType.BODY,
+                          text: 'Türkçe',
+                        ),
                       ),
                     ],
                   ),

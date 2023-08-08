@@ -6,7 +6,6 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-
 class CustomCategory03 extends StatelessWidget {
   const CustomCategory03({
     super.key,
@@ -52,6 +51,7 @@ class CustomCategory03 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               CustomText(
+                textType: TextStyleType.BODY,
                 textAlign: TextAlign.start,
                 text: text,
                 // text: mealList[index].name ?? '',
@@ -63,16 +63,19 @@ class CustomCategory03 extends StatelessWidget {
               Row(
                 children: [
                   CustomText(
+                    textType: TextStyleType.BODY,
                     text: 'Café  ',
                     textColor: AppColors.placeholderGreyColor,
                     // fontSize: ,
                   ),
                   CustomText(
+                    textType: TextStyleType.BODY,
                     text: ' . ',
                     textColor: AppColors.mainOrangeColor,
                     // fontSize: ,
                   ),
                   CustomText(
+                    textType: TextStyleType.BODY,
                     text: 'Western Food',
                     textColor: AppColors.placeholderGreyColor,
                     // fontSize: ,
@@ -90,12 +93,14 @@ class CustomCategory03 extends StatelessWidget {
                     height: screenWidth(18),
                   ),
                   CustomText(
+                    textType: TextStyleType.BODY,
                     text: ' 4.9 ',
                     textColor: AppColors.mainOrangeColor,
                     // fontSize: ,
                   ),
                   (screenWidth(35)).pw,
                   CustomText(
+                    textType: TextStyleType.BODY,
                     text: '(124 ratings)',
                     textColor: AppColors.placeholderGreyColor,
                     // fontSize: ,

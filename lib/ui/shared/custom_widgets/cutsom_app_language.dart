@@ -35,7 +35,10 @@ class _CustomAppLanguageState extends State<CustomAppLanguage> {
                   Get.back();
                   if (widget.extraFunction != null) widget.extraFunction!();
                 },
-                child: CustomText(text: 'English'),
+                child: CustomText(
+                  textType: TextStyleType.BODY,
+                  text: 'English',
+                ),
               ),
               (screenWidth(20)).ph,
               InkWell(
@@ -45,7 +48,10 @@ class _CustomAppLanguageState extends State<CustomAppLanguage> {
                   Get.back();
                   if (widget.extraFunction != null) widget.extraFunction!();
                 },
-                child: CustomText(text: 'العربية'),
+                child: CustomText(
+                  textType: TextStyleType.BODY,
+                  text: 'العربية',
+                ),
               ),
               (screenWidth(20)).ph,
               InkWell(
@@ -55,7 +61,10 @@ class _CustomAppLanguageState extends State<CustomAppLanguage> {
                   Get.back();
                   if (widget.extraFunction != null) widget.extraFunction!();
                 },
-                child: CustomText(text: 'Türkçe'),
+                child: CustomText(
+                  textType: TextStyleType.BODY,
+                  text: 'Türkçe',
+                ),
               ),
             ],
           ),

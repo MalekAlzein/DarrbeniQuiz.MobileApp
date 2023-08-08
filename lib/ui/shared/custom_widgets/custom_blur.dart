@@ -37,7 +37,7 @@ class CustomBlurWidget extends StatelessWidget {
             child: Container(
               // width: screenWidthPercent(1),
               // height: screenHeightPercent(1),
-              color: AppColors.mainWhiteColor.withOpacity(0.0),
+              color: AppColors.whiteColor.withOpacity(0.0),
             ),
           ),
         ),

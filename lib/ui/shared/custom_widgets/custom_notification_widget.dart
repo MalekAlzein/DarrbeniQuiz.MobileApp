@@ -48,7 +48,7 @@ class _CustomNotificationWidgetState extends State<CustomNotificationWidget> {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: CustomText(
                 text: '${widget.count}',
-                textColor: AppColors.mainWhiteColor,
+                textColor: AppColors.whiteColor,
                 fontSize: screenWidth(30),
                 fontWeight: FontWeight.bold,
               ),
@@ -58,7 +58,7 @@ class _CustomNotificationWidgetState extends State<CustomNotificationWidget> {
                 color: AppColors.mainRedColor,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: AppColors.mainWhiteColor,
+                  color: AppColors.whiteColor,
                   width: 1.5,
                 ),
               ),

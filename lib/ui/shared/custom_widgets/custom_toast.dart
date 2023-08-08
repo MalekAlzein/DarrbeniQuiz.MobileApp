@@ -48,7 +48,7 @@ class CustomToast {
           width: screenWidth(1.25),
           // height: size.width * 0.4,
           decoration: BoxDecoration(
-            color: AppColors.mainWhiteColor,
+            color: AppColors.whiteColor,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(

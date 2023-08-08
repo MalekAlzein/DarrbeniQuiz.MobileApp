@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
     return Container(
       height: drawerheight,
       width: drawerWidth,
-      color: drawerBackgroundColor ?? AppColors.mainWhiteColor,
+      color: drawerBackgroundColor ?? AppColors.whiteColor,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

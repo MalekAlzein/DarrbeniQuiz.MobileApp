@@ -1,9 +1,5 @@
-<svg width="51" height="50" viewBox="0 0 51 50" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect x="0.660156" width="50" height="50" fill="url(#pattern0)"/>
-<defs>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_43_6643" transform="scale(0.02)"/>
-</pattern>
-<image id="image0_43_6643" width="50" height="50" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACT0lEQVR4nO1YT3NMQRCfCxelimu4qJLt3lXkEF+B8veMEy4pJNu9sfW6h6Jy4MxHSFxcXJAzF6K44EDhGyhVUZIgN9TszkseeZu3tcKbV5lf1Vxe9/T0b7r79cwYExERERERscFo1WUfoT4g1EVG/RnCINRF51OzcaXRNwlGWSjbce45ZKEvMo61n3B/HJIhEwjGIRnK+lY4IU2nkEikmBy+uiuNiilCGkITKLhf/yKRzRCRZs0eIdQvLdCTlSbCoDPdXpBcqjQRQn3fJWJHgyXSPtDeRqgvCOVprr0R3sGoPxhleaoxtTUrc3MI5LmzUToR9mnDIC/z5IRyqBMNkGdrZKCvunN1plQiBHLeN6jliWEdydVBue6J3vpTdhltbeU8B3quFCKdMxnItyInGHS2o1O3p/LXs2eKNuOfEXE5zSBvfcrcXdceyEenN1Fr7+mlQyjT3taHBJLtwRFxzvvd/rSevVUi+qao8EtJLUI57eWzRXVGoF/7OZ6XUuwEetsTuVa0GYRyNojfr/uV5tiac7Im2sP5a8lrT2I6mIbIqE+y38dGx7YQ6nfXDC/utzt7rDUXTEPshRYkB33avTMbCP7fRAjsBf9Xu2OqTIRrcpRA56luj/2trSziDTE08Oa7s4N8doru6cUEhuZe2e171nyhMqHe803qYUhkJt2blj9JOx9zldIOXMVB2ZspgyyV7dDgQ1ZfHRn1cYUj8miFCGFyomyHBh0t1OO/1Qmh3qxgNG7kFr2LjAtV0DUDsuR8XBOJiIiIiIgIMzh+AU9SkvWRvQTyAAAAAElFTkSuQmCC"/>
-</defs>
+<svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.04597 1.96973C5.73597 1.96973 3.04597 4.65973 3.04597 7.96973V10.8597C3.04597 11.4697 2.78597 12.3997 2.47597 12.9197L1.32597 14.8297C0.615967 16.0097 1.10597 17.3197 2.40597 17.7597C6.71597 19.1997 11.366 19.1997 15.676 17.7597C16.886 17.3597 17.416 15.9297 16.756 14.8297L15.606 12.9197C15.306 12.3997 15.046 11.4697 15.046 10.8597V7.96973C15.046 4.66973 12.346 1.96973 9.04597 1.96973Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+<path d="M10.8959 2.26C9.68663 1.91559 8.40521 1.91559 7.19592 2.26C7.48592 1.52 8.20592 1 9.04592 1C9.88592 1 10.6059 1.52 10.8959 2.26Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12.046 18.1201C12.046 19.7701 10.696 21.1201 9.04596 21.1201C8.22596 21.1201 7.46596 20.7801 6.92596 20.2401C6.36412 19.6774 6.04775 18.9153 6.04596 18.1201" stroke="black" stroke-width="1.5" stroke-miterlimit="10"/>
 </svg>

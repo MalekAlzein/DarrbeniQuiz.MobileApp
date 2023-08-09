@@ -8,6 +8,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart
 import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_controller.dart';
 import 'package:get/get.dart';
 
@@ -147,7 +148,9 @@ class _SignupViewState extends State<SignupView> {
                 ),
                 CustomTextButton(
                   title: tr('key_login'),
-                  onTap: () {},
+                  onTap: () {
+                    Get.off(() => const LoginView());
+                  },
                   textColor: AppColors.darkPurpleColor,
                 ),
               ],

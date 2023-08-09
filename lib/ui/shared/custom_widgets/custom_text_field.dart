@@ -45,6 +45,7 @@ class CustomTextFormField extends StatelessWidget {
       // autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText,
       textAlign: TextAlign.start,
+      cursorColor: AppColors.darkPurpleColor,
       decoration: InputDecoration(
         prefixIcon: prefixIcon,
         prefixIconColor: prefixIconColor,
@@ -64,6 +65,12 @@ class CustomTextFormField extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.darkPurpleColor,
+          ),
+          borderRadius: BorderRadius.circular(5),
         ),
         filled: true,
         hintStyle: TextStyle(

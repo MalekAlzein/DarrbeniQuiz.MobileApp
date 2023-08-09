@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
@@ -9,6 +10,8 @@ import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_controller.dart';
+import 'package:flutter_templete/ui/views/login_view/login_view_widgets/top_section.dart';
+import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_view.dart';
 import 'package:get/get.dart';
 
@@ -22,33 +25,25 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  late LoginController controller = Get.put(LoginController());
+  LoginController controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: EdgeInsetsDirectional.all(screenWidth(25)),
-          child: Column(
+        body: Form(
+          key: controller.formKey,
+          child: ListView(
+            padding: EdgeInsetsDirectional.symmetric(
+              horizontal: screenWidth(25),
+              vertical: screenWidth(10),
+            ),
             children: [
-              (screenWidth(10)).ph,
-              CustomText(
-                textType: TextStyleType.SUBTITLE,
-                fontWeight: FontWeight.bold,
-                textColor: AppColors.darkGreyColor,
-                text: tr('key_login'),
-              ),
-              (screenWidth(25)).ph,
-              SvgPicture.asset(
-                'assets/svgs/img_login.svg',
-                // width: double.infinity,
-
-                // fit: BoxFit.fill,
-              ),
+              // (screenWidth(10)).ph,
+              TopSectionWidget(),
               (screenWidth(25)).ph,
               Align(
-                alignment: Alignment.centerRight,
+                alignment: AlignmentDirectional.centerStart,
                 child: CustomText(
                   textType: TextStyleType.SUBTITLE,
                   text: tr('key_user_name'),
@@ -65,10 +60,11 @@ class _LoginViewState extends State<LoginView> {
                   size: screenWidth(13),
                 ),
                 prefixIconColor: AppColors.lightPurpleColorOpacity,
+                controller: controller.usernameController,
               ),
               (screenWidth(25)).ph,
               Align(
-                alignment: Alignment.centerRight,
+                alignment: AlignmentDirectional.centerStart,
                 child: CustomText(
                   textType: TextStyleType.SUBTITLE,
                   text: tr('key_inter_code'),
@@ -85,12 +81,18 @@ class _LoginViewState extends State<LoginView> {
                   size: screenWidth(13),
                 ),
                 prefixIconColor: AppColors.lightPurpleColorOpacity,
+                controller: controller.enterCodeController,
+                validator: (value) {
+                  if (value!.isEmpty || StringUtil.isPassword(value)) {
+                    return 'please check your Password';
+                  }
+                },
               ),
               (screenWidth(8)).ph,
               CustomButton(
                 buttonTypeEnum: ButtonTypeEnum.NORMAL,
                 onPressed: () {
-                  Get.off(const SignupView());
+                  Get.to(() => const MainView());
                 },
                 backgroundColor: AppColors.darkPurpleColor,
                 text: tr('key_login'),
@@ -106,17 +108,21 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   CustomTextButton(
                     title: tr('key_create_account_now'),
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => const SignupView());
+                    },
                     textColor: AppColors.darkPurpleColor,
                   ),
                 ],
               ),
               (screenWidth(2.5)).ph,
-              CustomTextButton(
-                title: tr('key_visitor'),
-                onTap: () {},
-                textColor: AppColors.darkGreyColor,
-                textDecoration: TextDecoration.underline,
+              Center(
+                child: CustomTextButton(
+                  title: tr('key_visitor'),
+                  onTap: () {},
+                  textColor: AppColors.darkGreyColor,
+                  textDecoration: TextDecoration.underline,
+                ),
               ),
             ],
           ),

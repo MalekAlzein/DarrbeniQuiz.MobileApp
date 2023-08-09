@@ -10,12 +10,14 @@ class CustomTextButton extends StatelessWidget {
     this.textColor = AppColors.darkPurpleColor,
     required this.onTap,
     this.fontWeight,
+    this.textDecoration,
   });
   final String title;
   final double? textSize;
   final Color textColor;
   final Function onTap;
   final FontWeight? fontWeight;
+  final TextDecoration? textDecoration;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +28,9 @@ class CustomTextButton extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          decoration: TextDecoration.underline,
+          decoration: textDecoration,
           color: textColor,
-          fontSize: textSize ?? screenWidth(25),
+          fontSize: textSize ?? screenWidth(28),
           fontWeight: fontWeight,
         ),
       ),

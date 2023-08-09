@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.hintText,
-    required this.controller,
+    this.controller,
     required this.fillColor,
     required this.hintTextColor,
     this.keyboardType,
@@ -19,10 +18,11 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIconColor,
     this.maxHeight,
     this.maxWidth,
+    this.hintTextSize,
   });
 
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Color? fillColor;
   final Color? hintTextColor;
   final TextInputType? keyboardType;
@@ -34,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? suffixIconColor;
   final double? maxHeight;
   final double? maxWidth;
+  final double? hintTextSize;
 
   @override
   Widget build(BuildContext context) {
@@ -58,15 +59,16 @@ class CustomTextFormField extends StatelessWidget {
           borderSide: BorderSide(
             color: AppColors.transparentColor,
           ),
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(5),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(5),
           borderSide: BorderSide.none,
         ),
         filled: true,
         hintStyle: TextStyle(
           color: hintTextColor,
+          fontSize: hintTextSize,
         ),
         hintText: hintText,
         fillColor: fillColor,

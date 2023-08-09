@@ -50,7 +50,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? screenWidth(1.1),
-      height: height ?? screenHeight(12),
+      height: height ?? screenHeight(18),
       child: ElevatedButton(
         onPressed: () {
           if (onPressed != null) onPressed!();
@@ -71,7 +71,7 @@ class CustomButton extends StatelessWidget {
               textType: TextStyleType.BODY,
               text: text ?? "",
               textColor: textColor,
-              fontWeight: fontWeight ?? FontWeight.bold,
+              //fontWeight: fontWeight ?? FontWeight.bold,
               fontSize: fontSize ?? screenWidth(25),
             ),
           ],
@@ -83,8 +83,9 @@ class CustomButton extends StatelessWidget {
                   color: borderColor!,
                 )
               : null,
-          backgroundColor: backgroundColor ?? AppColors.mainOrangeColor,
-          shape: StadiumBorder(),
+          backgroundColor: backgroundColor ?? AppColors.darkPurpleColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5))),
           // fixedSize: Size(
           //   width ?? screenWidth(1.1),
           //   height ?? screenHeight(12),

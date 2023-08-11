@@ -23,6 +23,7 @@ class ARLanguage {
         "key_faculty_of_pharmacy": "كلية الصيدلة",
         "key_dentistry": "طب الأسنان",
         "key_medicine": "الطب البشري",
+        "key_please_subscribe": "يرجى الاشتراك لإتمام عملية التصفح",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

@@ -16,5 +16,6 @@ class ENLanguage {
         "key_faculty_of_pharmacy": "Faculty of Pharmacy",
         "key_dentistry": "Dentistry",
         "key_medicine": "Medicine",
+        "key_please_subscribe": "Please suscribe to complete the browsingk",
       };
 }

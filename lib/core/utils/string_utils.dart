@@ -1,29 +1,39 @@
 class StringUtil {
-  bool isEmail(String value) {
-    RegExp regExp = new RegExp(
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+  static bool isEmail(String value) {
+    RegExp regExp = RegExp(
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$");
     return regExp.hasMatch(value);
   }
 
-  bool isPassword(String value) {
-    RegExp regExp = new RegExp(r'^(?=.*?[A-Z])(?=.*?[!@#\$&*~]).{8,}$');
+  static bool isPassword(String value) {
+    RegExp regExp =
+        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     return regExp.hasMatch(value);
   }
 
-  bool isName(String value) {
-    RegExp regExp = new RegExp(r'^[a-zA-Z]+(([,. -][a-zA-Z ])?[a-zA-Z]*)*$');
-
+  static bool isName(String value) {
+    RegExp regExp =
+        RegExp(r"^\s*([A-Za-z]{1,}([\.,] |[-']| ))+[A-Za-z]+\.?\s*$");
     return regExp.hasMatch(value);
   }
 
-  bool isMobileNo(String value) {
-    RegExp regExp = new RegExp(r'^[+]?[0-9]{10,13}$');
-
+  static bool isLastName(String value) {
+    RegExp regExp = RegExp(r"^\s*([A-Za-z]{1,})*$");
     return regExp.hasMatch(value);
   }
 
-  bool isAddress(String value) {
-    RegExp regExp = new RegExp(r'^[a-zA-Z0-9\s,\-]*$');
+  static bool isAddress(String value) {
+    RegExp regExp = RegExp(r'^[0-9a-zA-Z\s,-/]+$');
+    return regExp.hasMatch(value);
+  }
+
+  static bool isMobile(String value) {
+    RegExp regExp = RegExp(r'^\+?00963[0-9]{9}$');
+    return regExp.hasMatch(value);
+  }
+
+  static bool isage18(String value) {
+    RegExp regExp = RegExp(r'^(?:1[8-9]|[2-9][0-9])$');
     return regExp.hasMatch(value);
   }
 }

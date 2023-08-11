@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/ui/views/main_view/favorites_view/favorites_view.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_view.dart';
+import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_view.dart';
 import 'package:flutter_templete/ui/views/main_view/main_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view_widgets/bottom_navigation_widget.dart';
 import 'package:flutter_templete/ui/views/main_view/notifications_view/notifications_view.dart';
@@ -38,7 +38,7 @@ class _MainViewState extends State<MainView> {
                 controller: controller.pageController,
                 children: [
                   ProfileView(),
-                  FavoritesView(),
+                  ImportantQuestionsView(),
                   HomeView(),
                   NotificationsView(),
                 ],

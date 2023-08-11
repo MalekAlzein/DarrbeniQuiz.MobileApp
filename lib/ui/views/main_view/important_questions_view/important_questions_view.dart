@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
-import 'package:flutter_templete/ui/views/login_view/login_controller.dart';
 import 'package:get/get.dart';
 
-class FavoritesView extends StatefulWidget {
-  const FavoritesView({
+class ImportantQuestionsView extends StatefulWidget {
+  const ImportantQuestionsView({
     super.key,
   });
 
   @override
-  State<FavoritesView> createState() => _FavoritesViewState();
+  State<ImportantQuestionsView> createState() => _ImportantQuestionsViewState();
 }
 
-class _FavoritesViewState extends State<FavoritesView> {
-  late LoginController controller = Get.put(LoginController());
+class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
+  late ImportantQuestionsView controller = Get.put(ImportantQuestionsView());
 
   @override
   Widget build(BuildContext context) {

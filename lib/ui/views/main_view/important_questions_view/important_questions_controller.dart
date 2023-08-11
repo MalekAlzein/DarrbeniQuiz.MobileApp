@@ -1,3 +1,3 @@
 import 'package:flutter_templete/core/services/base_controller.dart';
 
-class LoginController extends BaseController {}
+class ImportantQuestionsController extends BaseController {}

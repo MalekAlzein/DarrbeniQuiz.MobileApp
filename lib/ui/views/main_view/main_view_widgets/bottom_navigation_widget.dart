@@ -67,12 +67,12 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                     },
                   ),
                   NavItemWidget(
-                    imageName: 'ic_nav_bar_favorites',
+                    imageName: 'ic_nav_bar_important_questions',
                     // text: tr('main_view_bottom_navigation_bar_item_home'),
                     isSelected: widget.bottomNavigationEnum ==
-                        BottomNavigationEnum.FAVORITES,
+                        BottomNavigationEnum.IMPORTANT_QUESTIONS,
                     onTap: () {
-                      widget.onTap(BottomNavigationEnum.FAVORITES, 1);
+                      widget.onTap(BottomNavigationEnum.IMPORTANT_QUESTIONS, 1);
                     },
                   ),
                   NavItemWidget(
@@ -101,83 +101,4 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       ],
     );
   }
-
-  // Widget navItem({
-  //   required String text,
-  //   required String imageName,
-  //   required bool isSelected,
-  //   required Function onTap,
-  // }) {
-  //   return InkWell(
-  //     onTap: () {
-  //       onTap();
-  //     },
-  //     child: Column(
-  //       children: [
-  //         SvgPicture.asset(
-  //           'assets/images/$imageName.svg',
-  //           color: isSelected ? AppColors.blackColor : AppColors.grey,
-  //           width: screenWidth(17),
-  //           height: screenWidth(17),
-  //         ),
-
-  //         verSpace(35),
-  // Text(
-  //   text,
-  //   style: TextStyle(
-  //     color: isSelected
-  //         ? AppColors.mainOrangeColor
-  //         : AppColors.placeholderGreyColor,
-  //     fontSize: screenWidth(30),
-  //   ),
-  // )
-  // ],
-  //     ),
-  //   );
-  // }
 }
-
-// class BottomNavigationClipper extends CustomClipper<Path> {
-//   @override
-//   Path getClip(Size size) {
-//     Path path0 = Path();
-//     path0.moveTo(0, 0);
-//     path0.lineTo(size.width * 0.3381500, 0);
-//     path0.quadraticBezierTo(size.width * 0.3731500, size.height * 0.0069000,
-//         size.width * 0.3757000, size.height * 0.1236000);
-//     path0.quadraticBezierTo(size.width * 0.4022000, size.height * 0.5633000,
-//         size.width * 0.5006000, size.height * 0.5896000);
-//     path0.quadraticBezierTo(size.width * 0.5955500, size.height * 0.5727000,
-//         size.width * 0.6200000, size.height * 0.1240000);
-//     path0.quadraticBezierTo(size.width * 0.6204500, size.height * -0.0157000,
-//         size.width * 0.6646000, 0);
-//     path0.lineTo(size.width, 0);
-//     path0.lineTo(size.width, size.height);
-//     path0.lineTo(0, size.height);
-//     path0.lineTo(0, 0);
-//     path0.lineTo(size.width * 0.6225000, size.height * 0.6100000);
-//     return path0;
-//   }
-
-//   @override
-//   bool shouldReclip(CustomClipper<Path> oldClipper) => true;
-// }
-
-// class _ClipShadowShadowPainter extends CustomPainter {
-//   final Shadow shadow;
-//   final CustomClipper<Path> clipper;
-
-//   _ClipShadowShadowPainter({required this.shadow, required this.clipper});
-
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     var paint = shadow.toPaint();
-//     var clipPath = clipper.getClip(size).shift(shadow.offset);
-//     canvas.drawPath(clipPath, paint);
-//   }
-
-//   @override
-//   bool shouldRepaint(CustomPainter oldDelegate) {
-//     return true;
-//   }
-// }

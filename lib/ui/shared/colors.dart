@@ -31,9 +31,14 @@ class AppColors {
   static const Color normalPurpleColor = Color.fromRGBO(146, 63, 152, 1);
   static const Color lightPurpleColor = Color.fromRGBO(185, 137, 189, 1);
   static const Color normalCyanColor = Color.fromRGBO(32, 196, 244, 1);
-  static const Color lightPurpleColorOpacity =
-      Color.fromARGB(95, 185, 137, 189);
+  static const Color normalCyanColorOpacity =
+      Color.fromRGBO(32, 196, 244, 0.25);
+  static const Color darkPurpleColorOpacity =
+      Color.fromRGBO(111, 40, 119, 0.25);
   static const Color lightCyanColor = Color.fromRGBO(185, 229, 251, 1);
-  static const Color lightCyanColorOpacity = Color.fromARGB(55, 185, 229, 250);
+  static const Color lightCyanColorOpacity =
+      Color.fromRGBO(185, 229, 251, 0.15);
   static const Color darkGreyColor = Color.fromRGBO(70, 69, 71, 1);
+  static const Color redColor = Color.fromRGBO(216, 37, 32, 1);
+  static const Color yellowColor = Color.fromRGBO(255, 199, 0, 1);
 }

@@ -33,7 +33,7 @@ class _NavItemTestWidgetState extends State<NavItemWidget> {
       },
       child: Container(
         alignment: AlignmentDirectional.center,
-        width: screenWidth(4.25),
+        width: screenWidth(4.5),
         height: screenWidth(7.75),
         decoration: BoxDecoration(
           border: widget.isSelected!
@@ -44,7 +44,7 @@ class _NavItemTestWidgetState extends State<NavItemWidget> {
                   ),
                 )
               : null,
-          borderRadius: BorderRadiusDirectional.circular(23),
+          // borderRadius: BorderRadiusDirectional.circular(23),
           // color: widget.isSelected!
           //     ? AppColors.darkPurpleColor
           //     : AppColors.lightPurpleColor,

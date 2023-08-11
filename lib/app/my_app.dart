@@ -28,8 +28,12 @@ class MyApp extends StatelessWidget {
         translations: AppTranslation(), //1. call BotToastInit
         navigatorObservers: [BotToastNavigatorObserver()],
         debugShowCheckedModeBanner: false,
+        scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            secondary: Colors.transparent.withOpacity(0),
+          ),
         ),
         home: SplashScreenView(),
       ),

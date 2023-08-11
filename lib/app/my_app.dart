@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/enums/connectivity_status.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/views/splash_screen/spalsh_screen_view.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
         theme: ThemeData(
-          primarySwatch: Colors.red,
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: AppColors.whiteColor,
           colorScheme: ColorScheme.fromSwatch().copyWith(
             secondary: Colors.transparent.withOpacity(0),
           ),

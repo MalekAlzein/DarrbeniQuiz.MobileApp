@@ -1,6 +1,6 @@
 enum BottomNavigationEnum {
   NOTIFICATIONS,
   HOME,
-  FAVORITES,
+  IMPORTANT_QUESTIONS,
   PROFILE,
 }

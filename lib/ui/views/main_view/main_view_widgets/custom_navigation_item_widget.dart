@@ -33,24 +33,33 @@ class _NavItemTestWidgetState extends State<NavItemWidget> {
       },
       child: Container(
         alignment: AlignmentDirectional.center,
-        width: screenWidth(4.25),
+        width: screenWidth(5),
         height: screenWidth(7.75),
         decoration: BoxDecoration(
-          borderRadius: BorderRadiusDirectional.circular(23),
-          color: widget.isSelected!
-              ? AppColors.darkPurpleColor
-              : AppColors.lightPurpleColor,
+          border: widget.isSelected!
+              ? BorderDirectional(
+                  bottom: BorderSide(
+                    color: AppColors.darkPurpleColor,
+                    width: 2,
+                  ),
+                )
+              : null,
+          // borderRadius: BorderRadiusDirectional.circular(23),
+          // color: widget.isSelected!
+          //     ? AppColors.darkPurpleColor
+          //     : AppColors.lightPurpleColor,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               'assets/svgs/${widget.imageName}.svg',
-              color: widget.isSelected!
-                  ? AppColors.whiteColor
-                  : AppColors.darkPurpleColor,
-              width: screenWidth(12),
-              height: screenWidth(12),
+              color: AppColors.darkPurpleColor,
+              // color: widget.isSelected!
+              //     ? AppColors.whiteColor
+              //     : AppColors.darkPurpleColor,
+              width: screenWidth(13),
+              height: screenWidth(13),
             ),
             if (widget.text != null) ...[
               (screenHeight(100)).ph,

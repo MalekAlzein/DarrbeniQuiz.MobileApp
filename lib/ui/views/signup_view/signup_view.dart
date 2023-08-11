@@ -75,12 +75,12 @@ class _SignupViewState extends State<SignupView> {
               hintText: tr('key_user_name'),
               hintTextSize: screenWidth(22),
               fillColor: AppColors.lightCyanColorOpacity,
-              hintTextColor: AppColors.lightPurpleColorOpacity,
+              hintTextColor: AppColors.darkPurpleColorOpacity,
               prefixIcon: Icon(
                 Icons.person_outline,
                 size: screenWidth(13),
               ),
-              prefixIconColor: AppColors.lightPurpleColorOpacity,
+              prefixIconColor: AppColors.darkPurpleColorOpacity,
             ),
             (screenWidth(25)).ph,
             Align(
@@ -95,12 +95,12 @@ class _SignupViewState extends State<SignupView> {
               hintText: tr('key_mobile_number'),
               hintTextSize: screenWidth(22),
               fillColor: AppColors.lightCyanColorOpacity,
-              hintTextColor: AppColors.lightPurpleColorOpacity,
+              hintTextColor: AppColors.darkPurpleColorOpacity,
               prefixIcon: Icon(
                 Icons.phone_outlined,
                 size: screenWidth(13),
               ),
-              prefixIconColor: AppColors.lightPurpleColorOpacity,
+              prefixIconColor: AppColors.darkPurpleColorOpacity,
             ),
             (screenWidth(25)).ph,
             Align(

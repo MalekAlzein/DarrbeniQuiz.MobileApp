@@ -54,12 +54,12 @@ class _LoginViewState extends State<LoginView> {
                 hintText: tr('key_user_name'),
                 hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
-                hintTextColor: AppColors.lightPurpleColorOpacity,
+                hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: Icon(
                   Icons.person_outline,
                   size: screenWidth(13),
                 ),
-                prefixIconColor: AppColors.lightPurpleColorOpacity,
+                prefixIconColor: AppColors.darkPurpleColorOpacity,
                 controller: controller.usernameController,
               ),
               (screenWidth(25)).ph,
@@ -75,12 +75,12 @@ class _LoginViewState extends State<LoginView> {
                 hintText: tr('key_inter_code'),
                 hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
-                hintTextColor: AppColors.lightPurpleColorOpacity,
+                hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: Icon(
                   Icons.key_outlined,
                   size: screenWidth(13),
                 ),
-                prefixIconColor: AppColors.lightPurpleColorOpacity,
+                prefixIconColor: AppColors.darkPurpleColorOpacity,
                 controller: controller.enterCodeController,
                 validator: (value) {
                   if (value!.isEmpty || StringUtil.isPassword(value)) {

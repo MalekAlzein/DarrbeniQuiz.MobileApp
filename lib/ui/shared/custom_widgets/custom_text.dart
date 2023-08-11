@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
 enum TextStyleType {
@@ -15,7 +16,7 @@ class CustomText extends StatelessWidget {
     super.key,
     required this.textType,
     required this.text,
-    this.textColor,
+    this.textColor = AppColors.darkGreyColor,
     this.fontSize,
     this.fontWeight,
     this.textAlign = TextAlign.center,
@@ -35,6 +36,7 @@ class CustomText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
+      overflow: TextOverflow.ellipsis,
       style: getTextStyle(),
     );
   }

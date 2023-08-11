@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
@@ -10,7 +9,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_controller.dart';
-import 'package:flutter_templete/ui/views/login_view/login_view_widgets/top_section.dart';
+import 'package:flutter_templete/ui/views/login_view/login_view_widgets/login_top_section.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_view.dart';
 import 'package:get/get.dart';
@@ -40,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
             ),
             children: [
               // (screenWidth(10)).ph,
-              TopSectionWidget(),
+              LoginTopSectionWidget(),
               (screenWidth(25)).ph,
               Align(
                 alignment: AlignmentDirectional.centerStart,

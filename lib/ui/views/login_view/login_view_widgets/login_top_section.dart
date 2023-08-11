@@ -6,8 +6,8 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-class TopSectionWidget extends StatelessWidget {
-  const TopSectionWidget({super.key});
+class LoginTopSectionWidget extends StatelessWidget {
+  const LoginTopSectionWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

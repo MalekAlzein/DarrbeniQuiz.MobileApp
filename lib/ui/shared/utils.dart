@@ -60,3 +60,65 @@ void showAlertDialoug({
   );
   // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
 }
+
+// void showImagePickerBottomSheet({
+//   required FileTypeModel fileTypeModel,
+//   required Function(FileTypeModel) onSelected,
+// }) {
+//   Get.bottomSheet(
+//     CustomPopupWithBlurWidget(
+//       customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
+//       child: Container(
+//         // width: screenWidthPercent(1),
+//         decoration: BoxDecoration(
+//           color: AppColors.whiteColor,
+//           borderRadius: BorderRadiusDirectional.only(
+//             topStart: Radius.circular(20),
+//             topEnd: Radius.circular(20),
+//           ),
+//         ),
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             ListTile(
+//               leading: Icon(
+//                 Icons.camera_alt,
+//                 color: AppColors.darkPurpleColor,
+//               ),
+//               title: CustomText(
+//                 textType: TextStyleType.SUBTITLE,
+//                 text: tr('image_picker_camera'),
+//                 textAlign: TextAlign.start,
+//                 textColor: AppColors.darkGreyColor,
+//               ),
+//               onTap: () {
+//                 FileUtil.pickFile(FileTypeEnum.CAMERA).then(
+//                   (value) => onSelected(value),
+//                 );
+//                 Get.back();
+//               },
+//             ),
+//             ListTile(
+//               leading: Icon(
+//                 Icons.image,
+//                 color: AppColors.darkPurpleColor,
+//               ),
+//               title: CustomText(
+//                 textType: TextStyleType.SUBTITLE,
+//                 text: tr('image_picker_gallery'),
+//                 textAlign: TextAlign.start,
+//                 textColor: AppColors.darkGreyColor,
+//               ),
+//               onTap: () {
+//                 FileUtil.pickFile(FileTypeEnum.GALLERY).then(
+//                   (value) => onSelected(value),
+//                 );
+//                 Get.back();
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//     ),
+//   );
+// }

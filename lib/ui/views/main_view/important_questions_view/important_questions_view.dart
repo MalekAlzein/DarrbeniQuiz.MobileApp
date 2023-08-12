@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:get/get.dart';
 
 class ImportantQuestionsView extends StatefulWidget {
@@ -12,7 +13,8 @@ class ImportantQuestionsView extends StatefulWidget {
 }
 
 class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
-  late ImportantQuestionsView controller = Get.put(ImportantQuestionsView());
+  ImportantQuestionsController controller =
+      Get.put(ImportantQuestionsController());
 
   @override
   Widget build(BuildContext context) {

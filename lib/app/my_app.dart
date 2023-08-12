@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_templete/core/enums/connectivity_status.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
@@ -14,6 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: AppColors.transparentColor,
+      statusBarIconBrightness: Brightness.light,
+    ));
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
     globalContext = context;
     return StreamProvider<ConnectivityStatus>(
       initialData: ConnectivityStatus.ONLINE,

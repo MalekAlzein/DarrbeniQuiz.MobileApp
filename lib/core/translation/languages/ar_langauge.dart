@@ -7,6 +7,7 @@ class ARLanguage {
         // "key_home_view_popular_restaurents": "المطاعم المشهورة",
         // "key_home_view_most_popular": "الاكثر طلبا",
         // "key_home_view_recent_items": "العناصر الاخيرة",
+        "key_logout": "تسجيل الخروج",
         "key_login": "تسجيل الدخول",
         "key_create_account": "إنشاء حساب",
         "key_donot_have_account": "ليس لديك حساب؟",
@@ -24,6 +25,13 @@ class ARLanguage {
         "key_dentistry": "طب الأسنان",
         "key_medicine": "الطب البشري",
         "key_please_subscribe": "يرجى الاشتراك لإتمام عملية التصفح",
+
+        //!---- Profile View -------
+        "key_profile": "الملف الشخصي",
+        "key_personal_info": "المعلومات الشخصية",
+        "key_send_feedback": "إرسال شكوى",
+        "key_about_us": "عن التطبيق",
+
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

@@ -76,10 +76,7 @@ class _SignupViewState extends State<SignupView> {
               hintTextSize: screenWidth(22),
               fillColor: AppColors.lightCyanColorOpacity,
               hintTextColor: AppColors.darkPurpleColorOpacity,
-              prefixIcon: Icon(
-                Icons.person_outline,
-                size: screenWidth(13),
-              ),
+              prefixIcon: 'ic_text_field_user',
               prefixIconColor: AppColors.darkPurpleColorOpacity,
             ),
             (screenWidth(25)).ph,
@@ -96,10 +93,7 @@ class _SignupViewState extends State<SignupView> {
               hintTextSize: screenWidth(22),
               fillColor: AppColors.lightCyanColorOpacity,
               hintTextColor: AppColors.darkPurpleColorOpacity,
-              prefixIcon: Icon(
-                Icons.phone_outlined,
-                size: screenWidth(13),
-              ),
+              prefixIcon: 'login-signup icons=phone',
               prefixIconColor: AppColors.darkPurpleColorOpacity,
             ),
             (screenWidth(25)).ph,

@@ -10,7 +10,7 @@ class CustomSubTitleContainer extends StatelessWidget {
     required this.text,
     this.imageName,
     this.color,
-    required this.onTap,
+    this.onTap,
   });
 
   final String text;
@@ -47,13 +47,11 @@ class CustomSubTitleContainer extends StatelessWidget {
               textColor: color ?? AppColors.darkPurpleColor,
             ),
             if (imageName != null) ...[
-              InkWell(
-                child: SvgPicture.asset(
-                  'assets/svgs/$imageName.svg',
-                  width: screenWidth(14),
-                  height: screenWidth(14),
-                  color: color ?? AppColors.darkPurpleColor,
-                ),
+              SvgPicture.asset(
+                'assets/svgs/$imageName.svg',
+                width: screenWidth(14),
+                height: screenWidth(14),
+                color: color ?? AppColors.darkPurpleColor,
               )
             ]
           ],

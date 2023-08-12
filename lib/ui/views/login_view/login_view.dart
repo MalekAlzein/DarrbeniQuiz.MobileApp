@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
@@ -40,7 +41,7 @@ class _LoginViewState extends State<LoginView> {
             children: [
               // (screenWidth(10)).ph,
               LoginTopSectionWidget(),
-              (screenWidth(25)).ph,
+              (screenHeight(40)).ph,
               Align(
                 alignment: AlignmentDirectional.centerStart,
                 child: CustomText(
@@ -54,14 +55,10 @@ class _LoginViewState extends State<LoginView> {
                 hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
                 hintTextColor: AppColors.darkPurpleColorOpacity,
-                prefixIcon: Icon(
-                  Icons.person_outline,
-                  size: screenWidth(13),
-                ),
-                prefixIconColor: AppColors.darkPurpleColorOpacity,
+                prefixIcon: 'ic_text_field_user',
                 controller: controller.usernameController,
               ),
-              (screenWidth(25)).ph,
+              (screenHeight(40)).ph,
               Align(
                 alignment: AlignmentDirectional.centerStart,
                 child: CustomText(
@@ -75,11 +72,7 @@ class _LoginViewState extends State<LoginView> {
                 hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
                 hintTextColor: AppColors.darkPurpleColorOpacity,
-                prefixIcon: Icon(
-                  Icons.key_outlined,
-                  size: screenWidth(13),
-                ),
-                prefixIconColor: AppColors.darkPurpleColorOpacity,
+                prefixIcon: 'ic_text_field_code',
                 controller: controller.enterCodeController,
                 validator: (value) {
                   if (value!.isEmpty || StringUtil.isPassword(value)) {

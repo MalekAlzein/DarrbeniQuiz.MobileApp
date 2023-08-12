@@ -34,8 +34,8 @@ class CustomShapemakerWidget extends StatelessWidget {
         padding: EdgeInsetsDirectional.symmetric(
           horizontal: screenWidth(20),
         ),
-        width: screenWidth(1),
-        height: screenHeight(4.5),
+        // width: screenWidth(1),
+        height: screenHeight(6), //6
         decoration: BoxDecoration(
           color: AppColors.darkPurpleColor,
         ),
@@ -159,19 +159,41 @@ class CustomShapemakerWidget extends StatelessWidget {
 class LandingClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
-    Path path0 = Path();
-
-    path0.moveTo(0, 129.437);
-    path0.cubicTo(40.9264, 89.4128, 132.639, 97.5311, 193.11, 102.884);
-    path0.lineTo(193.112, 102.884);
-    path0.cubicTo(194.891, 103.042, 196.643, 103.197, 198.366, 103.348);
-    path0.cubicTo(214.838, 104.796, 230.495, 106.388, 245.321, 107.896);
-    path0.cubicTo(316.899, 115.175, 369.087, 120.483, 400, 97.9876);
-    path0.lineTo(400, 0);
-    path0.lineTo(0, 0);
-    path0.lineTo(0, 129.437);
-    path0.close();
-    return path0;
+    Path path_0 = Path();
+    path_0.moveTo(0, size.height * 0.9956692);
+    path_0.cubicTo(
+        size.width * 0.1023160,
+        size.height * 0.6877908,
+        size.width * 0.3315976,
+        size.height * 0.7502392,
+        size.width * 0.4827741,
+        size.height * 0.7914154);
+    path_0.cubicTo(
+        size.width * 0.4872235,
+        size.height * 0.7926231,
+        size.width * 0.4916071,
+        size.height * 0.7938231,
+        size.width * 0.4959153,
+        size.height * 0.7949846);
+    path_0.cubicTo(
+        size.width * 0.5370965,
+        size.height * 0.8061231,
+        size.width * 0.5762376,
+        size.height * 0.8183692,
+        size.width * 0.6133012,
+        size.height * 0.8299692);
+    path_0.cubicTo(
+        size.width * 0.7922471,
+        size.height * 0.8859615,
+        size.width * 0.9227176,
+        size.height * 0.9267923,
+        size.width,
+        size.height * 0.7537508);
+    path_0.lineTo(size.width, 0);
+    path_0.lineTo(0, 0);
+    path_0.lineTo(0, size.height * 0.9956692);
+    path_0.close();
+    return path_0;
   }
 
   @override

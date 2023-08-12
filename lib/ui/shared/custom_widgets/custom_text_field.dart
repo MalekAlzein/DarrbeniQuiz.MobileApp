@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
@@ -28,9 +29,9 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final bool obscureText;
   final String? Function(String?)? validator;
-  final Widget? prefixIcon;
+  final String? prefixIcon;
   final Color? prefixIconColor;
-  final Widget? suffixIcon;
+  final String? suffixIcon;
   final Color? suffixIconColor;
   final double? maxHeight;
   final double? maxWidth;
@@ -47,9 +48,19 @@ class CustomTextFormField extends StatelessWidget {
       textAlign: TextAlign.start,
       cursorColor: AppColors.darkPurpleColor,
       decoration: InputDecoration(
-        prefixIcon: prefixIcon,
+        prefixIcon: UnconstrainedBox(
+          child: SvgPicture.asset(
+            'assets/svgs/$prefixIcon.svg',
+            color: AppColors.darkPurpleColorOpacity,
+            width: screenWidth(15),
+          ),
+        ),
         prefixIconColor: prefixIconColor,
-        suffixIcon: suffixIcon,
+        suffixIcon: SvgPicture.asset(
+          'assets/svgs/$suffixIcon.svg',
+          color: AppColors.darkPurpleColorOpacity,
+          width: screenWidth(15),
+        ),
         suffixIconColor: suffixIconColor,
         contentPadding: EdgeInsets.symmetric(horizontal: screenWidth(18)),
         constraints: BoxConstraints(

@@ -122,3 +122,36 @@ void showAlertDialoug({
 //     ),
 //   );
 // }
+
+void showAlertDialougForVistorUser({
+  String? title,
+  required String? middleText,
+  required Function? onCancel,
+  required Function? onConfirm,
+}) {
+  Get.defaultDialog(
+    title: title ?? "",
+    middleText: middleText ?? "",
+    cancel: CustomButton(
+      buttonTypeEnum: ButtonTypeEnum.NORMAL,
+      onPressed: () {
+        if (onCancel != null) onCancel();
+      },
+      width: screenWidth(3),
+      text: tr("key_no"),
+      backgroundColor: AppColors.mainRedColor,
+    ),
+    confirm: CustomButton(
+      buttonTypeEnum: ButtonTypeEnum.NORMAL,
+      onPressed: () {
+        if (onConfirm != null) onConfirm();
+      },
+      width: screenWidth(3),
+      text: tr("key_yes"),
+    ),
+    onCancel: () {}, onConfirm: () {},
+
+    // content:
+  );
+  // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+}

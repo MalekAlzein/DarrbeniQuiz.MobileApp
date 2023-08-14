@@ -19,7 +19,7 @@ class LoginTopSectionWidget extends StatelessWidget {
           textColor: AppColors.darkGreyColor,
           text: tr('key_login'),
         ),
-        (screenWidth(25)).ph,
+        (screenHeight(45)).ph,
         SvgPicture.asset(
           'assets/svgs/img_login.svg',
           // width: double.infinity,

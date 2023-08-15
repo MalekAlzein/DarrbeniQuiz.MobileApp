@@ -96,7 +96,7 @@ flutter:
     - family: Alexandria
       fonts:
         - asset: assets/fonts/Alexandria-Regular.ttf
-        # - asset: assets/fonts/Alexandria-Thin.ttf
+        # - asset: assets/fonts/Alexandria-Medium.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

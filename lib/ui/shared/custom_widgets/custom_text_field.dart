@@ -56,10 +56,13 @@ class CustomTextFormField extends StatelessWidget {
           ),
         ),
         prefixIconColor: prefixIconColor,
-        suffixIcon: SvgPicture.asset(
-          'assets/svgs/$suffixIcon.svg',
-          color: AppColors.darkPurpleColorOpacity,
-          width: screenWidth(15),
+        suffixIcon: Transform.scale(
+          scale: 0.5,
+          child: SvgPicture.asset(
+            'assets/svgs/$suffixIcon.svg',
+            color: AppColors.darkPurpleColorOpacity,
+            width: screenWidth(15),
+          ),
         ),
         suffixIconColor: suffixIconColor,
         contentPadding: EdgeInsets.symmetric(horizontal: screenWidth(18)),

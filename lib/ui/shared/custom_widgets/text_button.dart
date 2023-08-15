@@ -11,8 +11,10 @@ class CustomTextButton extends StatelessWidget {
     required this.onTap,
     this.fontWeight,
     this.textDecoration,
+    this.textAlign,
   });
   final String title;
+  final TextAlign? textAlign;
   final double? textSize;
   final Color textColor;
   final Function onTap;
@@ -27,6 +29,7 @@ class CustomTextButton extends StatelessWidget {
       },
       child: Text(
         title,
+        textAlign: textAlign,
         style: TextStyle(
           decoration: textDecoration,
           color: textColor,

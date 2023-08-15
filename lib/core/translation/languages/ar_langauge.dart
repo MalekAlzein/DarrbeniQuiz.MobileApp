@@ -32,6 +32,11 @@ class ARLanguage {
         "key_send_feedback": "إرسال شكوى",
         "key_about_us": "عن التطبيق",
 
+        //?--- Edit Profile---
+        "Key_edit_profile": "تعديل المعلومات الشخصية",
+        "Key_phone": "رقم الهاتف",
+        "Key_save_changes": "حفظ التغيرات",
+        "Key_to_retreat": "تراجع",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

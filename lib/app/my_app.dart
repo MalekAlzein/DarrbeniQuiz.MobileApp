@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
         scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          fontFamily: 'Alexandria',
           scaffoldBackgroundColor: AppColors.whiteColor,
           colorScheme: ColorScheme.fromSwatch().copyWith(
             secondary: Colors.transparent.withOpacity(0),

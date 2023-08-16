@@ -46,6 +46,9 @@ class ARLanguage {
         //!--Send Feed Back---
         "Key_send_feed": "ارسل اقتراح/ شكوى",
         "Key_send": "ارسل",
+
+        //!-- important Question--
+        "Key_important_question": "الأسئلة المهمة",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

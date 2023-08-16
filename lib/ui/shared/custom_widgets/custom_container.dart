@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
@@ -9,7 +10,6 @@ class CustomContainer extends StatelessWidget {
       {super.key,
       this.imageName,
       this.imageSize,
-      this.imageColor,
       required this.text,
       required this.textColor,
       required this.textType,
@@ -20,7 +20,7 @@ class CustomContainer extends StatelessWidget {
   final String? imageName;
   final Color? textColor;
   final double? imageSize;
-  final Color? imageColor;
+  final Color? imageColor = AppColors.darkGreyColor;
   final TextStyleType textType;
   final String text;
   final TextAlign? textAlign;
@@ -30,13 +30,14 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: screenHeight(20),
+      height: screenHeight(11),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
             screenWidth(80),
           ),
-          color: AppColors.normalCyanColorOpacity),
+          color: AppColors.superLightBlueColor),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           CustomText(
             textType: textType,
@@ -46,10 +47,9 @@ class CustomContainer extends StatelessWidget {
             fontSize: fontSize,
             textColor: textColor,
           ),
-          CustomImage(
-            imageName: 'assets/svgs/$imageName.svg',
-            imageSize: imageSize,
-            colorImage: imageColor,
+          CustomSmallImage(
+            imageName: imageName ?? "",
+            imageSize: screenHeight(70),
           ),
         ],
       ),

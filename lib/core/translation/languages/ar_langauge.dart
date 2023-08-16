@@ -37,6 +37,9 @@ class ARLanguage {
         "Key_phone": "رقم الهاتف",
         "Key_save_changes": "حفظ التغيرات",
         "Key_to_retreat": "تراجع",
+        //!--Send Feed Back---
+        "Key_send_feed": "ارسل اقتراح/ شكوى",
+        "Key_send": "ارسل",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

@@ -4,6 +4,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_popup_with_blur.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:get/get.dart';
 
 double width = Get.size.shortestSide;

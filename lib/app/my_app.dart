@@ -40,7 +40,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Alexandria',
           primarySwatch: Colors.blue,
-          fontFamily: 'Alexandria',
           scaffoldBackgroundColor: AppColors.whiteColor,
           colorScheme: ColorScheme.fromSwatch().copyWith(
             secondary: Colors.transparent.withOpacity(0),

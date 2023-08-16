@@ -21,7 +21,7 @@ Future<void> main() async {
   await Get.put(LocationService());
   Get.put(CartService());
   Get.put(ConnectivityService());
-    await Get.put(LanguageService());
+  await Get.put(LanguageService());
   Get.put(PackageInfoService());
   Get.put(MyAppController());
 

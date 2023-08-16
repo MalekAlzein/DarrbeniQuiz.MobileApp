@@ -4,8 +4,10 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
+import 'package:flutter_templete/ui/views/question_view/question_view.dart';
 import 'package:get/get.dart';
 
 class ImportantQuestionsView extends StatefulWidget {
@@ -52,6 +54,11 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
               textType: TextStyleType.SMALL,
               imageName: 'ic_arrow',
             ),
+            CustomTextButton(
+                title: 'الاسئلة',
+                onTap: () {
+                  Get.to(QuestionView());
+                })
           ],
         ),
       ],

@@ -21,6 +21,7 @@ class ENLanguage {
         "key_please_subscribe": "Please suscribe to complete the browsingk",
         "key_send": "send ",
         //!---- Home View -------
-        "key_category": "التصنيفات",
+        "key_category": "category",
+        "key_search": "search",
       };
 }

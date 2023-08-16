@@ -34,7 +34,7 @@ class MainCategory extends StatelessWidget {
                   : null,
             ),
             child: CustomText(
-              textType: TextStyleType.SUBTITLE,
+              textType: TextStyleType.BODY,
               text: category,
               textColor:
                   onClick ? AppColors.lightCyanColor : AppColors.darkGreyColor,

@@ -6,6 +6,7 @@ import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.da
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/about_us_view/about_us_view.dart';
 import 'package:flutter_templete/ui/views/edit_profile_view/edit_profile_view.dart';
+import 'package:flutter_templete/ui/views/send_feedback/send_feedback.dart';
 import 'package:get/get.dart';
 
 class ProfileMiddleSectionWidget extends StatelessWidget {
@@ -27,7 +28,11 @@ class ProfileMiddleSectionWidget extends StatelessWidget {
           text: tr("key_send_feedback"),
           imageName: "ic_send_feedback",
           color: AppColors.normalCyanColor,
-          onTap: () {},
+          onTap: () {
+            Get.to(
+              () => const SendFeedView(),
+            );
+          },
         ),
         screenHeight(45).ph,
         CustomSubTitleContainer(

@@ -27,7 +27,9 @@ class ProfileMiddleSectionWidget extends StatelessWidget {
           text: tr("key_send_feedback"),
           imageName: "ic_send_feedback",
           color: AppColors.normalCyanColor,
-          onTap: () {},
+          onTap: () {
+            sendFeedBack();
+          },
         ),
         screenHeight(45).ph,
         CustomSubTitleContainer(

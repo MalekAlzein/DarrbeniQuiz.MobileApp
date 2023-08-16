@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         scrollBehavior: ScrollBehavior().copyWith(overscroll: false),
         theme: ThemeData(
+          fontFamily: 'Alexandria',
           primarySwatch: Colors.blue,
           fontFamily: 'Alexandria',
           scaffoldBackgroundColor: AppColors.whiteColor,

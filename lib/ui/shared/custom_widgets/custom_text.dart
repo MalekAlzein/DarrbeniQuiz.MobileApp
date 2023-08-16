@@ -48,7 +48,7 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(13),
+          fontSize: screenWidth(20),
           fontWeight: FontWeight.w900,
         );
 

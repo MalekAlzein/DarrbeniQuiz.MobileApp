@@ -48,6 +48,7 @@ class _ProfileViewState extends State<ProfileView> {
                 controller: controller,
               ),
             ),
+            screenHeight(50).ph,
             CustomText(
               textType: TextStyleType.TITLE,
               text: tr("key_user_name"),

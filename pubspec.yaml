@@ -81,6 +81,7 @@ flutter:
   assets:
     - assets/svgs/
     # - assets/images/
+    # - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -97,7 +98,7 @@ flutter:
     - family: Alexandria
       fonts:
         - asset: assets/fonts/Alexandria-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+        # - asset: assets/fonts/Alexandria-Medium.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

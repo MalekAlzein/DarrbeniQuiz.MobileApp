@@ -38,6 +38,14 @@ class ARLanguage {
         "key_category": "التصنيفات",
         "key_home": "الرئيسية",
 
+        //?--- Edit Profile---
+        "Key_edit_profile": "تعديل المعلومات الشخصية",
+        "Key_phone": "رقم الهاتف",
+        "Key_save_changes": "حفظ التغيرات",
+        "Key_to_retreat": "تراجع",
+        //!--Send Feed Back---
+        "Key_send_feed": "ارسل اقتراح/ شكوى",
+        "Key_send": "ارسل",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

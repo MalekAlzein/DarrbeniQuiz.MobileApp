@@ -54,6 +54,7 @@ dependencies:
   pin_code_fields: ^8.0.1
   shimmer: ^3.0.0
   carousel_slider: ^4.2.1
+  dots_indicator: ^3.0.0
 
 dev_dependencies:
   flutter_test:

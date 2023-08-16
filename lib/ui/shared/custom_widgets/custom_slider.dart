@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomSlider extends StatefulWidget {
   const CustomSlider({super.key});
@@ -20,6 +23,7 @@ class _CustomSliderState extends State<CustomSlider> {
     'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
     'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
   ];
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -33,7 +37,9 @@ class _CustomSliderState extends State<CustomSlider> {
         options: CarouselOptions(
             initialPage: 0,
             enlargeCenterPage: true,
+            autoPlay: true,
             aspectRatio: 2.0,
+            enlargeFactor: 0.9,
             onPageChanged: (index, reason) {
               setState(() {
                 _current = index;
@@ -44,15 +50,19 @@ class _CustomSliderState extends State<CustomSlider> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: imgList.asMap().entries.map((entry) {
           return Container(
-            width: 12.0,
-            height: 12.0,
-            margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+            width: screenWidth(50),
+            height: screenWidth(50),
+            margin: EdgeInsets.symmetric(
+                vertical: screenWidth(30), horizontal: screenWidth(70)),
             decoration: BoxDecoration(
-                shape: BoxShape.circle,
+                shape: BoxShape.rectangle,
                 color: (Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black)
-                    .withOpacity(_current == entry.key ? 0.9 : 0.4)),
+                        ? AppColors.whiteColor
+                        : AppColors.darkPurpleColor)
+                    .withOpacity(_current == entry.key ? 0.9 : 0.0),
+                border: Border.all(
+                  color: AppColors.darkPurpleColor,
+                )),
           );
         }).toList(),
       ),

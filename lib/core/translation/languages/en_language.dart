@@ -1,5 +1,6 @@
 class ENLanguage {
   static Map<String, String> get map => {
+        //!---- Login & Sign up View -------
         "key_login": "Login",
         "key_donot_have_account": "Don't have an account?",
         "key_create_account_now": "Create an account now",
@@ -16,6 +17,10 @@ class ENLanguage {
         "key_faculty_of_pharmacy": "Faculty of Pharmacy",
         "key_dentistry": "Dentistry",
         "key_medicine": "Medicine",
+        //!---- Profile View -------
         "key_please_subscribe": "Please suscribe to complete the browsingk",
+        "key_send": "send ",
+        //!---- Home View -------
+        "key_category": "التصنيفات",
       };
 }

@@ -1,9 +1,17 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_popup_with_blur.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/main_view/main_view.dart';
+import 'package:flutter_templete/ui/views/signup_view/signup_view.dart';
 import 'package:get/get.dart';
 
 double width = Get.size.shortestSide;
@@ -123,35 +131,174 @@ void showAlertDialoug({
 //   );
 // }
 
-void showAlertDialougForVistorUser({
-  String? title,
-  required String? middleText,
-  required Function? onCancel,
-  required Function? onConfirm,
+void showSudscribeDialog({
+  // required bool isLoading,
+  // required Function? onTap,
+  Widget? widget,
 }) {
-  Get.defaultDialog(
-    title: title ?? "",
-    middleText: middleText ?? "",
-    cancel: CustomButton(
-      buttonTypeEnum: ButtonTypeEnum.NORMAL,
-      onPressed: () {
-        if (onCancel != null) onCancel();
-      },
-      width: screenWidth(3),
-      text: tr("key_no"),
-      backgroundColor: AppColors.mainRedColor,
-    ),
-    confirm: CustomButton(
-      buttonTypeEnum: ButtonTypeEnum.NORMAL,
-      onPressed: () {
-        if (onConfirm != null) onConfirm();
-      },
-      width: screenWidth(3),
-      text: tr("key_yes"),
-    ),
-    onCancel: () {}, onConfirm: () {},
+  // RxBool loading = isLoading.obs;
+  Get.dialog(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.DIALOUG,
+      child: Container(
+        width: screenWidth(1.2),
+        height: screenHeight(3),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          border: Border.all(color: AppColors.darkPurpleColor, width: 2),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.darkGreyColor,
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
+          ],
+          borderRadius: BorderRadiusDirectional.all(
+            Radius.circular(10),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: screenWidth(10), vertical: screenWidth(25)),
+          child: Column(
+            children: [
+              SvgPicture.asset(
+                'assets/svgs/img_pop_up.svg',
+                // width: screenWidth(1.25),
+                // height: screenHeight(5),
+              ),
+              screenHeight(80).ph,
+              Material(
+                color: AppColors.whiteColor,
+                child: CustomText(
+                  textType: TextStyleType.BODY,
+                  text: tr("key_please_subscribe"),
+                  textColor: AppColors.darkGreyColor,
+                ),
+              ),
+              screenHeight(80).ph,
 
-    // content:
+              CustomButton(
+                buttonTypeEnum: ButtonTypeEnum.SMALL,
+                height: screenWidth(9),
+                onPressed: () {
+                  Get.to(() => const MainView());
+                },
+                backgroundColor: AppColors.darkPurpleColor,
+                text: tr('key_login'),
+              ),
+              screenHeight(80).ph,
+              Material(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      textType: TextStyleType.SMALL,
+                      text: tr('key_donot_have_account'),
+                      textColor: AppColors.darkGreyColor,
+                    ),
+                    CustomTextButton(
+                      title: tr('key_create_account_now'),
+                      onTap: () {
+                        Get.to(() => const SignupView());
+                      },
+                      textColor: AppColors.darkPurpleColor,
+                    ),
+                  ],
+                ),
+              ),
+              // Obx(
+              //   () {
+              //     return loading.value
+              //         ? LoadingWidget(center: false)
+              //         : CtaButton(
+              //             buttonTypeEnum: ButtonTypeEnum.NORMAL,
+              //             title: tr("nfc_write"),
+              //             titleInCaps: false,
+              //             onTap: () {
+              //               if (onTap != null) onTap();
+              //             },
+              //           );
+              //   },
+              // )
+            ],
+          ),
+        ),
+      ),
+    ),
   );
-  // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+}
+
+void showUpsetDialog({
+  // required bool isLoading,
+  // required Function? onTap,
+  Widget? widget,
+}) {
+  // RxBool loading = isLoading.obs;
+  Get.dialog(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.DIALOUG,
+      child: Container(
+        width: screenWidth(1.2),
+        height: screenHeight(3),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          border: Border.all(color: AppColors.darkPurpleColor, width: 2),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.darkGreyColor,
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
+          ],
+          borderRadius: BorderRadiusDirectional.all(
+            Radius.circular(10),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: screenWidth(10), vertical: screenWidth(25)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Material(
+                child: CustomTextFormField(
+                  maxLines: 60,
+                  maxHeight: screenHeight(5),
+                  hintText: tr("key_send_feedback_text_filed"),
+                  fillColor: AppColors.fillGreyColor,
+                  hintTextColor: AppColors.lightGreyColor,
+                ),
+              ),
+
+              CustomButton(
+                buttonTypeEnum: ButtonTypeEnum.SMALL,
+                height: screenWidth(9),
+                onPressed: () {
+                  Get.to(() => const MainView());
+                },
+                backgroundColor: AppColors.darkPurpleColor,
+                text: tr('key_send'),
+              ),
+
+              // Obx(
+              //   () {
+              //     return loading.value
+              //         ? LoadingWidget(center: false)
+              //         : CtaButton(
+              //             buttonTypeEnum: ButtonTypeEnum.NORMAL,
+              //             title: tr("nfc_write"),
+              //             titleInCaps: false,
+              //             onTap: () {
+              //               if (onTap != null) onTap();
+              //             },
+              //           );
+              //   },
+              // )
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
 }

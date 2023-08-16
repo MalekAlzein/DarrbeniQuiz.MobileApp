@@ -86,7 +86,7 @@ class NetworkUtil {
     Map<String, String>? headers = const {},
     Map<String, String>? fields = const {},
     Map<String, String>? files = const {},
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? params, required RequestType type,
   }) async {
     try {
       var request = http.MultipartRequest(

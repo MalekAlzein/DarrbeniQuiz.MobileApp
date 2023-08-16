@@ -55,14 +55,14 @@ class _SignupViewState extends State<SignupView> {
                 SizedBox()
               ],
             ),
-            (screenWidth(25)).ph,
+            (screenHeight(45)).ph,
             SvgPicture.asset(
               'assets/svgs/img_signup.svg',
               // width: double.infinity,
 
               // fit: BoxFit.fill,
             ),
-            (screenWidth(25)).ph,
+            (screenHeight(40)).ph,
             Align(
               alignment: AlignmentDirectional.centerStart,
               child: CustomText(
@@ -79,7 +79,7 @@ class _SignupViewState extends State<SignupView> {
               prefixIcon: 'ic_text_field_user',
               prefixIconColor: AppColors.darkPurpleColorOpacity,
             ),
-            (screenWidth(25)).ph,
+            (screenHeight(40)).ph,
             Align(
               alignment: AlignmentDirectional.centerStart,
               child: CustomText(
@@ -96,7 +96,7 @@ class _SignupViewState extends State<SignupView> {
               prefixIcon: 'login-signup icons=phone',
               prefixIconColor: AppColors.darkPurpleColorOpacity,
             ),
-            (screenWidth(25)).ph,
+            (screenHeight(40)).ph,
             Align(
               alignment: AlignmentDirectional.centerStart,
               child: CustomText(
@@ -105,7 +105,7 @@ class _SignupViewState extends State<SignupView> {
                 textColor: AppColors.normalPurpleColor,
               ),
             ),
-            (screenWidth(50)).ph,
+            (screenHeight(45)).ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -122,7 +122,7 @@ class _SignupViewState extends State<SignupView> {
                 buildRadioButton(6, 'key_nursing'),
               ],
             ),
-            (screenWidth(10)).ph,
+            (screenHeight(30)).ph,
             CustomButton(
               buttonTypeEnum: ButtonTypeEnum.NORMAL,
               onPressed: () {
@@ -131,7 +131,7 @@ class _SignupViewState extends State<SignupView> {
               backgroundColor: AppColors.darkPurpleColor,
               text: tr('key_create_account'),
             ),
-            (screenWidth(40)).ph,
+            (screenHeight(50)).ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

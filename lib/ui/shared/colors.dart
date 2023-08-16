@@ -24,7 +24,7 @@ class AppColors {
   static const Color mainGreyColor = Color.fromRGBO(74, 75, 77, 1);
   static const Color secondaryGreyColor = Color.fromRGBO(124, 125, 126, 1);
   static const Color placeholderGreyColor = Color.fromRGBO(182, 183, 183, 1);
-  static const Color fillGreyColor = Color.fromRGBO(242, 242, 242, 1);
+  static const Color fillGreyColor = Color.fromRGBO(243, 243, 243, 1);
 
   //!---- App Colors from figma ----
   static const Color darkPurpleColor = Color.fromRGBO(111, 40, 119, 1);
@@ -39,6 +39,8 @@ class AppColors {
   static const Color lightCyanColorOpacity =
       Color.fromRGBO(185, 229, 251, 0.15);
   static const Color darkGreyColor = Color.fromRGBO(70, 69, 71, 1);
+  static const Color lightGreyColor = Color.fromRGBO(163, 170, 179, 1);
+
   static const Color redColor = Color.fromRGBO(216, 37, 32, 1);
   static const Color yellowColor = Color.fromRGBO(255, 199, 0, 1);
 }

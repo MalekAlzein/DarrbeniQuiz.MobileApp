@@ -3,6 +3,7 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -29,30 +30,35 @@ class CustomContainer extends StatelessWidget {
   final TextDecoration? textDecoration;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: screenHeight(11),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            screenWidth(80),
+    return Column(
+      children: [
+        Container(
+          height: screenHeight(11),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                screenWidth(80),
+              ),
+              color: AppColors.superLightBlueColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomText(
+                textType: textType,
+                text: text,
+                textAlign: textAlign,
+                fontWeight: fontWeight,
+                fontSize: fontSize,
+                textColor: textColor,
+              ),
+              CustomSmallImage(
+                imageName: imageName ?? "",
+                imageSize: screenHeight(70),
+              ),
+            ],
           ),
-          color: AppColors.superLightBlueColor),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CustomText(
-            textType: textType,
-            text: text,
-            textAlign: textAlign,
-            fontWeight: fontWeight,
-            fontSize: fontSize,
-            textColor: textColor,
-          ),
-          CustomSmallImage(
-            imageName: imageName ?? "",
-            imageSize: screenHeight(70),
-          ),
-        ],
-      ),
+        ),
+        screenHeight(50).ph,
+      ],
     );
   }
 }

@@ -1,10 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_controller.dart';
 
@@ -21,36 +26,49 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   HomeController controller = Get.put(HomeController());
+  List<String> category = [
+    'الكل',
+    'الكليات الهندسية',
+    'الكليات الطبية',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomShapemakerWidget(),
+        CustomShapemakerWidget(
+            backButton: false,
+            imageName: 'ic_nav_bar_home',
+            firstText: tr("key_home")),
         Padding(
           padding: EdgeInsetsDirectional.all(screenWidth(15)),
           child: Column(children: [
             CustomSlider(),
-            // CarouselSlider(
-            //   options: CarouselOptions(height: 400.0),
-            //   items: [1, 2, 3, 4, 5].map((i) {
-            //     return Builder(
-            //       builder: (BuildContext context) {
-            //         return Container(
-            //             width: MediaQuery.of(context).size.width,
-            //             margin: EdgeInsets.symmetric(horizontal: 5.0),
-            //             decoration: BoxDecoration(color: Colors.amber),
-            //             child: Text(
-            //               'text $i',
-            //               style: TextStyle(fontSize: 16.0),
-            //             ));
-            //       },
-            //     );
-            //   }).toList(),
-            // ),
+            screenHeight(50).ph,
             CustomSubTitleContainer(
-              text: 'التصنيفات',
+              text: tr('key_category'),
+              color: AppColors.darkGreyColor,
             ),
+            SizedBox(
+              height: screenWidth(7),
+              width: screenWidth(1),
+              child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                addAutomaticKeepAlives: true,
+                addRepaintBoundaries: true,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: category.length,
+                itemBuilder: (context, index) {
+                  return MainCategory(
+                    category: category[index],
+                    onTap: () {
+                      showUpsetDialog();
+                    },
+                  );
+                },
+              ),
+            )
           ]),
         ),
       ],

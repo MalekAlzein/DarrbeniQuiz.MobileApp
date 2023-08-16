@@ -7,6 +7,7 @@ class ARLanguage {
         // "key_home_view_popular_restaurents": "المطاعم المشهورة",
         // "key_home_view_most_popular": "الاكثر طلبا",
         // "key_home_view_recent_items": "العناصر الاخيرة",
+        //!---- Login & Sign up View -------
         "key_logout": "تسجيل الخروج",
         "key_login": "تسجيل الدخول",
         "key_create_account": "إنشاء حساب",
@@ -31,6 +32,11 @@ class ARLanguage {
         "key_personal_info": "المعلومات الشخصية",
         "key_send_feedback": "إرسال شكوى",
         "key_about_us": "عن التطبيق",
+        "key_send": "إرسال ",
+        "key_send_feedback_text_filed": "ارسل شكوى / اقتراح",
+//!---- Home View -------
+        "key_category": "التصنيفات",
+        "key_home": "الرئيسية",
 
         //?--- Edit Profile---
         "Key_edit_profile": "تعديل المعلومات الشخصية",

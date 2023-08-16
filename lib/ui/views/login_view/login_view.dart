@@ -80,7 +80,7 @@ class _LoginViewState extends State<LoginView> {
                   }
                 },
               ),
-              (screenWidth(8)).ph,
+              (screenHeight(15)).ph,
               CustomButton(
                 buttonTypeEnum: ButtonTypeEnum.NORMAL,
                 onPressed: () {
@@ -89,7 +89,7 @@ class _LoginViewState extends State<LoginView> {
                 backgroundColor: AppColors.darkPurpleColor,
                 text: tr('key_login'),
               ),
-              (screenWidth(40)).ph,
+              (screenHeight(50)).ph,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -107,7 +107,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
-              (screenWidth(2.5)).ph,
+              (screenHeight(6)).ph,
               Center(
                 child: CustomTextButton(
                   title: tr('key_visitor'),

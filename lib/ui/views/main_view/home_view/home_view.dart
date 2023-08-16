@@ -31,10 +31,10 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomShapemakerWidget(
-            backButton: false,
-            imageName: 'ic_nav_bar_home',
-            firstText: tr("key_home")),
+        // CustomShapemakerWidget(
+        //     backButton: false,
+        //     imageName: 'ic_nav_bar_home',
+        //     firstText: tr("key_home")),
         Padding(
           padding: EdgeInsetsDirectional.all(screenWidth(15)),
           child: Column(children: [

@@ -15,39 +15,39 @@ class SplashScreenView extends StatefulWidget {
 
 class _SplashScreenViewState extends State<SplashScreenView> {
   SplashScreenController controller = Get.put(SplashScreenController());
-  //lazyput
-  //putasync
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            body: Stack(
-      alignment: Alignment.bottomCenter,
-      fit: StackFit.passthrough,
-      children: [
-        // SvgPicture.asset(
-        //   'assets/images/bg_background.svg',
-        //   height: screenHeight(1),
-        //   width: screenWidth(1),
-        // ),
-        // Center(
-        //     child: SvgPicture.asset(
-        //   'assets/images/Logo.svg',
-        //   width: screenWidth(5),
-        //   height: screenHeight(5),
-        // )),
-        screenWidth(10).ph,
-        Container(
-          margin: EdgeInsets.only(bottom: screenWidth(3)),
-          // width: size.width*0.1,
-          height: screenWidth(3),
-          child: SpinKitThreeBounce(
-            color: AppColors.darkPurpleColor,
-          ),
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.bottomCenter,
+          fit: StackFit.passthrough,
+          children: [
+            // SvgPicture.asset(
+            //   'assets/images/bg_background.svg',
+            //   height: screenHeight(1),
+            //   width: screenWidth(1),
+            // ),
+            // Center(
+            //     child: SvgPicture.asset(
+            //   'assets/images/Logo.svg',
+            //   width: screenWidth(5),
+            //   height: screenHeight(5),
+            // )),
+            screenWidth(10).ph,
+            Container(
+              margin: EdgeInsets.only(bottom: screenWidth(3)),
+              // width: size.width*0.1,
+              height: screenWidth(3),
+              child: SpinKitThreeBounce(
+                color: AppColors.darkPurpleColor,
+              ),
+            ),
+          ],
         ),
-      ],
-    )));
+      ),
+    );
   }
 }
 

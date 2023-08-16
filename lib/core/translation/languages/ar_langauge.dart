@@ -1,12 +1,5 @@
 class ARLanguage {
   static Map<String, String> get map => {
-        // "key_home_view_delivering_to": "توصيل الى",
-        // "key_home_view_current_location": "الموقع الحالي",
-        // "key_home_view_search": "البحث",
-        // "key_home_view_view_all": "اظهر الكل",
-        // "key_home_view_popular_restaurents": "المطاعم المشهورة",
-        // "key_home_view_most_popular": "الاكثر طلبا",
-        // "key_home_view_recent_items": "العناصر الاخيرة",
         //!---- Login & Sign up View -------
         "key_logout": "تسجيل الخروج",
         "key_login": "تسجيل الدخول",
@@ -28,25 +21,33 @@ class ARLanguage {
         "key_please_subscribe": "يرجى الاشتراك لإتمام عملية التصفح",
 
         //!---- Profile View -------
-        "key_profile": "الملف الشخصي",
         "key_personal_info": "المعلومات الشخصية",
         "key_send_feedback": "إرسال شكوى",
         "key_about_us": "عن التطبيق",
         "key_send": "إرسال ",
         "key_send_feedback_text_filed": "ارسل شكوى / اقتراح",
-//!---- Home View -------
+
+        //!---- Main View -------
+        "key_profile": "الملف الشخصي",
+        "key_important_questions": "الأسئلة المهمة",
+        "key_home": "الرئيسية",
+        "key_notifications": "الإشعارات",
+
+        //!---- Home View -------
         "key_category": "التصنيفات",
         "key_home": "الرئيسية",
         "key_search": "بحث",
 
-        //?--- Edit Profile---
+        //!--- Edit Profile---
         "Key_edit_profile": "تعديل المعلومات الشخصية",
         "Key_phone": "رقم الهاتف",
         "Key_save_changes": "حفظ التغيرات",
         "Key_to_retreat": "تراجع",
+
         //!--Send Feed Back---
         "Key_send_feed": "ارسل اقتراح/ شكوى",
         "Key_send": "ارسل",
+
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

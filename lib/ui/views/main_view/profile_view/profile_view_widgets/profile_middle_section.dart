@@ -6,7 +6,6 @@ import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.da
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/about_us_view/about_us_view.dart';
 import 'package:flutter_templete/ui/views/edit_profile_view/edit_profile_view.dart';
-import 'package:flutter_templete/ui/views/send_feedback/send_feedback.dart';
 import 'package:get/get.dart';
 
 class ProfileMiddleSectionWidget extends StatelessWidget {

@@ -34,7 +34,7 @@ class ARLanguage {
         "key_about_us": "عن التطبيق",
         "key_send": "إرسال ",
         "key_send_feedback_text_filed": "ارسل شكوى / اقتراح",
-//!---- Home View -------
+        //!---- Home View -------
         "key_category": "التصنيفات",
         "key_home": "الرئيسية",
 
@@ -49,6 +49,9 @@ class ARLanguage {
 
         //!-- important Question--
         "Key_important_question": "الأسئلة المهمة",
+
+        //?--- Previous Quiz view ---
+        "Key_previous_quiz": "الدورات",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

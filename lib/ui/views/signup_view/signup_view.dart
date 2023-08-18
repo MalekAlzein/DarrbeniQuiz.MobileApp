@@ -35,7 +35,7 @@ class _SignupViewState extends State<SignupView> {
           child: ListView(
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: screenWidth(25),
-              vertical: screenWidth(10),
+              vertical: screenWidth(20),
             ),
             children: [
               Row(
@@ -62,21 +62,14 @@ class _SignupViewState extends State<SignupView> {
               ),
               (screenHeight(45)).ph,
               CustomImages(imageName: 'img_signup'),
-              // SvgPicture.asset(
-              //   'assets/svgs/img_signup.svg',
-              //   // width: double.infinity,
-
-              //   // fit: BoxFit.fill,
-              // ),
               (screenHeight(40)).ph,
-              Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: CustomText(
-                  textType: TextStyleType.SUBTITLE,
-                  text: tr('key_user_name'),
-                  textColor: AppColors.normalPurpleColor,
-                ),
+              CustomText(
+                textAlign: TextAlign.start,
+                textType: TextStyleType.SUBTITLE,
+                text: tr('key_user_name'),
+                textColor: AppColors.normalPurpleColor,
               ),
+              (screenHeight(70)).ph,
               CustomTextFormField(
                 hintText: tr('key_user_name'),
                 hintTextSize: screenWidth(22),
@@ -93,14 +86,13 @@ class _SignupViewState extends State<SignupView> {
                 },
               ),
               (screenHeight(40)).ph,
-              Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: CustomText(
-                  textType: TextStyleType.SUBTITLE,
-                  text: tr('key_mobile_number'),
-                  textColor: AppColors.normalPurpleColor,
-                ),
+              CustomText(
+                textAlign: TextAlign.start,
+                textType: TextStyleType.SUBTITLE,
+                text: tr('key_mobile_number'),
+                textColor: AppColors.normalPurpleColor,
               ),
+              (screenHeight(70)).ph,
               CustomTextFormField(
                 hintText: tr('key_mobile_number'),
                 hintTextSize: screenWidth(22),

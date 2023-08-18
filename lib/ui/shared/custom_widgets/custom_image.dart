@@ -13,7 +13,7 @@ class CustomImages extends StatelessWidget {
     return Center(
       child: SvgPicture.asset(
         'assets/svgs/$imageName.svg',
-        width: imageSize ?? screenWidth(1.9),
+        width: imageSize ?? screenWidth(2.1),
         height: imageSize,
         color: imageColor,
       ),

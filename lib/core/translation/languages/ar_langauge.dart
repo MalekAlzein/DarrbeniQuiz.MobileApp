@@ -35,7 +35,6 @@ class ARLanguage {
 
         //!---- Home View -------
         "key_category": "التصنيفات",
-        "key_home": "الرئيسية",
         "key_search": "بحث",
 
         //!--- Edit Profile---

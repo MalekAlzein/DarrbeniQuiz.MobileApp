@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';

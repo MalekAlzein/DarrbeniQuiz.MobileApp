@@ -35,7 +35,6 @@ class ARLanguage {
 
         //!---- Home View -------
         "key_category": "التصنيفات",
-        "key_home": "الرئيسية",
         "key_search": "بحث",
 
         //!--- Edit Profile---
@@ -48,6 +47,19 @@ class ARLanguage {
         "Key_send_feed": "ارسل اقتراح/ شكوى",
         "Key_send": "ارسل",
 
+        //!-- important Question--
+        "Key_important_question": "الأسئلة المهمة",
+
+        //?--- Previous Quiz view ---
+        "Key_previous_quiz": "الدورات",
+
+        //!--- Result View --
+        "Key_result": "النتيجة",
+        "Key_congratulations": "مبروك لقد اتممت الإختبار بنجاح",
+        "Key_your_score": "علامتك هي:",
+        "Key_numb_correct_questions": "عدد الأسئلة الصحيحة :",
+        "Key_numb_wrong_questions": "عدد الأسئلة الخاطئة:",
+        "Key_Check_answers": "التحقق من الإجابات",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

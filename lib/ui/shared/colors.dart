@@ -39,6 +39,8 @@ class AppColors {
   static const Color lightCyanColorOpacity =
       Color.fromRGBO(185, 229, 251, 0.15);
   static const Color darkGreyColor = Color.fromRGBO(70, 69, 71, 1);
+  static const Color darkGreyColorTextField = Color.fromRGBO(70, 69, 71, 0.03);
+  static const Color darkGreyColorOpacity = Color.fromRGBO(70, 69, 71, 0.5);
   static const Color lightGreyColor = Color.fromRGBO(163, 170, 179, 1);
 
   static const Color redColor = Color.fromRGBO(216, 37, 32, 1);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_view.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_view.dart';
 import 'package:flutter_templete/ui/views/main_view/main_controller.dart';
@@ -42,6 +43,11 @@ class _MainViewState extends State<MainView> {
                   HomeView(),
                   NotificationsView(),
                 ],
+              ),
+              CustomShapemakerWidget(
+                backButton: false,
+                imageName: controller.headerImage.value,
+                firstText: controller.headerName.value,
               ),
               PositionedDirectional(
                 bottom: 0,

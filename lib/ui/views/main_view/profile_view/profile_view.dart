@@ -31,11 +31,11 @@ class _ProfileViewState extends State<ProfileView> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomShapemakerWidget(
-          backButton: false,
-          imageName: "ic_nav_bar_profile",
-          firstText: tr("key_profile"),
-        ),
+        // CustomShapemakerWidget(
+        //   backButton: false,
+        //   imageName: "ic_nav_bar_profile",
+        //   firstText: tr("key_profile"),
+        // ),
         ListView(
           shrinkWrap: true,
           padding: EdgeInsetsDirectional.symmetric(

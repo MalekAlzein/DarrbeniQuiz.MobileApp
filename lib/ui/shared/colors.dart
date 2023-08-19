@@ -45,4 +45,5 @@ class AppColors {
 
   static const Color redColor = Color.fromRGBO(216, 37, 32, 1);
   static const Color yellowColor = Color.fromRGBO(255, 199, 0, 1);
+  static const Color superLightBlueColor = Color.fromRGBO(32, 196, 244, 0.03);
 }

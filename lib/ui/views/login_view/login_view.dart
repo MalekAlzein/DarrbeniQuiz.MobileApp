@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
@@ -56,6 +57,12 @@ class _LoginViewState extends State<LoginView> {
                 hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_user',
                 controller: controller.usernameController,
+                validator: (value) {
+                  if (value!.isEmpty || StringUtil.isName(value)) {
+                    return 'please check your Name';
+                  }
+                  return null;
+                },
               ),
               (screenHeight(40)).ph,
               Align(
@@ -75,19 +82,29 @@ class _LoginViewState extends State<LoginView> {
                 controller: controller.enterCodeController,
                 validator: (value) {
                   if (value!.isEmpty || StringUtil.isPassword(value)) {
-                    return 'please check your Password';
+                    return 'please check your Code';
                   }
+                  return null;
                 },
               ),
               (screenHeight(15)).ph,
-              CustomButton(
-                buttonTypeEnum: ButtonTypeEnum.NORMAL,
-                onPressed: () {
-                  Get.to(() => const MainView());
-                },
-                backgroundColor: AppColors.darkPurpleColor,
-                text: tr('key_login'),
-              ),
+
+              Obx(() {
+                return controller.isLoding.value
+                    ? SpinKitThreeBounce(
+                        color: AppColors.darkPurpleColor,
+                      )
+                    : CustomButton(
+                        buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                        onPressed: () {
+                          Get.to(() => const MainView());
+                          //  controller.login();
+                        },
+                        backgroundColor: AppColors.darkPurpleColor,
+                        text: tr('key_login'),
+                      );
+              }),
+
               (screenHeight(50)).ph,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

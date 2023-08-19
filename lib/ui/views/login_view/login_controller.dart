@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
+import 'package:get/get.dart';
 
 class LoginController extends BaseController {
+  RxBool isLoding = false.obs;
   TextEditingController usernameController = TextEditingController();
   TextEditingController enterCodeController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();

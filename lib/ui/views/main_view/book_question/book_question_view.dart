@@ -7,6 +7,8 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dar
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/main_view/book_question/questions_controller.dart';
+import 'package:get/get.dart';
 
 class BookQuestionView extends StatefulWidget {
   const BookQuestionView({super.key});
@@ -16,6 +18,8 @@ class BookQuestionView extends StatefulWidget {
 }
 
 class _BookQuestionViewState extends State<BookQuestionView> {
+  QuestionsController controller = Get.put(QuestionsController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,6 +34,32 @@ class _BookQuestionViewState extends State<BookQuestionView> {
             thirdText: 'أسئلة الكتاب',
             quizMode: true,
           ),
+          Padding(
+            padding: EdgeInsetsDirectional.symmetric(
+              horizontal: screenWidth(20),
+            ),
+            child: CustomText(textType: TextStyleType.SMALL, text: '100/25'),
+          ),
+          screenHeight(80).ph,
+          Padding(
+            padding: EdgeInsetsDirectional.symmetric(
+              horizontal: screenWidth(20),
+            ),
+            child: Container(
+              width: screenWidth(1),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: LinearProgressIndicator(
+                  minHeight: 7,
+                  value: 0.3,
+                  // value: controller.progress.value,
+                  backgroundColor: AppColors.darkPurpleColor,
+                  color: AppColors.normalCyanColor,
+                ),
+              ),
+            ),
+          ),
+          screenHeight(80).ph,
           Padding(
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: screenWidth(20),
@@ -52,12 +82,6 @@ class _BookQuestionViewState extends State<BookQuestionView> {
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               children: [
-                CustomQuestion(
-                  textAlign: TextAlign.start,
-                  textType: TextStyleType.SMALL,
-                  text: 'بروتوكول الأنترنت صالح لتطبيقات الوسائط المتعددة',
-                  imageName: 'ic_answer_wrong',
-                ),
                 CustomQuestion(
                   textAlign: TextAlign.start,
                   textType: TextStyleType.SMALL,

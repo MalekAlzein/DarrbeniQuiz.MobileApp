@@ -10,7 +10,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart' as path;
 
 class NetworkUtil {
-  static String baseUrl = 'training.owner-tech.com';
+  static String baseUrl = 'backendsp01.000webhostapp.com';
   static var client = http.Client();
   static bool online = true;
 
@@ -86,7 +86,8 @@ class NetworkUtil {
     Map<String, String>? headers = const {},
     Map<String, String>? fields = const {},
     Map<String, String>? files = const {},
-    Map<String, dynamic>? params, required RequestType type,
+    Map<String, dynamic>? params,
+    required RequestType type,
   }) async {
     try {
       var request = http.MultipartRequest(

@@ -14,7 +14,7 @@ class LoginTopSectionWidget extends StatelessWidget {
     return Column(
       children: [
         CustomText(
-          textType: TextStyleType.SUBTITLE,
+          textType: TextStyleType.TITLE,
           fontWeight: FontWeight.bold,
           textColor: AppColors.darkGreyColor,
           text: tr('key_login'),

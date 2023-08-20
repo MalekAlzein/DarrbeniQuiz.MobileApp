@@ -36,7 +36,7 @@ class _LoginViewState extends State<LoginView> {
           child: ListView(
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: screenWidth(25),
-              vertical: screenWidth(10),
+              vertical: screenWidth(20),
             ),
             children: [
               // (screenWidth(10)).ph,
@@ -50,9 +50,9 @@ class _LoginViewState extends State<LoginView> {
                   textColor: AppColors.normalPurpleColor,
                 ),
               ),
+              (screenHeight(70)).ph,
               CustomTextFormField(
                 hintText: tr('key_user_name'),
-                hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
                 hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_user',
@@ -73,9 +73,9 @@ class _LoginViewState extends State<LoginView> {
                   textColor: AppColors.normalPurpleColor,
                 ),
               ),
+              (screenHeight(70)).ph,
               CustomTextFormField(
                 hintText: tr('key_inter_code'),
-                hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
                 hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_code',
@@ -108,10 +108,11 @@ class _LoginViewState extends State<LoginView> {
               (screenHeight(50)).ph,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   CustomText(
                     textType: TextStyleType.SMALL,
-                    text: tr('key_donot_have_account'),
+                    text: "${tr('key_donot_have_account')} ",
                     textColor: AppColors.darkGreyColor,
                   ),
                   CustomTextButton(
@@ -123,7 +124,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ],
               ),
-              (screenHeight(6)).ph,
+              (screenHeight(10)).ph,
               Center(
                 child: CustomTextButton(
                   title: tr('key_visitor'),

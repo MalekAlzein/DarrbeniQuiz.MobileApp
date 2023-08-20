@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_progress.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_question.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dart';
@@ -41,24 +42,7 @@ class _BookQuestionViewState extends State<BookQuestionView> {
             child: CustomText(textType: TextStyleType.SMALL, text: '100/25'),
           ),
           screenHeight(80).ph,
-          Padding(
-            padding: EdgeInsetsDirectional.symmetric(
-              horizontal: screenWidth(20),
-            ),
-            child: Container(
-              width: screenWidth(1),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: LinearProgressIndicator(
-                  minHeight: 7,
-                  value: 0.3,
-                  // value: controller.progress.value,
-                  backgroundColor: AppColors.darkPurpleColor,
-                  color: AppColors.normalCyanColor,
-                ),
-              ),
-            ),
-          ),
+          CustomProgress(),
           screenHeight(80).ph,
           Padding(
             padding: EdgeInsetsDirectional.symmetric(

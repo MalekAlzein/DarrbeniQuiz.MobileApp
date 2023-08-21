@@ -13,7 +13,6 @@ import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.da
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_controller.dart';
-import 'package:flutter_templete/ui/views/signup_view/signup_view_widgets/custom_radio.dart';
 import 'package:get/get.dart';
 
 class SignupView extends StatefulWidget {
@@ -150,19 +149,20 @@ class _SignupViewState extends State<SignupView> {
               //   ],
               // ),
               (screenHeight(30)).ph,
-              controller.isLoding.value
-                  ? SpinKitThreeBounce(
-                      color: AppColors.darkPurpleColor,
-                    )
-                  : CustomButton(
-                      buttonTypeEnum: ButtonTypeEnum.NORMAL,
-                      onPressed: () {
-                        Get.to(() => const SignupView());
-                        // controller.SignUp();
-                      },
-                      backgroundColor: AppColors.darkPurpleColor,
-                      text: tr('key_create_account'),
-                    ),
+              // controller.isLoding.value
+              //     ? SpinKitThreeBounce(
+              //         color: AppColors.darkPurpleColor,
+              //       )
+              //     :
+              CustomButton(
+                buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                onPressed: () {
+                  // Get.to(() => const SignupView());
+                  controller.register();
+                },
+                backgroundColor: AppColors.darkPurpleColor,
+                text: tr('key_create_account'),
+              ),
               (screenHeight(50)).ph,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

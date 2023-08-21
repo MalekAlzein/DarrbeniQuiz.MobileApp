@@ -89,21 +89,22 @@ class _LoginViewState extends State<LoginView> {
               ),
               (screenHeight(15)).ph,
 
-              Obx(() {
-                return controller.isLoding.value
-                    ? SpinKitThreeBounce(
-                        color: AppColors.darkPurpleColor,
-                      )
-                    : CustomButton(
-                        buttonTypeEnum: ButtonTypeEnum.NORMAL,
-                        onPressed: () {
-                          Get.to(() => const MainView());
-                          //  controller.login();
-                        },
-                        backgroundColor: AppColors.darkPurpleColor,
-                        text: tr('key_login'),
-                      );
-              }),
+              // Obx(() {
+              //   return
+              // controller.isLoding.value
+              //     ? SpinKitThreeBounce(
+              //         color: AppColors.darkPurpleColor,
+              //       )
+              //     :
+              CustomButton(
+                buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                onPressed: () {
+                  controller.login();
+                },
+                backgroundColor: AppColors.darkPurpleColor,
+                text: tr('key_login'),
+              ),
+              // }),
 
               (screenHeight(50)).ph,
               Row(
@@ -128,7 +129,9 @@ class _LoginViewState extends State<LoginView> {
               Center(
                 child: CustomTextButton(
                   title: tr('key_visitor'),
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(() => const MainView());
+                  },
                   textColor: AppColors.darkGreyColor,
                   textDecoration: TextDecoration.underline,
                 ),

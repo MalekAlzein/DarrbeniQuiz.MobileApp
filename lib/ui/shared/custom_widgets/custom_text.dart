@@ -50,7 +50,7 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(20),
+          fontSize: screenWidth(22),
           fontWeight: FontWeight.w900,
         );
 
@@ -59,7 +59,7 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(20),
+          fontSize: screenWidth(24),
           fontWeight: fontWeight ?? FontWeight.w400,
         );
 
@@ -68,7 +68,7 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(20),
+          fontSize: screenWidth(25),
           fontWeight: fontWeight ?? FontWeight.w700,
         );
 

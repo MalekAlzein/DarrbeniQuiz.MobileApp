@@ -4,17 +4,21 @@ class CommonResponseModel<T> {
   String? message;
 
   CommonResponseModel.fromJson(dynamic json) {
-    this.statusCode = json['statusCode'];
+    // this.statusCode = json['statusCode'];
+    this.statusCode = json['response']['statuscode'];
 
     if (statusCode.toString().startsWith("2"))
     // if (statusCode == 200)
     {
-      this.data = json['response'];
+      // this.data = json['response'];
+      this.data = json['response']['data'];
     } else {
       if (json['response'] != null &&
           json['response'] is Map &&
-          json['response']['title'] != null) {
-        this.message = json['response']['title'];
+          // json['response']['title'] != null
+          json['response']['message'] != null) {
+        // this.message = json['response']['title'];
+        this.message = json['response']['message'];
       } else {
         switch (statusCode) {
           case 400:

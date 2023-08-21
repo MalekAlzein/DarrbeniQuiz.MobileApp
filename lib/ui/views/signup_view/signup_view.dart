@@ -13,6 +13,7 @@ import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.da
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_controller.dart';
+import 'package:flutter_templete/ui/views/signup_view/signup_view_widgets/custom_radio.dart';
 import 'package:get/get.dart';
 
 class SignupView extends StatefulWidget {
@@ -23,7 +24,6 @@ class SignupView extends StatefulWidget {
 }
 
 class _SignupViewState extends State<SignupView> {
-  late int selectedValue = 1;
   SignupController controller = Get.put(SignupController());
 
   @override
@@ -39,25 +39,35 @@ class _SignupViewState extends State<SignupView> {
             ),
             children: [
               Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Get.back();
-                    },
-                    child: SvgPicture.asset(
-                      'assets/svgs/ic_back.svg',
-                      width: screenWidth(15),
-                      color: AppColors.darkGreyColor,
+                  Expanded(
+                    flex: 1,
+                    child: InkWell(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: SvgPicture.asset(
+                        'assets/svgs/ic_back.svg',
+                        width: screenWidth(15),
+                        color: AppColors.darkGreyColor,
+                      ),
                     ),
                   ),
-                  CustomText(
-                    textType: TextStyleType.SUBTITLE,
-                    fontWeight: FontWeight.bold,
-                    textColor: AppColors.darkGreyColor,
-                    text: tr('key_create_account'),
+                  Expanded(
+                    flex: 4,
+                    child: CustomText(
+                      textType: TextStyleType.SUBTITLE,
+                      fontWeight: FontWeight.bold,
+                      textColor: AppColors.darkGreyColor,
+                      text: tr('key_create_account'),
+                    ),
                   ),
-                  SizedBox()
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(),
+                  )
                 ],
               ),
               (screenHeight(45)).ph,
@@ -72,7 +82,6 @@ class _SignupViewState extends State<SignupView> {
               (screenHeight(70)).ph,
               CustomTextFormField(
                 hintText: tr('key_user_name'),
-                hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
                 hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_user',
@@ -95,7 +104,6 @@ class _SignupViewState extends State<SignupView> {
               (screenHeight(70)).ph,
               CustomTextFormField(
                 hintText: tr('key_mobile_number'),
-                hintTextSize: screenWidth(22),
                 fillColor: AppColors.lightCyanColorOpacity,
                 hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'login-signup icons=phone',
@@ -118,22 +126,29 @@ class _SignupViewState extends State<SignupView> {
                 ),
               ),
               (screenHeight(45)).ph,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildRadioButton(1, 'key_medicine'),
-                  buildRadioButton(2, 'key_dentistry'),
-                  buildRadioButton(3, 'key_faculty_of_pharmacy'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  buildRadioButton(4, 'key_it'),
-                  buildRadioButton(5, 'key_architecture'),
-                  buildRadioButton(6, 'key_nursing'),
-                ],
-              ),
+              // GridView.count(
+              //   crossAxisCount: 3,
+              //   children: List<Widget>.generate(
+              //     length,
+              //     (index) => CustomRadio(text: text, value: value, selectedValue: selectedValue),
+              //   ),
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     buildRadioButton(1, 'key_medicine'),
+              //     buildRadioButton(2, 'key_dentistry'),
+              //     buildRadioButton(3, 'key_faculty_of_pharmacy'),
+              //   ],
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     buildRadioButton(4, 'key_it'),
+              //     buildRadioButton(5, 'key_architecture'),
+              //     buildRadioButton(6, 'key_nursing'),
+              //   ],
+              // ),
               (screenHeight(30)).ph,
               controller.isLoding.value
                   ? SpinKitThreeBounce(
@@ -154,7 +169,7 @@ class _SignupViewState extends State<SignupView> {
                 children: [
                   CustomText(
                     textType: TextStyleType.SMALL,
-                    text: tr('key_have_account'),
+                    text: "${tr('key_have_account')} ",
                     textColor: AppColors.darkGreyColor,
                   ),
                   CustomTextButton(
@@ -196,27 +211,29 @@ class _SignupViewState extends State<SignupView> {
   //   );
   // }
   Widget buildRadioButton(int value, String key) {
-    return Row(
-      // mainAxisSize: MainAxisSize.min,
-      children: [
-        Radio(
-          value: value,
-          groupValue: selectedValue,
-          onChanged: (newValue) {
-            setState(() {
-              selectedValue = newValue!;
-            });
-          },
-          activeColor: AppColors.darkPurpleColor,
-        ),
-        CustomText(
-          textType: TextStyleType.CUSTOM,
-          text: tr(key),
-          fontSize: screenWidth(34),
-          textColor: AppColors.darkGreyColor,
-          fontWeight: FontWeight.bold,
-        )
-      ],
+    return Obx(
+      () {
+        return Row(
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            Radio(
+              value: value,
+              groupValue: controller.selectedValue.value,
+              onChanged: (newValue) {
+                controller.selectedValue.value = newValue!;
+              },
+              activeColor: AppColors.darkPurpleColor,
+            ),
+            CustomText(
+              textType: TextStyleType.CUSTOM,
+              text: tr(key),
+              fontSize: screenWidth(34),
+              textColor: AppColors.darkGreyColor,
+              fontWeight: FontWeight.bold,
+            )
+          ],
+        );
+      },
     );
   }
 }

@@ -10,7 +10,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart' as path;
 
 class NetworkUtil {
-  static String baseUrl = 'training.owner-tech.com';
+  static String baseUrl = 'backendsp01.000webhostapp.com';
   static var client = http.Client();
   static bool online = true;
 
@@ -43,19 +43,31 @@ class NetworkUtil {
 
       switch (requestType) {
         case RequestType.GET:
-          response = await client.get(uri, headers: headers);
+          response = await client.get(
+            uri,
+            headers: headers,
+          );
           break;
         case RequestType.POST:
-          response =
-              await client.post(uri, headers: headers, body: jsonEncode(body));
+          response = await client.post(
+            uri,
+            headers: headers,
+            body: jsonEncode(body),
+          );
           break;
         case RequestType.PUT:
-          response =
-              await client.put(uri, headers: headers, body: jsonEncode(body));
+          response = await client.put(
+            uri,
+            headers: headers,
+            body: jsonEncode(body),
+          );
           break;
         case RequestType.DELETE:
-          response = await client.delete(uri,
-              headers: headers, body: jsonEncode(body));
+          response = await client.delete(
+            uri,
+            headers: headers,
+            body: jsonEncode(body),
+          );
           break;
       }
 
@@ -86,7 +98,8 @@ class NetworkUtil {
     Map<String, String>? headers = const {},
     Map<String, String>? fields = const {},
     Map<String, String>? files = const {},
-    Map<String, dynamic>? params, required RequestType type,
+    Map<String, dynamic>? params,
+    required RequestType type,
   }) async {
     try {
       var request = http.MultipartRequest(
@@ -112,12 +125,17 @@ class NetworkUtil {
       request.headers.addAll(headers!);
       request.fields.addAll(fields!);
 
-      var response = await request.send();
+      http.StreamedResponse response = await request.send();
       Map<String, dynamic> responseJson = {};
       dynamic value;
+      List<int> responseBytes = await response.stream.toBytes();
+      String responseString = utf8.decode(responseBytes);
 
       try {
+        // print(await response.stream.bytesToString());
+
         value = await response.stream.bytesToString();
+        // value = await response.stream.bytesToString();
       } catch (e) {}
 
       responseJson.putIfAbsent('statusCode', () => response.statusCode);
@@ -127,7 +145,7 @@ class NetworkUtil {
               ? {'title': value}
               // () => value == "" && response.statusCode == 200
               //     ? {'title': 'Register Successful!'}
-              : jsonDecode(value));
+              : jsonDecode(responseString));
 
       return responseJson;
     } catch (error) {

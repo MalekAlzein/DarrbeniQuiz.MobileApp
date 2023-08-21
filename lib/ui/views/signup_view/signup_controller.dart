@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/core/data/models/apis/college_model.dart';
 import 'package:flutter_templete/core/data/reposotories/auth_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
@@ -14,6 +15,15 @@ class SignupController extends BaseController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   RxInt selectedValue = (-1).obs;
+
+  List<CollegeModel> collegeList = [
+    CollegeModel(id: 1, name: "firstfirstfirst"),
+    CollegeModel(id: 2, name: "secondsecondsecond"),
+    CollegeModel(id: 3, name: "thirdthirdthird"),
+    CollegeModel(id: 4, name: "fourthfourthfourth"),
+    CollegeModel(id: 5, name: "fifthfifthfifth"),
+    CollegeModel(id: 6, name: "sixthsixthsixth"),
+  ];
 
   void register() {
     if (formKey.currentState!.validate()) {

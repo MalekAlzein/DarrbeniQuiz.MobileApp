@@ -30,12 +30,14 @@ class CustomRadio extends StatelessWidget {
           },
           activeColor: AppColors.darkPurpleColor,
         ),
-        CustomText(
-          textType: TextStyleType.CUSTOM,
-          text: tr(text),
-          fontSize: screenWidth(34),
-          textColor: AppColors.darkGreyColor,
-          fontWeight: FontWeight.bold,
+        Flexible(
+          child: CustomText(
+            textType: TextStyleType.CUSTOM,
+            text: tr(text),
+            fontSize: screenWidth(34),
+            textColor: AppColors.darkGreyColor,
+            fontWeight: FontWeight.bold,
+          ),
         )
       ],
     );

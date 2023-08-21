@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_templete/app/app_config.dart';
+import 'package:flutter_templete/core/data/models/apis/college_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/data/models/cart_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
@@ -19,7 +20,7 @@ class SharedPreferencesRepository {
   String PREF_EMAIL_RESET_PASSWORD = 'email_reset_password';
   String PREF_SUB_STATUS = 'sub_status';
   //  String PREF_ISLOGGED = 'is_logged';
-
+  String PREF_COLLEGE = 'college';
   void setFirstLaunch(bool value) {
     setPreference(
       dataType: DataType.BOOL,
@@ -142,6 +143,23 @@ class SharedPreferencesRepository {
       return getPreference(key: PREF_SUB_STATUS);
     } else {
       return AppConfig.subscriptionStatus;
+    }
+  }
+  //?--
+
+  void setCollege(List<CollegeModel> list) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_COLLEGE,
+      value: CollegeModel.encode(list),
+    );
+  }
+
+  List<CollegeModel> getCollege() {
+    if (globalSharedPreferences.containsKey(PREF_COLLEGE)) {
+      return CollegeModel.decode(getPreference(key: PREF_COLLEGE));
+    } else {
+      return [];
     }
   }
 

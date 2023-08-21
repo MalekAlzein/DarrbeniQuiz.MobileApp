@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';

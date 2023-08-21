@@ -29,12 +29,15 @@ double screenHeight(double percent) {
 
 void customLoader() => BotToast.showCustomLoading(toastBuilder: (context) {
       return Container(
-          decoration: BoxDecoration(
-              color: AppColors.mainback.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(10)),
-          width: screenWidth(4),
-          height: screenHeight(4),
-          child: SpinKitCircle());
+        decoration: BoxDecoration(
+            color: AppColors.mainback.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(10)),
+        width: screenWidth(4),
+        height: screenHeight(4),
+        child: SpinKitCircle(
+          color: AppColors.darkPurpleColor,
+        ),
+      );
     });
 
 void showAlertDialoug({

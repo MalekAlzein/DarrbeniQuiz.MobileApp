@@ -6,7 +6,7 @@ import 'package:flutter_templete/core/enums/request_type.dart';
 import 'package:flutter_templete/core/utils/network_utils.dart';
 
 class ProfileRepository {
-  Future<Either<String, bool>> myProfile() async {
+  Future<Either<String, dynamic>> myProfile() async {
     try {
       return NetworkUtil.sendMultipartRequest(
         type: RequestType.GET,
@@ -34,9 +34,9 @@ class ProfileRepository {
   }
 
 //?--
-  Future<Either<String, bool>> updateProfile({
+  Future<Either<String, dynamic>> updateProfile({
     required String name,
-    required int phone,
+    required String phone,
   }) async {
     try {
       return NetworkUtil.sendMultipartRequest(

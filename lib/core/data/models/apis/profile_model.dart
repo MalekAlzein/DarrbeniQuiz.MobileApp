@@ -1,36 +1,9 @@
 class ProfileModel {
-  Data? data;
-  bool? status;
-  String? message;
-  int? statuscode;
-
-  ProfileModel({this.data, this.status, this.message, this.statuscode});
-
-  ProfileModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
-    status = json['status'];
-    message = json['message'];
-    statuscode = json['statuscode'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    data['status'] = this.status;
-    data['message'] = this.message;
-    data['statuscode'] = this.statuscode;
-    return data;
-  }
-}
-
-class Data {
   Profile? profile;
 
-  Data({this.profile});
+  ProfileModel({this.profile});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  ProfileModel.fromJson(Map<String, dynamic> json) {
     profile =
         json['profile'] != null ? new Profile.fromJson(json['profile']) : null;
   }

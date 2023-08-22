@@ -39,7 +39,7 @@ class _ProfileViewState extends State<ProfileView> {
           shrinkWrap: true,
           padding: EdgeInsetsDirectional.symmetric(
             horizontal: screenWidth(25),
-            // vertical: screenWidth(10),
+            vertical: screenWidth(3),
           ),
           children: [
             Center(
@@ -48,13 +48,21 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ),
             screenHeight(50).ph,
-            CustomText(
-              textType: TextStyleType.TITLE,
-              text: tr("key_user_name"),
+            Obx(
+              () => ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.myProfileList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return CustomText(
+                      textType: TextStyleType.TITLE,
+                      text: controller.myProfileList[index].profile!.name ?? '',
+                      // tr("key_user_name"),
+                    );
+                  }),
             ),
             screenHeight(30).ph,
             ProfileMiddleSectionWidget(),
-            screenHeight(45).ph,
+            screenHeight(35).ph,
             CustomButton(
               buttonTypeEnum: ButtonTypeEnum.NORMAL,
               text: tr('key_logout'),

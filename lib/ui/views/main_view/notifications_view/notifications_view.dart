@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
-import 'package:flutter_templete/ui/views/login_view/login_controller.dart';
+import 'package:flutter_templete/ui/views/main_view/notifications_view/notifications_controller.dart';
 import 'package:get/get.dart';
 
 class NotificationsView extends StatefulWidget {
@@ -13,7 +13,7 @@ class NotificationsView extends StatefulWidget {
 }
 
 class _NotificationsViewState extends State<NotificationsView> {
-  late LoginController controller = Get.put(LoginController());
+  late NotificationsController controller = Get.put(NotificationsController());
 
   @override
   Widget build(BuildContext context) {

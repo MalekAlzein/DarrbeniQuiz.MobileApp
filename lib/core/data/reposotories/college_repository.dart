@@ -21,13 +21,13 @@ class CollegeRepository {
         params: {},
       ).then(
         (response) {
-          CommonResponseModel commonResponse =
-              CommonResponseModel<dynamic>.fromJson(response);
+          CommonResponseModel<Map<String, dynamic>> commonResponse =
+              CommonResponseModel.fromJson(response);
 
           if (commonResponse.getStatus) {
             List<CollegeModel> resultList = [];
 
-            commonResponse.data.forEach(
+            commonResponse.data!['colleges'].forEach(
               (element) {
                 resultList.add(CollegeModel.fromJson(element));
               },

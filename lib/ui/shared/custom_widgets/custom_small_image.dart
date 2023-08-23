@@ -13,7 +13,7 @@ class CustomSmallImage extends StatelessWidget {
     return SvgPicture.asset(
       'assets/svgs/$imageName.svg',
       color: colorImage,
-      width: imageSize ?? screenWidth(18),
+      width: imageSize ?? screenWidth(16),
     );
   }
 }

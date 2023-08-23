@@ -14,6 +14,7 @@ class HomeController extends BaseController {
   @override
   void onInit() {
     getAllSliders();
+
     // collegeList.value=storage.getc
     super.onInit();
   }
@@ -39,3 +40,19 @@ class HomeController extends BaseController {
     );
   }
 }
+
+// class GridItem {
+//   final String imagePath;
+//   final String text;
+
+//   GridItem({required this.imagePath, required this.text});
+// }
+
+// Widget toWidget() {
+//   return Column(
+//     children: [
+//       SvgPicture.asset(imagePath),
+//       Text(text),
+//     ],
+//   );
+// }

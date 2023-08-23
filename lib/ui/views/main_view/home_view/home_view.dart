@@ -7,6 +7,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.d
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/home_view_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
@@ -64,6 +65,43 @@ class _HomeViewState extends State<HomeView> {
               CustomSubTitleContainer(
                 text: tr('key_category'),
                 color: AppColors.darkGreyColor,
+              ),
+
+              SizedBox(
+                height: screenHeight(8),
+                // height: screenWidth(2),
+                child: Obx(
+                  () {
+                    return
+                        //  controller.isCategoryLoading
+                        //     ? SpinKitCircle(
+                        //         color: AppColors.mainOrangeColor,
+                        //       )
+                        //     :
+                        ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: controller.categoryList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        String categoryUUID =
+                            controller.categoryList[index].uuid!;
+                        bool isSelected =
+                            categoryUUID == controller.selectedCategory.value;
+
+                        return HomeViewCategoryWidget(
+                          text: controller.categoryList[index].name,
+                          onTap: () {
+                            // controller.getProductByCategory(
+                            //   categoryName: category,
+                            // );
+                          },
+                          isSelected: isSelected,
+                        );
+                      },
+                    );
+                  },
+                ),
               ),
               SizedBox(
                 height: screenWidth(7),

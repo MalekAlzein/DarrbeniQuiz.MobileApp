@@ -15,28 +15,28 @@ class EditProfileController extends BaseController {
   Rx<ProfileModel> myProfile = ProfileModel().obs;
 
   void updateProfile() {
-    if (formKey.currentState!.validate()) {
-      runFutureFunctionWithFullLoading(
-        function: ProfileRepository()
-            .updateProfile(
-          name: usernameController.text,
-          phone: mobileController.text,
-        )
-            .then((value) {
-          value.fold((l) {
-            // isLoading.value = false;
-            CustomToast.showMessage(
-              messageType: MessageType.REJECTED,
-              message: l,
-            );
-          }, (r) {
-            myProfile.value = r;
-            Get.to(() => const ProfileView());
-            formKey.currentState!.save();
-          });
-        }),
-      );
-    }
+    // if (formKey.currentState!.validate()) {
+    runFutureFunctionWithFullLoading(
+      function: ProfileRepository()
+          .updateProfile(
+        name: usernameController.text,
+        phone: mobileController.text,
+      )
+          .then((value) {
+        value.fold((l) {
+          // isLoading.value = false;
+          CustomToast.showMessage(
+            messageType: MessageType.REJECTED,
+            message: l,
+          );
+        }, (r) {
+          myProfile.value = r;
+          Get.back();
+          // formKey.currentState!.save();
+        });
+      }),
+    );
+    // }
   }
 
   @override

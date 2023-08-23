@@ -29,80 +29,85 @@ class _EditProfileViewState extends State<EditProfileView> {
     return SafeArea(
       child: Scaffold(
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomShapemakerWidget(
               backButton: false,
               imageName: "ic_nav_bar_profile",
               firstText: tr("Key_edit_profile"),
             ),
-            Obx(() {
-              return Column(
-                children: [
-                  CustomText(
-                    textType: TextStyleType.BODY,
-                    text: tr("key_user_name"),
-                    textColor: AppColors.darkPurpleColor,
-                    textAlign: TextAlign.start,
-                  ),
-                  screenHeight(30).ph,
-                  CustomTextFormField(
-                    hintText: controller.myProfile.value.name ?? '',
-                    hintTextSize: screenWidth(22),
-                    fillColor: AppColors.lightCyanColorOpacity,
-                    hintTextColor: AppColors.darkPurpleColorOpacity,
-                    prefixIcon: 'ic_text_field_user',
-                    suffixIcon: 'ic_edit',
-                    controller: controller.usernameController,
-                    validator: (value) {
-                      if (value!.isEmpty || StringUtil.isMobile(value)) {
-                        return 'please Enter your Name';
-                      }
-                      return null;
-                    },
-                  ),
-                  screenHeight(30).ph,
-                  CustomText(
-                    textType: TextStyleType.BODY,
-                    text: tr("Key_phone"),
-                    textColor: AppColors.darkPurpleColor,
-                    textAlign: TextAlign.start,
-                  ),
-                  screenHeight(30).ph,
-                  CustomTextFormField(
-                    hintText: tr("Key_phone"),
-                    hintTextSize: screenWidth(22),
-                    fillColor: AppColors.lightCyanColorOpacity,
-                    hintTextColor: AppColors.darkPurpleColorOpacity,
-                    prefixIcon: 'ic_text_field_phone',
-                    suffixIcon: 'ic_edit',
-                    controller: controller.mobileController,
-                    validator: (value) {
-                      if (value!.isEmpty || StringUtil.isMobile(value)) {
-                        return 'please check your Password';
-                      }
-                      return null;
-                    },
-                  ),
-                ],
-              );
-            }),
-            (screenWidth(7.5)).ph,
-            CustomButton(
-              buttonTypeEnum: ButtonTypeEnum.NORMAL,
-              onPressed: () {
-                Get.back();
-              },
-              backgroundColor: AppColors.darkPurpleColor,
-              text: tr('Key_save_changes'),
-            ),
-            (screenWidth(30)).ph,
-            Center(
-              child: CustomTextButton(
-                title: tr('Key_to_retreat'),
-                onTap: () {},
-                textColor: AppColors.darkGreyColor,
-                textDecoration: TextDecoration.underline,
+            ListView(
+              shrinkWrap: true,
+              padding: EdgeInsetsDirectional.symmetric(
+                horizontal: screenWidth(15),
+                vertical: screenWidth(10),
               ),
+              children: [
+                CustomText(
+                  textType: TextStyleType.BODY,
+                  text: tr("key_user_name"),
+                  textColor: AppColors.darkPurpleColor,
+                  textAlign: TextAlign.start,
+                ),
+                screenHeight(30).ph,
+                CustomTextFormField(
+                  hintText: tr('key_user_name'),
+                  hintTextSize: screenWidth(22),
+                  fillColor: AppColors.lightCyanColorOpacity,
+                  hintTextColor: AppColors.darkPurpleColorOpacity,
+                  prefixIcon: 'ic_text_field_user',
+                  suffixIcon: 'ic_edit',
+                  controller: controller.usernameController,
+                  validator: (value) {
+                    if (value!.isEmpty || StringUtil.isMobile(value)) {
+                      return 'please Enter your Name';
+                    }
+                    return null;
+                  },
+                ),
+                screenHeight(30).ph,
+                CustomText(
+                  textType: TextStyleType.BODY,
+                  text: tr("Key_phone"),
+                  textColor: AppColors.darkPurpleColor,
+                  textAlign: TextAlign.start,
+                ),
+                screenHeight(30).ph,
+                CustomTextFormField(
+                  hintText: tr('Key_phone'),
+                  hintTextSize: screenWidth(22),
+                  fillColor: AppColors.lightCyanColorOpacity,
+                  hintTextColor: AppColors.darkPurpleColorOpacity,
+                  prefixIcon: 'ic_text_field_phone',
+                  suffixIcon: 'ic_edit',
+                  controller: controller.mobileController,
+                  validator: (value) {
+                    if (value!.isEmpty || StringUtil.isMobile(value)) {
+                      return 'please check your Password';
+                    }
+                    return null;
+                  },
+                ),
+                (screenWidth(5.5)).ph,
+                CustomButton(
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    controller.updateProfile();
+                  },
+                  backgroundColor: AppColors.darkPurpleColor,
+                  text: tr('Key_save_changes'),
+                ),
+                (screenWidth(30)).ph,
+                CustomTextButton(
+                  textAlign: TextAlign.center,
+                  title: tr('Key_to_retreat'),
+                  onTap: () {
+                    Get.back();
+                  },
+                  textColor: AppColors.darkGreyColor,
+                  textDecoration: TextDecoration.underline,
+                ),
+              ],
             ),
           ],
         ),

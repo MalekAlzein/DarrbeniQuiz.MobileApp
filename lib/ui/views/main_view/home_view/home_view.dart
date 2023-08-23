@@ -6,6 +6,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.d
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_controller.dart';
@@ -46,7 +47,19 @@ class _HomeViewState extends State<HomeView> {
                   prefixIcon: 'ic_search',
                   prefixIconColor: AppColors.darkGreyColor),
               screenHeight(40).ph,
-              CustomSlider(),
+              Obx(
+                () {
+                  print(controller.silderList);
+                  return controller.silderList.isEmpty
+                      ? LoadingWidget(
+                          center: true,
+                        )
+                      : CustomSlider(
+                          homeController: controller,
+                          silderList: controller.silderList,
+                        );
+                },
+              ),
               CustomSubTitleContainer(
                 text: tr('key_category'),
                 color: AppColors.darkGreyColor,
@@ -71,7 +84,7 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
-              CustomGrideView(children: controller.items),
+              // CustomGrideView(children: controller.items),
               // ChipTheme(
               //   data: ChipTheme.of(context).copyWith(
               //     backgroundColor:

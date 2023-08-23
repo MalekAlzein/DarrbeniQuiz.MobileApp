@@ -9,6 +9,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_view.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
@@ -127,14 +128,21 @@ class _SignupViewState extends State<SignupView> {
                 ),
               ),
               (screenHeight(45)).ph,
-              CustomGrideView(
-                  children: List.generate(
-                      controller.collegeList.length,
-                      (index) => CustomRadio(
-                          text: controller.collegeList[index].name ?? '',
-                          value: controller.collegeId.value,
-                          selectedValue: controller.selectedValue))),
-
+              // CustomGrideView(
+              //   length: 3,
+              //   children: List.generate(
+              //     controller.collegeList.length,
+              //     (index) => Flexible(
+              //       child: CustomRadio(
+              //         text: controller.collegeList[index].name ?? "",
+              //         value: controller.collegeList.indexOf(
+              //           controller.collegeList[index],
+              //         ),
+              //         selectedValue: controller.collegeId,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               // GridView.count(
               //   crossAxisCount: 3,
               //   children: List<Widget>.generate(

@@ -1,46 +1,55 @@
+import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
+import 'package:flutter_templete/core/data/reposotories/silder_repository.dart';
+import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:get/get.dart';
 
 class HomeController extends BaseController {
-  final RxList<Widget> items = <Widget>[].obs;
-
+  RxList<SilderModel> silderList = <SilderModel>[].obs;
   @override
   void onInit() {
-    items.addAll([
-      GridItem(imagePath: 'assets/svgs/ic_doctor.svg', text: 'الطب البشري')
-          .toWidget(),
-      GridItem(imagePath: 'assets/svgs/ic_dentist.svg', text: 'طب الأسنان')
-          .toWidget(),
-      GridItem(imagePath: 'assets/svgs/ic_pharmacy.svg', text: 'الصيدلة')
-          .toWidget(),
-      GridItem(imagePath: 'assets/svgs/ic_nursing.svg', text: 'التمريض')
-          .toWidget(),
-      GridItem(imagePath: 'assets/svgs/ic_It.svg', text: 'هندسة معلوماتية')
-          .toWidget(),
-      GridItem(
-              imagePath: 'assets/svgs/ic_architecture.svg',
-              text: 'هندسة معمارية')
-          .toWidget(),
-    ]);
+    getAllSliders();
 
     super.onInit();
   }
-}
 
-class GridItem {
-  final String imagePath;
-  final String text;
-
-  GridItem({required this.imagePath, required this.text});
-
-  Widget toWidget() {
-    return Column(
-      children: [
-        SvgPicture.asset(imagePath),
-        Text(text),
-      ],
+  void getAllSliders() {
+    runFutureFunction(
+      function: SliderRepository().getAllSliders().then(
+        (value) {
+          value.fold((l) {
+            CustomToast.showMessage(
+              messageType: MessageType.REJECTED,
+              message: l,
+            );
+          }, (r) {
+            silderList.addAll(r);
+            CustomToast.showMessage(
+              message: "Success",
+              messageType: MessageType.SUCCESS,
+            );
+          });
+        },
+      ),
     );
   }
 }
+
+// class GridItem {
+//   final String imagePath;
+//   final String text;
+
+//   GridItem({required this.imagePath, required this.text});
+// }
+
+// Widget toWidget() {
+//   return Column(
+//     children: [
+//       SvgPicture.asset(imagePath),
+//       Text(text),
+//     ],
+//   );
+// }

@@ -19,27 +19,27 @@ class CustomRadio extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Row(
-        // mainAxisSize: MainAxisSize.min,
-        children: [
-          Radio(
-            value: value,
-            groupValue: selectedValue.value,
-            onChanged: (newValue) {
-              selectedValue.value = newValue!;
-            },
-            activeColor: AppColors.darkPurpleColor,
-          ),
-          CustomText(
+    return Row(
+      // mainAxisSize: MainAxisSize.min,
+      children: [
+        Radio(
+          value: value,
+          groupValue: selectedValue.value,
+          onChanged: (newValue) {
+            selectedValue.value = newValue!;
+          },
+          activeColor: AppColors.darkPurpleColor,
+        ),
+        Flexible(
+          child: CustomText(
             textType: TextStyleType.CUSTOM,
             text: tr(text),
             fontSize: screenWidth(34),
             textColor: AppColors.darkGreyColor,
             fontWeight: FontWeight.bold,
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

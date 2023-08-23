@@ -23,6 +23,15 @@ class SignupController extends BaseController {
     super.onInit();
   }
 
+  // List<CollegeModel> collegeList = [
+  //   CollegeModel(id: 1, name: "firstfirstfirst"),
+  //   CollegeModel(id: 2, name: "secondsecondsecond"),
+  //   CollegeModel(id: 3, name: "thirdthirdthird"),
+  //   CollegeModel(id: 4, name: "fourthfourthfourth"),
+  //   CollegeModel(id: 5, name: "fifthfifthfifth"),
+  //   CollegeModel(id: 6, name: "sixthsixthsixth"),
+  // ];
+
   void register() {
     if (formKey.currentState!.validate()) {
       runFutureFunctionWithFullLoading(

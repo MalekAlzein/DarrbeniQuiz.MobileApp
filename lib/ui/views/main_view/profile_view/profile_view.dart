@@ -48,18 +48,11 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ),
             screenHeight(50).ph,
-            Obx(
-              () => ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.myProfileList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return CustomText(
-                      textType: TextStyleType.TITLE,
-                      text: controller.myProfileList[index].profile!.name ?? '',
-                      // tr("key_user_name"),
-                    );
-                  }),
-            ),
+            Obx(() => CustomText(
+                textType: TextStyleType.TITLE,
+                text: controller.myProfile.value.name ?? ''
+                // tr("key_user_name"),
+                )),
             screenHeight(30).ph,
             ProfileMiddleSectionWidget(),
             screenHeight(35).ph,

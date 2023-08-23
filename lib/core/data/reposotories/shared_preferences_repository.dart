@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/data/models/apis/college_model.dart';
+import 'package:flutter_templete/core/data/models/apis/profile_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/data/models/cart_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
@@ -21,6 +22,8 @@ class SharedPreferencesRepository {
   String PREF_SUB_STATUS = 'sub_status';
   //  String PREF_ISLOGGED = 'is_logged';
   String PREF_COLLEGE = 'college';
+  String PREF_PROFILE = 'profile';
+
   void setFirstLaunch(bool value) {
     setPreference(
       dataType: DataType.BOOL,
@@ -160,6 +163,23 @@ class SharedPreferencesRepository {
       return CollegeModel.decode(getPreference(key: PREF_COLLEGE));
     } else {
       return [];
+    }
+  }
+
+  void setProfile(ProfileModel value) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_PROFILE,
+      value: jsonEncode(value.toJson()),
+    );
+  }
+
+  ProfileModel? getProfile() {
+    if (globalSharedPreferences.containsKey(PREF_PROFILE)) {
+      return ProfileModel.fromJson(
+          jsonDecode(getPreference(key: PREF_PROFILE)));
+    } else {
+      return null;
     }
   }
 

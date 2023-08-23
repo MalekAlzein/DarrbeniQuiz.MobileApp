@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_item.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_college.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_view.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';

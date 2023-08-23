@@ -132,10 +132,7 @@ class NetworkUtil {
       String responseString = utf8.decode(responseBytes);
 
       try {
-        // print(await response.stream.bytesToString());
-
         value = await response.stream.bytesToString();
-        // value = await response.stream.bytesToString();
       } catch (e) {}
 
       responseJson.putIfAbsent('statusCode', () => response.statusCode);

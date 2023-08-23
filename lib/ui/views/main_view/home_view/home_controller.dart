@@ -13,9 +13,8 @@ class HomeController extends BaseController {
 
   @override
   void onInit() {
+    collegeList.value = storage.getCollege();
     getAllSliders();
-
-    // collegeList.value=storage.getc
     super.onInit();
   }
 

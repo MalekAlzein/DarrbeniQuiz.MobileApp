@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_item.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_view.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
@@ -84,44 +88,49 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
+              screenHeight(40).ph,
               CustomGrideView(
                 children: List.generate(
                   controller.collegeList.length,
                   (index) => Flexible(
-                    child: SizedBox(),
+                    child: CustomGridCollege(
+                      imageName: "img_login",
+                      // imageName: controller.collegeList[index].logo ?? "",
+                      text: controller.collegeList[index].name ?? "",
+                    ),
                   ),
                 ),
               ),
-              ChipTheme(
-                data: ChipTheme.of(context).copyWith(
-                  backgroundColor:
-                      AppColors.whiteColor, // تعيين لون الخلفية العام للشرائح
-                  labelStyle: TextStyle(color: AppColors.darkPurpleColor),
-                  // تعيين نمط النص العام للشرائح
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    side: BorderSide(
-                      color: AppColors.darkPurpleColor, // تعيين لون الحدود
-                      width: 1, // تعيين عرض الحدود
-                    ), // تعيين شكل الحواف العام للشرائح
-                  ),
-                ),
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: screenWidth(40),
-                  children: <Widget>[
-                    Chip(label: Text('المترجمات')),
-                    Chip(label: Text('داتا بيز')),
-                    Chip(label: Text('اوتومات')),
-                    Chip(label: Text('الشبكات')),
-                    Chip(label: Text(' الذكاء الاصطناعي')),
-                    Chip(label: Text('قواعد البيانات')),
-                    Chip(label: Text('هندسة برمجيات')),
-                    Chip(label: Text('امن')),
-                    Chip(label: Text('خوارزميات')),
-                  ],
-                ),
-              ),
+              // ChipTheme(
+              //   data: ChipTheme.of(context).copyWith(
+              //     backgroundColor:
+              //         AppColors.whiteColor, // تعيين لون الخلفية العام للشرائح
+              //     labelStyle: TextStyle(color: AppColors.darkPurpleColor),
+              //     // تعيين نمط النص العام للشرائح
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(5),
+              //       side: BorderSide(
+              //         color: AppColors.darkPurpleColor, // تعيين لون الحدود
+              //         width: 1, // تعيين عرض الحدود
+              //       ), // تعيين شكل الحواف العام للشرائح
+              //     ),
+              //   ),
+              //   child: Wrap(
+              //     alignment: WrapAlignment.center,
+              //     spacing: screenWidth(40),
+              //     children: <Widget>[
+              //       Chip(label: Text('المترجمات')),
+              //       Chip(label: Text('داتا بيز')),
+              //       Chip(label: Text('اوتومات')),
+              //       Chip(label: Text('الشبكات')),
+              //       Chip(label: Text(' الذكاء الاصطناعي')),
+              //       Chip(label: Text('قواعد البيانات')),
+              //       Chip(label: Text('هندسة برمجيات')),
+              //       Chip(label: Text('امن')),
+              //       Chip(label: Text('خوارزميات')),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

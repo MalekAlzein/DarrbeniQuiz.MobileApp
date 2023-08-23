@@ -3,8 +3,6 @@ import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/views/login_view/login_view.dart';
-import 'package:flutter_templete/ui/views/main_view/main_view.dart';
-import 'package:flutter_templete/ui/views/signup_view/signup_view.dart';
 import 'package:get/get.dart';
 
 class SplashScreenController extends GetxController {

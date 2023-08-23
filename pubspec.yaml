@@ -55,7 +55,8 @@ dependencies:
   shimmer: ^3.0.0
   carousel_slider: ^4.2.1
   dots_indicator: ^3.0.0
-
+  image_picker: ^0.8.7+5
+  file_picker: ^5.3.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

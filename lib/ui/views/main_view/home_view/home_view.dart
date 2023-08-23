@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
@@ -83,36 +84,37 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
-              ChipTheme(
-                data: ChipTheme.of(context).copyWith(
-                  backgroundColor:
-                      AppColors.whiteColor, // تعيين لون الخلفية العام للشرائح
-                  labelStyle: TextStyle(color: AppColors.darkPurpleColor),
-                  // تعيين نمط النص العام للشرائح
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    side: BorderSide(
-                      color: AppColors.darkPurpleColor, // تعيين لون الحدود
-                      width: 1, // تعيين عرض الحدود
-                    ), // تعيين شكل الحواف العام للشرائح
-                  ),
-                ),
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: screenWidth(40),
-                  children: <Widget>[
-                    Chip(label: Text('المترجمات')),
-                    Chip(label: Text('داتا بيز')),
-                    Chip(label: Text('اوتومات')),
-                    Chip(label: Text('الشبكات')),
-                    Chip(label: Text(' الذكاء الاصطناعي')),
-                    Chip(label: Text('قواعد البيانات')),
-                    Chip(label: Text('هندسة برمجيات')),
-                    Chip(label: Text('امن')),
-                    Chip(label: Text('خوارزميات')),
-                  ],
-                ),
-              ),
+              // CustomGrideView(children: controller.items),
+              // ChipTheme(
+              //   data: ChipTheme.of(context).copyWith(
+              //     backgroundColor:
+              //         AppColors.whiteColor, // تعيين لون الخلفية العام للشرائح
+              //     labelStyle: TextStyle(color: AppColors.darkPurpleColor),
+              //     // تعيين نمط النص العام للشرائح
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(5),
+              //       side: BorderSide(
+              //         color: AppColors.darkPurpleColor, // تعيين لون الحدود
+              //         width: 1, // تعيين عرض الحدود
+              //       ), // تعيين شكل الحواف العام للشرائح
+              //     ),
+              //   ),
+              //   child: Wrap(
+              //     alignment: WrapAlignment.center,
+              //     spacing: screenWidth(40),
+              //     children: <Widget>[
+              // Chip(label: Text('المترجمات')),
+              // Chip(label: Text('داتا بيز')),
+              // Chip(label: Text('اوتومات')),
+              // Chip(label: Text('الشبكات')),
+              // Chip(label: Text(' الذكاء الاصطناعي')),
+              // Chip(label: Text('قواعد البيانات')),
+              // Chip(label: Text('هندسة برمجيات')),
+              // Chip(label: Text('امن')),
+              // Chip(label: Text('خوارزميات')),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

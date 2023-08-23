@@ -5,6 +5,7 @@ import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
@@ -127,21 +128,21 @@ class _SignupViewState extends State<SignupView> {
                 ),
               ),
               (screenHeight(45)).ph,
-              CustomGrideView(
-                length: 3,
-                children: List.generate(
-                  controller.collegeList.length,
-                  (index) => Flexible(
-                    child: CustomRadio(
-                      text: controller.collegeList[index].name ?? "",
-                      value: controller.collegeList.indexOf(
-                        controller.collegeList[index],
-                      ),
-                      selectedValue: controller.collegeId,
-                    ),
-                  ),
-                ),
-              ),
+              // CustomGrideView(
+              //   length: 3,
+              //   children: List.generate(
+              //     controller.collegeList.length,
+              //     (index) => Flexible(
+              //       child: CustomRadio(
+              //         text: controller.collegeList[index].name ?? "",
+              //         value: controller.collegeList.indexOf(
+              //           controller.collegeList[index],
+              //         ),
+              //         selectedValue: controller.collegeId,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               // GridView.count(
               //   crossAxisCount: 3,
               //   children: List<Widget>.generate(

@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/core/enums/file_type_enum.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_button.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
@@ -40,10 +44,9 @@ class AvatarWidget extends StatelessWidget {
             //     : controller.userProfileModel.value.avatar != null &&
             //             controller.userProfileModel.value.avatar!.isNotEmpty
             //         ? CachedNetworkImage(
-            //             imageUrl:
-            //                 controller.userProfileModel.value.avatar ??
-            //                     controller.avatar.value.path ??
-            //                     "",
+            //             imageUrl: controller.userProfileModel.value.avatar ??
+            //                 controller.avatar.value.path ??
+            //                 "",
             //             fit: BoxFit.cover,
             //           )
             //         : controller.avatar.value.path == null ||
@@ -55,7 +58,7 @@ class AvatarWidget extends StatelessWidget {
             //             : controller.avatar.value.type != FileTypeEnum.FILE
             //                 ? Image.file(
             //                     File(
-            //                       controller.avatar.value.path!,
+            //                       // controller.avatar.value.path!,
             //                     ),
             //                     fit: BoxFit.cover,
             //                   )

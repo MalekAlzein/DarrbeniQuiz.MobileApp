@@ -31,6 +31,7 @@ class LoginController extends BaseController {
             );
           }, (r) {
             storage.setTokenInfo(r);
+            //
             Get.off(() => const MainView());
             formKey.currentState!.save();
           });

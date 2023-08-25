@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_college.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_view.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/home_view_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
@@ -63,6 +66,43 @@ class _HomeViewState extends State<HomeView> {
                 text: tr('key_category'),
                 color: AppColors.darkGreyColor,
               ),
+
+              SizedBox(
+                height: screenHeight(8),
+                // height: screenWidth(2),
+                child: Obx(
+                  () {
+                    return
+                        //  controller.isCategoryLoading
+                        //     ? SpinKitCircle(
+                        //         color: AppColors.mainOrangeColor,
+                        //       )
+                        //     :
+                        ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: BouncingScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: controller.categoryList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        String categoryUUID =
+                            controller.categoryList[index].uuid!;
+                        bool isSelected =
+                            categoryUUID == controller.selectedCategory.value;
+
+                        return HomeViewCategoryWidget(
+                          text: controller.categoryList[index].name,
+                          onTap: () {
+                            // controller.getProductByCategory(
+                            //   categoryName: category,
+                            // );
+                          },
+                          isSelected: isSelected,
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
               SizedBox(
                 height: screenWidth(7),
                 width: screenWidth(1),
@@ -83,7 +123,19 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
-              // CustomGrideView(children: controller.items),
+              screenHeight(40).ph,
+              CustomGrideView(
+                children: List.generate(
+                  controller.collegeList.length,
+                  (index) => Flexible(
+                    child: CustomGridCollege(
+                      imageName: "img_login",
+                      // imageName: controller.collegeList[index].logo ?? "",
+                      text: controller.collegeList[index].name ?? "",
+                    ),
+                  ),
+                ),
+              ),
               // ChipTheme(
               //   data: ChipTheme.of(context).copyWith(
               //     backgroundColor:
@@ -102,15 +154,15 @@ class _HomeViewState extends State<HomeView> {
               //     alignment: WrapAlignment.center,
               //     spacing: screenWidth(40),
               //     children: <Widget>[
-              // Chip(label: Text('المترجمات')),
-              // Chip(label: Text('داتا بيز')),
-              // Chip(label: Text('اوتومات')),
-              // Chip(label: Text('الشبكات')),
-              // Chip(label: Text(' الذكاء الاصطناعي')),
-              // Chip(label: Text('قواعد البيانات')),
-              // Chip(label: Text('هندسة برمجيات')),
-              // Chip(label: Text('امن')),
-              // Chip(label: Text('خوارزميات')),
+              //       Chip(label: Text('المترجمات')),
+              //       Chip(label: Text('داتا بيز')),
+              //       Chip(label: Text('اوتومات')),
+              //       Chip(label: Text('الشبكات')),
+              //       Chip(label: Text(' الذكاء الاصطناعي')),
+              //       Chip(label: Text('قواعد البيانات')),
+              //       Chip(label: Text('هندسة برمجيات')),
+              //       Chip(label: Text('امن')),
+              //       Chip(label: Text('خوارزميات')),
               //     ],
               //   ),
               // ),

@@ -5,7 +5,6 @@ import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 
 class EditProfileController extends BaseController {
@@ -16,6 +15,7 @@ class EditProfileController extends BaseController {
 
   void updateProfile() {
     // if (formKey.currentState!.validate()) {
+
     runFutureFunctionWithFullLoading(
       function: ProfileRepository()
           .updateProfile(
@@ -37,6 +37,11 @@ class EditProfileController extends BaseController {
       }),
     );
     // }
+  }
+
+  bool isModified() {
+    return usernameController.text == myProfile.value.name &&
+        mobileController.text == myProfile.value.phone;
   }
 
   @override

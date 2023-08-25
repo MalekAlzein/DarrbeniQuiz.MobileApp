@@ -42,7 +42,7 @@ class ARLanguage {
         "Key_phone": "رقم الهاتف",
         "Key_save_changes": "حفظ التغيرات",
         "Key_to_retreat": "تراجع",
-
+        "Key_is_modified": "لم تقم بإجراء أي تعديلات",
         //!--Send Feed Back---
         "Key_send_feed": "ارسل اقتراح/ شكوى",
         "Key_send": "ارسل",

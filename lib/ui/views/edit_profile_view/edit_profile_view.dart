@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
@@ -92,7 +94,15 @@ class _EditProfileViewState extends State<EditProfileView> {
                 CustomButton(
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
-                    controller.updateProfile();
+                    if (controller.isModified()) {
+                      CustomToast.showMessage(
+                        message: tr("Key_is_modified"),
+                        messageType: MessageType.WARNING,
+                      );
+                    } else {
+                      controller.updateProfile();
+                    }
+                    ;
                   },
                   backgroundColor: AppColors.darkPurpleColor,
                   text: tr('Key_save_changes'),

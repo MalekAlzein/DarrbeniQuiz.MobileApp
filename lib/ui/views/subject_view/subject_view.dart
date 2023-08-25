@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_college.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_view.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
@@ -12,19 +10,19 @@ import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_controller.dart';
+import 'package:flutter_templete/ui/views/subject_view/subject_controller.dart';
 import 'package:get/get.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({
-    super.key,
-  });
+class SubjectView extends StatefulWidget {
+  const SubjectView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<SubjectView> createState() => _SubjectViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  HomeController controller = Get.put(HomeController());
+class _SubjectViewState extends State<SubjectView> {
+  HomeController controllerHome = Get.put(HomeController());
+  SubjectController controller = Get.put(SubjectController());
   List<String> category = [
     'الكل',
     'الكليات الهندسية',
@@ -57,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
                           center: true,
                         )
                       : CustomSlider(
-                          homeController: controller,
+                          homeController: controllerHome,
                           silderList: controller.silderList,
                         );
                 },
@@ -69,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
 
               SizedBox(
                 height: screenHeight(8),
-                width: screenWidth(1),
+                // height: screenWidth(2),
                 child: Obx(
                   () {
                     return
@@ -103,27 +101,27 @@ class _HomeViewState extends State<HomeView> {
                   },
                 ),
               ),
-              // SizedBox(
-              //   height: screenWidth(7),
-              //   width: screenWidth(1),
-              //   child: ListView.builder(
-              //     physics: NeverScrollableScrollPhysics(),
-              //     addAutomaticKeepAlives: true,
-              //     addRepaintBoundaries: true,
-              //     shrinkWrap: true,
-              //     scrollDirection: Axis.horizontal,
-              //     itemCount: category.length,
-              //     itemBuilder: (context, index) {
-              //       return MainCategory(
-              //         category: category[index],
-              //         onTap: () {
-              //           showUpsetDialog();
-              //         },
-              //       );
-              //     },
-              //   ),
-              // ),
-              // screenHeight(40).ph,
+              SizedBox(
+                height: screenWidth(7),
+                width: screenWidth(1),
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  addAutomaticKeepAlives: true,
+                  addRepaintBoundaries: true,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: category.length,
+                  itemBuilder: (context, index) {
+                    return MainCategory(
+                      category: category[index],
+                      onTap: () {
+                        showUpsetDialog();
+                      },
+                    );
+                  },
+                ),
+              ),
+              screenHeight(40).ph,
               // CustomGrideView(
               //   children: List.generate(
               //     controller.collegeList.length,
@@ -136,36 +134,36 @@ class _HomeViewState extends State<HomeView> {
               //     ),
               //   ),
               // ),
-              // ChipTheme(
-              //   data: ChipTheme.of(context).copyWith(
-              //     backgroundColor:
-              //         AppColors.whiteColor, // تعيين لون الخلفية العام للشرائح
-              //     labelStyle: TextStyle(color: AppColors.darkPurpleColor),
-              //     // تعيين نمط النص العام للشرائح
-              //     shape: RoundedRectangleBorder(
-              //       borderRadius: BorderRadius.circular(5),
-              //       side: BorderSide(
-              //         color: AppColors.darkPurpleColor, // تعيين لون الحدود
-              //         width: 1, // تعيين عرض الحدود
-              //       ), // تعيين شكل الحواف العام للشرائح
-              //     ),
-              //   ),
-              //   child: Wrap(
-              //     alignment: WrapAlignment.center,
-              //     spacing: screenWidth(40),
-              //     children: <Widget>[
-              //       Chip(label: Text('المترجمات')),
-              //       Chip(label: Text('داتا بيز')),
-              //       Chip(label: Text('اوتومات')),
-              //       Chip(label: Text('الشبكات')),
-              //       Chip(label: Text(' الذكاء الاصطناعي')),
-              //       Chip(label: Text('قواعد البيانات')),
-              //       Chip(label: Text('هندسة برمجيات')),
-              //       Chip(label: Text('امن')),
-              //       Chip(label: Text('خوارزميات')),
-              //     ],
-              //   ),
-              // ),
+              ChipTheme(
+                data: ChipTheme.of(context).copyWith(
+                  backgroundColor:
+                      AppColors.whiteColor, // تعيين لون الخلفية العام للشرائح
+                  labelStyle: TextStyle(color: AppColors.darkPurpleColor),
+                  // تعيين نمط النص العام للشرائح
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                    side: BorderSide(
+                      color: AppColors.darkPurpleColor, // تعيين لون الحدود
+                      width: 1, // تعيين عرض الحدود
+                    ), // تعيين شكل الحواف العام للشرائح
+                  ),
+                ),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: screenWidth(40),
+                  children: <Widget>[
+                    Chip(label: Text('المترجمات')),
+                    Chip(label: Text('داتا بيز')),
+                    Chip(label: Text('اوتومات')),
+                    Chip(label: Text('الشبكات')),
+                    Chip(label: Text(' الذكاء الاصطناعي')),
+                    Chip(label: Text('قواعد البيانات')),
+                    Chip(label: Text('هندسة برمجيات')),
+                    Chip(label: Text('امن')),
+                    Chip(label: Text('خوارزميات')),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

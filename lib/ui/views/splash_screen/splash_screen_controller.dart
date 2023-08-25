@@ -27,8 +27,8 @@ class SplashScreenController extends GetxController {
     // RxBool isLoding = false.obs;
     Future.delayed(Duration(seconds: 4)).then((value) async {
       {
-        getCollege();
-        // Get.off(() => LoginView());
+        // getCollege();
+        Get.off(() => LoginView());
         super.onInit();
       }
     });

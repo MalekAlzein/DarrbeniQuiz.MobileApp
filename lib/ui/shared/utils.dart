@@ -2,7 +2,10 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_templete/core/data/models/file_type_model.dart';
+import 'package:flutter_templete/core/enums/file_type_enum.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/file_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
@@ -73,67 +76,67 @@ void showAlertDialoug({
   // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
 }
 
-// void showImagePickerBottomSheet({
-//   required FileTypeModel fileTypeModel,
-//   required Function(FileTypeModel) onSelected,
-// }) {
-//   Get.bottomSheet(
-//     CustomPopupWithBlurWidget(
-//       customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
-//       child: Container(
-//         // width: screenWidthPercent(1),
-//         decoration: BoxDecoration(
-//           color: AppColors.whiteColor,
-//           borderRadius: BorderRadiusDirectional.only(
-//             topStart: Radius.circular(20),
-//             topEnd: Radius.circular(20),
-//           ),
-//         ),
-//         child: Column(
-//           mainAxisSize: MainAxisSize.min,
-//           children: [
-//             ListTile(
-//               leading: Icon(
-//                 Icons.camera_alt,
-//                 color: AppColors.darkPurpleColor,
-//               ),
-//               title: CustomText(
-//                 textType: TextStyleType.SUBTITLE,
-//                 text: tr('image_picker_camera'),
-//                 textAlign: TextAlign.start,
-//                 textColor: AppColors.darkGreyColor,
-//               ),
-//               onTap: () {
-//                 FileUtil.pickFile(FileTypeEnum.CAMERA).then(
-//                   (value) => onSelected(value),
-//                 );
-//                 Get.back();
-//               },
-//             ),
-//             ListTile(
-//               leading: Icon(
-//                 Icons.image,
-//                 color: AppColors.darkPurpleColor,
-//               ),
-//               title: CustomText(
-//                 textType: TextStyleType.SUBTITLE,
-//                 text: tr('image_picker_gallery'),
-//                 textAlign: TextAlign.start,
-//                 textColor: AppColors.darkGreyColor,
-//               ),
-//               onTap: () {
-//                 FileUtil.pickFile(FileTypeEnum.GALLERY).then(
-//                   (value) => onSelected(value),
-//                 );
-//                 Get.back();
-//               },
-//             ),
-//           ],
-//         ),
-//       ),
-//     ),
-//   );
-// }
+void showImagePickerBottomSheet({
+  required FileTypeModel fileTypeModel,
+  required Function(FileTypeModel) onSelected,
+}) {
+  Get.bottomSheet(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
+      child: Container(
+        // width: screenWidthPercent(1),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadiusDirectional.only(
+            topStart: Radius.circular(20),
+            topEnd: Radius.circular(20),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: Icon(
+                Icons.camera_alt,
+                color: AppColors.darkPurpleColor,
+              ),
+              title: CustomText(
+                textType: TextStyleType.SUBTITLE,
+                text: tr('image_picker_camera'),
+                textAlign: TextAlign.start,
+                textColor: AppColors.darkGreyColor,
+              ),
+              onTap: () {
+                FileUtil.pickFile(FileTypeEnum.CAMERA).then(
+                  (value) => onSelected(value),
+                );
+                Get.back();
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.image,
+                color: AppColors.darkPurpleColor,
+              ),
+              title: CustomText(
+                textType: TextStyleType.SUBTITLE,
+                text: tr('image_picker_gallery'),
+                textAlign: TextAlign.start,
+                textColor: AppColors.darkGreyColor,
+              ),
+              onTap: () {
+                FileUtil.pickFile(FileTypeEnum.GALLERY).then(
+                  (value) => onSelected(value),
+                );
+                Get.back();
+              },
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
 
 void showSudscribeDialog({
   // required bool isLoading,

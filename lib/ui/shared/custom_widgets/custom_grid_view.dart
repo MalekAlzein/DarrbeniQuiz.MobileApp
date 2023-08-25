@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomGrideView extends StatelessWidget {
-  CustomGrideView({
+class CustomGridView extends StatelessWidget {
+  CustomGridView({
     required this.children,
     this.length = 4,
   });
@@ -25,7 +25,8 @@ class CustomGrideView extends StatelessWidget {
                 : MainAxisAlignment.spaceAround,
             children: children.sublist(0, length),
           ),
-          CustomGrideView(
+          CustomGridView(
+            length: length,
             children: children.sublist(length),
           ),
         ],

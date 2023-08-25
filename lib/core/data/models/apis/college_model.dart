@@ -1,18 +1,30 @@
 import 'dart:convert';
 
+import 'package:flutter_templete/core/data/models/apis/category_model.dart';
+
 class CollegeModel {
   int? id;
   String? uuid;
   String? name;
   String? logo;
+  CategoryModel? category;
 
-  CollegeModel({this.id, this.uuid, this.name, this.logo});
+  CollegeModel({
+    this.id,
+    this.uuid,
+    this.name,
+    this.logo,
+    this.category,
+  });
 
   CollegeModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     uuid = json['uuid'];
     name = json['name'];
     logo = json['logo'];
+    category = json['category'] != null
+        ? new CategoryModel.fromJson(json['category'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -21,10 +33,12 @@ class CollegeModel {
     data['uuid'] = this.uuid;
     data['name'] = this.name;
     data['logo'] = this.logo;
+    if (this.category != null) {
+      data['category'] = this.category!.toJson();
+    }
     return data;
   }
 
-//--
   static Map<String, dynamic> toMap(CollegeModel model) {
     return {
       'id': model.id,

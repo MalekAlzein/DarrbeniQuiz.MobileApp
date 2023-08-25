@@ -1,7 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_templete/core/data/models/apis/college_model.dart';
 import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
-import 'package:flutter_templete/core/data/network/endpoints/college_endpoints.dart';
 import 'package:flutter_templete/core/data/network/endpoints/slider_endpoints.dart';
 
 import '../../enums/request_type.dart';

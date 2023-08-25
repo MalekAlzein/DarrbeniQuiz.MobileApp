@@ -21,51 +21,52 @@ class AvatarWidget extends StatelessWidget {
       alignment: AlignmentDirectional.bottomEnd,
       children: [
         InkWell(
-          // onTap: controller.avatar.value.path == null &&
-          //         controller.userProfileModel.value.avatar == null
-          //     ? () {
-          //         showImagePickerBottomSheet(
-          //             fileTypeModel: controller.avatar.value,
-          //             onSelected: (value) {
-          //               controller.avatar.value = value;
-          //             });
-          //       }
-          //     : null,
+          onTap: controller.avatar.value.path == null &&
+                  controller.myProfile.value.photo == null
+              ? () {
+                  showImagePickerBottomSheet(
+                    fileTypeModel: controller.avatar.value,
+                    onSelected: (value) {
+                      controller.avatar.value = value;
+                    },
+                  );
+                }
+              : null,
           child: Container(
             clipBehavior: Clip.antiAliasWithSaveLayer,
-            // child: controller.avatar.value.type != FileTypeEnum.FILE &&
-            //         controller.avatar.value.path != null
-            //     ? Image.file(
-            //         File(
-            //           controller.avatar.value.path!,
-            //         ),
-            //         fit: BoxFit.cover,
-            //       )
-            //     : controller.userProfileModel.value.avatar != null &&
-            //             controller.userProfileModel.value.avatar!.isNotEmpty
-            //         ? CachedNetworkImage(
-            //             imageUrl: controller.userProfileModel.value.avatar ??
-            //                 controller.avatar.value.path ??
-            //                 "",
-            //             fit: BoxFit.cover,
-            //           )
-            //         : controller.avatar.value.path == null ||
-            //                 controller.avatar.value.path!.isEmpty
-            //             ? Icon(
-            //                 Icons.image,
-            //                 color: AppColors.darkPurpleColor,
-            //               )
-            //             : controller.avatar.value.type != FileTypeEnum.FILE
-            //                 ? Image.file(
-            //                     File(
-            //                       // controller.avatar.value.path!,
-            //                     ),
-            //                     fit: BoxFit.cover,
-            //                   )
-            //                 : Icon(
-            //                     Icons.file_copy,
-            //                     color: AppColors.darkPurpleColor,
-            //                   ),
+            child: controller.avatar.value.type != FileTypeEnum.FILE &&
+                    controller.avatar.value.path != null
+                ? Image.file(
+                    File(
+                      controller.avatar.value.path!,
+                    ),
+                    fit: BoxFit.cover,
+                  )
+                : controller.myProfile.value.photo != null &&
+                        controller.myProfile.value.photo!.isNotEmpty
+                    ? CachedNetworkImage(
+                        imageUrl: controller.myProfile.value.photo ??
+                            controller.avatar.value.path ??
+                            "",
+                        fit: BoxFit.cover,
+                      )
+                    : controller.avatar.value.path == null ||
+                            controller.avatar.value.path!.isEmpty
+                        ? Icon(
+                            Icons.image,
+                            color: AppColors.darkPurpleColor,
+                          )
+                        : controller.avatar.value.type != FileTypeEnum.FILE
+                            ? Image.file(
+                                File(
+                                  controller.avatar.value.path!,
+                                ),
+                                fit: BoxFit.cover,
+                              )
+                            : Icon(
+                                Icons.file_copy,
+                                color: AppColors.darkPurpleColor,
+                              ),
             width: screenWidth(3.5),
             height: screenWidth(3.5),
             decoration: BoxDecoration(
@@ -84,7 +85,7 @@ class AvatarWidget extends StatelessWidget {
           child: CustomSmallButton(
             imageName: "ic_edit",
             onTap: () {
-              // controller.pickAvatar();
+              controller.pickAvatar();
             },
             customSmallButtonTypeEnum: CustomSmallButtonTypeEnum.SMALL,
           ),

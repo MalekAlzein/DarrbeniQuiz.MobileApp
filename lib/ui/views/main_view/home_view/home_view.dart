@@ -124,7 +124,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
               screenHeight(40).ph,
-              CustomGrideView(
+              CustomGridView(
                 children: List.generate(
                   controller.collegeList.length,
                   (index) => Flexible(

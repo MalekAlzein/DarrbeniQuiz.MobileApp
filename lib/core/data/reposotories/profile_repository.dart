@@ -71,4 +71,35 @@ class ProfileRepository {
       return Left(e.toString());
     }
   }
+
+  Future<Either<String, ProfileModel>> updatePhoto(
+      {required String photo2}) async {
+    try {
+      return NetworkUtil.sendMultipartRequest(
+        type: RequestType.POST,
+        url: ProfileEndpoints.updatePhoto,
+        fields: {},
+        files: {"photo2": photo2},
+        params: {},
+        headers: NetworkConfig.getHeaders(
+          needAuth: true,
+          requestType: RequestType.POST,
+        ),
+        requestType: RequestType.POST,
+      ).then((response) {
+        CommonResponseModel<Map<String, dynamic>> commonResponse =
+            CommonResponseModel.fromJson(response);
+
+        if (commonResponse.getStatus) {
+          return Right(ProfileModel.fromJson(
+            commonResponse.data!["photo"] ?? {},
+          ));
+        } else {
+          return Left(commonResponse.message ?? '');
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 }

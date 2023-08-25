@@ -25,7 +25,7 @@ class ProfileRepository {
 
         if (commonResponse.getStatus) {
           return Right(ProfileModel.fromJson(
-            commonResponse.data ?? {},
+            commonResponse.data!["profile"] ?? {},
           ));
         } else {
           return Left(commonResponse.message ?? '');
@@ -46,8 +46,8 @@ class ProfileRepository {
         type: RequestType.POST,
         url: ProfileEndpoints.updateProfile,
         fields: {
-          'name': 'sami',
-          'phone': '0888',
+          'name': name,
+          'phone': phone,
         },
         params: {},
         headers: NetworkConfig.getHeaders(
@@ -61,7 +61,7 @@ class ProfileRepository {
 
         if (commonResponse.getStatus) {
           return Right(ProfileModel.fromJson(
-            commonResponse.data ?? {},
+            commonResponse.data!["profile"] ?? {},
           ));
         } else {
           return Left(commonResponse.message ?? '');

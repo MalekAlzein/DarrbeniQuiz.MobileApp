@@ -17,24 +17,21 @@ class ProfileController extends BaseController {
   RxBool isModified = false.obs;
 
   void getProfile() {
-    if (formKey.currentState!.validate()) {
-      runFutureFunctionWithFullLoading(
-        function: ProfileRepository().myProfile().then((value) {
-          value.fold((l) {
-            // isLoading.value = false;
-            CustomToast.showMessage(
-              messageType: MessageType.REJECTED,
-              message: l,
-            );
-          }, (r) {
-            storage.setProfile(r);
-            myProfile.value = r;
-            Get.to(() => const ProfileView());
-            formKey.currentState!.save();
-          });
-        }),
-      );
-    }
+    runFutureFunctionWithFullLoading(
+      function: ProfileRepository().myProfile().then((value) {
+        value.fold((l) {
+          // isLoading.value = false;
+          CustomToast.showMessage(
+            messageType: MessageType.REJECTED,
+            message: l,
+          );
+        }, (r) {
+          storage.setProfile(r);
+          myProfile.value = r;
+          // Get.to(() => const ProfileView());
+        });
+      }),
+    );
   }
 
   @override

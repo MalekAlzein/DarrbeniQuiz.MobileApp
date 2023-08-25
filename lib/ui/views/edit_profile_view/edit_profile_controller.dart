@@ -5,7 +5,6 @@ import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 
 class EditProfileController extends BaseController {
@@ -15,28 +14,34 @@ class EditProfileController extends BaseController {
   Rx<ProfileModel> myProfile = ProfileModel().obs;
 
   void updateProfile() {
-    if (formKey.currentState!.validate()) {
-      runFutureFunctionWithFullLoading(
-        function: ProfileRepository()
-            .updateProfile(
-          name: usernameController.text,
-          phone: mobileController.text,
-        )
-            .then((value) {
-          value.fold((l) {
-            // isLoading.value = false;
-            CustomToast.showMessage(
-              messageType: MessageType.REJECTED,
-              message: l,
-            );
-          }, (r) {
-            myProfile.value = r;
-            Get.to(() => const ProfileView());
-            formKey.currentState!.save();
-          });
-        }),
-      );
-    }
+    // if (formKey.currentState!.validate()) {
+
+    runFutureFunctionWithFullLoading(
+      function: ProfileRepository()
+          .updateProfile(
+        name: usernameController.text,
+        phone: mobileController.text,
+      )
+          .then((value) {
+        value.fold((l) {
+          // isLoading.value = false;
+          CustomToast.showMessage(
+            messageType: MessageType.REJECTED,
+            message: l,
+          );
+        }, (r) {
+          myProfile.value = r;
+          Get.back();
+          // formKey.currentState!.save();
+        });
+      }),
+    );
+    // }
+  }
+
+  bool isModified() {
+    return usernameController.text == myProfile.value.name &&
+        mobileController.text == myProfile.value.phone;
   }
 
   @override

@@ -21,6 +21,12 @@ class HomeController extends BaseController {
     super.onInit();
   }
 
+  bool subbedCollege({
+    required int index,
+  }) {
+    return storage.getCollegeLogin()!.uuid == collegeList[index].uuid!;
+  }
+
   void getAllSliders() {
     runFutureFunction(
       function: SliderRepository().getAllSliders().then(

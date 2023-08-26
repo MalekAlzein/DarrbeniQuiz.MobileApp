@@ -38,16 +38,19 @@ class _HomeViewState extends State<HomeView> {
       children: [
         Padding(
           padding: EdgeInsetsDirectional.symmetric(
-              vertical: screenHeight(80), horizontal: screenWidth(15)),
+            vertical: screenHeight(9),
+            horizontal: screenWidth(15),
+          ),
           child: Column(
             children: [
               CustomTextFormField(
-                  hintText: tr("key_search"),
-                  hintTextSize: screenWidth(30),
-                  fillColor: AppColors.darkGreyColorTextField,
-                  hintTextColor: AppColors.darkGreyColorOpacity,
-                  prefixIcon: 'ic_search',
-                  prefixIconColor: AppColors.darkGreyColor),
+                hintText: tr("key_search"),
+                hintTextSize: screenWidth(30),
+                fillColor: AppColors.darkGreyColorTextField,
+                hintTextColor: AppColors.darkGreyColorOpacity,
+                prefixIcon: 'ic_search',
+                prefixIconColor: AppColors.darkGreyColor,
+              ),
               screenHeight(40).ph,
               Obx(
                 () {
@@ -129,8 +132,9 @@ class _HomeViewState extends State<HomeView> {
                   controller.collegeList.length,
                   (index) => Flexible(
                     child: CustomGridCollege(
-                      imageName: "img_login",
-                      // imageName: controller.collegeList[index].logo ?? "",
+                      isSubbed: controller.subbedCollege(index: index),
+                      // imageName: "img_login",
+                      imageName: controller.collegeList[index].logo ?? "",
                       text: controller.collegeList[index].name ?? "",
                     ),
                   ),

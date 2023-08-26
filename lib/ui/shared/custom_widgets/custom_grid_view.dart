@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomGridView extends StatelessWidget {
   CustomGridView({
@@ -25,6 +27,7 @@ class CustomGridView extends StatelessWidget {
                 : MainAxisAlignment.spaceAround,
             children: children.sublist(0, length),
           ),
+          // screenHeight(60).ph,
           CustomGridView(
             length: length,
             children: children.sublist(length),

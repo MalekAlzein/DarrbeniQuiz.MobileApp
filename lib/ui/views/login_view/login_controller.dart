@@ -9,9 +9,9 @@ import 'package:get/get.dart';
 
 class LoginController extends BaseController {
   TextEditingController usernameController =
-      TextEditingController(text: "shams");
+      TextEditingController(text: "sami");
   TextEditingController enterCodeController =
-      TextEditingController(text: "d0rdwSTeIO");
+      TextEditingController(text: "fb4deF8aDc");
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void login() {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/core/data/models/apis/college_model.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_college.dart';
@@ -66,43 +67,97 @@ class _HomeViewState extends State<HomeView> {
                 text: tr('key_category'),
                 color: AppColors.darkGreyColor,
               ),
+              Obx(() {
+                print(controller.silderList);
+                return SizedBox(
+                  height: screenHeight(8),
+                  width: screenWidth(1),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.categoryList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      String categoryUUID =
+                          controller.categoryList[index].uuid!;
+                      bool isSelected =
+                          categoryUUID == controller.selectedCategory.value;
 
-              SizedBox(
-                height: screenHeight(8),
-                width: screenWidth(1),
-                child: Obx(
-                  () {
-                    return
-                        //  controller.isCategoryLoading
-                        //     ? SpinKitCircle(
-                        //         color: AppColors.mainOrangeColor,
-                        //       )
-                        //     :
-                        ListView.builder(
-                      scrollDirection: Axis.horizontal,
+                      return HomeViewCategoryWidget(
+                        text: controller.categoryList[index].name,
+                        onTap: () {
+                          String categoryUUID =
+                              controller.categoryList[index].uuid!;
+                          // bool isSelected =
+                          //     categoryUUID == controller.selectedCategory.value;
+                          controller.getCollegesByCategory(categoryUUID);
+                        },
+                        isSelected: isSelected,
+                      );
+                    },
+                  ),
+                );
+              }),
+              Obx(
+                () {
+                  return SizedBox(
+                    width: screenWidth(1),
+                    height: screenHeight(2),
+                    child: ListView.builder(
                       physics: BouncingScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: controller.categoryList.length,
+                      itemCount: controller.filteredCollegeList.length,
                       itemBuilder: (BuildContext context, int index) {
-                        String categoryUUID =
-                            controller.categoryList[index].uuid!;
-                        bool isSelected =
-                            categoryUUID == controller.selectedCategory.value;
-
-                        return HomeViewCategoryWidget(
-                          text: controller.categoryList[index].name,
-                          onTap: () {
-                            // controller.getProductByCategory(
-                            //   categoryName: category,
-                            // );
-                          },
-                          isSelected: isSelected,
+                        return ListTile(
+                          title: Text(
+                              controller.filteredCollegeList[index].name ?? ''),
+                          // Add more widget properties as needed
                         );
                       },
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
+
+              // SizedBox(
+              //   height: screenHeight(8),
+              //   width: screenWidth(1),
+              //   child: Obx(
+              //     () {
+              //       return
+              //           //  controller.isCategoryLoading
+              //           //     ? SpinKitCircle(
+              //           //         color: AppColors.mainOrangeColor,
+              //           //       )
+              //           //     :
+              //           ListView.builder(
+              //         scrollDirection: Axis.horizontal,
+              //         physics: BouncingScrollPhysics(),
+              //         shrinkWrap: true,
+              //         itemCount: controller.categoryList.length,
+              //         itemBuilder: (BuildContext context, int index) {
+              //           String categoryUUID =
+              //               controller.categoryList[index].uuid!;
+              //           bool isSelected =
+              //               categoryUUID == controller.selectedCategory.value;
+
+              //           return HomeViewCategoryWidget(
+              //             text: controller.categoryList[index].name,
+              //             onTap: () {
+              //               Future<RxList<CollegeModel>> colleges =
+              //                   controller.getCollegesByCategory(categoryUUID);
+              //               // controller.getProductByCategory(
+              //               //   categoryName: category,
+              //               // );
+              //             },
+              //             isSelected: isSelected,
+              //           );
+              //         },
+              //       );
+              //     },
+              //   ),
+              // ),
+
               // SizedBox(
               //   height: screenWidth(7),
               //   width: screenWidth(1),

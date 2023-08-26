@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 class HomeController extends BaseController {
   RxList<SilderModel> silderList = <SilderModel>[].obs;
   RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
+  RxList<CollegeModel> filteredCollegeList = <CollegeModel>[].obs;
   RxList<CategoryModel> categoryList = <CategoryModel>[].obs;
   RxString selectedCategory = "الكل".obs;
 
@@ -64,8 +65,13 @@ class HomeController extends BaseController {
       ),
     );
   }
-}
 
+  Future<void> getCollegesByCategory(String categoryUUID) async {
+    filteredCollegeList.value = collegeList.value.where((college) {
+      return college.category?.uuid == categoryUUID;
+    }).toList();
+  }
+}
 
 // class GridItem {
 //   final String imagePath;
@@ -82,3 +88,5 @@ class HomeController extends BaseController {
 //     ],
 //   );
 // }
+
+

@@ -14,6 +14,7 @@ class HomeController extends BaseController {
   RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
   RxList<CollegeModel> filteredCollegeList = <CollegeModel>[].obs;
   RxList<CategoryModel> categoryList = <CategoryModel>[].obs;
+  RxList<String> selectedCategories = <String>[].obs;
   RxString selectedCategory = "الكل".obs;
 
   @override
@@ -27,7 +28,8 @@ class HomeController extends BaseController {
   bool subbedCollege({
     required int index,
   }) {
-    return storage.getCollegeLogin()!.uuid == collegeList[index].uuid!;
+    return storage.getCollegeLogin()!.uuid == filteredCollegeList[index].uuid!;
+    // return storage.getCollegeLogin()!.uuid == collegeList[index].uuid!;
   }
 
   void getAllSliders() {
@@ -73,7 +75,8 @@ class HomeController extends BaseController {
   }
 
   Future<void> getCollegesByCategory(String categoryUUID) async {
-    filteredCollegeList.value = collegeList.value.where((college) {
+    //filteredCollegeList.clear();
+    filteredCollegeList.value = collegeList.where((college) {
       return college.category?.uuid == categoryUUID;
     }).toList();
   }

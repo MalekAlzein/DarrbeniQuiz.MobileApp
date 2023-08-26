@@ -17,7 +17,7 @@ class SubjectController extends BaseController {
 
   @override
   void onInit() {
-    collegeList.value = storage.getCollege();
+    collegeList.value = storage.getCollegeList();
     getAllSliders();
     getAllCategories();
     super.onInit();

@@ -45,6 +45,7 @@ class CollegeModel {
       'uuid': model.uuid,
       'name': model.name,
       'logo': model.logo,
+      'category': model.category,
     };
   }
 

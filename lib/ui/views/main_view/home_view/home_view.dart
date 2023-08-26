@@ -89,8 +89,8 @@ class _HomeViewState extends State<HomeView> {
                       return HomeViewCategoryWidget(
                         text: controller.categoryList[index].name,
                         onTap: () {
-                          String categoryUUID =
-                              controller.categoryList[index].uuid!;
+                          // String categoryUUID =
+                          //     controller.categoryList[index].uuid!;
                           // bool isSelected =
                           //     categoryUUID == controller.selectedCategory.value;
                           controller.getCollegesByCategory(categoryUUID);
@@ -104,37 +104,50 @@ class _HomeViewState extends State<HomeView> {
               Obx(
                 () {
                   return SizedBox(
-                    width: screenWidth(1),
-                    height: screenHeight(2),
-                    child: ListView.builder(
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: controller.filteredCollegeList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text(
-                              controller.filteredCollegeList[index].name ?? ''),
-                          // Add more widget properties as needed
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-              screenHeight(40).ph,
-              CustomGridView(
-                children: List.generate(
-                  controller.collegeList.length,
-                  (index) => Flexible(
-                    child: CustomGridCollege(
-                      isSubbed: controller.subbedCollege(index: index),
-                      // imageName: "img_login",
-                      imageName: controller.collegeList[index].logo ?? "",
-                      text: controller.collegeList[index].name ?? "",
-                    ),
-                  );
+                      width: screenWidth(1),
+                      height: screenHeight(2),
+                      child: CustomGridView(
+                          children: List.generate(
+                        controller.filteredCollegeList.length,
+                        (index) {
+                          return Flexible(
+                            child: CustomGridCollege(
+                              isSubbed: controller.subbedCollege(index: index),
+                              // imageName: "img_login",
+                              imageName:
+                                  controller.filteredCollegeList[index].logo ??
+                                      "",
+                              text:
+                                  controller.filteredCollegeList[index].name ??
+                                      "",
+                            ),
+                          );
+                        },
+                      ))
+                      // ListTile(
+                      //   title: Text(
+                      //       controller.filteredCollegeList[index].name ??
+                      //           ''),
+                      //   // Add more widget properties as needed
+                      // );
+
+                      );
                 },
               ),
+
+              // screenHeight(40).ph,
+              // CustomGridView(
+              //     children: List.generate(
+              //   controller.collegeList.length,
+              //   (index) => Flexible(
+              //     child: CustomGridCollege(
+              //       isSubbed: controller.subbedCollege(index: index),
+              //       // imageName: "img_login",
+              //       imageName: controller.collegeList[index].logo ?? "",
+              //       text: controller.collegeList[index].name ?? "",
+              //     ),
+              //   ),
+              // )),
 
               // SizedBox(
               //   height: screenHeight(8),

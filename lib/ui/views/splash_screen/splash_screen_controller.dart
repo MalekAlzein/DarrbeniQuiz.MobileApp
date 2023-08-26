@@ -28,8 +28,8 @@ class SplashScreenController extends GetxController {
     // RxBool isLoding = false.obs;
     Future.delayed(Duration(seconds: 4)).then((value) async {
       {
-        // getCollege();
-        Get.off(() => LoginView());
+        getCollege();
+        // Get.off(() => LoginView());
         super.onInit();
       }
     });
@@ -45,9 +45,10 @@ class SplashScreenController extends GetxController {
         );
       }, (r) {
         storage.setCollegeList(r);
-        storage.isLoggedIn
-            ? Get.off(() => MainView())
-            : Get.off(() => LoginView());
+        // storage.isLoggedIn
+        //     ? Get.off(() => MainView())
+        //     :
+        Get.off(() => LoginView());
       });
     });
   }

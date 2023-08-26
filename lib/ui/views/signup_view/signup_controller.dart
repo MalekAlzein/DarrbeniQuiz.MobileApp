@@ -19,7 +19,7 @@ class SignupController extends BaseController {
   RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
   @override
   void onInit() {
-    collegeList.value = storage.getCollege();
+    collegeList.value = storage.getCollegeList();
     super.onInit();
   }
 

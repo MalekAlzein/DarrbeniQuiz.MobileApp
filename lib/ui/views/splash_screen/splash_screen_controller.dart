@@ -43,7 +43,7 @@ class SplashScreenController extends GetxController {
           message: l,
         );
       }, (r) {
-        storage.setCollege(r);
+        storage.setCollegeList(r);
         Get.off(() => LoginView());
       });
     });

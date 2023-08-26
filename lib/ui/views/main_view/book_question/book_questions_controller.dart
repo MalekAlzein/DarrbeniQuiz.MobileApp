@@ -3,14 +3,15 @@ import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:get/get.dart';
 
 class QuestionsController extends BaseController {
-  // RxInt questionsCount = 0.obs;
-  // RxDouble progress = 0.0.obs;
-  // RxInt total = 0.obs;
+  RxInt questionsCount = 0.obs;
+  RxDouble progress = 0.0.obs;
+  RxInt total = 0.obs;
 
-  // void updateProgress() {
-  //   var value = questionsCount.value / total.value;
-  //   progress.value = value.clamp(0, 1);
-  // }
+  void updateProgress() {
+    var value = questionsCount.value / total.value;
+    progress.value = value.clamp(0, 1);
+  }
+
   RxList<QuestionModel> questionsList = [
     QuestionModel(
       id: 1,
@@ -85,6 +86,9 @@ class QuestionsController extends BaseController {
   ].obs;
   RxInt currentQuestionIndex = 0.obs;
   RxInt score = 0.obs;
+  RxBool onPressed = false.obs;
+  RxBool isAnswerCorrect = false.obs;
+  RxBool isAnswerWrong = false.obs;
 
   void nextQuestion() {
     if (currentQuestionIndex.value < questionsList.length - 1) {
@@ -102,6 +106,9 @@ class QuestionsController extends BaseController {
   void checkAnswer(int selectedOption) {
     if (selectedOption == getCurrentQuestion().answer) {
       score.value++;
+      getCurrentQuestion().isAnswerCorrect = true;
+    } else {
+      getCurrentQuestion().isAnswerCorrect = false;
     }
   }
 

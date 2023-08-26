@@ -8,7 +8,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dar
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:flutter_templete/ui/views/main_view/book_question/questions_controller.dart';
+import 'package:flutter_templete/ui/views/main_view/book_question/book_questions_controller.dart';
 import 'package:get/get.dart';
 
 class BookQuestionView extends StatefulWidget {
@@ -44,49 +44,55 @@ class _BookQuestionViewState extends State<BookQuestionView> {
           screenHeight(80).ph,
           CustomProgress(),
           screenHeight(80).ph,
-          Padding(
-            padding: EdgeInsetsDirectional.symmetric(
-              horizontal: screenWidth(20),
-            ),
-            child: CustomText(
-              textAlign: TextAlign.start,
-              textType: TextStyleType.SMALL,
-              text: '25. الخدمة بأفضل جهد في بروتوكول الانترنت IPV4 تعني ان :',
-            ),
-          ),
-          screenHeight(60).ph,
-          SizedBox(
-            height: screenHeight(2),
-            width: screenWidth(1),
-            child: ListView(
-              padding: EdgeInsetsDirectional.symmetric(
-                horizontal: screenWidth(20),
-                vertical: screenWidth(20),
+          Obx(() {
+            return Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: controller.questionsList.length,
+                itemBuilder: (BuildContext context, int questionIndex) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.symmetric(
+                          horizontal: screenWidth(20),
+                        ),
+                        child: CustomText(
+                          textAlign: TextAlign.start,
+                          textType: TextStyleType.SMALL,
+                          text:
+                              controller.questionsList[questionIndex].question,
+                        ),
+                      ),
+                      screenHeight(60).ph,
+                      SizedBox(
+                        height: screenHeight(2),
+                        width: screenWidth(1),
+                        child: ListView(
+                          padding: EdgeInsetsDirectional.symmetric(
+                            horizontal: screenWidth(20),
+                            vertical: screenWidth(20),
+                          ),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          children: List.generate(
+                            controller
+                                .questionsList[questionIndex].options.length,
+                            (index) => CustomQuestion(
+                              textAlign: TextAlign.start,
+                              textType: TextStyleType.SMALL,
+                              text: controller
+                                  .questionsList[questionIndex].options[index],
+                              imageName: 'ic_answer_wrong',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              children: [
-                CustomQuestion(
-                  textAlign: TextAlign.start,
-                  textType: TextStyleType.SMALL,
-                  text: 'بروتوكول الأنترنت صالح لتطبيقات الوسائط المتعددة',
-                  imageName: 'ic_answer_wrong',
-                ),
-                CustomQuestion(
-                  textAlign: TextAlign.start,
-                  textType: TextStyleType.SMALL,
-                  text: 'بروتوكول الأنترنت صالح لتطبيقات الوسائط المتعددة',
-                  imageName: 'ic_answer_wrong',
-                ),
-                CustomQuestion(
-                  textAlign: TextAlign.start,
-                  textType: TextStyleType.SMALL,
-                  text: 'بروتوكول الأنترنت صالح لتطبيقات الوسائط المتعددة',
-                  imageName: 'ic_answer_wrong',
-                ),
-              ],
-            ),
-          ),
+            );
+          }),
           Padding(
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: screenWidth(20),

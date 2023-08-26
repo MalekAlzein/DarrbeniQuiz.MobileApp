@@ -12,11 +12,12 @@ class SignupController extends BaseController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController specializationIdController = TextEditingController();
-  RxInt collegeId = 0.obs;
+  RxInt collegeId = 1.obs;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   RxInt selectedValue = 0.obs;
   RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
+
   @override
   void onInit() {
     collegeList.value = storage.getCollegeList();

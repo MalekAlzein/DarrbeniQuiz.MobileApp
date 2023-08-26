@@ -20,7 +20,7 @@ class SignupController extends BaseController {
 
   @override
   void onInit() {
-    collegeList.value = storage.getCollege();
+    collegeList.value = storage.getCollegeList();
     super.onInit();
   }
 

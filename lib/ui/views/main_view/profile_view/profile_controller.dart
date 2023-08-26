@@ -52,13 +52,6 @@ class ProfileController extends BaseController {
   }
 
   void uploadAndEditAvatar() {
-    if (avatar.value.path == null) {
-      CustomToast.showMessage(
-        messageType: MessageType.REJECTED,
-        message: 'Please select an avatar.',
-      );
-      return;
-    }
     runFutureFunctionWithFullLoading(
       function: ProfileRepository()
           .updatePhoto(
@@ -75,7 +68,7 @@ class ProfileController extends BaseController {
             },
             (r) {
               isModified.value = false;
-
+              getProfile();
               CustomToast.showMessage(
                 messageType: MessageType.SUCCESS,
                 message: 'Avatar uploaded successfully.',

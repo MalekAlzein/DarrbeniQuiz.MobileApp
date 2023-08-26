@@ -72,8 +72,7 @@ class ProfileRepository {
     }
   }
 
-  Future<Either<String, ProfileModel>> updatePhoto(
-      {required String photo2}) async {
+  Future<Either<String, bool>> updatePhoto({required String photo2}) async {
     try {
       return NetworkUtil.sendMultipartRequest(
         type: RequestType.POST,
@@ -91,9 +90,7 @@ class ProfileRepository {
             CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
-          return Right(ProfileModel.fromJson(
-            commonResponse.data!["photo"] ?? {},
-          ));
+          return Right(commonResponse.getStatus);
         } else {
           return Left(commonResponse.message ?? '');
         }

@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
+import 'package:flutter_templete/core/enums/url_type.dart';
+import 'package:flutter_templete/core/utils/url_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_controller.dart';
@@ -45,7 +47,12 @@ class _CustomSliderState extends State<CustomSlider> {
                 (index) {
                   return InkWell(
                     onTap: () {
-                      widget.homeController.silderList[index].link;
+                      UrlLauncherUtil().startLaunchUrl(
+                        url: Uri.parse(
+                            widget.homeController.silderList[index].link!),
+                        type: UrlType.WEB,
+                      );
+                      // widget.homeController.silderList[index].link;
                     },
                     child: CachedNetworkImage(
                       imageUrl:

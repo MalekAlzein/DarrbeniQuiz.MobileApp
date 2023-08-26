@@ -22,13 +22,15 @@ class CustomRadio extends StatelessWidget {
     return Row(
       // mainAxisSize: MainAxisSize.min,
       children: [
-        Radio(
-          value: value,
-          groupValue: selectedValue.value,
-          onChanged: (newValue) {
-            selectedValue.value = newValue!;
-          },
-          activeColor: AppColors.darkPurpleColor,
+        Obx(
+          () => Radio(
+            value: value,
+            groupValue: selectedValue.value,
+            onChanged: (newValue) {
+              selectedValue.value = newValue!;
+            },
+            activeColor: AppColors.darkPurpleColor,
+          ),
         ),
         Flexible(
           child: CustomText(

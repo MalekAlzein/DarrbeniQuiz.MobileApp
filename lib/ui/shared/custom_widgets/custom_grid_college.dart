@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomGridCollege extends StatelessWidget {
@@ -10,7 +11,7 @@ class CustomGridCollege extends StatelessWidget {
     required this.imageName,
     required this.text,
     this.onTap,
-    this.isSubbed = true,
+    this.isSubbed = false,
   });
 
   final String imageName;
@@ -25,18 +26,38 @@ class CustomGridCollege extends StatelessWidget {
           ? () {
               if (onTap != null) onTap!();
             }
-          : null,
-      child: Column(
-        children: [
-          CustomImages(
-            imageName: imageName,
-            imageSize: screenWidth(6),
-          ),
-          CustomText(
-            textType: TextStyleType.SMALL,
-            text: text,
-          ),
-        ],
+          : () {
+              showSudscribeDialog();
+            },
+      child: Container(
+        padding: EdgeInsetsDirectional.symmetric(
+          vertical: screenWidth(40),
+        ),
+        decoration: BoxDecoration(
+          border: isSubbed
+              ? Border(
+                  bottom: BorderSide(
+                    width: 5,
+                    color: AppColors.darkPurpleColor,
+                  ),
+                )
+              : null,
+        ),
+        child: Column(
+          children: [
+            CustomImages(
+              networkImage: true,
+              imageName: imageName,
+              imageSize: screenWidth(6),
+            ),
+            screenHeight(80).ph,
+            CustomText(
+              textType: TextStyleType.SMALL,
+              text: text,
+              textColor: AppColors.darkGreyColor,
+            ),
+          ],
+        ),
       ),
     );
   }

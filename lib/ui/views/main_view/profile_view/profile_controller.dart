@@ -36,7 +36,7 @@ class ProfileController extends BaseController {
 
   @override
   void onInit() {
-    getProfile();
+    myProfile.value = storage.getProfile()!;
     super.onInit();
   }
 

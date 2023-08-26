@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_templete/core/data/models/apis/college_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/data/network/endpoints/auth_endpoints.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 
 import '../../enums/request_type.dart';
 import '../../utils/network_utils.dart';
@@ -30,6 +32,9 @@ class AuthRepository {
             CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
+          CollegeModel collegeLogin =
+              CollegeModel.fromJson(commonResponse.data!['college']);
+          storage.setCollegeLogin(collegeLogin);
           return Right(TokenInfoModel.fromJson(commonResponse.data ?? {}));
         } else {
           return Left(commonResponse.message ?? '');

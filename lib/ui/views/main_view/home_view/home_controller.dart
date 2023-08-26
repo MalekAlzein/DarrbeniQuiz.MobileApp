@@ -18,10 +18,16 @@ class HomeController extends BaseController {
 
   @override
   void onInit() {
-    collegeList.value = storage.getCollege();
+    collegeList.value = storage.getCollegeList();
     getAllSliders();
     getAllCategories();
     super.onInit();
+  }
+
+  bool subbedCollege({
+    required int index,
+  }) {
+    return storage.getCollegeLogin()!.uuid == collegeList[index].uuid!;
   }
 
   void getAllSliders() {

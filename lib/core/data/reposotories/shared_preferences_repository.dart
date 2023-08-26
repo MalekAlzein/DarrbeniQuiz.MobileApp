@@ -21,8 +21,9 @@ class SharedPreferencesRepository {
   String PREF_EMAIL_RESET_PASSWORD = 'email_reset_password';
   String PREF_SUB_STATUS = 'sub_status';
   //  String PREF_ISLOGGED = 'is_logged';
-  String PREF_COLLEGE = 'college';
+  String PREF_COLLEGE_LIST = 'college_list';
   String PREF_PROFILE = 'profile';
+  String PREF_COLLEGE_LOGIN = 'college_login';
 
   void setFirstLaunch(bool value) {
     setPreference(
@@ -150,17 +151,17 @@ class SharedPreferencesRepository {
   }
   //?--
 
-  void setCollege(List<CollegeModel> list) {
+  void setCollegeList(List<CollegeModel> list) {
     setPreference(
       dataType: DataType.STRING,
-      key: PREF_COLLEGE,
+      key: PREF_COLLEGE_LIST,
       value: CollegeModel.encode(list),
     );
   }
 
-  List<CollegeModel> getCollege() {
-    if (globalSharedPreferences.containsKey(PREF_COLLEGE)) {
-      return CollegeModel.decode(getPreference(key: PREF_COLLEGE));
+  List<CollegeModel> getCollegeList() {
+    if (globalSharedPreferences.containsKey(PREF_COLLEGE_LIST)) {
+      return CollegeModel.decode(getPreference(key: PREF_COLLEGE_LIST));
     } else {
       return [];
     }
@@ -178,6 +179,23 @@ class SharedPreferencesRepository {
     if (globalSharedPreferences.containsKey(PREF_PROFILE)) {
       return ProfileModel.fromJson(
           jsonDecode(getPreference(key: PREF_PROFILE)));
+    } else {
+      return null;
+    }
+  }
+
+  void setCollegeLogin(CollegeModel value) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_COLLEGE_LOGIN,
+      value: jsonEncode(value.toJson()),
+    );
+  }
+
+  CollegeModel? getCollegeLogin() {
+    if (globalSharedPreferences.containsKey(PREF_COLLEGE_LOGIN)) {
+      return CollegeModel.fromJson(
+          jsonDecode(getPreference(key: PREF_COLLEGE_LOGIN)));
     } else {
       return null;
     }

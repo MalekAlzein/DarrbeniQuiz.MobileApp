@@ -54,7 +54,9 @@ class CustomGridCollege extends StatelessWidget {
             CustomText(
               textType: TextStyleType.SMALL,
               text: text,
-              textColor: AppColors.darkGreyColor,
+              textColor: isSubbed
+                  ? AppColors.darkPurpleColor
+                  : AppColors.darkGreyColor,
             ),
           ],
         ),

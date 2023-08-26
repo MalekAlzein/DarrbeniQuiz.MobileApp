@@ -109,20 +109,17 @@ class _HomeViewState extends State<HomeView> {
                       child: CustomGridView(
                           children: List.generate(
                         controller.filteredCollegeList.length,
-                        (index) {
-                          return Flexible(
-                            child: CustomGridCollege(
-                              isSubbed: controller.subbedCollege(index: index),
-                              // imageName: "img_login",
-                              imageName:
-                                  controller.filteredCollegeList[index].logo ??
-                                      "",
-                              text:
-                                  controller.filteredCollegeList[index].name ??
-                                      "",
-                            ),
-                          );
-                        },
+                        (index) => Flexible(
+                          child: CustomGridCollege(
+                            isSubbed: controller.subbedCollege(index: index),
+                            // imageName: "img_login",
+                            imageName:
+                                controller.filteredCollegeList[index].logo ??
+                                    "",
+                            text: controller.filteredCollegeList[index].name ??
+                                "",
+                          ),
+                        ),
                       ))
                       // ListTile(
                       //   title: Text(

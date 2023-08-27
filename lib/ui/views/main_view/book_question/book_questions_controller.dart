@@ -83,7 +83,7 @@ class QuestionsController extends BaseController {
   List<int> userAnswers = [];
   int currentAnswer = 0;
   String? imageAnswer;
-  Color? answerColor;
+  Color? colorAnswer;
 
   QuestionModel getCurrentQuestion() {
     return questions[currentQuestionIndex.value];
@@ -103,10 +103,10 @@ class QuestionsController extends BaseController {
     questions.asMap().forEach((index, question) {
       if (userAnswers[index] == question.correctAnswerId) {
         score++;
-        answerColor = AppColors.mainBlueColor;
+        colorAnswer = AppColors.mainBlueColor;
         imageAnswer = "assets/svgs/ic_answer_correct.svg";
       } else {
-        answerColor = AppColors.mainRedColor;
+        colorAnswer = AppColors.mainRedColor;
         imageAnswer = "assets/svgs/ic_answer_wrong.svg";
       }
     });
@@ -142,6 +142,6 @@ class QuestionsController extends BaseController {
   }
 
   Color? getAnswerColor() {
-    return answerColor;
+    return colorAnswer;
   }
 }

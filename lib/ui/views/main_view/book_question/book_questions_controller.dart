@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/data/models/apis/question_model.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:get/get.dart';
 
 class QuestionsController extends BaseController {
@@ -11,108 +13,135 @@ class QuestionsController extends BaseController {
     var value = questionsCount.value / total.value;
     progress.value = value.clamp(0, 1);
   }
+//?--questions---
 
-  RxList<QuestionModel> questionsList = [
+  final List<QuestionModel> questions = [
     QuestionModel(
-      id: 1,
-      question: "Best Channel for Flutter ",
-      answer: 2,
+      questionText:
+          'ما هو الفرق بين Stateful Widget و Stateless Widget في Flutter؟',
       options: [
-        'Sec it',
-        'Sec it developer',
-        'sec it developers',
-        'mesh sec it '
+        'لا يوجد فرق',
+        'Stateful Widget له حالة بينما Stateless Widget ليس له',
+        'Stateless Widget له حالة بينما Stateful Widget ليس له',
       ],
+      correctAnswerId: 1,
     ),
     QuestionModel(
-      id: 2,
-      question: "Best State Mangment Ststem is ",
-      answer: 1,
-      options: ['BloC', 'GetX', 'Provider', 'riverPod'],
-    ),
-    QuestionModel(
-      id: 3,
-      question: "Best Flutter dev",
-      answer: 2,
-      options: ['sherif', 'sherif ahmed', 'ahmed sherif', 'doc sherif'],
-    ),
-    QuestionModel(
-      id: 4,
-      question: "Sherif is",
-      answer: 1,
-      options: ['eng', 'Doc', 'eng/Doc', 'Doc/Eng'],
-    ),
-    QuestionModel(
-      id: 5,
-      question: "Best Rapper in Egypt",
-      answer: 3,
-      options: ['Eljoker', 'Abyu', 'R3', 'All of the above'],
-    ),
-    QuestionModel(
-      id: 6,
-      question: "Real Name of ahmed sherif",
-      answer: 2,
-      options: ['ahmed sherif', 'sherif', 'Haytham', 'NONE OF ABOVE'],
-    ),
-    QuestionModel(
-      id: 7,
-      question: "Sherif love",
-      answer: 3,
-      options: ['Pharma', 'Micro', 'Medicnal', 'NONE OF ABOVE'],
-    ),
-    QuestionModel(
-      id: 8,
-      question: "hello",
-      answer: 3,
-      options: ['hello', 'hi', 'hola', 'Suiiiiiiiiiiii'],
-    ),
-    QuestionModel(
-      id: 9,
-      question: "Best Channel for Flutter ",
-      answer: 2,
+      questionText: 'ما هي الطريقة المستخدمة لإدارة الحالة في Flutter?',
       options: [
-        'Sec it',
-        'Sec it developer',
-        'sec it developers',
-        'mesh sec it '
+        'setState',
+        'ChangeNotifier',
+        'update',
+        'refresh',
       ],
+      correctAnswerId: 0,
     ),
     QuestionModel(
-      id: 10,
-      question: "Best State Mangment Ststem is ",
-      answer: 1,
-      options: ['BloC', 'GetX', 'Provider', 'riverPod'],
+      questionText: 'ما هو الفرق بين var و final و const في Dart?',
+      options: [
+        'لا فرق بينهم',
+        'final لا يمكن تغييره بينما const ثابت',
+        'const لا يمكن تغييره بينما final ثابت',
+        'var و final متغيران بينما const ثابت',
+      ],
+      correctAnswerId: 1,
     ),
-  ].obs;
+    QuestionModel(
+      questionText:
+          'ما هو الفرق بين Stateful Widget و Stateless Widget في Flutter؟',
+      options: [
+        'لا يوجد فرق',
+        'Stateful Widget له حالة بينما Stateless Widget ليس له',
+        'Stateless Widget له حالة بينما Stateful Widget ليس له',
+      ],
+      correctAnswerId: 1,
+    ),
+    QuestionModel(
+      questionText: 'ما هي الطريقة المستخدمة لإدارة الحالة في Flutter?',
+      options: [
+        'setState',
+        'ChangeNotifier',
+        'update',
+        'refresh',
+      ],
+      correctAnswerId: 0,
+    ),
+    QuestionModel(
+      questionText: 'ما هو الفرق بين var و final و const في Dart?',
+      options: [
+        'لا فرق بينهم',
+        'final لا يمكن تغييره بينما const ثابت',
+        'const لا يمكن تغييره بينما final ثابت',
+        'var و final متغيران بينما const ثابت',
+      ],
+      correctAnswerId: 1,
+    ),
+  ];
+
   RxInt currentQuestionIndex = 0.obs;
-  RxInt score = 0.obs;
-  RxBool onPressed = false.obs;
-  RxBool isAnswerCorrect = false.obs;
-  RxBool isAnswerWrong = false.obs;
-
-  void nextQuestion() {
-    if (currentQuestionIndex.value < questionsList.length - 1) {
-      currentQuestionIndex.value++;
-    }
-  }
+  RxInt totalScore = 0.obs;
+  List<int> userAnswers = [];
+  int currentAnswer = 0;
+  String? imageAnswer;
+  Color? answerColor;
 
   QuestionModel getCurrentQuestion() {
-    if (currentQuestionIndex.value < questionsList.length) {
-      return questionsList[currentQuestionIndex.value];
-    }
-    return QuestionModel(id: 0, question: '', answer: 0, options: []);
+    return questions[currentQuestionIndex.value];
   }
 
-  void checkAnswer(int selectedOption) {
-    if (selectedOption == getCurrentQuestion().answer) {
-      score.value++;
-      getCurrentQuestion().isAnswerCorrect = true;
-    } else {
-      getCurrentQuestion().isAnswerCorrect = false;
+  void selectAnswer(int answerIndex) {
+    userAnswers.add(answerIndex);
+  }
+
+  void setAnswer(int answer) {
+    currentAnswer = answer;
+  }
+
+  void checkAnswers() {
+    int score = 0;
+
+    questions.asMap().forEach((index, question) {
+      if (userAnswers[index] == question.correctAnswerId) {
+        score++;
+        answerColor = AppColors.mainBlueColor;
+        imageAnswer = "assets/svgs/ic_answer_correct.svg";
+      } else {
+        answerColor = AppColors.mainRedColor;
+        imageAnswer = "assets/svgs/ic_answer_wrong.svg";
+      }
+    });
+
+    totalScore.value = score;
+
+    update();
+  }
+
+  void nextQuestion() {
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex.value >= questions.length) {
+      checkAnswers();
+      currentQuestionIndex.value = 0;
     }
   }
 
-  int getScore() {
-    return score.value;
+  void previousQuestion() {
+    if (currentQuestionIndex.value > 0) {
+      currentQuestionIndex--;
+    }
+  }
+
+  void restartTest() {
+    currentQuestionIndex.value = 0;
+    userAnswers.clear();
+    totalScore.value = 0;
+  }
+
+  String? getImageAnswer() {
+    return imageAnswer;
+  }
+
+  Color? getAnswerColor() {
+    return answerColor;
   }
 }

@@ -1,15 +1,10 @@
 class QuestionModel {
-  int id;
-  String question;
-  int answer;
-  List<String> options;
-  bool isAnswerCorrect;
+  final String questionText;
+  final List<String> options;
+  final int correctAnswerId;
 
-  QuestionModel({
-    required this.id,
-    required this.question,
-    required this.answer,
-    required this.options,
-    this.isAnswerCorrect = false,
-  });
+  QuestionModel(
+      {required this.questionText,
+      required this.options,
+      required this.correctAnswerId});
 }

@@ -4,6 +4,8 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_small_image.dar
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/main_view/book_question/book_questions_controller.dart';
+import 'package:get/get.dart';
 
 class CustomQuestion extends StatelessWidget {
   const CustomQuestion({
@@ -35,6 +37,7 @@ class CustomQuestion extends StatelessWidget {
   final bool? isSelectedColor;
   @override
   Widget build(BuildContext context) {
+    QuestionsController controller = Get.put(QuestionsController());
     return Column(
       children: [
         Container(
@@ -52,7 +55,9 @@ class CustomQuestion extends StatelessWidget {
               Radio(
                 value: 0,
                 groupValue: selectedValue,
-                onChanged: (value) {},
+                onChanged: (value) {
+                  controller.setAnswer(value!);
+                },
                 activeColor: AppColors.mainRedColor,
               ),
               Flexible(

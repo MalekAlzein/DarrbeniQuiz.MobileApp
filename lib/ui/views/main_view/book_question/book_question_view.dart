@@ -44,55 +44,51 @@ class _BookQuestionViewState extends State<BookQuestionView> {
           screenHeight(80).ph,
           CustomProgress(),
           screenHeight(80).ph,
-          Obx(() {
-            return Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: controller.questionsList.length,
-                itemBuilder: (BuildContext context, int questionIndex) {
-                  return Column(
-                    children: [
-                      Padding(
+          Expanded(
+            child: PageView.builder(
+              itemCount: controller.questions.length,
+              itemBuilder: (BuildContext context, int questionIndex) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsetsDirectional.symmetric(
+                        horizontal: screenWidth(20),
+                      ),
+                      child: CustomText(
+                        textAlign: TextAlign.start,
+                        textType: TextStyleType.SMALL,
+                        text: controller.questions[questionIndex].questionText,
+                      ),
+                    ),
+                    screenHeight(60).ph,
+                    SizedBox(
+                      height: screenHeight(2),
+                      width: screenWidth(1),
+                      child: ListView(
                         padding: EdgeInsetsDirectional.symmetric(
                           horizontal: screenWidth(20),
+                          vertical: screenWidth(20),
                         ),
-                        child: CustomText(
-                          textAlign: TextAlign.start,
-                          textType: TextStyleType.SMALL,
-                          text:
-                              controller.questionsList[questionIndex].question,
-                        ),
-                      ),
-                      screenHeight(60).ph,
-                      SizedBox(
-                        height: screenHeight(2),
-                        width: screenWidth(1),
-                        child: ListView(
-                          padding: EdgeInsetsDirectional.symmetric(
-                            horizontal: screenWidth(20),
-                            vertical: screenWidth(20),
-                          ),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          children: List.generate(
-                            controller
-                                .questionsList[questionIndex].options.length,
-                            (index) => CustomQuestion(
-                              textAlign: TextAlign.start,
-                              textType: TextStyleType.SMALL,
-                              text: controller
-                                  .questionsList[questionIndex].options[index],
-                              imageName: 'ic_answer_wrong',
-                            ),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: List.generate(
+                          controller.questions[questionIndex].options.length,
+                          (index) => CustomQuestion(
+                            textAlign: TextAlign.start,
+                            textType: TextStyleType.SMALL,
+                            text: controller
+                                .questions[questionIndex].options[index],
+                            imageName: controller.getImageAnswer(),
+                            // 'ic_answer_wrong',
                           ),
                         ),
                       ),
-                    ],
-                  );
-                },
-              ),
-            );
-          }),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
           Padding(
             padding: EdgeInsetsDirectional.symmetric(
               horizontal: screenWidth(20),
@@ -120,13 +116,17 @@ class _BookQuestionViewState extends State<BookQuestionView> {
                 child: CustomButton(
                     text: 'السابق',
                     buttonTypeEnum: ButtonTypeEnum.SMALL,
-                    onPressed: () {}),
+                    onPressed: () {
+                      controller.previousQuestion;
+                    }),
               ),
               Expanded(
                 child: CustomButton(
                     text: 'التالي',
                     buttonTypeEnum: ButtonTypeEnum.SMALL,
-                    onPressed: () {}),
+                    onPressed: () {
+                      controller.nextQuestion;
+                    }),
               ),
             ],
           ),

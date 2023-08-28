@@ -60,12 +60,6 @@ class _PreviousQuizViewState extends State<PreviousQuizView> {
                 textType: TextStyleType.SMALL,
                 imageName: 'ic_arrow',
               ),
-              CustomButton(
-                  text: 'النتيجة',
-                  buttonTypeEnum: ButtonTypeEnum.SMALL,
-                  onPressed: () {
-                    Get.to(ResultView());
-                  }),
             ],
           ),
         ],

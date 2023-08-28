@@ -15,7 +15,9 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/main_view/book_question/book_question_view.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
+import 'package:flutter_templete/ui/views/main_view/previous_quiz/previous_quiz_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_view.dart';
 import 'package:flutter_templete/ui/views/subject_view/subject_view.dart';
 import 'package:get/get.dart';
@@ -140,7 +142,7 @@ void showImagePickerBottomSheet({
   );
 }
 
-void showSpecializationBottomSheet() {
+void showSpecializationBottomSheet({required bool specialization}) {
   Get.bottomSheet(
     CustomPopupWithBlurWidget(
       customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
@@ -165,7 +167,9 @@ void showSpecializationBottomSheet() {
                   text: tr('Key_specialization_master'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
-                    Get.to(() => const SubjectView());
+                    Get.to(() => SubjectView(
+                          specialization: !specialization,
+                        ));
                   }),
               screenHeight(35).ph,
               CustomButton(
@@ -173,7 +177,54 @@ void showSpecializationBottomSheet() {
                   text: tr('Key_specialization_graduation'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
-                    Get.to(() => const SubjectView());
+                    Get.to(() => SubjectView(
+                          specialization: specialization,
+                        ));
+                  })
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+void showQuestionTypeBottomSheet() {
+  Get.bottomSheet(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
+      child: Container(
+        height: screenHeight(4),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadiusDirectional.only(
+            topStart: Radius.circular(20),
+            topEnd: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: screenWidth(25),
+            vertical: screenWidth(15),
+          ),
+          child: Column(
+            children: [
+              CustomButton(
+                  backgroundColor: AppColors.darkPurpleColor,
+                  text: tr('Key_previous_quiz'),
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    Get.to(() => const PreviousQuizView());
+                  }),
+              screenHeight(35).ph,
+              CustomButton(
+                  backgroundColor: AppColors.lightCyanColor,
+                  text: tr('Key_book_questions'),
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    Get.to(() {
+                      BookQuestionView();
+                    });
                   })
             ],
           ),

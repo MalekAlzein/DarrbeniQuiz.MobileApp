@@ -13,13 +13,15 @@ import 'package:flutter_templete/ui/shared/custom_widgets/home_view_category.dar
 import 'package:flutter_templete/ui/shared/custom_widgets/loading_widget.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/main_view/book_question/book_question_view.dart';
 import 'package:flutter_templete/ui/views/main_view/home_view/home_controller.dart';
+import 'package:flutter_templete/ui/views/main_view/previous_quiz/previous_quiz_view.dart';
 import 'package:flutter_templete/ui/views/subject_view/subject_controller.dart';
 import 'package:get/get.dart';
 
 class SubjectView extends StatefulWidget {
-  const SubjectView({super.key});
-
+  const SubjectView({super.key, required this.specialization});
+  final bool specialization;
   @override
   State<SubjectView> createState() => _SubjectViewState();
 }
@@ -39,7 +41,7 @@ class _SubjectViewState extends State<SubjectView> {
     return Scaffold(
       body: Column(
         children: [
-          CustomShapemakerWidget(),
+          CustomShapemakerWidget(specialization: widget.specialization),
           ListView(
             shrinkWrap: true,
             children: [
@@ -75,53 +77,65 @@ class _SubjectViewState extends State<SubjectView> {
                       text: tr('key_category'),
                       color: AppColors.darkGreyColor,
                     ),
-                    ChipTheme(
-                      data: ChipTheme.of(context).copyWith(
-                        backgroundColor: AppColors
-                            .whiteColor, // تعيين لون الخلفية العام للشرائح
-                        labelStyle: TextStyle(
-                            color: AppColors.darkPurpleColor,
-                            fontSize: screenWidth(20)),
-                        // تعيين نمط النص العام للشرائح
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          side: BorderSide(
-                            color:
-                                AppColors.darkPurpleColor, // تعيين لون الحدود
-                            width: 1.5, // تعيين عرض الحدود
-                          ), // تعيين شكل الحواف العام للشرائح
+                    InkWell(
+                      onTap: () {
+                        showQuestionTypeBottomSheet();
+                      },
+                      child: ChipTheme(
+                        data: ChipTheme.of(context).copyWith(
+                          backgroundColor: AppColors
+                              .whiteColor, // تعيين لون الخلفية العام للشرائح
+                          labelStyle: TextStyle(
+                              color: AppColors.darkPurpleColor,
+                              fontSize: screenWidth(20)),
+                          // تعيين نمط النص العام للشرائح
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            side: BorderSide(
+                              color:
+                                  AppColors.darkPurpleColor, // تعيين لون الحدود
+                              width: 1.5, // تعيين عرض الحدود
+                            ), // تعيين شكل الحواف العام للشرائح
+                          ),
+                        ),
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          spacing: screenWidth(60),
+                          runSpacing: screenWidth(50),
+                          children: <Widget>[
+                            Chip(label: Text('المترجمات')),
+                            Chip(label: Text('داتا بيز')),
+                            Chip(label: Text('اوتومات')),
+                            Chip(label: Text('الشبكات')),
+                            Chip(label: Text(' الذكاء الاصطناعي')),
+                            Chip(label: Text('قواعد البيانات')),
+                            Chip(label: Text('هندسة برمجيات')),
+                            Chip(label: Text('امن')),
+                            Chip(label: Text('خوارزميات')),
+                          ],
                         ),
                       ),
-                      child: Wrap(
-                        alignment: WrapAlignment.center,
-                        spacing: screenWidth(60),
-                        runSpacing: screenWidth(50),
-                        children: <Widget>[
-                          Chip(label: Text('المترجمات')),
-                          Chip(label: Text('داتا بيز')),
-                          Chip(label: Text('اوتومات')),
-                          Chip(label: Text('الشبكات')),
-                          Chip(label: Text(' الذكاء الاصطناعي')),
-                          Chip(label: Text('قواعد البيانات')),
-                          Chip(label: Text('هندسة برمجيات')),
-                          Chip(label: Text('امن')),
-                          Chip(label: Text('خوارزميات')),
-                        ],
-                      ),
                     ),
+                    screenHeight(30).ph,
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        screenHeight(30).ph,
                         CustomButton(
                             backgroundColor: AppColors.lightCyanColor,
-                            text: tr('Key_previous_exam_questions'),
+                            text: tr('Key_previous_quiz'),
                             buttonTypeEnum: ButtonTypeEnum.SMALL,
-                            onPressed: () {}),
+                            fontSize: screenWidth(30),
+                            onPressed: () {
+                              Get.to(() => const PreviousQuizView());
+                            }),
                         CustomButton(
                             backgroundColor: AppColors.darkPurpleColor,
                             text: tr('Key_questions_bank'),
                             buttonTypeEnum: ButtonTypeEnum.SMALL,
-                            onPressed: () {}),
+                            fontSize: screenWidth(30),
+                            onPressed: () {
+                              Get.to(() => const BookQuestionView());
+                            }),
                       ],
                     )
                   ],

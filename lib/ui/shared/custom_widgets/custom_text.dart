@@ -86,7 +86,7 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(30),
+          fontSize: screenWidth(32),
           //fontWeight: fontWeight ?? FontWeight.w400,
         );
 

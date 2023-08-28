@@ -53,7 +53,8 @@ class ARLanguage {
         //?--- Previous Quiz view ---
         "Key_previous_quiz": "الدورات",
 
-        //!--- Result View --
+        //!--- Result View & answers--"
+        "Key_answers": "الإجابات",
         "Key_result": "النتيجة",
         "Key_congratulations": "مبروك لقد اتممت الإختبار بنجاح",
         "Key_your_score": "علامتك هي:",

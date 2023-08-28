@@ -31,16 +31,16 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           alignment: Alignment.bottomCenter,
           decoration: BoxDecoration(
             color: AppColors.whiteColor,
-            border: Border.all(
-              color: AppColors.darkPurpleColor,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.darkPurpleColor,
-                blurRadius: 6,
-                offset: Offset(0, 3),
-              ),
-            ],
+            // border: Border.all(
+            //   color: AppColors.darkPurpleColor,
+            // ),
+            // boxShadow: [
+            //   BoxShadow(
+            //     color: AppColors.darkPurpleColor,
+            //     blurRadius: 6,
+            //     offset: Offset(0, 3),
+            //   ),
+            // ],
           ),
         ),
         PositionedDirectional(

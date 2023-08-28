@@ -80,7 +80,7 @@ class AnswersView extends StatelessWidget {
               ),
               screenHeight(60).ph,
               SizedBox(
-                height: screenHeight(2.1),
+                height: screenHeight(2.3),
                 width: screenWidth(1),
                 child: ListView(
                     padding: EdgeInsetsDirectional.symmetric(
@@ -90,6 +90,13 @@ class AnswersView extends StatelessWidget {
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
+                      CustomQuestion(
+                        textAlign: TextAlign.start,
+                        textType: TextStyleType.SMALL,
+                        text:
+                            'بروتوكول الانترنت لا يقدم اليات تحكم بالتدفق او التحكم بالاأخطاء',
+                        imageName: 'ic_answer_wrong',
+                      ),
                       CustomQuestion(
                         textAlign: TextAlign.start,
                         textType: TextStyleType.SMALL,

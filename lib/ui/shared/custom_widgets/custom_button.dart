@@ -46,11 +46,58 @@ class CustomButton extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
 
+  Map<String, dynamic> chooseButtonType() {
+    switch (buttonTypeEnum) {
+      case ButtonTypeEnum.NORMAL:
+        return {
+          "width": screenWidth(1.25),
+          "height": screenHeight(13),
+          "backgroundColor": AppColors.darkPurpleColor,
+          "textColor": AppColors.whiteColor,
+          "borderColor": borderColor,
+          "fontSize": screenWidth(21),
+          "fontWeight": FontWeight.bold,
+        };
+
+      case ButtonTypeEnum.SMALL:
+        return {
+          "width": screenWidth(1.2),
+          "height": screenWidth(12),
+          "backgroundColor": AppColors.darkPurpleColor,
+          "textColor": AppColors.whiteColor,
+          "borderColor": borderColor,
+          "fontSize": screenWidth(21),
+          "fontWeight": FontWeight.bold,
+        };
+
+      case ButtonTypeEnum.BIG:
+        return {
+          "width": screenWidth(1.25),
+          "height": screenWidth(13),
+          "backgroundColor": AppColors.darkPurpleColor,
+          "textColor": AppColors.whiteColor,
+          "borderColor": borderColor,
+          "fontSize": screenWidth(21),
+          "fontWeight": FontWeight.bold,
+        };
+      case ButtonTypeEnum.CUSTOM:
+        return {
+          "width": width,
+          "height": height,
+          "backgroundColor": backgroundColor,
+          "textColor": textColor,
+          "borderColor": borderColor,
+          "fontSize": fontSize,
+          "fontWeight": fontWeight,
+        };
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width ?? screenWidth(1.1),
-      height: height ?? screenHeight(16),
+      width: width ?? chooseButtonType()["width"] ?? screenWidth(1.1),
+      height: height ?? chooseButtonType()["height"] ?? screenHeight(16),
       child: ElevatedButton(
         onPressed: () {
           if (onPressed != null) onPressed!();
@@ -70,22 +117,27 @@ class CustomButton extends StatelessWidget {
             CustomText(
               textType: TextStyleType.BODY,
               text: text ?? "",
-              textColor: textColor,
+              textColor: textColor ?? chooseButtonType()["textColor"],
               //fontWeight: fontWeight ?? FontWeight.bold,
-              fontSize: fontSize ?? screenWidth(25),
+              fontSize:
+                  fontSize ?? chooseButtonType()["fontSize"] ?? screenWidth(25),
             ),
           ],
         ),
         style: ElevatedButton.styleFrom(
-          side: borderColor != null
-              ? BorderSide(
-                  width: 1.0,
-                  color: borderColor!,
-                )
-              : null,
-          backgroundColor: backgroundColor ?? AppColors.darkPurpleColor,
+          side:
+              (borderColor != null || chooseButtonType()["borderColor"] != null)
+                  ? BorderSide(
+                      width: 1.0,
+                      color: borderColor ?? chooseButtonType()["borderColor"],
+                    )
+                  : null,
+          backgroundColor: backgroundColor ??
+              chooseButtonType()["backgroundColor"] ??
+              AppColors.darkPurpleColor,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5))),
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+          ),
           // fixedSize: Size(
           //   width ?? screenWidth(1.1),
           //   height ?? screenHeight(12),

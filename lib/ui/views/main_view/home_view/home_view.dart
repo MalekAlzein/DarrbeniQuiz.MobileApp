@@ -39,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
       children: [
         Padding(
           padding: EdgeInsetsDirectional.symmetric(
-            vertical: screenHeight(9),
+            vertical: screenHeight(7.5),
             horizontal: screenWidth(15),
           ),
           child: Column(
@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
                 fillColor: AppColors.darkGreyColorTextField,
                 hintTextColor: AppColors.darkGreyColorOpacity,
                 prefixIcon: 'ic_search',
-                prefixIconColor: AppColors.darkGreyColor,
+                prefixIconColor: AppColors.darkGreyColorOpacity,
               ),
               screenHeight(40).ph,
               Obx(
@@ -105,7 +105,6 @@ class _HomeViewState extends State<HomeView> {
                 () {
                   return SizedBox(
                       width: screenWidth(1),
-                      height: screenHeight(2),
                       child: CustomGridView(
                           children: List.generate(
                         controller.filteredCollegeList.length,

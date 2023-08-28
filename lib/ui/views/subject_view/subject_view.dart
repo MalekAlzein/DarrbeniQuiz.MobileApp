@@ -114,9 +114,7 @@ class _SubjectViewState extends State<SubjectView> {
                   itemBuilder: (context, index) {
                     return MainCategory(
                       category: category[index],
-                      onTap: () {
-                        showUpsetDialog();
-                      },
+                      onTap: () {},
                     );
                   },
                 ),

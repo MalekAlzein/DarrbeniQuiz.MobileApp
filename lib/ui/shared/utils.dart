@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/data/models/file_type_model.dart';
@@ -73,7 +74,7 @@ void showAlertDialoug({
 
     // content:
   );
-  // SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
 }
 
 void showImagePickerBottomSheet({
@@ -166,26 +167,43 @@ void showSudscribeDialog({
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: screenWidth(10), vertical: screenWidth(25)),
+              horizontal: screenWidth(9), vertical: screenWidth(25)),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset(
-                'assets/svgs/img_pop_up.svg',
-                // width: screenWidth(1.25),
-                // height: screenHeight(5),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  screenWidth(20).pw,
+                  CustomImages(
+                    imageName: 'img_pop_up',
+                    imageSize: screenHeight(6.4),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.back(closeOverlays: true);
+                    },
+                    child: CustomImages(
+                      imageName: 'ic_close',
+                      imageSize: screenHeight(50),
+                    ),
+                  ),
+                ],
               ),
               screenHeight(80).ph,
               Material(
                 color: AppColors.whiteColor,
                 child: CustomText(
-                  textType: TextStyleType.BODY,
+                  textType: TextStyleType.SMALL,
                   text: tr("key_please_subscribe"),
                   textColor: AppColors.darkGreyColor,
                 ),
               ),
-              screenHeight(80).ph,
+              screenHeight(90).ph,
 
               CustomButton(
+                fontSize: screenWidth(60),
                 buttonTypeEnum: ButtonTypeEnum.SMALL,
                 height: screenWidth(9),
                 onPressed: () {
@@ -194,17 +212,19 @@ void showSudscribeDialog({
                 backgroundColor: AppColors.darkPurpleColor,
                 text: tr('key_login'),
               ),
-              screenHeight(80).ph,
+              screenHeight(90).ph,
               Material(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomText(
-                      textType: TextStyleType.SMALL,
+                      fontSize: screenWidth(40),
+                      textType: TextStyleType.CUSTOM,
                       text: tr('key_donot_have_account'),
                       textColor: AppColors.darkGreyColor,
                     ),
                     CustomTextButton(
+                      textSize: screenWidth(40),
                       title: tr('key_create_account_now'),
                       onTap: () {
                         Get.to(() => const SignupView());
@@ -236,79 +256,79 @@ void showSudscribeDialog({
   );
 }
 
-void showUpsetDialog({
-  // required bool isLoading,
-  // required Function? onTap,
-  Widget? widget,
-}) {
-  // RxBool loading = isLoading.obs;
-  Get.dialog(
-    CustomPopupWithBlurWidget(
-      customBlurChildType: CustomBlurChildType.DIALOUG,
-      child: Container(
-        width: screenWidth(1.2),
-        height: screenHeight(3),
-        decoration: BoxDecoration(
-          color: AppColors.whiteColor,
-          border: Border.all(color: AppColors.darkPurpleColor, width: 2),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.darkGreyColor,
-              blurRadius: 6,
-              offset: Offset(0, 3),
-            ),
-          ],
-          borderRadius: BorderRadiusDirectional.all(
-            Radius.circular(10),
-          ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: screenWidth(10), vertical: screenWidth(25)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Material(
-                child: CustomTextFormField(
-                  maxLines: 60,
-                  maxHeight: screenHeight(5),
-                  hintText: tr("key_send_feedback_text_filed"),
-                  fillColor: AppColors.fillGreyColor,
-                  hintTextColor: AppColors.lightGreyColor,
-                ),
-              ),
+// void showUpsetDialog({
+//   // required bool isLoading,
+//   // required Function? onTap,
+//   Widget? widget,
+// }) {
+//   // RxBool loading = isLoading.obs;
+//   Get.dialog(
+//     CustomPopupWithBlurWidget(
+//       customBlurChildType: CustomBlurChildType.DIALOUG,
+//       child: Container(
+//         width: screenWidth(1.2),
+//         height: screenHeight(3),
+//         decoration: BoxDecoration(
+//           color: AppColors.whiteColor,
+//           border: Border.all(color: AppColors.darkPurpleColor, width: 2),
+//           boxShadow: [
+//             BoxShadow(
+//               color: AppColors.darkGreyColor,
+//               blurRadius: 6,
+//               offset: Offset(0, 3),
+//             ),
+//           ],
+//           borderRadius: BorderRadiusDirectional.all(
+//             Radius.circular(10),
+//           ),
+//         ),
+//         child: Padding(
+//           padding: EdgeInsets.symmetric(
+//               horizontal: screenWidth(10), vertical: screenWidth(25)),
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Material(
+//                 child: CustomTextFormField(
+//                   maxLines: 60,
+//                   maxHeight: screenHeight(5),
+//                   hintText: tr("key_send_feedback_text_filed"),
+//                   fillColor: AppColors.fillGreyColor,
+//                   hintTextColor: AppColors.lightGreyColor,
+//                 ),
+//               ),
 
-              CustomButton(
-                buttonTypeEnum: ButtonTypeEnum.SMALL,
-                height: screenWidth(9),
-                onPressed: () {
-                  Get.to(() => const MainView());
-                },
-                backgroundColor: AppColors.darkPurpleColor,
-                text: tr('key_send'),
-              ),
+//               CustomButton(
+//                 buttonTypeEnum: ButtonTypeEnum.SMALL,
+//                 height: screenWidth(9),
+//                 onPressed: () {
+//                   Get.to(() => const MainView());
+//                 },
+//                 backgroundColor: AppColors.darkPurpleColor,
+//                 text: tr('key_send'),
+//               ),
 
-              // Obx(
-              //   () {
-              //     return loading.value
-              //         ? LoadingWidget(center: false)
-              //         : CtaButton(
-              //             buttonTypeEnum: ButtonTypeEnum.NORMAL,
-              //             title: tr("nfc_write"),
-              //             titleInCaps: false,
-              //             onTap: () {
-              //               if (onTap != null) onTap();
-              //             },
-              //           );
-              //   },
-              // )
-            ],
-          ),
-        ),
-      ),
-    ),
-  );
-}
+// Obx(
+//   () {
+//     return loading.value
+//         ? LoadingWidget(center: false)
+//         : CtaButton(
+//             buttonTypeEnum: ButtonTypeEnum.NORMAL,
+//             title: tr("nfc_write"),
+//             titleInCaps: false,
+//             onTap: () {
+//               if (onTap != null) onTap();
+//             },
+//           );
+//   },
+// )
+//             ],
+//           ),
+//         ),
+//       ),
+//     ),
+//   );
+// }
 
 //!--
 void sendFeedBack({
@@ -352,9 +372,14 @@ void sendFeedBack({
                       imageName: 'img_feedback',
                       imageSize: screenHeight(6.4),
                     ),
-                    CustomImages(
-                      imageName: 'ic_close',
-                      imageSize: screenHeight(40),
+                    GestureDetector(
+                      onTap: () {
+                        Get.back(closeOverlays: true);
+                      },
+                      child: CustomImages(
+                        imageName: 'ic_close',
+                        imageSize: screenHeight(40),
+                      ),
                     ),
                   ],
                 ),

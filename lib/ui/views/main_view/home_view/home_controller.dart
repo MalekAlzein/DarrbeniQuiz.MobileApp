@@ -76,9 +76,13 @@ class HomeController extends BaseController {
 
   Future<void> getCollegesByCategory(String categoryUUID) async {
     //filteredCollegeList.clear();
-    filteredCollegeList.value = collegeList.where((college) {
-      return college.category?.uuid == categoryUUID;
-    }).toList();
+    if (categoryUUID == 'all') {
+      filteredCollegeList.value = collegeList.value;
+    } else {
+      filteredCollegeList.value = collegeList.where((college) {
+        return college.category?.uuid == categoryUUID;
+      }).toList();
+    }
   }
 }
 

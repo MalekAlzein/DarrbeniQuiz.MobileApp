@@ -12,7 +12,9 @@ import 'package:get/get.dart';
 class SubjectController extends BaseController {
   RxList<SilderModel> silderList = <SilderModel>[].obs;
   RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
+  RxList<CollegeModel> filteredCollegeList = <CollegeModel>[].obs;
   RxList<CategoryModel> categoryList = <CategoryModel>[].obs;
+  RxList<String> selectedCategories = <String>[].obs;
   RxString selectedCategory = "الكل".obs;
 
   @override
@@ -21,6 +23,13 @@ class SubjectController extends BaseController {
     getAllSliders();
     getAllCategories();
     super.onInit();
+  }
+
+  bool subbedCollege({
+    required int index,
+  }) {
+    return storage.getCollegeLogin()!.uuid == filteredCollegeList[index].uuid!;
+    // return storage.getCollegeLogin()!.uuid == collegeList[index].uuid!;
   }
 
   void getAllSliders() {
@@ -63,5 +72,16 @@ class SubjectController extends BaseController {
         },
       ),
     );
+  }
+
+  Future<void> getCollegesByCategory(String categoryUUID) async {
+    //filteredCollegeList.clear();
+    if (categoryUUID == 'all') {
+      filteredCollegeList.value = collegeList.value;
+    } else {
+      filteredCollegeList.value = collegeList.where((college) {
+        return college.category?.uuid == categoryUUID;
+      }).toList();
+    }
   }
 }

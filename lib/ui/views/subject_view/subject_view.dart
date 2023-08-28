@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_college.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_grid_view.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_main_category.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
@@ -21,8 +23,8 @@ class SubjectView extends StatefulWidget {
 }
 
 class _SubjectViewState extends State<SubjectView> {
-  HomeController controllerHome = Get.put(HomeController());
-  SubjectController controller = Get.put(SubjectController());
+  HomeController homeController = Get.put(HomeController());
+  SubjectController subjectController = Get.put(SubjectController());
   List<String> category = [
     'الكل',
     'الكليات الهندسية',
@@ -36,27 +38,30 @@ class _SubjectViewState extends State<SubjectView> {
       children: [
         Padding(
           padding: EdgeInsetsDirectional.symmetric(
-              vertical: screenHeight(80), horizontal: screenWidth(15)),
+            vertical: screenHeight(7.5),
+            horizontal: screenWidth(15),
+          ),
           child: Column(
             children: [
               CustomTextFormField(
-                  hintText: tr("key_search"),
-                  hintTextSize: screenWidth(30),
-                  fillColor: AppColors.darkGreyColorTextField,
-                  hintTextColor: AppColors.darkGreyColorOpacity,
-                  prefixIcon: 'ic_search',
-                  prefixIconColor: AppColors.darkGreyColor),
+                hintText: tr("key_search"),
+                hintTextSize: screenWidth(30),
+                fillColor: AppColors.darkGreyColorTextField,
+                hintTextColor: AppColors.darkGreyColorOpacity,
+                prefixIcon: 'ic_search',
+                prefixIconColor: AppColors.darkGreyColorOpacity,
+              ),
               screenHeight(40).ph,
               Obx(
                 () {
-                  print(controller.silderList);
-                  return controller.silderList.isEmpty
+                  print(subjectController.silderList);
+                  return subjectController.silderList.isEmpty
                       ? LoadingWidget(
                           center: true,
                         )
                       : CustomSlider(
-                          homeController: controllerHome,
-                          silderList: controller.silderList,
+                          homeController: homeController,
+                          silderList: homeController.silderList,
                         );
                 },
               ),
@@ -64,74 +69,6 @@ class _SubjectViewState extends State<SubjectView> {
                 text: tr('key_category'),
                 color: AppColors.darkGreyColor,
               ),
-
-              SizedBox(
-                height: screenHeight(8),
-                // height: screenWidth(2),
-                child: Obx(
-                  () {
-                    return
-                        //  controller.isCategoryLoading
-                        //     ? SpinKitCircle(
-                        //         color: AppColors.mainOrangeColor,
-                        //       )
-                        //     :
-                        ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      physics: BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: controller.categoryList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        String categoryUUID =
-                            controller.categoryList[index].uuid!;
-                        bool isSelected =
-                            categoryUUID == controller.selectedCategory.value;
-
-                        return HomeViewCategoryWidget(
-                          text: controller.categoryList[index].name,
-                          onTap: () {
-                            // controller.getProductByCategory(
-                            //   categoryName: category,
-                            // );
-                          },
-                          isSelected: isSelected,
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-              SizedBox(
-                height: screenWidth(7),
-                width: screenWidth(1),
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  addAutomaticKeepAlives: true,
-                  addRepaintBoundaries: true,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: category.length,
-                  itemBuilder: (context, index) {
-                    return MainCategory(
-                      category: category[index],
-                      onTap: () {},
-                    );
-                  },
-                ),
-              ),
-              screenHeight(40).ph,
-              // CustomGrideView(
-              //   children: List.generate(
-              //     controller.collegeList.length,
-              //     (index) => Flexible(
-              //       child: CustomGridCollege(
-              //         imageName: "img_login",
-              //         // imageName: controller.collegeList[index].logo ?? "",
-              //         text: controller.collegeList[index].name ?? "",
-              //       ),
-              //     ),
-              //   ),
-              // ),
               ChipTheme(
                 data: ChipTheme.of(context).copyWith(
                   backgroundColor:
@@ -162,6 +99,9 @@ class _SubjectViewState extends State<SubjectView> {
                   ],
                 ),
               ),
+              Row(
+                children: [],
+              )
             ],
           ),
         ),

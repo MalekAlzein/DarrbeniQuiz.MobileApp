@@ -9,7 +9,7 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:get/get.dart';
 
-class HomeController extends BaseController {
+class SubjectController extends BaseController {
   RxList<SilderModel> silderList = <SilderModel>[].obs;
   RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
   RxList<CollegeModel> filteredCollegeList = <CollegeModel>[].obs;
@@ -85,21 +85,3 @@ class HomeController extends BaseController {
     }
   }
 }
-
-// class GridItem {
-//   final String imagePath;
-//   final String text;
-
-//   GridItem({required this.imagePath, required this.text});
-// }
-
-// Widget toWidget() {
-//   return Column(
-//     children: [
-//       SvgPicture.asset(imagePath),
-//       Text(text),
-//     ],
-//   );
-// }
-
-

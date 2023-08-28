@@ -43,6 +43,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
+
       // onChanged: myValidator,
       controller: controller,
       validator: validator,
@@ -54,7 +55,7 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: UnconstrainedBox(
           child: SvgPicture.asset(
             'assets/svgs/$prefixIcon.svg',
-            color: AppColors.darkPurpleColorOpacity,
+            color: prefixIconColor ?? AppColors.darkPurpleColorOpacity,
             width: screenWidth(15),
           ),
         ),

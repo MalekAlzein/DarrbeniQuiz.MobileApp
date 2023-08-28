@@ -29,7 +29,7 @@ class _HomeViewCategoryWidgetState extends State<HomeViewCategoryWidget> {
         },
         child: Container(
           alignment: AlignmentDirectional.center,
-          width: screenWidth(2),
+          // width: screenWidth(2),
           height: 50,
           decoration: BoxDecoration(
             border: widget.isSelected

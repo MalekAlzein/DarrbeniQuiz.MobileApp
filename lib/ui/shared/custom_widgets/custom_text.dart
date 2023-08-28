@@ -7,7 +7,7 @@ enum TextStyleType {
   SUBTITLE, // 25px
   BODYBIG, // 22px
   BODY, // 20px
-  SMALL, // 15px
+  SMALL, // 14px
   CUSTOM,
 }
 
@@ -86,7 +86,7 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(28),
+          fontSize: screenWidth(30),
           fontWeight: fontWeight ?? FontWeight.w400,
         );
 

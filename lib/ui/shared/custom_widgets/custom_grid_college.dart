@@ -34,15 +34,14 @@ class CustomGridCollege extends StatelessWidget {
           vertical: screenWidth(40),
         ),
         decoration: BoxDecoration(
-          border: isSubbed
-              ? Border(
-                  bottom: BorderSide(
-                    width: 5,
-                    color: AppColors.darkPurpleColor,
-                  ),
-                )
-              : null,
-        ),
+            border: Border(
+          bottom: BorderSide(
+            width: 5,
+            color: isSubbed
+                ? AppColors.darkPurpleColor
+                : AppColors.transparentWhiteColor,
+          ),
+        )),
         child: Column(
           children: [
             CustomImages(
@@ -54,7 +53,9 @@ class CustomGridCollege extends StatelessWidget {
             CustomText(
               textType: TextStyleType.SMALL,
               text: text,
-              textColor: AppColors.darkGreyColor,
+              textColor: isSubbed
+                  ? AppColors.darkPurpleColor
+                  : AppColors.darkGreyColor,
             ),
           ],
         ),

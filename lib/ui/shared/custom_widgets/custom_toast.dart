@@ -6,7 +6,6 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-
 class CustomToast {
   static showMessage({
     required String message,
@@ -65,7 +64,7 @@ class CustomToast {
             children: [
               (screenHeight(80)).ph,
               SvgPicture.asset(
-                'assets/images/$imageName.svg',
+                'assets/svgs/$imageName.svg',
                 height: screenWidth(4),
                 width: screenWidth(4),
               ),

@@ -60,6 +60,9 @@ class ARLanguage {
         "Key_numb_correct_questions": "عدد الأسئلة الصحيحة :",
         "Key_numb_wrong_questions": "عدد الأسئلة الخاطئة:",
         "Key_Check_answers": "التحقق من الإجابات",
+        //?---BottomSheet---
+        "Key_image_picker_camera": "الكاميرا",
+        "Key_image_picker_gallery": "المعرض",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

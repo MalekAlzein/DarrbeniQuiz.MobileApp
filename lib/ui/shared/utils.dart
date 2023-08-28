@@ -102,7 +102,7 @@ void showImagePickerBottomSheet({
               ),
               title: CustomText(
                 textType: TextStyleType.SUBTITLE,
-                text: tr('image_picker_camera'),
+                text: tr('Key_image_picker_camera'),
                 textAlign: TextAlign.start,
                 textColor: AppColors.darkGreyColor,
               ),
@@ -120,7 +120,7 @@ void showImagePickerBottomSheet({
               ),
               title: CustomText(
                 textType: TextStyleType.SUBTITLE,
-                text: tr('image_picker_gallery'),
+                text: tr('Key_image_picker_gallery'),
                 textAlign: TextAlign.start,
                 textColor: AppColors.darkGreyColor,
               ),

@@ -7,7 +7,6 @@ import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends BaseController {
@@ -15,6 +14,7 @@ class ProfileController extends BaseController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   Rx<FileTypeModel> avatar = FileTypeModel().obs;
   RxBool isModified = false.obs;
+  TextEditingController updatePhoto = TextEditingController();
 
   void getProfile() {
     runFutureFunctionWithFullLoading(
@@ -36,7 +36,7 @@ class ProfileController extends BaseController {
 
   @override
   void onInit() {
-    getProfile();
+    myProfile.value = storage.getProfile()!;
     super.onInit();
   }
 
@@ -46,7 +46,37 @@ class ProfileController extends BaseController {
       onSelected: (value) {
         if (avatar.value.path != value.path) isModified.value = true;
         avatar.value = value;
+        uploadAndEditAvatar();
       },
+    );
+  }
+
+  void uploadAndEditAvatar() {
+    runFutureFunctionWithFullLoading(
+      function: ProfileRepository()
+          .updatePhoto(
+        photo2: avatar.value.path!,
+      )
+          .then(
+        (value) {
+          value.fold(
+            (l) {
+              CustomToast.showMessage(
+                messageType: MessageType.REJECTED,
+                message: l,
+              );
+            },
+            (r) {
+              isModified.value = false;
+              getProfile();
+              CustomToast.showMessage(
+                messageType: MessageType.SUCCESS,
+                message: 'Avatar uploaded successfully.',
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

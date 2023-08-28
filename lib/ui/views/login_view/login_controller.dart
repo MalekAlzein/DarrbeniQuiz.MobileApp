@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/data/reposotories/auth_repository.dart';
+import 'package:flutter_templete/core/data/reposotories/profile_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
@@ -31,12 +32,29 @@ class LoginController extends BaseController {
             );
           }, (r) {
             storage.setTokenInfo(r);
-            //
+            getProfile();
             Get.off(() => const MainView());
             formKey.currentState!.save();
           });
         }),
       );
     }
+  }
+
+  void getProfile() {
+    runFutureFunction(
+      function: ProfileRepository().myProfile().then((value) {
+        value.fold((l) {
+          // isLoading.value = false;
+          CustomToast.showMessage(
+            messageType: MessageType.REJECTED,
+            message: l,
+          );
+        }, (r) {
+          storage.setProfile(r);
+          // Get.to(() => const ProfileView());
+        });
+      }),
+    );
   }
 }

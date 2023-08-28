@@ -61,9 +61,10 @@ class _ProfileViewState extends State<ProfileView> {
               text: tr('key_logout'),
               backgroundColor: AppColors.darkPurpleColor,
               onPressed: () {
-                storage.clearTokenInfo();
-                Get.delete<SplashScreenController>();
-                Get.off(() => SplashScreenView());
+                controller.logout();
+                // storage.clearTokenInfo();
+                // Get.delete<SplashScreenController>();
+                // Get.off(() => SplashScreenView());
               },
             ),
           ],

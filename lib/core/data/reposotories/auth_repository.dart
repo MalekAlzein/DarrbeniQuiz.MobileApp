@@ -78,4 +78,29 @@ class AuthRepository {
       return Left(e.toString());
     }
   }
+
+  Future<Either<String, bool>> logout() async {
+    try {
+      return NetworkUtil.sendRequest(
+        requestType: RequestType.GET,
+        url: AuthEndpoints.logout,
+        body: {},
+        headers: NetworkConfig.getHeaders(
+          needAuth: true,
+          requestType: RequestType.GET,
+        ),
+      ).then((response) {
+        CommonResponseModel<Map<String, dynamic>> commonResponse =
+            CommonResponseModel.fromJson(response);
+
+        if (commonResponse.getStatus) {
+          return Right(commonResponse.getStatus);
+        } else {
+          return Left(commonResponse.message ?? '');
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 }

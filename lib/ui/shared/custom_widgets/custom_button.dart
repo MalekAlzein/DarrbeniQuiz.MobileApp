@@ -50,19 +50,19 @@ class CustomButton extends StatelessWidget {
     switch (buttonTypeEnum) {
       case ButtonTypeEnum.NORMAL:
         return {
-          "width": screenWidth(1.25),
-          "height": screenHeight(13),
+          "width": screenWidth(1.80),
+          "height": screenHeight(15),
           "backgroundColor": AppColors.darkPurpleColor,
           "textColor": AppColors.whiteColor,
           "borderColor": borderColor,
-          "fontSize": screenWidth(21),
+          "fontSize": screenWidth(30),
           "fontWeight": FontWeight.bold,
         };
 
       case ButtonTypeEnum.SMALL:
         return {
-          "width": screenWidth(1.2),
-          "height": screenWidth(12),
+          "width": screenWidth(3.6),
+          "height": screenWidth(9),
           "backgroundColor": AppColors.darkPurpleColor,
           "textColor": AppColors.whiteColor,
           "borderColor": borderColor,

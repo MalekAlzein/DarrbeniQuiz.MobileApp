@@ -47,9 +47,6 @@ class ARLanguage {
         "Key_send_feed": "ارسل اقتراح/ شكوى",
         "Key_send": "ارسل",
 
-        //!-- important Question--
-        "Key_important_question": "الأسئلة المهمة",
-
         //?--- Previous Quiz view ---
         "Key_previous_quiz": "الدورات",
 
@@ -66,8 +63,9 @@ class ARLanguage {
         "Key_image_picker_gallery": "المعرض",
         "Key_specialization_master": "ماستر",
         "Key_specialization_graduation": "تخرج",
+        "Key_book_questions": "أسئلة الكتاب",
         //?---SubjectView---
-        "Key_previous_exam_questions": "الدورات",
+
         "Key_questions_bank": "بنك الأسئلة",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",

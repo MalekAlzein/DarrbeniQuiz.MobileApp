@@ -118,6 +118,7 @@ class _BookQuestionViewState extends State<BookQuestionView> {
                   borderColor: AppColors.normalCyanColor,
                   text: 'السابق',
                   textColor: AppColors.normalCyanColor,
+                  fontSize: screenWidth(25),
                   buttonTypeEnum: ButtonTypeEnum.SMALL,
                   onPressed: () {
                     controller.previousQuestion;
@@ -125,6 +126,7 @@ class _BookQuestionViewState extends State<BookQuestionView> {
               CustomButton(
                   text: 'التالي',
                   buttonTypeEnum: ButtonTypeEnum.SMALL,
+                  fontSize: screenWidth(25),
                   onPressed: () {
                     controller.nextQuestion;
                   }),

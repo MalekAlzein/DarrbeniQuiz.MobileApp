@@ -16,10 +16,12 @@ class CustomShapemakerWidget extends StatelessWidget {
     this.firstText,
     this.secondText,
     this.thirdText,
+    this.specialization = false,
   });
 
   final bool backButton;
   final bool quizMode;
+  final bool specialization;
   final Function? onTap;
   final String? imageName;
   final String? firstText;
@@ -37,7 +39,9 @@ class CustomShapemakerWidget extends StatelessWidget {
         // width: screenWidth(1),
         height: screenHeight(6), //6
         decoration: BoxDecoration(
-          color: AppColors.darkPurpleColor,
+          color: specialization
+              ? AppColors.lightCyanColor
+              : AppColors.darkPurpleColor,
         ),
         child: firstText != null && secondText != null && thirdText != null
             ? ListView(

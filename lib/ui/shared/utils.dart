@@ -17,6 +17,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:flutter_templete/ui/views/signup_view/signup_view.dart';
+import 'package:flutter_templete/ui/views/subject_view/subject_view.dart';
 import 'package:get/get.dart';
 
 double width = Get.size.shortestSide;
@@ -133,6 +134,49 @@ void showImagePickerBottomSheet({
               },
             ),
           ],
+        ),
+      ),
+    ),
+  );
+}
+
+void showSpecializationBottomSheet() {
+  Get.bottomSheet(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
+      child: Container(
+        height: screenHeight(4),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadiusDirectional.only(
+            topStart: Radius.circular(20),
+            topEnd: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: screenWidth(25),
+            vertical: screenWidth(15),
+          ),
+          child: Column(
+            children: [
+              CustomButton(
+                  backgroundColor: AppColors.darkPurpleColor,
+                  text: tr('Key_specialization_master'),
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    Get.to(() => const SubjectView());
+                  }),
+              screenHeight(35).ph,
+              CustomButton(
+                  backgroundColor: AppColors.lightCyanColor,
+                  text: tr('Key_specialization_graduation'),
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    Get.to(() => const SubjectView());
+                  })
+            ],
+          ),
         ),
       ),
     ),

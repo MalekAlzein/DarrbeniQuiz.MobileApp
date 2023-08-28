@@ -63,6 +63,11 @@ class ARLanguage {
         //?---BottomSheet---
         "Key_image_picker_camera": "الكاميرا",
         "Key_image_picker_gallery": "المعرض",
+        "Key_specialization_master": "ماستر",
+        "Key_specialization_graduation": "تخرج",
+        //?---SubjectView---
+        "Key_previous_exam_questions": "الدورات",
+        "Key_questions_bank": "بنك الأسئلة",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

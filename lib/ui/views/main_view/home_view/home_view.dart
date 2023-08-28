@@ -110,6 +110,9 @@ class _HomeViewState extends State<HomeView> {
                         controller.filteredCollegeList.length,
                         (index) => Flexible(
                           child: CustomGridCollege(
+                            onTap: () {
+                              showSpecializationBottomSheet();
+                            },
                             isSubbed: controller.subbedCollege(index: index),
                             // imageName: "img_login",
                             imageName:

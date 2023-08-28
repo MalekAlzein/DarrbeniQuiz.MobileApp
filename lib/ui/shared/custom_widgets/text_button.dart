@@ -33,7 +33,7 @@ class CustomTextButton extends StatelessWidget {
         style: TextStyle(
           decoration: textDecoration,
           color: textColor,
-          fontSize: textSize ?? screenWidth(28),
+          fontSize: textSize ?? screenWidth(30),
           fontWeight: fontWeight,
         ),
       ),

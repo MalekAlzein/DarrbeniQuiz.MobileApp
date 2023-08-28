@@ -23,5 +23,7 @@ class ENLanguage {
         //!---- Home View -------
         "key_category": "category",
         "key_search": "search",
+        "Key_specialization_master": "Master",
+        "Key_specialization_graduation": "Graduation",
       };
 }

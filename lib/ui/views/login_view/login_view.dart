@@ -129,7 +129,7 @@ class _LoginViewState extends State<LoginView> {
                 child: CustomTextButton(
                   title: tr('key_visitor'),
                   onTap: () {
-                    Get.to(() => const MainView());
+                    Get.off(() => const MainView());
                   },
                   textColor: AppColors.darkGreyColor,
                   textDecoration: TextDecoration.underline,

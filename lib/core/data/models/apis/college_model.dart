@@ -7,21 +7,18 @@ class CollegeModel {
   String? uuid;
   String? name;
   String? logo;
+  bool? isMaster;
   CategoryModel? category;
 
-  CollegeModel({
-    this.id,
-    this.uuid,
-    this.name,
-    this.logo,
-    this.category,
-  });
+  CollegeModel(
+      {this.id, this.uuid, this.name, this.logo, this.isMaster, this.category});
 
   CollegeModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     uuid = json['uuid'];
     name = json['name'];
     logo = json['logo'];
+    isMaster = json['is_master'];
     category = json['category'] != null
         ? new CategoryModel.fromJson(json['category'])
         : null;
@@ -33,6 +30,7 @@ class CollegeModel {
     data['uuid'] = this.uuid;
     data['name'] = this.name;
     data['logo'] = this.logo;
+    data['is_master'] = this.isMaster;
     if (this.category != null) {
       data['category'] = this.category!.toJson();
     }

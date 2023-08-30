@@ -64,6 +64,7 @@ class HomeController extends BaseController {
             );
           }, (r) {
             categoryList.addAll(r);
+            getCollegesByCategory("all");
             CustomToast.showMessage(
               message: "Success",
               messageType: MessageType.SUCCESS,

@@ -1,12 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_blur.dart';
 
-enum CustomBlurChildType {
-  BOTTOMSHEET,
-  DRAWER,
-  DIALOUG,
-}
-
 class CustomPopupWithBlurWidget extends StatelessWidget {
   const CustomPopupWithBlurWidget({
     super.key,

@@ -15,7 +15,7 @@ class NetworkConfig {
   }) {
     return {
       if (needAuth!)
-        "Authorization": "Bearer ${storage.getTokenInfo()?.token ?? ''}",
+        "Authorization": "Bearer ${storage.getTokenInfo()?.accessToken ?? ''}",
       if (requestType != RequestType.GET) "Content-Type": "application/json",
       ...extraHeaders!
     };

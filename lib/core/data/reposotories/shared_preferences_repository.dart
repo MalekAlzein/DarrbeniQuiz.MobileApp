@@ -1,13 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_templete/app/app_config.dart';
-import 'package:flutter_templete/core/data/models/apis/college_model.dart';
-import 'package:flutter_templete/core/data/models/apis/profile_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/data/models/cart_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
 import 'package:get/get.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesRepository {
@@ -17,13 +14,6 @@ class SharedPreferencesRepository {
   String PREF_TOKEN = 'token';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
-  String PREF_ORDER_PLACED = 'order_placed';
-  String PREF_EMAIL_RESET_PASSWORD = 'email_reset_password';
-  String PREF_SUB_STATUS = 'sub_status';
-  //  String PREF_ISLOGGED = 'is_logged';
-  String PREF_COLLEGE_LIST = 'college_list';
-  String PREF_PROFILE = 'profile';
-  String PREF_COLLEGE_LOGIN = 'college_login';
 
   void setFirstLaunch(bool value) {
     setPreference(
@@ -41,21 +31,7 @@ class SharedPreferencesRepository {
     }
   }
 
-  void setOrderPlaced(bool value) {
-    setPreference(
-      dataType: DataType.BOOL,
-      key: PREF_ORDER_PLACED,
-      value: value,
-    );
-  }
-
-  bool getOrderPlaced() {
-    if (globalSharedPreferences.containsKey(PREF_ORDER_PLACED)) {
-      return getPreference(key: PREF_ORDER_PLACED);
-    } else {
-      return true;
-    }
-  }
+  bool get isLoggedIn => getTokenInfo() != null ? true : false;
 
   void setTokenInfo(TokenInfoModel value) {
     setPreference(
@@ -75,7 +51,6 @@ class SharedPreferencesRepository {
   }
 
   void clearTokenInfo() {
-    // globalSharedPreferences.remove(PREF_TOKEN);
     globalSharedPreferences.clear();
   }
 
@@ -95,8 +70,6 @@ class SharedPreferencesRepository {
     }
   }
 
-  bool get isLoggedIn => getTokenInfo() != null ? true : false;
-
   void setAppLanguage(String value) {
     setPreference(
       dataType: DataType.STRING,
@@ -113,109 +86,7 @@ class SharedPreferencesRepository {
     }
   }
 
-  void setResetPasswordEmail(String value) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: PREF_EMAIL_RESET_PASSWORD,
-      value: value,
-    );
-  }
-
-  String getResetPasswordEmail() {
-    if (globalSharedPreferences.containsKey(PREF_EMAIL_RESET_PASSWORD)) {
-      return getPreference(key: PREF_EMAIL_RESET_PASSWORD);
-    } else {
-      return '';
-    }
-  }
-
-  void clearResetPasswordEmail() {
-    globalSharedPreferences.remove(PREF_EMAIL_RESET_PASSWORD);
-    // globalSharedPreferences.clear();
-  }
-
-  void setSubStatus(bool value) {
-    setPreference(
-      dataType: DataType.BOOL,
-      key: PREF_SUB_STATUS,
-      value: value,
-    );
-  }
-
-  bool getSubStatus() {
-    if (globalSharedPreferences.containsKey(PREF_SUB_STATUS)) {
-      return getPreference(key: PREF_SUB_STATUS);
-    } else {
-      return AppConfig.subscriptionStatus;
-    }
-  }
   //?--
-
-  void setCollegeList(List<CollegeModel> list) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: PREF_COLLEGE_LIST,
-      value: CollegeModel.encode(list),
-    );
-  }
-
-  List<CollegeModel> getCollegeList() {
-    if (globalSharedPreferences.containsKey(PREF_COLLEGE_LIST)) {
-      return CollegeModel.decode(getPreference(key: PREF_COLLEGE_LIST));
-    } else {
-      return [];
-    }
-  }
-
-  void setProfile(ProfileModel value) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: PREF_PROFILE,
-      value: jsonEncode(value.toJson()),
-    );
-  }
-
-  ProfileModel? getProfile() {
-    if (globalSharedPreferences.containsKey(PREF_PROFILE)) {
-      return ProfileModel.fromJson(
-          jsonDecode(getPreference(key: PREF_PROFILE)));
-    } else {
-      return null;
-    }
-  }
-
-  void setCollegeLogin(CollegeModel value) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: PREF_COLLEGE_LOGIN,
-      value: jsonEncode(value.toJson()),
-    );
-  }
-
-  CollegeModel? getCollegeLogin() {
-    if (globalSharedPreferences.containsKey(PREF_COLLEGE_LOGIN)) {
-      return CollegeModel.fromJson(
-          jsonDecode(getPreference(key: PREF_COLLEGE_LOGIN)));
-    } else {
-      return null;
-    }
-  }
-
-  //  void setFirstLogin(bool value) {
-  //   setPreference(
-  //     dataType: DataType.BOOL,
-  //     key: PREF_ISLOGGED,
-  //     value: value,
-  //   );
-  // }
-
-  //  bool getFirstLogin() {
-  //   if (globalSharedPreferences.containsKey(PREF_ISLOGGED)) {
-  //     return getPreference(key: PREF_ISLOGGED);
-  //   } else {
-  //     return true;
-  //   }
-  // }
 
   //!--- Main Function ----
   setPreference({

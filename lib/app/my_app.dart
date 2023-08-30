@@ -10,29 +10,40 @@ import 'package:get/get.dart';
 
 import 'package:provider/provider.dart';
 
-class MyApp extends StatelessWidget {
+late BuildContext appContext;
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
+    appContext = context;
+
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: AppColors.transparentColor,
       statusBarIconBrightness: Brightness.light,
     ));
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-    globalContext = context;
     return StreamProvider<ConnectivityStatus>(
       initialData: ConnectivityStatus.ONLINE,
       create: (context) =>
           connectivityService.connectivityStatusController.stream,
       child: GetMaterialApp(
+        textDirection: languageService.getLocale() == Locale('ar', 'SA')
+            ? TextDirection.rtl
+            : TextDirection.ltr,
         defaultTransition: Transition.circularReveal,
         transitionDuration: Duration(milliseconds: 12),
         title: 'Flutter Demo',
         builder: BotToastInit(),
-        locale: getLocale(),
-        fallbackLocale: getLocale(),
+        locale: languageService.getLocale(),
+        fallbackLocale: languageService.getLocale(),
         translations: AppTranslation(), //1. call BotToastInit
         navigatorObservers: [BotToastNavigatorObserver()],
         debugShowCheckedModeBanner: false,
@@ -48,17 +59,5 @@ class MyApp extends StatelessWidget {
         home: SplashScreenView(),
       ),
     );
-  }
-}
-
-BuildContext? globalContext;
-
-Locale getLocale() {
-  if (storage.getAppLanguage() == 'ar') {
-    return Locale('ar', 'SA');
-  } else if (storage.getAppLanguage() == 'tr') {
-    return Locale('tr', 'TR');
-  } else {
-    return Locale('en', 'US');
   }
 }

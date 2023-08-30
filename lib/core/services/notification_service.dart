@@ -4,7 +4,6 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_templete/core/data/models/notification_model.dart';
 import 'package:flutter_templete/core/enums/app_state_enum.dart';
 import 'package:flutter_templete/core/enums/notification_type.dart';
-import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:get/utils.dart';
 
 class NotificationService {
@@ -67,7 +66,7 @@ class NotificationService {
       {required NotifictionModel model, required AppState appState}) {
     notifcationStream.add(model);
     if (model.notifctionType == NotificationType.SUBSCRIPTION.name) {
-      storage.setSubStatus(model.subStatus == "1" ? true : false);
+      // storage.setSubStatus(model.subStatus == "1" ? true : false);
     }
   }
 }

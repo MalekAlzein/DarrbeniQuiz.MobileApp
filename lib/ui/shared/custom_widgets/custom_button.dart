@@ -95,9 +95,11 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> enumResult = chooseButtonType();
+
     return SizedBox(
-      width: width ?? chooseButtonType()["width"] ?? screenWidth(1.1),
-      height: height ?? chooseButtonType()["height"] ?? screenHeight(16),
+      width: width ?? enumResult["width"] ?? screenWidth(1.1),
+      height: height ?? enumResult["height"] ?? screenHeight(16),
       child: ElevatedButton(
         onPressed: () {
           if (onPressed != null) onPressed!();
@@ -117,23 +119,21 @@ class CustomButton extends StatelessWidget {
             CustomText(
               textType: TextStyleType.CUSTOM,
               text: text ?? "",
-              textColor: textColor ?? chooseButtonType()["textColor"],
+              textColor: textColor ?? enumResult["textColor"],
               //fontWeight: fontWeight ?? FontWeight.bold,
-              fontSize:
-                  fontSize ?? chooseButtonType()["fontSize"] ?? screenWidth(25),
+              fontSize: fontSize ?? enumResult["fontSize"] ?? screenWidth(25),
             ),
           ],
         ),
         style: ElevatedButton.styleFrom(
-          side:
-              (borderColor != null || chooseButtonType()["borderColor"] != null)
-                  ? BorderSide(
-                      width: 1.0,
-                      color: borderColor ?? chooseButtonType()["borderColor"],
-                    )
-                  : null,
+          side: (borderColor != null || enumResult["borderColor"] != null)
+              ? BorderSide(
+                  width: 1.0,
+                  color: borderColor ?? enumResult["borderColor"],
+                )
+              : null,
           backgroundColor: backgroundColor ??
-              chooseButtonType()["backgroundColor"] ??
+              enumResult["backgroundColor"] ??
               AppColors.darkPurpleColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(5)),

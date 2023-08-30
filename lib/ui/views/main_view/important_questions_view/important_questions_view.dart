@@ -7,9 +7,9 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_shapemaker.dart
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:flutter_templete/ui/views/main_view/book_question/book_question_view.dart';
+import 'package:flutter_templete/ui/views/book_question/book_question_view.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
-import 'package:flutter_templete/ui/views/main_view/previous_quiz/previous_quiz_view.dart';
+import 'package:flutter_templete/ui/views/previous_quiz/previous_quiz_view.dart';
 import 'package:flutter_templete/ui/views/result_view/result_view.dart';
 import 'package:get/get.dart';
 

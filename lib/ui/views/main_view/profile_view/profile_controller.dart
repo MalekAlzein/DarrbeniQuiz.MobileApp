@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/data/models/apis/profile_model.dart';
+import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/data/models/file_type_model.dart';
+import 'package:flutter_templete/core/data/reposotories/auth_repository.dart';
 import 'package:flutter_templete/core/data/reposotories/profile_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/splash_screen/spalsh_screen_view.dart';
+import 'package:flutter_templete/ui/views/splash_screen/splash_screen_controller.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends BaseController {
@@ -77,6 +81,23 @@ class ProfileController extends BaseController {
           );
         },
       ),
+    );
+  }
+
+  void logout() {
+    runFutureFunctionWithFullLoading(
+      function: AuthRepository().logout().then((value) {
+        value.fold((l) {
+          CustomToast.showMessage(
+            messageType: MessageType.REJECTED,
+            message: l,
+          );
+        }, (r) {
+          storage.clearTokenInfo();
+          Get.delete<SplashScreenController>();
+          Get.off(() => SplashScreenView());
+        });
+      }),
     );
   }
 }

@@ -47,13 +47,11 @@ class ARLanguage {
         "Key_send_feed": "ارسل اقتراح/ شكوى",
         "Key_send": "ارسل",
 
-        //!-- important Question--
-        "Key_important_question": "الأسئلة المهمة",
-
         //?--- Previous Quiz view ---
         "Key_previous_quiz": "الدورات",
 
-        //!--- Result View --
+        //!--- Result View & answers--"
+        "Key_answers": "الإجابات",
         "Key_result": "النتيجة",
         "Key_congratulations": "مبروك لقد اتممت الإختبار بنجاح",
         "Key_your_score": "علامتك هي:",
@@ -63,6 +61,12 @@ class ARLanguage {
         //?---BottomSheet---
         "Key_image_picker_camera": "الكاميرا",
         "Key_image_picker_gallery": "المعرض",
+        "Key_specialization_master": "ماستر",
+        "Key_specialization_graduation": "تخرج",
+        "Key_book_questions": "أسئلة الكتاب",
+        //?---SubjectView---
+
+        "Key_questions_bank": "بنك الأسئلة",
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

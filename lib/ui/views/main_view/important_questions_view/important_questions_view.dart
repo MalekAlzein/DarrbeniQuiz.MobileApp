@@ -10,6 +10,7 @@ import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/book_question/book_question_view.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/previous_quiz/previous_quiz_view.dart';
+import 'package:flutter_templete/ui/views/result_view/result_view.dart';
 import 'package:get/get.dart';
 
 class ImportantQuestionsView extends StatefulWidget {
@@ -67,6 +68,13 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                 buttonTypeEnum: ButtonTypeEnum.SMALL,
                 onPressed: () {
                   Get.to(BookQuestionView());
+                }),
+            screenHeight(30).ph,
+            CustomButton(
+                text: 'النتيجة',
+                buttonTypeEnum: ButtonTypeEnum.SMALL,
+                onPressed: () {
+                  Get.to(ResultView());
                 }),
           ],
         ),

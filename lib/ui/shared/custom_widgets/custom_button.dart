@@ -61,8 +61,8 @@ class CustomButton extends StatelessWidget {
 
       case ButtonTypeEnum.SMALL:
         return {
-          "width": screenWidth(1.2),
-          "height": screenWidth(12),
+          "width": screenWidth(3.6),
+          "height": screenWidth(9),
           "backgroundColor": AppColors.darkPurpleColor,
           "textColor": AppColors.whiteColor,
           "borderColor": borderColor,
@@ -115,7 +115,7 @@ class CustomButton extends StatelessWidget {
               (screenWidth(20)).pw,
             ],
             CustomText(
-              textType: TextStyleType.BODY,
+              textType: TextStyleType.CUSTOM,
               text: text ?? "",
               textColor: textColor ?? chooseButtonType()["textColor"],
               //fontWeight: fontWeight ?? FontWeight.bold,

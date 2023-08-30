@@ -60,7 +60,7 @@ class CustomText extends StatelessWidget {
           decoration: textDecoration,
           color: textColor,
           fontSize: screenWidth(24),
-          fontWeight: fontWeight ?? FontWeight.w400,
+          //fontWeight: fontWeight ?? FontWeight.w400,
         );
 
       case TextStyleType.BODYBIG:
@@ -69,7 +69,7 @@ class CustomText extends StatelessWidget {
           decoration: textDecoration,
           color: textColor,
           fontSize: screenWidth(25),
-          fontWeight: fontWeight ?? FontWeight.w700,
+          // fontWeight: fontWeight ?? FontWeight.w700,
         );
 
       case TextStyleType.BODY:
@@ -78,7 +78,7 @@ class CustomText extends StatelessWidget {
           decoration: textDecoration,
           color: textColor,
           fontSize: screenWidth(25),
-          fontWeight: fontWeight ?? FontWeight.w400,
+          //fontWeight: fontWeight ?? FontWeight.w400,
         );
 
       case TextStyleType.SMALL:
@@ -86,8 +86,8 @@ class CustomText extends StatelessWidget {
           height: 1.2,
           decoration: textDecoration,
           color: textColor,
-          fontSize: screenWidth(30),
-          fontWeight: fontWeight ?? FontWeight.w400,
+          fontSize: screenWidth(32),
+          //fontWeight: fontWeight ?? FontWeight.w400,
         );
 
       case TextStyleType.CUSTOM:

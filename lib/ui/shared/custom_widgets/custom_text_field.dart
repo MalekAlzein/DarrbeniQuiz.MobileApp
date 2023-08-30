@@ -9,7 +9,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     this.controller,
     required this.fillColor,
-    required this.hintTextColor,
+    this.hintTextColor,
     this.keyboardType,
     this.obscureText = false,
     this.validator,
@@ -59,7 +59,6 @@ class CustomTextFormField extends StatelessWidget {
             width: screenWidth(15),
           ),
         ),
-        prefixIconColor: prefixIconColor,
         suffixIcon: Transform.scale(
           scale: 0.5,
           child: SvgPicture.asset(
@@ -94,7 +93,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         filled: true,
         hintStyle: TextStyle(
-          color: hintTextColor,
+          color: hintTextColor ?? AppColors.darkPurpleColorOpacity,
           fontSize: hintTextSize ?? screenWidth(24),
         ),
         hintText: hintText,

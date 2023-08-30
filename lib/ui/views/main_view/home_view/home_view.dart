@@ -33,6 +33,7 @@ class _HomeViewState extends State<HomeView> {
   ];
   int _selectedChoiceIndex = 0;
   List<String> _choices = ['Option 1', 'Option 2', 'Option 3'];
+  bool specialization = false;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -110,6 +111,10 @@ class _HomeViewState extends State<HomeView> {
                         controller.filteredCollegeList.length,
                         (index) => Flexible(
                           child: CustomGridCollege(
+                            onTap: () {
+                              showSpecializationBottomSheet(
+                                  specialization: specialization);
+                            },
                             isSubbed: controller.subbedCollege(index: index),
                             // imageName: "img_login",
                             imageName:

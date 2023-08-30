@@ -38,6 +38,7 @@ class _SignupViewState extends State<SignupView> {
               vertical: screenWidth(20),
             ),
             children: [
+              screenHeight(35).ph,
               Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,9 +84,7 @@ class _SignupViewState extends State<SignupView> {
               CustomTextFormField(
                 hintText: tr('key_user_name'),
                 fillColor: AppColors.lightCyanColorOpacity,
-                hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_user',
-                prefixIconColor: AppColors.darkPurpleColorOpacity,
                 controller: controller.usernameController,
                 validator: (value) {
                   if (value!.isEmpty || StringUtil.isName(value)) {
@@ -105,9 +104,7 @@ class _SignupViewState extends State<SignupView> {
               CustomTextFormField(
                 hintText: tr('key_mobile_number'),
                 fillColor: AppColors.lightCyanColorOpacity,
-                hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'login-signup icons=phone',
-                prefixIconColor: AppColors.darkPurpleColorOpacity,
                 controller: controller.mobileController,
                 validator: (value) {
                   if (value!.isEmpty || StringUtil.isMobile(value)) {

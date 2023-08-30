@@ -38,7 +38,7 @@ class _LoginViewState extends State<LoginView> {
               vertical: screenWidth(20),
             ),
             children: [
-              // (screenWidth(10)).ph,
+              (screenHeight(35)).ph,
               LoginTopSectionWidget(),
               (screenHeight(40)).ph,
               Align(
@@ -53,7 +53,6 @@ class _LoginViewState extends State<LoginView> {
               CustomTextFormField(
                 hintText: tr('key_user_name'),
                 fillColor: AppColors.lightCyanColorOpacity,
-                hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_user',
                 controller: controller.usernameController,
                 validator: (value) {
@@ -76,7 +75,6 @@ class _LoginViewState extends State<LoginView> {
               CustomTextFormField(
                 hintText: tr('key_inter_code'),
                 fillColor: AppColors.lightCyanColorOpacity,
-                hintTextColor: AppColors.darkPurpleColorOpacity,
                 prefixIcon: 'ic_text_field_code',
                 controller: controller.enterCodeController,
                 validator: (value) {

@@ -45,7 +45,7 @@ class _BookQuestionViewState extends State<BookQuestionView> {
           CustomProgress(),
           screenHeight(80).ph,
           Expanded(
-            child: PageView.builder(
+            child: ListView.builder(
               itemCount: controller.questions.length,
               itemBuilder: (BuildContext context, int questionIndex) {
                 return Column(
@@ -111,23 +111,25 @@ class _BookQuestionViewState extends State<BookQuestionView> {
           ),
           screenHeight(20).ph,
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                child: CustomButton(
-                    text: 'السابق',
-                    buttonTypeEnum: ButtonTypeEnum.SMALL,
-                    onPressed: () {
-                      controller.previousQuestion;
-                    }),
-              ),
-              Expanded(
-                child: CustomButton(
-                    text: 'التالي',
-                    buttonTypeEnum: ButtonTypeEnum.SMALL,
-                    onPressed: () {
-                      controller.nextQuestion;
-                    }),
-              ),
+              CustomButton(
+                  backgroundColor: AppColors.whiteColor,
+                  borderColor: AppColors.normalCyanColor,
+                  text: 'السابق',
+                  textColor: AppColors.normalCyanColor,
+                  fontSize: screenWidth(25),
+                  buttonTypeEnum: ButtonTypeEnum.SMALL,
+                  onPressed: () {
+                    controller.previousQuestion;
+                  }),
+              CustomButton(
+                  text: 'التالي',
+                  buttonTypeEnum: ButtonTypeEnum.SMALL,
+                  fontSize: screenWidth(25),
+                  onPressed: () {
+                    controller.nextQuestion;
+                  }),
             ],
           ),
         ],

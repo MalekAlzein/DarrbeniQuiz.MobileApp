@@ -8,11 +8,11 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:get/get.dart';
 
-// double width = Get.size.shortestSide;
-// double height = Get.size.longestSide;
-// Size size = Get.size;
+double width = Get.size.shortestSide;
+double height = Get.size.longestSide;
+Size size = Get.size;
 
-Size size = MediaQuery.of(appContext).size;
+// Size size = MediaQuery.of(appContext).size;
 
 double screenWidth(double percent) {
   // return width / percent;

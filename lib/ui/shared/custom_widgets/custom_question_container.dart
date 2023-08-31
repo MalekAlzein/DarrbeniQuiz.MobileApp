@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_radio.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:get/get.dart';
-import 'package:quiz/core/translations/app_translations.dart';
-import 'package:quiz/ui/shared/colors.dart';
-import 'package:quiz/ui/shared/custom_widgets/custom_radio.dart';
-import 'package:quiz/ui/shared/custom_widgets/custom_text.dart';
-import 'package:quiz/ui/shared/utils.dart';
+
 
 class CustomQuestionContainer extends StatefulWidget {
   final Color? borderColor;
@@ -58,7 +58,7 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
                     ? (widget.isCorrect
                         ? AppColors.mainBlueColor
                         : AppColors.mainRedColor)
-                    : AppColors.mainBlackColor),
+                    : AppColors.blackColor),
             borderRadius: BorderRadius.circular(screenWidth(50)),
             //shape: BoxShape.rectangle,
 
@@ -76,19 +76,19 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
                       ? (widget.isCorrect
                           ? AppColors.mainBlueColor
                           : AppColors.mainRedColor)
-                      : AppColors.mainBlackColor),
+                      : AppColors.blackColor),
               SizedBox(
                 width: screenWidth(30),
               ),
               Expanded(
                 child: CustomText(
                   text: widget.answerText!,
-                  color: widget.isVisibleAnswerResult
+                  textColor: widget.isVisibleAnswerResult
                       ? (widget.isCorrect
                           ? AppColors.mainBlueColor
                           : AppColors.mainRedColor)
-                      : AppColors.mainBlackColor,
-                  softWrap: true,
+                      : AppColors.blackColor,
+                  // softWrap: true,
                   textType: TextStyleType.BODY,
                 ),
               ),

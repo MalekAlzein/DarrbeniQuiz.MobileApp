@@ -1,81 +1,80 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_templete/core/enums/message_type.dart';
-import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
-import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:lottie/lottie.dart';
+import '../../../core/enums/message_type.dart';
+import '../colors.dart';
+import '../utils.dart';
+import 'custom_text.dart';
 
 class CustomToast {
-  static showMessage({
-    required String message,
-    MessageType? messageType = MessageType.INFO,
-    void Function()? onClose,
-  }) {
-    String imageName = 'toast_info';
-    Color shadowColor = AppColors.mainBlueColor;
-
-    switch (messageType) {
-      case MessageType.REJECTED:
-        imageName = 'toast_rejected';
-        shadowColor = AppColors.mainRedColor;
-        break;
-      case MessageType.SUCCESS:
-        imageName = 'toast_approved';
-        shadowColor = AppColors.mainGreenColor;
-        break;
-      case MessageType.WARNING:
-        imageName = 'toast_warning';
-        shadowColor = AppColors.mainOrangeColor;
-        break;
-      case MessageType.INFO:
-        imageName = 'toast_info';
-        shadowColor = AppColors.mainBlueColor;
-        break;
-      default:
-        break;
-    }
-
+  static showMessage(
+      {required String message, MessageType? messageType = MessageType.INFO}) {
     BotToast.showCustomText(
-      onClose: () {
-        onClose;
-      },
-      duration: Duration(seconds: 4),
-      toastBuilder: (value) {
-        return Container(
-          margin: EdgeInsets.all(screenWidth(10)),
-          width: screenWidth(1.25),
-          // height: size.width * 0.4,
-          decoration: BoxDecoration(
-            color: AppColors.whiteColor,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: shadowColor.withOpacity(0.5),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3),
+      duration: Duration(seconds: 6),
+      toastBuilder: (cancelFunc) {
+        String imageName;
+        Color shadowColor;
+
+        switch (messageType!) {
+          case MessageType.INFO:
+            imageName = 'INFO';
+            shadowColor = AppColors.maingrey;
+            break;
+
+          case MessageType.WARNING:
+            imageName = 'WARNING';
+            shadowColor = AppColors.maingrey;
+            break;
+
+          case MessageType.REJECTED:
+            imageName = 'REJECTED';
+            shadowColor = AppColors.maingrey;
+            break;
+
+          case MessageType.SUCCESS:
+            imageName = 'SUCCESS';
+            shadowColor = AppColors.maingrey;
+            break;
+        }
+
+        return GestureDetector(
+          onTap: cancelFunc, // Dismiss the toast when tapped
+          child: Container(
+            width: screenWidth(1.5),
+            height: screenWidth(2),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(screenWidth(10)),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.5),
+                width: 1.5,
               ),
-            ],
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              (screenHeight(80)).ph,
-              SvgPicture.asset(
-                'assets/svgs/$imageName.svg',
-                height: screenWidth(4),
-                width: screenWidth(4),
-              ),
-              (screenHeight(80)).ph,
-              Text(
-                message,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: screenWidth(20)),
-              ),
-              (screenHeight(80)).ph,
-            ],
+              boxShadow: [
+                BoxShadow(
+                  color: shadowColor,
+                  spreadRadius: 0.5,
+                  blurRadius: 3,
+                  offset: Offset(0, 6),
+                ),
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Lottie.asset(
+                  'assets/lottie/$imageName.json',
+                  width: screenWidth(6),
+                ),
+                SizedBox(
+                  height: screenWidth(15),
+                ),
+                CustomText(
+                  text: message,
+                  textColor: AppColors.blackColor,
+                  textType: TextStyleType.BODY,
+                ),
+              ],
+            ),
           ),
         );
       },

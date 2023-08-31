@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quiz/ui/shared/utils.dart';
 
 import '../colors.dart';
+import '../utils.dart';
 
 class CustomSlider extends StatefulWidget {
   final List<String> items;
@@ -62,8 +62,8 @@ class _CustomSliderState extends State<CustomSlider> {
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   color: currentIndex.value == index
-                      ? AppColors.mainDarkPurple
-                      : AppColors.SearchgrayColor,
+                      ? AppColors.darkPurpleColor
+                      : AppColors.darkGreyColorTextField,
                 ),
               );
             }).toList(),

@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:get/get.dart';
-
 import '../colors.dart';
+import '../utils.dart';
 
 class CustomSlider extends StatefulWidget {
   final List<String> items;
@@ -51,7 +50,7 @@ class _CustomSliderState extends State<CustomSlider> {
         ),
         SizedBox(height: screenWidth(26)),
         Obx(
-          () => Row(
+              () => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.items.map((item) {
               int index = widget.items.indexOf(item);
@@ -63,7 +62,7 @@ class _CustomSliderState extends State<CustomSlider> {
                   shape: BoxShape.rectangle,
                   color: currentIndex.value == index
                       ? AppColors.darkPurpleColor
-                      : AppColors.fillGreyColor,
+                      : AppColors.darkGreyColorTextField,
                 ),
               );
             }).toList(),

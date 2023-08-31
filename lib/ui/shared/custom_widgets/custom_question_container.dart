@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_radio.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
-import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:get/get.dart';
-
+import '../colors.dart';
+import '../utils.dart';
+import 'custom_radio.dart';
+import 'custom_text.dart';
 
 class CustomQuestionContainer extends StatefulWidget {
   final Color? borderColor;
@@ -56,9 +54,9 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
             border: Border.all(
                 color: widget.isVisibleAnswerResult
                     ? (widget.isCorrect
-                        ? AppColors.mainBlueColor
-                        : AppColors.mainRedColor)
-                    : AppColors.blackColor),
+                    ? AppColors.mainBlueColor
+                    : AppColors.mainRedColor)
+                    : AppColors.mainblack),
             borderRadius: BorderRadius.circular(screenWidth(50)),
             //shape: BoxShape.rectangle,
 
@@ -74,9 +72,9 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
                   selected: widget.selected,
                   fillColor: widget.isVisibleAnswerResult
                       ? (widget.isCorrect
-                          ? AppColors.mainBlueColor
-                          : AppColors.mainRedColor)
-                      : AppColors.blackColor),
+                      ? AppColors.mainBlueColor
+                      : AppColors.mainRedColor)
+                      : AppColors.mainblack),
               SizedBox(
                 width: screenWidth(30),
               ),
@@ -85,9 +83,9 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
                   text: widget.answerText!,
                   textColor: widget.isVisibleAnswerResult
                       ? (widget.isCorrect
-                          ? AppColors.mainBlueColor
-                          : AppColors.mainRedColor)
-                      : AppColors.blackColor,
+                      ? AppColors.mainBlueColor
+                      : AppColors.mainRedColor)
+                      : AppColors.mainblack,
                   // softWrap: true,
                   textType: TextStyleType.BODY,
                 ),
@@ -102,12 +100,12 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
                   visible: widget.isVisibleAnswerResult,
                   child: widget.isCorrect
                       ? SvgPicture.asset(
-                          'assets/images/ic_correct.svg',
-                          color: AppColors.mainBlueColor,
-                        )
+                    'assets/images/ic_correct.svg',
+                    color: AppColors.mainBlueColor,
+                  )
                       : SvgPicture.asset(
-                          'assets/images/ic_wrong.svg',
-                        ))
+                    'assets/images/ic_wrong.svg',
+                  ))
             ]),
           ),
         ),

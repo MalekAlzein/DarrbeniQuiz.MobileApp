@@ -41,7 +41,7 @@ class CustomRadio extends StatelessWidget {
               onTaped(value);
             },
             fillColor: MaterialStateColor.resolveWith(
-                (states) => fillColor ?? AppColors.mainDarkPurple),
+                (states) => fillColor ?? AppColors.darkPurpleColor),
           ),
         ));
   }

@@ -5,7 +5,6 @@ import 'package:flutter_templete/core/data/reposotories/shared_preferences_repos
 import 'package:flutter_templete/core/services/cart_services.dart';
 import 'package:flutter_templete/core/services/connectivity_service.dart';
 import 'package:flutter_templete/core/services/language_service.dart';
-import 'package:flutter_templete/core/services/location_service.dart';
 import 'package:flutter_templete/core/services/package_info_service.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,7 +17,6 @@ Future<void> main() async {
     return prefs;
   });
   await Get.put(SharedPreferencesRepository());
-  await Get.put(LocationService());
   Get.put(CartService());
   Get.put(ConnectivityService());
   await Get.put(LanguageService());

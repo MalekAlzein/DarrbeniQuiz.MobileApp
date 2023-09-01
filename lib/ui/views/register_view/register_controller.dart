@@ -33,7 +33,8 @@ class RegisterController extends BaseController {
           CustomToast.showMessage(
               message: l, messageType: MessageType.REJECTED);
         }, (r) {
-          code = r;
+          //!  if Check this code you need to uncomment the line below --**-- 
+          // Get.to(() => LoginView());
         });
       }));
     } else {}
@@ -45,7 +46,7 @@ class RegisterController extends BaseController {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
-        for (var specializtion in r) {
+        for (var specializtion in r.data!) {
           specializationList
               .add([specializtion.specializationName, specializtion.id]);
         }

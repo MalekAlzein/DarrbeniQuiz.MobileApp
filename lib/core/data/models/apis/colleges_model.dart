@@ -32,37 +32,19 @@ class SpecializationsModel {
 
 class Data {
   int? id;
-  String? uuid;
-  String? specializationName;
-  bool? moreOption;
-  String? image;
-  int? collageId;
+  String? collageName;
 
-  Data(
-      {this.id,
-      this.uuid,
-      this.specializationName,
-      this.moreOption,
-      this.image,
-      this.collageId});
+  Data({this.id, this.collageName});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    uuid = json['uuid'];
-    specializationName = json['specialization_name'];
-    moreOption = json['more_option'];
-    image = json['image'];
-    collageId = json['collage_id'];
+    collageName = json['collage_name'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
-    data['uuid'] = this.uuid;
-    data['specialization_name'] = this.specializationName;
-    data['more_option'] = this.moreOption;
-    data['image'] = this.image;
-    data['collage_id'] = this.collageId;
+    data['collage_name'] = this.collageName;
     return data;
   }
 }

@@ -7,7 +7,6 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/views/register_view/register_view.dart';
 import 'package:get/get.dart';
-
 import 'package:provider/provider.dart';
 
 late BuildContext appContext;

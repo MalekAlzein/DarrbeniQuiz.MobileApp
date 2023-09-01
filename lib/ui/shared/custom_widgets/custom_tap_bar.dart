@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:get/get.dart';
 
@@ -23,39 +24,32 @@ class CustomTapBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: screenHeight(25),
-        ),
+        (screenHeight(25)).ph,
         Row(
           mainAxisAlignment: iconName != null
               ? MainAxisAlignment.spaceBetween
               : MainAxisAlignment.center,
           children: [
-            if (iconName != null)
+            if (iconName != null) ...[
               InkWell(
                   onTap: () {
                     Get.back();
                   },
                   child: SvgPicture.asset("assets/svgs/$iconName.svg")),
+            ],
             CustomText(
               textType: TextStyleType.TITLE,
               text: title,
               textColor: AppColors.darkGreyColor,
             ),
-            SizedBox(
-              width: screenWidth(20),
-            ),
+            (screenWidth(20)).pw,
           ],
         ),
-        SizedBox(
-          height: screenHeight(25),
-        ),
+        (screenHeight(25)).ph,
         if (imageName != null) ...[
           SvgPicture.asset("assets/svgs/$imageName.svg")
         ],
-        SizedBox(
-          height: screenHeight(25),
-        ),
+        (screenHeight(25)).ph,
       ],
     );
   }

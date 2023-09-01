@@ -1,29 +1,30 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
 import 'package:flutter_templete/core/data/models/common_response.dart';
-import 'package:flutter_templete/core/data/network/endpoints/colleges_and_specialization_endpoint.dart';
+
+import 'package:flutter_templete/core/data/network/endpoints/specialization_endpoints.dart';
 import 'package:flutter_templete/core/data/network/network_config.dart';
 import 'package:flutter_templete/core/enums/request_type.dart';
 import 'package:flutter_templete/core/utils/network_utils.dart';
 
 class CollegesAndSpecializtionsRepositories {
-  static Future<Either<String, List<SpecializationModel>>>
+  static Future<Either<String, SpecializationsModel>>
       getAllSpecializtions() async {
     try {
-      return NetworkUtil.sendRequest(
+      return await NetworkUtil.sendMultipartRequest(
+        type: RequestType.GET,
         requestType: RequestType.GET,
-        url: SpecializtionAndCollegesEndpoints.allSpeci,
+        url: SpecializationEndpoints.allSpecialization,
         headers: NetworkConfig.getHeaders(
-            needAuth: false, requestType: RequestType.GET),
+          requestType: RequestType.GET,
+          needAuth: false,
+        ),
       ).then((response) {
         CommonResponseModel<dynamic> commonResponse =
             CommonResponseModel.fromJson(response);
-        List<SpecializationModel> result = [];
+
         if (commonResponse.getStatus && commonResponse.data["data"]["status"]) {
-          commonResponse.data.forEach((element) {
-            result.add(SpecializationModel.fromJson(element));
-          });
-          return Right(result);
+          return Right(SpecializationsModel.fromJson(commonResponse.data));
         } else {
           return Left(commonResponse.message ?? '');
         }

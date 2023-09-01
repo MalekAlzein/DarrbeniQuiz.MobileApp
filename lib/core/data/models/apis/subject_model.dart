@@ -1,12 +1,12 @@
-class SpecializationsModel {
+class SubjectmModel {
   bool? status;
   String? message;
   List<Data>? data;
   int? code;
 
-  SpecializationsModel({this.status, this.message, this.data, this.code});
+  SubjectmModel({this.status, this.message, this.data, this.code});
 
-  SpecializationsModel.fromJson(Map<String, dynamic> json) {
+  SubjectmModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
@@ -33,36 +33,24 @@ class SpecializationsModel {
 class Data {
   int? id;
   String? uuid;
-  String? specializationName;
-  bool? moreOption;
-  String? image;
-  int? collageId;
+  String? name;
+  int? specializationId;
 
-  Data(
-      {this.id,
-      this.uuid,
-      this.specializationName,
-      this.moreOption,
-      this.image,
-      this.collageId});
+  Data({this.id, this.uuid, this.name, this.specializationId});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     uuid = json['uuid'];
-    specializationName = json['specialization_name'];
-    moreOption = json['more_option'];
-    image = json['image'];
-    collageId = json['collage_id'];
+    name = json['name'];
+    specializationId = json['specialization_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['uuid'] = this.uuid;
-    data['specialization_name'] = this.specializationName;
-    data['more_option'] = this.moreOption;
-    data['image'] = this.image;
-    data['collage_id'] = this.collageId;
+    data['name'] = this.name;
+    data['specialization_id'] = this.specializationId;
     return data;
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_rich_text.dart'
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_tap_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/register_view/register_controller.dart';
 import 'package:get/get.dart';
@@ -46,9 +47,7 @@ class _RegisterViewState extends State<RegisterView> {
                       text: "اسم المستخدم",
                       textType: TextStyleType.SMALL,
                     ),
-                    SizedBox(
-                      height: screenWidth(100),
-                    ),
+                    (screenHeight(100)).ph,
                     CustomTextFormField(
                         fillColor: AppColors.lightCyanColorOpacity,
                         hintText: "اسم المستخدم",
@@ -62,17 +61,13 @@ class _RegisterViewState extends State<RegisterView> {
                         },
                         prefixIcon: 'ic_text_field_user',
                         controller: controller.userController),
-                    SizedBox(
-                      height: screenHeight(25),
-                    ),
+                    (screenHeight(25)).ph,
                     const CustomText(
                       textColor: AppColors.darkPurpleColor,
                       text: "رقم الموبايل",
                       textType: TextStyleType.SMALL,
                     ),
-                    SizedBox(
-                      height: screenWidth(100),
-                    ),
+                    (screenWidth(100)).ph,
                     CustomTextFormField(
                       fillColor: AppColors.lightCyanColorOpacity,
                       validator: (value) {
@@ -88,17 +83,13 @@ class _RegisterViewState extends State<RegisterView> {
                       controller: controller.phoneController,
                       hintText: 'رقم الموبايل',
                     ),
-                    SizedBox(
-                      height: screenHeight(25),
-                    ),
+                    (screenHeight(25)).ph,
                     const CustomText(
                       textColor: AppColors.darkPurpleColor,
                       text: "اختر الاختصاص",
                       textType: TextStyleType.SMALL,
                     ),
-                    SizedBox(
-                      height: screenHeight(28),
-                    ),
+                    (screenHeight(28)).ph,
                     Obx(() => controller.isloading.value
                         ? SpinKitWave(
                             color: AppColors.darkPurpleColor,
@@ -122,25 +113,19 @@ class _RegisterViewState extends State<RegisterView> {
                                         value: controller
                                             .specializationList[index][1],
                                       ),
-                                      SizedBox(
-                                        width: screenWidth(28),
-                                      ),
+                                      (screenWidth(28)).pw,
                                       CustomText(
                                           textType: TextStyleType.SMALL,
                                           text: controller
                                               .specializationList[index][0]),
-                                      SizedBox(
-                                        width: screenWidth(28),
-                                      ),
+                                      (screenWidth(28)).pw,
                                     ],
                                   );
                                 },
                               ),
                             ),
                           )),
-                    SizedBox(
-                      height: screenHeight(28),
-                    ),
+                    (screenHeight(28)).ph,
                     CustomButton(
                       onPressed: () {
                         controller.register();
@@ -151,13 +136,12 @@ class _RegisterViewState extends State<RegisterView> {
                       width: width,
                       height: screenHeight(13),
                     ),
-                    SizedBox(
-                      height: screenHeight(100),
-                    ),
+                    (screenHeight(100)).ph,
                     CustomRichText(
                         text1: 'لديك حساب؟',
                         text2: 'تسجيل الدخول',
                         ontap: () {
+                          //!  if Check this code you need to uncomment the line below --**--
                           // Get.to(() => const LoginView());
                         }),
                   ],

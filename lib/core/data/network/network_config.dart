@@ -3,7 +3,7 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/core/utils/network_utils.dart';
 
 class NetworkConfig {
-  static String BASE_API = '/api/Darrebni';
+  static String BASE_API = '/api/Darrebni/';
 
   static String getFullApiRoute(String apiRoute) {
     return BASE_API + apiRoute;
@@ -17,7 +17,7 @@ class NetworkConfig {
   }) {
     return {
       if (needAuth!)
-        "Authorization": "Bearer ${storage.getTokenInfo()?.accessToken ?? ''}",
+        "Authorization": "Bearer ${storage.getTokenInfo()?.token ?? ''}",
       if (needHost!) "Host": NetworkUtil.baseUrl,
       if (requestType != RequestType.GET) "Content-Type": "application/json",
       ...extraHeaders!

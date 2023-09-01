@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_templete/app/app_config.dart';
+import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/data/models/cart_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
@@ -14,6 +15,7 @@ class SharedPreferencesRepository {
   String PREF_TOKEN = 'token';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
+  String PREF_COLLEGE_LIST = 'college_list';
 
   void setFirstLaunch(bool value) {
     setPreference(
@@ -83,6 +85,22 @@ class SharedPreferencesRepository {
       return getPreference(key: PREF_APP_LANG);
     } else {
       return AppConfig.defaultLanguage;
+    }
+  }
+
+  void setCollegeList(List<SpecializationsModel> list) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_COLLEGE_LIST,
+      value: SpecializationsModel.encode(list),
+    );
+  }
+
+  List<SpecializationsModel> getCollegeList() {
+    if (globalSharedPreferences.containsKey(PREF_COLLEGE_LIST)) {
+      return SpecializationsModel.decode(getPreference(key: PREF_COLLEGE_LIST));
+    } else {
+      return [];
     }
   }
 

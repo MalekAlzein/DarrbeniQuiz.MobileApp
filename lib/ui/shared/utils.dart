@@ -4,7 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_blur.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_popup_with_blur.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:get/get.dart';
 
 double width = Get.size.shortestSide;
@@ -131,52 +134,52 @@ void showAlertDialoug({
 //   );
 // }
 
-// void showSpecializationBottomSheet({required bool specialization}) {
-//   Get.bottomSheet(
-//     CustomPopupWithBlurWidget(
-//       customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
-//       child: Container(
-//         height: screenHeight(4),
-//         decoration: BoxDecoration(
-//           color: AppColors.whiteColor,
-//           borderRadius: BorderRadiusDirectional.only(
-//             topStart: Radius.circular(20),
-//             topEnd: Radius.circular(20),
-//           ),
-//         ),
-//         child: Padding(
-//           padding: EdgeInsetsDirectional.symmetric(
-//             horizontal: screenWidth(25),
-//             vertical: screenWidth(15),
-//           ),
-//           child: Column(
-//             children: [
-//               CustomButton(
-//                   backgroundColor: AppColors.darkPurpleColor,
-//                   text: tr('Key_specialization_master'),
-//                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
-//                   onPressed: () {
-//                     Get.to(() => SubjectView(
-//                           specialization: !specialization,
-//                         ));
-//                   }),
-//               screenHeight(35).ph,
-//               CustomButton(
-//                   backgroundColor: AppColors.lightCyanColor,
-//                   text: tr('Key_specialization_graduation'),
-//                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
-//                   onPressed: () {
-//                     Get.to(() => SubjectView(
-//                           specialization: specialization,
-//                         ));
-//                   })
-//             ],
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
-// }
+void showSpecializationBottomSheet({required bool specialization}) {
+  Get.bottomSheet(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
+      child: Container(
+        height: screenHeight(4),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          borderRadius: BorderRadiusDirectional.only(
+            topStart: Radius.circular(20),
+            topEnd: Radius.circular(20),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: screenWidth(25),
+            vertical: screenWidth(15),
+          ),
+          child: Column(
+            children: [
+              CustomButton(
+                  backgroundColor: AppColors.darkPurpleColor,
+                  text: tr('Key_specialization_master'),
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    // Get.to(() => SubjectView(
+                    //       specialization: !specialization,
+                    //     ));
+                  }),
+              screenHeight(35).ph,
+              CustomButton(
+                  backgroundColor: AppColors.lightCyanColor,
+                  text: tr('Key_specialization_graduation'),
+                  buttonTypeEnum: ButtonTypeEnum.NORMAL,
+                  onPressed: () {
+                    // Get.to(() => SubjectView(
+                    //       specialization: specialization,
+                    //     ));
+                  })
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
 
 // void showQuestionTypeBottomSheet() {
 //   Get.bottomSheet(

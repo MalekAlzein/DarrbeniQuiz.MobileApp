@@ -89,14 +89,14 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
           children: [
             SvgPicture.asset(
               "assets/svgs/$imageName.svg",
-              width: screenWidth(18),
+              width: isSelected ? screenWidth(15) : screenWidth(18),
               color: AppColors.normalPurpleColor,
             ),
             SizedBox(
               height: screenWidth(100),
             ),
             Container(
-              width: screenWidth(15),
+              width: screenWidth(10),
               height: screenWidth(200),
               color:
               isSelected ? AppColors.normalPurpleColor : Colors.transparent,

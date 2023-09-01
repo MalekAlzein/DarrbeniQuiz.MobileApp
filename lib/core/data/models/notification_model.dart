@@ -1,25 +1,53 @@
-class NotifictionModel {
-  String? notifctionType;
-  String? title;
-  String? text;
-  String? subStatus;
+class NotificationModel {
+  bool? status;
+  String? message;
+  List<Data>? data;
+  int? code;
 
-  NotifictionModel(
-      {this.notifctionType, this.title, this.text, this.subStatus});
+  NotificationModel({this.status, this.message, this.data, this.code});
 
-  NotifictionModel.fromJson(Map<String, dynamic> json) {
-    notifctionType = json['notifction_type'];
-    title = json['title'];
-    text = json['text'];
-    subStatus = json['sub_status'];
+  NotificationModel.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    message = json['message'];
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
+      });
+    }
+    code = json['code'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['notifction_type'] = this.notifctionType;
+    data['status'] = this.status;
+    data['message'] = this.message;
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    data['code'] = this.code;
+    return data;
+  }
+}
+
+class Data {
+  int? id;
+  String? title;
+  String? body;
+
+  Data({this.id, this.title, this.body});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    body = json['body'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['title'] = this.title;
-    data['text'] = this.text;
-    data['sub_status'] = this.subStatus;
+    data['body'] = this.body;
     return data;
   }
 }

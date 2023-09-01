@@ -7,8 +7,8 @@ import 'package:flutter_templete/core/enums/notification_type.dart';
 import 'package:get/utils.dart';
 
 class NotificationService {
-  StreamController<NotifictionModel> notifcationStream =
-      StreamController<NotifictionModel>.broadcast();
+  StreamController<NotificationModel> notifcationStream =
+      StreamController<NotificationModel>.broadcast();
 
   NotificationService() {
     onInit();
@@ -38,12 +38,12 @@ class NotificationService {
     }
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      NotifictionModel model = NotifictionModel.fromJson(message.data);
+      NotificationModel model = NotificationModel.fromJson(message.data);
       handelNotification(model: model, appState: AppState.FOREGROUND);
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      NotifictionModel model = NotifictionModel.fromJson(message.data);
+      NotificationModel model = NotificationModel.fromJson(message.data);
       handelNotification(model: model, appState: AppState.BACKGROUND);
     });
   }
@@ -63,10 +63,10 @@ class NotificationService {
   }
 
   void handelNotification(
-      {required NotifictionModel model, required AppState appState}) {
+      {required NotificationModel model, required AppState appState}) {
     notifcationStream.add(model);
-    if (model.notifctionType == NotificationType.SUBSCRIPTION.name) {
-      // storage.setSubStatus(model.subStatus == "1" ? true : false);
-    }
+    // if (model.notifctionType == NotificationType.SUBSCRIPTION.name) {
+    // storage.setSubStatus(model.subStatus == "1" ? true : false);
+    // }
   }
 }

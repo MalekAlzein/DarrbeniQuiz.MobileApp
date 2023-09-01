@@ -32,13 +32,15 @@ class QuestionModel {
 
 class Data {
   String? questionText;
+  String? reference;
   List<Answers>? answers;
   int? correctId;
 
-  Data({this.questionText, this.answers, this.correctId});
+  Data({this.questionText, this.reference, this.answers, this.correctId});
 
   Data.fromJson(Map<String, dynamic> json) {
     questionText = json['questionText'];
+    reference = json['reference'];
     if (json['answers'] != null) {
       answers = <Answers>[];
       json['answers'].forEach((v) {
@@ -51,6 +53,7 @@ class Data {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['questionText'] = this.questionText;
+    data['reference'] = this.reference;
     if (this.answers != null) {
       data['answers'] = this.answers!.map((v) => v.toJson()).toList();
     }

@@ -1,12 +1,12 @@
-class SubjectModel {
+class SubjectmModel {
   bool? status;
   String? message;
   List<Data>? data;
   int? code;
 
-  SubjectModel({this.status, this.message, this.data, this.code});
+  SubjectmModel({this.status, this.message, this.data, this.code});
 
-  SubjectModel.fromJson(Map<String, dynamic> json) {
+  SubjectmModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
@@ -34,25 +34,15 @@ class Data {
   int? id;
   String? uuid;
   String? name;
-  Null? specializationId;
-  int? hasMaster;
-  int? hasGraduation;
+  int? specializationId;
 
-  Data(
-      {this.id,
-      this.uuid,
-      this.name,
-      this.specializationId,
-      this.hasMaster,
-      this.hasGraduation});
+  Data({this.id, this.uuid, this.name, this.specializationId});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     uuid = json['uuid'];
     name = json['name'];
-    specializationId = json['Specialization_id'];
-    hasMaster = json['has_master'];
-    hasGraduation = json['has_graduation'];
+    specializationId = json['specialization_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -60,9 +50,7 @@ class Data {
     data['id'] = this.id;
     data['uuid'] = this.uuid;
     data['name'] = this.name;
-    data['Specialization_id'] = this.specializationId;
-    data['has_master'] = this.hasMaster;
-    data['has_graduation'] = this.hasGraduation;
+    data['specialization_id'] = this.specializationId;
     return data;
   }
 }

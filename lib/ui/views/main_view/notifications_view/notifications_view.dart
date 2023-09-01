@@ -9,6 +9,8 @@ import '../../../shared/utils.dart';
 import '../main_controller.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'notifications_controller.dart';
+
 class NotificationsView extends StatefulWidget {
   const NotificationsView({super.key});
 
@@ -17,49 +19,38 @@ class NotificationsView extends StatefulWidget {
 }
 
 class _NotificationsViewState extends State<NotificationsView> {
+  NotificationsController controller = Get.put(NotificationsController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-
-
             body: Column(children: [
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: screenWidth(15)),
+        child: Column(
+          children: [
+            (screenWidth(18)).ph,
+            Center(
+              child: SvgPicture.asset("assets/svgs/img_notifications.svg"),
+            ),
+            (screenWidth(18)).ph,
+            CustomText(
+              text: "الإشعارات",
+              textType: TextStyleType.TITLE,
+            ),
+            (screenWidth(20)).ph,
+            CustomText(
+              textType: TextStyleType.BODY,
+              text:
+                  'أبقى على إطلاع بمواعيد الإمتحان الوطني\n صدور النتائج، إضافة أسئلة، والكثير من\n الأخبار',
+            ),
 
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal:   screenWidth(15)),
-                child: Column(
-                  children: [
-                    (screenWidth(18)).ph,
-                    Center(
-                      child: SvgPicture.asset("assets/svgs/img_notifications.svg"),
-                    ),
-                    (screenWidth(18)).ph,
+            (screenWidth(20)).ph,
 
-                    CustomText(
-                        text: "الإشعارات",
-                      textType: TextStyleType.TITLE,
-                    ),
-                    (screenWidth(20)).ph,
-
-                    CustomText(textType:TextStyleType.BODY ,
-                  text:'أبقى على إطلاع بمواعيد الإمتحان الوطني\n صدور النتائج، إضافة أسئلة، والكثير من\n الأخبار' ,
-                    ),
-                    (screenWidth(15)).ph,
-
-
-                    CustomButton(text: "تفعيل الإشعارات", onPressed: () {},buttonTypeEnum: ButtonTypeEnum.BIG,),
-                    (screenWidth(20)).ph,
-
-
-                    Center(
-                        child: CustomText(
-                          text: "تجاهل",
-                         textColor: AppColors.blackColor,
-                           textType: TextStyleType.SMALL,
-                        )),
-                  ],
-                ),
-              )
-            ])));
+          ],
+        ),
+      )
+    ])));
   }
 }

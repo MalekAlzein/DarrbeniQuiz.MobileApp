@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesRepository {
   SharedPreferences globalSharedPreferences = Get.find();
+
   //!--- Keys ----
   String PREF_FIRST_LAUNCH = 'first_launch';
   String PREF_TOKEN = 'token';
@@ -23,6 +24,7 @@ class SharedPreferencesRepository {
       value: value,
     );
   }
+
   void setFcmToken(String value) {
     setPreference(
       dataType: DataType.STRING,
@@ -30,6 +32,7 @@ class SharedPreferencesRepository {
       value: value,
     );
   }
+
   String getFcmToken() {
     if (globalSharedPreferences.containsKey(PREF_FCM_TOKEN)) {
       return getPreference(key: PREF_FCM_TOKEN);
@@ -77,7 +80,6 @@ class SharedPreferencesRepository {
     );
   }
 
-
   List<CartModel> getCartList() {
     if (globalSharedPreferences.containsKey(PREF_CART_LIST)) {
       return CartModel.decode(getPreference(key: PREF_CART_LIST));
@@ -101,7 +103,9 @@ class SharedPreferencesRepository {
       return AppConfig.defaultLanguage;
     }
   }
-
+void removeFcmToken(){
+  globalSharedPreferences.remove(PREF_FCM_TOKEN);
+}
   //?--
 
   //!--- Main Function ----

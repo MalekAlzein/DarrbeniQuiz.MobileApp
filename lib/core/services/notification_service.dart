@@ -10,6 +10,7 @@ class NotificationService {
   StreamController<NotifictionModel> notifcationStream =
       StreamController<NotifictionModel>.broadcast();
 
+
   NotificationService() {
     onInit();
   }
@@ -17,7 +18,6 @@ class NotificationService {
   void onInit() async {
     if (GetPlatform.isIOS) {
       FirebaseMessaging messaging = FirebaseMessaging.instance;
-
       NotificationSettings settings = await messaging.requestPermission(
         alert: true,
         announcement: false,
@@ -49,14 +49,18 @@ class NotificationService {
   }
 
   Future<void> registerdFCMToken() async {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
-    //! -- Call api that register fcm token ---
-    if(fcmToken!=null){
-      storage.setFcmToken(fcmToken);
+     final fcmToken;
+    if(storage.getFcmToken()==''){
+       fcmToken = await FirebaseMessaging.instance.getToken();
+       storage.setFcmToken(fcmToken);
     }
+    else {
+       fcmToken = storage.getFcmToken();
+    }
+    //! -- Call api that register fcm token ---
     print(storage.getFcmToken());
 
-    FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) {
+     FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) {
       //! -- Call api that register fcm token ---
 
       // Note: This callback is fired at each app startup and whenever a new
@@ -64,7 +68,8 @@ class NotificationService {
     }).onError((err) {
       // Error getting token.
     });
-  }
+
+}
 
   void handelNotification(
       {required NotifictionModel model, required AppState appState}) {

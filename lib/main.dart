@@ -8,6 +8,7 @@ import 'package:flutter_templete/core/services/language_service.dart';
 import 'package:flutter_templete/core/services/location_service.dart';
 import 'package:flutter_templete/core/services/notification_service.dart';
 import 'package:flutter_templete/core/services/package_info_service.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/firebase_options.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,9 +33,9 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     Get.put(NotificationService());
+    notificationService.toggleNotification(true);
   } catch (e) {
     print(e);
   }
-
   runApp(const MyApp());
 }

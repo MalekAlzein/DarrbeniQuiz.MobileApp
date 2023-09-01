@@ -5,7 +5,6 @@ import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/cart_services.dart';
 import 'package:flutter_templete/core/services/connectivity_service.dart';
 import 'package:flutter_templete/core/services/language_service.dart';
-import 'package:flutter_templete/core/services/location_service.dart';
 import 'package:flutter_templete/core/services/notification_service.dart';
 import 'package:flutter_templete/core/services/package_info_service.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
@@ -16,7 +15,6 @@ ConnectivityService get connectivityService => Get.find<ConnectivityService>();
 SharedPreferencesRepository get storage =>
     Get.find<SharedPreferencesRepository>();
 CartService get cartService => Get.find<CartService>();
-LocationService get locationService => Get.find<LocationService>();
 NotificationService get notificationService => Get.find<NotificationService>();
 LanguageService get languageService => Get.find<LanguageService>();
 PackageInfoService get packageInfoService => Get.find<PackageInfoService>();

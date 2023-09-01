@@ -45,9 +45,9 @@ class _NotificationsViewState extends State<NotificationsView> {
               text:
                   'أبقى على إطلاع بمواعيد الإمتحان الوطني\n صدور النتائج، إضافة أسئلة، والكثير من\n الأخبار',
             ),
+            // Column(children: List.generate(length, (index) => null),)
 
             (screenWidth(20)).ph,
-
           ],
         ),
       )

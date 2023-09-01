@@ -27,21 +27,24 @@ class _AboutAppViewState extends State<AboutAppView> {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [SvgPicture.asset('assets/images/about_app.svg')],
+            children: [SvgPicture.asset('assets/svgs/about_app.svg')],
           ),
-          (screenWidth(20)).ph,
+          (screenWidth(30)).ph,
           Obx(() => controller.textShow.isEmpty
               ? SpinKitCircle(
                   color: AppColors.darkPurpleColor,
                 )
-              : Column(
-                  children: List.generate(
-                      controller.textShow.length,
-                      (index) => CustomText(
-                            text: controller.textShow[index],
-                            textType: TextStyleType.SUBTITLE,
-                          )),
-                )),
+              : controller.errorGet.value
+                  ? CustomText(
+                      textType: TextStyleType.BODY, text: controller.errorText)
+                  : Column(
+                      children: List.generate(
+                          controller.textShow.length,
+                          (index) => CustomText(
+                                text: controller.textShow[index],
+                                textType: TextStyleType.SUBTITLE,
+                              )),
+                    )),
         ],
       ),
     );

@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_templete/core/data/models/notification_model.dart';
 import 'package:flutter_templete/core/enums/app_state_enum.dart';
 import 'package:flutter_templete/core/enums/notification_type.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:get/utils.dart';
 
 class NotificationService {
@@ -51,6 +51,10 @@ class NotificationService {
   Future<void> registerdFCMToken() async {
     final fcmToken = await FirebaseMessaging.instance.getToken();
     //! -- Call api that register fcm token ---
+    if(fcmToken!=null){
+      storage.setFcmToken(fcmToken);
+    }
+    print(storage.getFcmToken());
 
     FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) {
       //! -- Call api that register fcm token ---

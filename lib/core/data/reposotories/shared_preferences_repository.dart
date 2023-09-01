@@ -14,6 +14,7 @@ class SharedPreferencesRepository {
   String PREF_TOKEN = 'token';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
+  String PREF_FCM_TOKEN = 'fcm_token';
 
   void setFirstLaunch(bool value) {
     setPreference(
@@ -21,6 +22,20 @@ class SharedPreferencesRepository {
       key: PREF_FIRST_LAUNCH,
       value: value,
     );
+  }
+  void setFcmToken(String value) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_FCM_TOKEN,
+      value: value,
+    );
+  }
+  String getFcmToken() {
+    if (globalSharedPreferences.containsKey(PREF_FCM_TOKEN)) {
+      return getPreference(key: PREF_FCM_TOKEN);
+    } else {
+      return '';
+    }
   }
 
   bool getFirstLaunch() {
@@ -61,6 +76,7 @@ class SharedPreferencesRepository {
       value: CartModel.encode(list),
     );
   }
+
 
   List<CartModel> getCartList() {
     if (globalSharedPreferences.containsKey(PREF_CART_LIST)) {

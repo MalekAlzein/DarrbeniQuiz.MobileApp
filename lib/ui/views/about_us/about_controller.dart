@@ -12,11 +12,13 @@ class AboutController extends GetxController {
     super.onInit();
   }
   RxList<String> textShow=<String>[].obs;
+  RxBool errorGet=false.obs;
   String errorText='الانترنيت لديك ضعيف الرجاء التأكد منه';
   getAboutUS() async{
    await UboutUsRepositories.aboutUS().then((value) {
       value.fold((l) {
-        textShow.value=[];
+        errorGet.value=true;
+        textShow.value=['error'];
         CustomToast.showMessage(
             message: l, messageType: MessageType.REJECTED);
       }, (r) {

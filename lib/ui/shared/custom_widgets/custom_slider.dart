@@ -50,7 +50,7 @@ class _CustomSliderState extends State<CustomSlider> {
         ),
         SizedBox(height: screenWidth(26)),
         Obx(
-          () => Row(
+              () => Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: widget.items.map((item) {
               int index = widget.items.indexOf(item);

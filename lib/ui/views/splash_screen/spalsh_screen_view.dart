@@ -20,10 +20,14 @@ class _SplashScreenViewState extends State<SplashScreenView> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Stack(
-          alignment: Alignment.bottomCenter,
-          fit: StackFit.passthrough,
-          children: [
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.4,
+        )
+        // Stack(
+        //   alignment: Alignment.bottomCenter,
+        //   fit: StackFit.passthrough,
+        //   children: [
             // SvgPicture.asset(
             //   'assets/images/bg_background.svg',
             //   height: screenHeight(1),
@@ -35,17 +39,17 @@ class _SplashScreenViewState extends State<SplashScreenView> {
             //   width: screenWidth(5),
             //   height: screenHeight(5),
             // )),
-            screenWidth(10).ph,
-            Container(
-              margin: EdgeInsets.only(bottom: screenWidth(3)),
-              // width: size.width*0.1,
-              height: screenWidth(3),
-              child: SpinKitThreeBounce(
-                color: AppColors.darkPurpleColor,
-              ),
-            ),
-          ],
-        ),
+            // screenWidth(10).ph,
+            // Container(
+            //   margin: EdgeInsets.only(bottom: screenWidth(3)),
+            //   // width: size.width*0.1,
+            //   height: screenWidth(3),
+            //   child: SpinKitThreeBounce(
+            //     color: AppColors.darkPurpleColor,
+            //   ),
+            // ),
+          // ],
+        // ),
       ),
     );
   }

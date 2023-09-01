@@ -5,13 +5,14 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomAppBar extends StatelessWidget{
-  const CustomAppBar({Key? key, this.activeColor, required this.svgName, this.firstText, this.secondText, this.thirdText}) : super(key: key);
+  const CustomAppBar({Key? key, this.activeColor, required this.svgName, this.firstText, this.secondText, this.thirdText, this.onTap}) : super(key: key);
 
   final Color? activeColor;
   final String? svgName;
   final String? firstText;
   final String? secondText;
   final String? thirdText;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,14 @@ class CustomAppBar extends StatelessWidget{
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             children: [
-              SvgPicture.asset(
-                'assets/svgs/$svgName.svg',
-                color: Colors.white,
+              InkWell(
+                onTap: (){
+                  onTap;
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/$svgName.svg',
+                  color: Colors.white,
+                ),
               ),
               SizedBox(width: screenWidth(30)),
               if (firstText != null) ...[

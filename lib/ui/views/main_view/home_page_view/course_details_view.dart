@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_container.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_list.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/colors.dart';
 import '../../../shared/custom_widgets/custom_button.dart';
-import '../../../shared/custom_widgets/custom_text.dart';
 import '../../../shared/utils.dart';
 import 'home_top_section.dart';
 
@@ -56,51 +57,29 @@ class _CourseDetailsViewState extends State<CourseDetailsView> {
                   child: Column(
                     children: [
                       30.ph,
-                      Wrap(
-                        // direction:
-                        // AppConfig.currentEducation == EducationType.MASTER
-                        //     ? Axis.vertical
-                        //     : Axis.horizontal,
-                        children: List.generate(
+                  CustomChipList(children: 
+                  List.generate(
                           homeViewController.collegeSubjects.length,
-                          (index) => InkWell(
-                            onTap: () {
-                              // mainViewController.pageTitle.value =
-                              //     signUpViewController.selectedMajor.value +
-                              //         ' / ' +
-                              //         homeViewController
-                              //             .collegeSubjects[index].name!;
+                          (index) => CustomChipContainer(
+                              text: homeViewController
+                                  .collegeSubjects[index], onTap: 
+                                    onTap: () {
+                                // mainViewController.pageTitle.value =
+                                //     signUpViewController.selectedMajor.value +
+                                //         ' / ' +
+                                //         homeViewController
+                                //             .collegeSubjects[index].name!;
 
-                              // context.push(BookCourseButtons(
-                              //   subjectID: homeViewController
-                              //       .collegeSubjects[index].uuid!,
-                              //   specialID: widget.specialId,
-                              // ));
-                            },
-                            child: Container(
-                              margin: EdgeInsets.only(left: 6),
-                              padding: EdgeInsets.all(6),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(
-                                      color: AppColors.darkPurpleColor,
-                                      width: 1)),
-                              child: CustomText(
-                                fontSize: 14,
-                                text:
-                                    homeViewController.collegeSubjects[index] ??
-                                        '',
-                                textType: TextStyleType.SMALL,
+                                // context.push(BookCourseButtons(
+                                //   subjectID: homeViewController
+                                //       .collegeSubjects[index].uuid!,
+                                //   specialID: widget.specialId,
+                                // ));
+                              },
                               ),
-                            ),
-                          ),
                         ),
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        runSpacing: 20,
-                        spacing: 10,
-                        alignment: WrapAlignment.center,
-                      ),
-                      Padding(
+                  )
+                 ,      Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: screenHeight(20)),
                         child: Row(

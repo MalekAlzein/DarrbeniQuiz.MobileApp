@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:get/get.dart';
+import '../../../shared/custom_widgets/custom_app_bar.dart';
+import '../../../shared/utils.dart';
+import '../main_controller.dart';
+import 'package:flutter_svg/svg.dart';
 
 class NotificationsView extends StatefulWidget {
-  const NotificationsView({Key? key}) : super(key: key);
+  const NotificationsView({super.key});
 
   @override
   State<NotificationsView> createState() => _NotificationsViewState();
@@ -10,8 +19,47 @@ class NotificationsView extends StatefulWidget {
 class _NotificationsViewState extends State<NotificationsView> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Notifications'),
-    );
+    return SafeArea(
+        child: Scaffold(
+
+
+            body: Column(children: [
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal:   screenWidth(15)),
+                child: Column(
+                  children: [
+                    (screenWidth(18)).ph,
+                    Center(
+                      child: SvgPicture.asset("assets/svgs/img_notifications.svg"),
+                    ),
+                    (screenWidth(18)).ph,
+
+                    CustomText(
+                        text: "الإشعارات",
+                      textType: TextStyleType.TITLE,
+                    ),
+                    (screenWidth(20)).ph,
+
+                    CustomText(textType:TextStyleType.BODY ,
+                  text:'أبقى على إطلاع بمواعيد الإمتحان الوطني\n صدور النتائج، إضافة أسئلة، والكثير من\n الأخبار' ,
+                    ),
+                    (screenWidth(15)).ph,
+
+
+                    CustomButton(text: "تفعيل الإشعارات", onPressed: () {},buttonTypeEnum: ButtonTypeEnum.BIG,),
+                    (screenWidth(20)).ph,
+
+
+                    Center(
+                        child: CustomText(
+                          text: "تجاهل",
+                         textColor: AppColors.blackColor,
+                           textType: TextStyleType.SMALL,
+                        )),
+                  ],
+                ),
+              )
+            ])));
   }
 }

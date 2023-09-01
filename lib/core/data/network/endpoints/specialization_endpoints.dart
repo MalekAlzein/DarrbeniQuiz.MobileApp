@@ -10,4 +10,6 @@ class SpecializationEndpoints {
       NetworkConfig.getFullApiRoute('Specialization/checkButtons');
   static String ShowMaster =
       NetworkConfig.getFullApiRoute('Specialization/filters/type/master');
+  static String ShowGraduation =
+      NetworkConfig.getFullApiRoute('Specialization/filters/type/graduation');
 }

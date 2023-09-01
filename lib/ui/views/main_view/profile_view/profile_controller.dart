@@ -1,10 +1,9 @@
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:get/get.dart';
-import 'package:new_quiz/UI/shared/custom_widgets/custom_toast.dart';
-import 'package:new_quiz/UI/views/login_view/login_view.dart';
-import 'package:new_quiz/core/data/repositories/profile_repository.dart';
-import 'package:new_quiz/core/services/base_controller.dart';
-
+import '../../../../core/data/reposotories/profile_repository.dart';
 import '../../../../core/enums/message_type.dart';
+import '../../../../core/services/base_controller.dart';
+import '../../../shared/custom_widgets/custom_toast.dart';
 
 class profileController extends BaseController {
   RxString name = "".obs;
@@ -19,30 +18,24 @@ class profileController extends BaseController {
   void getUserInfo() {
     profileRepository().showProfile().then((value) {
       value.fold((l) {
-        customToast.showMessage(
-            message: l, messageType: MessageType.REJECTED);
+        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
-name.value=r.data!.username!;
-phone.value=r.data!.phone!;
-
+        name.value = r.data!.name!;
+        phone.value = r.data!.mobilePhone!;
       });
     });
   }
 
   Future<void> logout() async {
-      runFullLoadingFunction(
-          function: profileRepository()
-              .logout()
-              .then((value) {
-            value.fold((l) {
-              customToast.showMessage(
-                  message: l, messageType: MessageType.REJECTED);
-            }, (r) {
-              customToast.showMessage(message: r.message??"", messageType: MessageType.SUCCESS );
-              Get.off(loginView(name: "aya"), transition: Transition.cupertino);
-            });
-          }));
-
+    runFutureFunction(
+        function: profileRepository().logout().then((value) {
+      value.fold((l) {
+        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
+      }, (r) {
+        storage.clearTokenInfo();
+        CustomToast.showMessage(
+            message: r ?? "", messageType: MessageType.SUCCESS);
+      });
+    }));
   }
-
 }

@@ -45,15 +45,14 @@ class _HomePageViewState extends State<HomePageView> {
               Obx(
                 () {
                   print(controller.silderList);
-                  return controller.silderList.isEmpty
-                      ? CustomShimmer(
+                  return  CustomShimmer(
                           center: true,
-                          isLoading: controller.isLoading.value,
-                          child: null,
-                        )
-                      : CustomSlider(
+                          isLoading: controller.isLoading,
+                          child:  CustomSlider(
                           items: [],
+                        ),
                         );
+                      
                 },
               ),
               CustomSubTitleContainer(
@@ -69,17 +68,16 @@ class _HomePageViewState extends State<HomePageView> {
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: controller.categoryList.length,
+                    itemCount: controller.collegeList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      String categoryUUID =
-                          controller.categoryList[index].uuid!;
+                      int collageId = controller.collegeList[index].collegeId;
                       bool isSelected =
-                          categoryUUID == controller.selectedCategory.value;
+                          collageId == controller.selectedCategory.value;
 
                       return HomeViewCategoryWidget(
-                        text: controller.categoryList[index].name,
+                        text: controller.collegeList[index].name,
                         onTap: () {
-                          controller.getCollegesByCategory(categoryUUID);
+                          controller.getSpecializationspByCollege(collageId);
                         },
                         isSelected: isSelected,
                       );
@@ -93,23 +91,25 @@ class _HomePageViewState extends State<HomePageView> {
                       width: screenWidth(1),
                       child: CustomGrideView(
                           children: List.generate(
-                        controller.filteredCollegeList.length,
+                        controller.filteredSpecializationsList.length,
                         (index) => Flexible(
                           child: CustomGridCollege(
                             onTap: () {
                               showSpecializationBottomSheet(
                                 specialization: controller
-                                    .filteredCollegeList[index].isMaster!,
-                                collegeModel:
-                                    controller.filteredCollegeList[index],
+                                    .filteredSpecializationsList[index]
+                                    .data![],
+                                specializationsModel: controller
+                                    .filteredSpecializationsList[index],
                               );
                             },
                             isSubbed: controller.subbedCollege(index: index),
                             // imageName: "img_login",
-                            imageName:
-                                controller.filteredCollegeList[index].logo ??
-                                    "",
-                            text: controller.filteredCollegeList[index].name ??
+                            imageName: controller
+                                    .filteredSpecializationsList[index].logo ??
+                                "",
+                            text: controller
+                                    .filteredSpecializationsList[index].name ??
                                 "",
                           ),
                         ),

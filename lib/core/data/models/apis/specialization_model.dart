@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class SpecializationsModel {
   bool? status;
   String? message;
@@ -28,6 +30,27 @@ class SpecializationsModel {
     data['code'] = this.code;
     return data;
   }
+
+  static Map<String, dynamic> toMap(SpecializationsModel model) {
+    return {
+      'message': model.message,
+      'data': model.data,
+      'code': model.code,
+      'status': model.status,
+    };
+  }
+
+  static String encode(List<SpecializationsModel> list) => json.encode(
+        list
+            .map<Map<String, dynamic>>(
+                (element) => SpecializationsModel.toMap(element))
+            .toList(),
+      );
+
+  static List<SpecializationsModel> decode(String strList) => (json
+          .decode(strList) as List<dynamic>)
+      .map<SpecializationsModel>((item) => SpecializationsModel.fromJson(item))
+      .toList();
 }
 
 class Data {

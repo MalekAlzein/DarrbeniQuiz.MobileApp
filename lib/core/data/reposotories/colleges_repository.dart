@@ -1,15 +1,17 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
+import 'package:flutter_templete/core/data/network/endpoints/specialization_endpoints.dart';
 import '../../enums/request_type.dart';
 import '../../utils/network_utils.dart';
 import '../models/common_response.dart';
 import '../network/network_config.dart';
 
-class CollegesRepository {
-  Future<Either<String, List<CollegesModel>>> getAllCategories() async {
+class CollegeRepository {
+  Future<Either<String, List<CollegeModel>>> getAllColleges() async {
     try {
       return NetworkUtil.sendRequest(
         requestType: RequestType.GET,
-        url: CollegesEndpoints.allColleges,
+        url: SpecializationEndpoints.allCollages,
         headers: NetworkConfig.getHeaders(
           needAuth: false,
           requestType: RequestType.GET,
@@ -22,12 +24,13 @@ class CollegesRepository {
               CommonResponseModel.fromJson(response);
 
           if (commonResponse.getStatus) {
-            List<CollegesModel> resultList = [];
-            resultList.add(CollegesModel(id: 0, name: "الكل", uuid: "all"));
+            List<CollegeModel> resultList = [];
+            resultList
+                .add(CollegeModel(data: [Data(id: 0, collageName: "الكل")]));
 
             commonResponse.data!['categories'].forEach(
               (element) {
-                resultList.add(CollegesModel.fromJson(element));
+                resultList.add(CollegeModel.fromJson(element));
               },
             );
 

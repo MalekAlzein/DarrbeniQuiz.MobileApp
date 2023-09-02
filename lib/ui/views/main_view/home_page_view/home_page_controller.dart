@@ -1,5 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
+import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
+import 'package:flutter_templete/core/data/reposotories/colleges_repository.dart';
 import 'package:flutter_templete/core/data/reposotories/silder_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
@@ -9,26 +12,28 @@ import 'package:get/get.dart';
 
 class HomePageController extends BaseController {
   RxList<SliderModel> silderList = <SliderModel>[].obs;
-  RxList<SpecializationsModel> collegeList = <SpecializationsModel>[].obs;
-  RxList<SpecializationsModel> filteredCollegeList =
+  RxList<SpecializationsModel> specializationsList =
       <SpecializationsModel>[].obs;
-  RxList<SpecializationsModel> categoryList = <SpecializationsModel>[].obs;
-  RxList<String> selectedCategories = <String>[].obs;
-  RxString selectedCategory = "الكل".obs;
+  RxList<SpecializationsModel> filteredSpecializationsList =
+      <SpecializationsModel>[].obs;
+  RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
+  RxList<String> selectedColleges = <String>[].obs;
+  RxString selectedCollege = "الكل".obs;
 
   @override
   void onInit() {
-    collegeList.value = storage.getCollegeList();
+    specializationsList.value = storage.getSpecializationsList();
     getAllSliders();
-    getAllCategories();
+    getAllColleges();
     super.onInit();
   }
 
   bool subbedCollege({
     required int index,
   }) {
-    return storage.getCollegeLogin()!.uuid == filteredCollegeList[index].uuid!;
-    // return storage.getCollegeLogin()!.uuid == collegeList[index].uuid!;
+    return storage.getSpecializationsLogin()!.data![id(index)] ==
+        filteredSpecializationsList[index].data![id(index)];
+    // return storage.getCollegeLogin()!.uuid == specializationsList[index].uuid!;
   }
 
   void getAllSliders() {
@@ -52,9 +57,9 @@ class HomePageController extends BaseController {
     );
   }
 
-  void getAllCategories() {
+  void getAllColleges() {
     runFutureFunction(
-      function: CategoryRepository().getAllCategories().then(
+      function: CollegeRepository().getAllColleges().then(
         (value) {
           value.fold((l) {
             CustomToast.showMessage(
@@ -62,8 +67,8 @@ class HomePageController extends BaseController {
               message: l,
             );
           }, (r) {
-            categoryList.addAll(r);
-            getCollegesByCategory("all");
+            collegeList.addAll(r);
+            getSpecializationspByCollege(0);
             CustomToast.showMessage(
               message: "Success",
               messageType: MessageType.SUCCESS,
@@ -74,13 +79,14 @@ class HomePageController extends BaseController {
     );
   }
 
-  Future<void> getCollegesByCategory(String categoryUUID) async {
-    //filteredCollegeList.clear();
-    if (categoryUUID == 'all') {
-      filteredCollegeList.value = collegeList.value;
+  Future<void> getSpecializationspByCollege(int collegeId) async {
+    //filteredspecializationsList.clear();
+    if (collegeId == 0) {
+      filteredSpecializationsList.value = specializationsList.value;
     } else {
-      filteredCollegeList.value = collegeList.where((college) {
-        return college.category?.uuid == categoryUUID;
+      filteredSpecializationsList.value =
+          specializationsList.where((specializations) {
+        return specializations.data![collegeId] == collegeId;
       }).toList();
     }
   }

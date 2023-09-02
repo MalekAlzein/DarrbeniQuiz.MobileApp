@@ -14,7 +14,7 @@ class SplashScreenView extends StatefulWidget {
 }
 
 class _SplashScreenViewState extends State<SplashScreenView> {
-  //SplashScreenController controller = Get.put(SplashScreenController());
+  SplashScreenController controller = Get.put(SplashScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +25,14 @@ class _SplashScreenViewState extends State<SplashScreenView> {
           fit: StackFit.expand,
           children: [
             Image.asset(
-              'assets/images/خلفية دربني-ويب 1.png',
+              'assets/svgs/خلفية دربني-ويب 1.png',
               fit: BoxFit.fill,
               width: screenWidth(1),
             ),
             Center(
                 child: Image.asset(
               width: screenWidth(4),
-              'assets/images/logo+text.png',
+              'assets/svgs/logo+text.png',
             )),
             Container(
               margin: EdgeInsets.only(top: screenHeight(4)),
@@ -47,7 +47,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
               child: Align(
                 alignment: AlignmentDirectional.bottomCenter,
                 child: Image.asset(
-                  'assets/images/Logo & Profile.png',
+                  'assets/svgs/Logo & Profile.png',
                   width: screenWidth(5),
                 ),
               ),
@@ -58,5 +58,3 @@ class _SplashScreenViewState extends State<SplashScreenView> {
     );
   }
 }
-
-// top:size.hiegh*0.7

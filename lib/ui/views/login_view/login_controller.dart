@@ -7,6 +7,8 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:get/get.dart';
 
+import '../../../core/data/reposotories/profile_repository.dart';
+
 class LoginController extends BaseController {
   RxBool loader = false.obs;
   TextEditingController userNameController =
@@ -28,9 +30,22 @@ class LoginController extends BaseController {
         }, (r) {
           storage.setTokenInfo(r);
           Get.off(MainView());
+          getUserInfo();
           formKey.currentState!.save();
         });
       }));
     }
+  }
+
+   void getUserInfo() {
+    runFutureFunctionWithFullLoading(
+      function:
+    ProfileRepository().getProfileInfo().then((value) {
+      value.fold((l) {
+        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
+      }, (r) {
+        storage.setProfileInfo(r);
+      });
+    }));
   }
 }

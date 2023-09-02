@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
 import 'package:get/get.dart';
@@ -43,12 +45,11 @@ class _ProfileViewState extends State<ProfileView> {
             Padding(
               padding: EdgeInsetsDirectional.only(
                   top: screenWidth(30), bottom: screenWidth(8)),
-              child: Obx(() {
-                return CustomText(
+              child:
+                CustomText(
                   textType: TextStyleType.SMALL,
-                  text: controller.name.value,
-                );
-              }),
+                  text: storage.getProfileInfo()!.name??"",
+                ),
             ),
             CustomRow(
               svgname: 'ic_edit',
@@ -79,10 +80,20 @@ class _ProfileViewState extends State<ProfileView> {
 
             (screenWidth(8)).ph,
 
-            CustomButton(
+            Obx(() {
+              return controller.loader.value
+                  ? SpinKitThreeBounce(
+                color: AppColors.darkPurpleColor,
+              )
+                  : CustomButton(
                 buttonTypeEnum: ButtonTypeEnum.CUSTOM,
-                text: "تسجيل الخروج",
-                onPressed: () => controller.logout())
+                onPressed: () {
+                  controller.logout();
+                },
+                backgroundColor: AppColors.darkPurpleColor,
+                text: "تسجيل خروج",
+              );
+            }),
           ],
         ),
       ),

@@ -54,12 +54,17 @@ class ProfileRepository {
   }
 
 
-  Future<Either<String, dynamic>> updateProfileInfo () async {
+  Future<Either<String, dynamic>> updateProfileInfo ({
+  required String name,
+    required String phone
+}) async {
     try {
       return NetworkUtil.sendRequest(
         requestType:  RequestType.PUT,
         url: ProfileEndpoints.profileUpdate,
         headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.PUT),
+        body: {"name":name,
+          "mobile_phone":phone}
       ).then((response) {
         CommonResponseModel<Map<String, dynamic>> commonResponse =
         CommonResponseModel.fromJson(response);

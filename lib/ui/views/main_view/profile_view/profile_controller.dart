@@ -1,4 +1,5 @@
 import 'package:flutter_templete/core/utils/general_utils.dart';
+import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 import '../../../../core/data/reposotories/profile_repository.dart';
@@ -9,6 +10,7 @@ import '../../../shared/custom_widgets/custom_toast.dart';
 class ProfileController extends BaseController {
   RxString name = "".obs;
   RxInt phone = 0.obs;
+  RxBool loader = false.obs;
 
   void onInit() {
     // TODO: implement onInit
@@ -16,26 +18,24 @@ class ProfileController extends BaseController {
     super.onInit();
   }
 
-   void getUserInfo() {
-    ProfileRepository().getProfileInfo().then((value) {
-      value.fold((l) {
-        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-      }, (r) {
-        name.value = r.data!.name!;
-        phone.value = r.data!.mobilePhone!;
-      });
-    });
+  void getUserInfo() {
+ name.value=storage.getProfileInfo()!.name!;
+ phone.value=storage.getProfileInfo()!.mobilePhone!;
   }
 
   Future<void> logout() async {
-    runFutureFunctionWithLoading(
-        function: ProfileRepository().logout().then((value) {
-      value.fold((l) {
-        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-      }, (r) {
-        storage.clearTokenInfo();
-        Get.off(ProfileView());
-      });
-    }));
+    runFutureFunctionWithFullLoading(
+        function: ProfileRepository()
+            .logout()
+            .then((value) {
+          value.fold((l) {
+            loader.value = true;
+            CustomToast.showMessage(
+                messageType: MessageType.REJECTED, message: l);
+          }, (r) {
+            storage.clearTokenInfo();
+            Get.off(LoginView());
+          });
+        }));
   }
 }

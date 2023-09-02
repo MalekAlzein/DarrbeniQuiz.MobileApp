@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class SpecializationsModel {
   int? id;
   String? uuid;
@@ -33,4 +35,27 @@ class SpecializationsModel {
     data['collage_id'] = this.collageId;
     return data;
   }
+
+  static Map<String, dynamic> toMap(SpecializationsModel model) {
+    return {
+      'id': model.id,
+      'uuid': model.uuid,
+      'specialization_name': model.specializationName,
+      'more_option': model.moreOption,
+      'image': model.image,
+      'collage_id': model.collageId,
+    };
+  }
+
+  static String encode(List<SpecializationsModel> list) => json.encode(
+        list
+            .map<Map<String, dynamic>>(
+                (element) => SpecializationsModel.toMap(element))
+            .toList(),
+      );
+
+  static List<SpecializationsModel> decode(String strList) => (json
+          .decode(strList) as List<dynamic>)
+      .map<SpecializationsModel>((item) => SpecializationsModel.fromJson(item))
+      .toList();
 }

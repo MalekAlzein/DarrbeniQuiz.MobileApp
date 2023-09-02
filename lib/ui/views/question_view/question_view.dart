@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 
 class QuestionView extends StatefulWidget {
   const QuestionView({super.key});
@@ -11,8 +10,6 @@ class QuestionView extends StatefulWidget {
 class _QuestionViewState extends State<QuestionView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-    );
+    return Scaffold();
   }
 }

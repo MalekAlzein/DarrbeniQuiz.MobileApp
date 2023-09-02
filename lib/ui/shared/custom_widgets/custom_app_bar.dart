@@ -41,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
                   onTap;
                 },
                 child: SvgPicture.asset(
-                  'assets/svgs/$svgName.svg',
+                  'assets/svgs/${svgName ?? 'ic_back'}.svg',
                   color: Colors.white,
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
+import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_view.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_view.dart';
 import 'package:flutter_templete/ui/views/main_view/main_controller.dart';
@@ -25,9 +26,15 @@ class _MainViewState extends State<MainView> {
 
       extendBodyBehindAppBar: true,
 
-      appBar: CustomAppBar(
-        firstText: controller.viewTitle[controller.pageIndex.value],
-        svgName: controller.viewSVG[controller.pageIndex.value],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(screenWidth(3)),
+        child: Obx(() {
+          return CustomAppBar(
+            firstText: controller.viewTitle[controller.pageIndex.value],
+            svgName: controller.viewSVG[controller.pageIndex.value],
+          );
+        }
+        ),
       ),
 
       bottomNavigationBar: Obx(() {

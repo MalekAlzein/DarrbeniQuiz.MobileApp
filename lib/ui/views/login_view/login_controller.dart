@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/data/reposotories/user_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
@@ -10,8 +11,9 @@ import 'package:get/get.dart';
 class LoginController extends BaseController {
   RxBool loader = false.obs;
   TextEditingController userNameController =
-      TextEditingController(text: "Admin");
-  TextEditingController codeController = TextEditingController(text: "chnL3Z");
+      TextEditingController(text: kDebugMode ? "Shams" : "");
+  TextEditingController codeController =
+      TextEditingController(text: kDebugMode ? "634PuI" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
 
   void login() {

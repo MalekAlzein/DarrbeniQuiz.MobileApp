@@ -5,6 +5,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
+import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -51,8 +52,10 @@ class _editProfileViewState extends State<editProfileView> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.only(
+              padding: EdgeInsetsDirectional.only(
                 top: screenWidth(8),
+                bottom: screenWidth(60),
+                start: screenWidth(50)
               ),
               child: CustomText(
                 textType: TextStyleType.SMALL,
@@ -60,6 +63,7 @@ class _editProfileViewState extends State<editProfileView> {
                 textColor: AppColors.darkPurpleColor,
               ),
             ),
+            
             CustomTextFormField(
               hintText: "اسم المستخدم",
               hintTextSize: 11,
@@ -67,31 +71,39 @@ class _editProfileViewState extends State<editProfileView> {
               prefixIcon: "ic_text_field_user",
               suffixIcon: "ic_edit",
               prefixIconColor: AppColors.darkPurpleColor,
+              controller: controller.userNameController,
             ),
-            SizedBox(
-              height: screenWidth(35),
+
+
+            Padding(
+              padding: EdgeInsetsDirectional.only(
+                  top: screenWidth(30),
+                  bottom: screenWidth(60),
+                  start: screenWidth(50)
+              ),
+              child: CustomText(
+                textType: TextStyleType.SMALL,
+                text: "رقم الهاتف",
+                textColor: AppColors.darkPurpleColor,
+              ),
             ),
-            CustomText(
-              textType: TextStyleType.SMALL,
-              text: "رقم الهاتف",
-              textColor: AppColors.darkPurpleColor,
-            ),
+
             CustomTextFormField(
                 hintText: "رقم الهاتف",
                 hintTextSize: 11,
                 fillColor: AppColors.lightCyanColor,
                 prefixIcon: "ic_text_field_phone",
-                suffixIcon: "ic_edit"),
-            SizedBox(
-              height: screenWidth(2),
-            ),
+                suffixIcon: "ic_edit",
+                controller: controller.phoneController,),
+
+            (screenWidth(2.1)).ph,
+
             CustomButton(
                 text: "حفظ التغييرات",
                 buttonTypeEnum: ButtonTypeEnum.CUSTOM,
                 onPressed: () => controller.editProfileInfo()),
-            SizedBox(
-              height: screenWidth(50),
-            ),
+            (screenWidth(50)).ph,
+
             Center(
               child: InkWell(
                   onTap: () => Get.off(ProfileView()),

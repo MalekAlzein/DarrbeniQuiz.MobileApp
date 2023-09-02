@@ -37,7 +37,7 @@ class ProfileRepository {
       return NetworkUtil.sendRequest(
         requestType:  RequestType.POST,
         url: ProfileEndpoints.logout,
-        headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.GET),
+        headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.POST),
       ).then((response) {
         CommonResponseModel<Map<String, dynamic>> commonResponse =
         CommonResponseModel.fromJson(response);

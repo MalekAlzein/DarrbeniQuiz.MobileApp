@@ -16,7 +16,7 @@ class ProfileController extends BaseController {
     super.onInit();
   }
 
-  void getUserInfo() {
+   void getUserInfo() {
     ProfileRepository().getProfileInfo().then((value) {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
@@ -28,14 +28,12 @@ class ProfileController extends BaseController {
   }
 
   Future<void> logout() async {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
         function: ProfileRepository().logout().then((value) {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
         storage.clearTokenInfo();
-        CustomToast.showMessage(
-            message: "loggedout succesfully" ?? "", messageType: MessageType.SUCCESS);
         Get.off(ProfileView());
       });
     }));

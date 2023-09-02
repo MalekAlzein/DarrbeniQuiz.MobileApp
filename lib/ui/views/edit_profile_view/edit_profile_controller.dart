@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
+import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../../core/data/reposotories/profile_repository.dart';
@@ -23,9 +25,13 @@ class EditProfileController extends BaseController {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
-        CustomToast.showMessage(
-            message: "updated succesfully" ?? "", messageType: MessageType.SUCCESS);
-        Get.off(ProfileView());
+        ProfileRepository().getProfileInfo().then((value) {
+          value.fold((l) {
+            CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
+          }, (r) {
+
+          });
+        });
       });
     }));
   }

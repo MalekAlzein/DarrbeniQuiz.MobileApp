@@ -24,7 +24,7 @@ class _SplashScreenViewState extends State<SplashScreenView> {
           fit: StackFit.expand,
           children: [
             Image.asset(
-              'assets/svgs/خلفية دربني-ويب 1.png',
+              'assets/svgs/darrebnibackground.png',
               fit: BoxFit.fill,
               width: screenWidth(1),
             ),

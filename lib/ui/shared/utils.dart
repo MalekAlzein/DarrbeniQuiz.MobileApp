@@ -6,8 +6,12 @@ import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_blur.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_image.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_popup_with_blur.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:get/get.dart';
 
 double width = Get.size.shortestSide;
@@ -226,122 +230,122 @@ void showSpecializationBottomSheet({required bool specialization}) {
 //   );
 // }
 
-// void showSudscribeDialog({
-//   // required bool isLoading,
-//   // required Function? onTap,
-//   Widget? widget,
-// }) {
-//   // RxBool loading = isLoading.obs;
-//   Get.dialog(
-//     CustomPopupWithBlurWidget(
-//       customBlurChildType: CustomBlurChildType.DIALOUG,
-//       child: Container(
-//         width: screenWidth(1.2),
-//         height: screenHeight(3),
-//         decoration: BoxDecoration(
-//           color: AppColors.whiteColor,
-//           border: Border.all(color: AppColors.darkPurpleColor, width: 2),
-//           boxShadow: [
-//             BoxShadow(
-//               color: AppColors.darkGreyColor,
-//               blurRadius: 6,
-//               offset: Offset(0, 3),
-//             ),
-//           ],
-//           borderRadius: BorderRadiusDirectional.all(
-//             Radius.circular(10),
-//           ),
-//         ),
-//         child: Padding(
-//           padding: EdgeInsets.symmetric(
-//               horizontal: screenWidth(9), vertical: screenWidth(25)),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Row(
-//                 crossAxisAlignment: CrossAxisAlignment.start,
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   screenWidth(20).pw,
-//                   CustomImages(
-//                     imageName: 'img_pop_up',
-//                     imageSize: screenHeight(6.4),
-//                   ),
-//                   GestureDetector(
-//                     onTap: () {
-//                       Get.back(closeOverlays: true);
-//                     },
-//                     child: CustomImages(
-//                       imageName: 'ic_close',
-//                       imageSize: screenHeight(50),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               screenHeight(80).ph,
-//               Material(
-//                 color: AppColors.whiteColor,
-//                 child: CustomText(
-//                   textType: TextStyleType.SMALL,
-//                   text: tr("key_please_subscribe"),
-//                   textColor: AppColors.darkGreyColor,
-//                 ),
-//               ),
-//               screenHeight(90).ph,
+void showSudscribeDialog({
+  // required bool isLoading,
+  // required Function? onTap,
+  Widget? widget,
+}) {
+  // RxBool loading = isLoading.obs;
+  Get.dialog(
+    CustomPopupWithBlurWidget(
+      customBlurChildType: CustomBlurChildType.DIALOUG,
+      child: Container(
+        width: screenWidth(1.2),
+        height: screenHeight(3),
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          border: Border.all(color: AppColors.darkPurpleColor, width: 2),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.darkGreyColor,
+              blurRadius: 6,
+              offset: Offset(0, 3),
+            ),
+          ],
+          borderRadius: BorderRadiusDirectional.all(
+            Radius.circular(10),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: screenWidth(9), vertical: screenWidth(25)),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  screenWidth(20).pw,
+                  CustomImages(
+                    imageName: 'img_pop_up',
+                    imageSize: screenHeight(6.4),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.back(closeOverlays: true);
+                    },
+                    child: CustomImages(
+                      imageName: 'ic_close',
+                      imageSize: screenHeight(50),
+                    ),
+                  ),
+                ],
+              ),
+              screenHeight(80).ph,
+              Material(
+                color: AppColors.whiteColor,
+                child: CustomText(
+                  textType: TextStyleType.SMALL,
+                  text: tr("key_please_subscribe"),
+                  textColor: AppColors.darkGreyColor,
+                ),
+              ),
+              screenHeight(90).ph,
 
-//               CustomButton(
-//                 fontSize: screenWidth(60),
-//                 buttonTypeEnum: ButtonTypeEnum.SMALL,
-//                 height: screenWidth(9),
-//                 onPressed: () {
-//                   Get.to(() => const MainView());
-//                 },
-//                 backgroundColor: AppColors.darkPurpleColor,
-//                 text: tr('key_login'),
-//               ),
-//               screenHeight(90).ph,
-//               Material(
-//                 child: Row(
-//                   mainAxisAlignment: MainAxisAlignment.center,
-//                   children: [
-//                     CustomText(
-//                       fontSize: screenWidth(40),
-//                       textType: TextStyleType.CUSTOM,
-//                       text: tr('key_donot_have_account'),
-//                       textColor: AppColors.darkGreyColor,
-//                     ),
-//                     CustomTextButton(
-//                       textSize: screenWidth(40),
-//                       title: tr('key_create_account_now'),
-//                       onTap: () {
-//                         Get.to(() => const SignupView());
-//                       },
-//                       textColor: AppColors.darkPurpleColor,
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               // Obx(
-//               //   () {
-//               //     return loading.value
-//               //         ? LoadingWidget(center: false)
-//               //         : CtaButton(
-//               //             buttonTypeEnum: ButtonTypeEnum.NORMAL,
-//               //             title: tr("nfc_write"),
-//               //             titleInCaps: false,
-//               //             onTap: () {
-//               //               if (onTap != null) onTap();
-//               //             },
-//               //           );
-//               //   },
-//               // )
-//             ],
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
-// }
+              CustomButton(
+                fontSize: screenWidth(60),
+                buttonTypeEnum: ButtonTypeEnum.SMALL,
+                height: screenWidth(9),
+                onPressed: () {
+                  Get.to(() => const MainView());
+                },
+                backgroundColor: AppColors.darkPurpleColor,
+                text: tr('key_login'),
+              ),
+              screenHeight(90).ph,
+              Material(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomText(
+                      fontSize: screenWidth(40),
+                      textType: TextStyleType.CUSTOM,
+                      text: tr('key_donot_have_account'),
+                      textColor: AppColors.darkGreyColor,
+                    ),
+                    CustomTextButton(
+                      textSize: screenWidth(40),
+                      title: tr('key_create_account_now'),
+                      onTap: () {
+                        // Get.to(() => const SignupView());
+                      },
+                      textColor: AppColors.darkPurpleColor,
+                    ),
+                  ],
+                ),
+              ),
+              // Obx(
+              //   () {
+              //     return loading.value
+              //         ? LoadingWidget(center: false)
+              //         : CtaButton(
+              //             buttonTypeEnum: ButtonTypeEnum.NORMAL,
+              //             title: tr("nfc_write"),
+              //             titleInCaps: false,
+              //             onTap: () {
+              //               if (onTap != null) onTap();
+              //             },
+              //           );
+              //   },
+              // )
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
 
 // // void showUpsetDialog({
 // //   // required bool isLoading,

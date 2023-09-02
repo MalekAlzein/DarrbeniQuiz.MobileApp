@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_gridview.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
+import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_widgets/custom_grid_college.dart';
+import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_widgets/home_view_category.dart';
 import 'package:get/get.dart';
 
 class HomePageView extends StatefulWidget {
@@ -42,8 +46,10 @@ class _HomePageViewState extends State<HomePageView> {
                 () {
                   print(controller.silderList);
                   return controller.silderList.isEmpty
-                      ? LoadingWidget(
+                      ? CustomShimmer(
                           center: true,
+                          isLoading: null,
+                          child: null,
                         )
                       : CustomSlider(
                           items: [],

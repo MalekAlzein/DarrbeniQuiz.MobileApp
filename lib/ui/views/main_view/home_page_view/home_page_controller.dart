@@ -1,5 +1,6 @@
 import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
+import 'package:flutter_templete/core/data/reposotories/silder_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';

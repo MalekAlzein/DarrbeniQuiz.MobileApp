@@ -48,7 +48,7 @@ class _HomePageViewState extends State<HomePageView> {
                   return controller.silderList.isEmpty
                       ? CustomShimmer(
                           center: true,
-                          isLoading: null,
+                          isLoading: controller.isLoading.value,
                           child: null,
                         )
                       : CustomSlider(

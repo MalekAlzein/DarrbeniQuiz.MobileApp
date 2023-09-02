@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-class CustomAppBar extends StatelessWidget{
-  const CustomAppBar({Key? key, this.activeColor, required this.svgName, this.firstText, this.secondText, this.thirdText, this.onTap}) : super(key: key);
+class CustomAppBar extends StatelessWidget implements PreferredSize {
+  const CustomAppBar(
+      {Key? key,
+      this.activeColor,
+      required this.svgName,
+      this.firstText,
+      this.secondText,
+      this.thirdText,
+      this.onTap});
 
   final Color? activeColor;
   final String? svgName;
@@ -21,7 +29,8 @@ class CustomAppBar extends StatelessWidget{
       child: Container(
         width: screenWidth(1),
         height: screenWidth(3),
-        decoration: BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
+        decoration:
+            BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
         child: Padding(
           padding: EdgeInsetsDirectional.only(start: screenWidth(20)),
           child: ListView(
@@ -29,7 +38,7 @@ class CustomAppBar extends StatelessWidget{
             scrollDirection: Axis.horizontal,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   onTap;
                 },
                 child: SvgPicture.asset(
@@ -72,10 +81,15 @@ class CustomAppBar extends StatelessWidget{
       ),
     );
   }
+
+  @override
+  // TODO: implement child
+  Widget get child => SizedBox();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(screenWidth(1), screenWidth(3));
 }
-
-
-
 
 class CustomClipPath extends CustomClipper<Path> {
   var radius = 8.0;

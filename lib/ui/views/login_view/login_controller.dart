@@ -14,10 +14,10 @@ class LoginController extends BaseController {
   TextEditingController userNameController =
       TextEditingController(text: "Admin");
   TextEditingController codeController = TextEditingController(text: "chnL3Z");
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
 
   void login() {
-    if (formKey.currentState!.validate()) {
+    if (formKey1.currentState!.validate()) {
       runFutureFunctionWithFullLoading(
           function: UserRepository()
               .login(
@@ -31,7 +31,7 @@ class LoginController extends BaseController {
           storage.setTokenInfo(r);
           Get.off(MainView());
           getUserInfo();
-          formKey.currentState!.save();
+          formKey1.currentState!.save();
         });
       }));
     }

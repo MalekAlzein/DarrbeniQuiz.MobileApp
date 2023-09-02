@@ -13,7 +13,7 @@ class ProfileRepository {
   Future<Either<String, ProfileModel>> getProfileInfo() async {
     try {
       return NetworkUtil.sendRequest(
-        requestType: RequestType.GET,
+        type: RequestType.GET,
         url: ProfileEndpoints.profileInfo,
         headers: NetworkConfig.getHeaders(needAuth: true,requestType: RequestType.GET),
       ).then((response) {
@@ -35,7 +35,7 @@ class ProfileRepository {
   Future<Either<String, dynamic>> logout() async {
     try {
       return NetworkUtil.sendRequest(
-        requestType:  RequestType.POST,
+        type:  RequestType.POST,
         url: ProfileEndpoints.logout,
         headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.POST),
       ).then((response) {
@@ -60,7 +60,7 @@ class ProfileRepository {
 }) async {
     try {
       return NetworkUtil.sendRequest(
-        requestType:  RequestType.PUT,
+        type:  RequestType.PUT,
         url: ProfileEndpoints.profileUpdate,
         headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.PUT),
         body: {"name":name,

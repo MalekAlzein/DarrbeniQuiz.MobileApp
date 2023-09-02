@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_templete/app/app_config.dart';
+import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
 import 'package:get/get.dart';
@@ -9,22 +10,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesRepository {
   SharedPreferences globalSharedPreferences = Get.find();
   //!--- Keys ----
-  String PREF_FIRST_LAUNCH = 'first_launch';
+  String PREF_FIRST_LOGIN = 'first_login';
   String PREF_TOKEN = 'token';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
+  String PREF_SPECIALIZATION_LIST = 'specialization_list';
+  // String PREF_COLLEGE_LOGIN = 'college_login';
 
-  void setFirstLaunch(bool value) {
+  void setFirstLogin(bool value) {
     setPreference(
       dataType: DataType.BOOL,
-      key: PREF_FIRST_LAUNCH,
+      key: PREF_FIRST_LOGIN,
       value: value,
     );
   }
 
-  bool getFirstLaunch() {
-    if (globalSharedPreferences.containsKey(PREF_FIRST_LAUNCH)) {
-      return getPreference(key: PREF_FIRST_LAUNCH);
+  bool getFirstLogin() {
+    if (globalSharedPreferences.containsKey(PREF_FIRST_LOGIN)) {
+      return getPreference(key: PREF_FIRST_LOGIN);
     } else {
       return true;
     }
@@ -68,6 +71,40 @@ class SharedPreferencesRepository {
       return AppConfig.defaultLanguage;
     }
   }
+
+  void setSpecializationsList(List<SpecializationsModel> list) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_SPECIALIZATION_LIST,
+      value: SpecializationsModel.encode(list),
+    );
+  }
+
+  List<SpecializationsModel> getSpecializationsList() {
+    if (globalSharedPreferences.containsKey(PREF_SPECIALIZATION_LIST)) {
+      return SpecializationsModel.decode(
+          getPreference(key: PREF_SPECIALIZATION_LIST));
+    } else {
+      return [];
+    }
+  }
+
+  // void setSpecializationsLogin(SpecializationsModel value) {
+  //   setPreference(
+  //     dataType: DataType.STRING,
+  //     key: PREF_COLLEGE_LOGIN,
+  //     value: jsonEncode(value.toJson()),
+  //   );
+  // }
+
+  // SpecializationsModel? getSpecializationsLogin() {
+  //   if (globalSharedPreferences.containsKey(PREF_COLLEGE_LOGIN)) {
+  //     return SpecializationsModel.fromJson(
+  //         jsonDecode(getPreference(key: PREF_COLLEGE_LOGIN)));
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   //?--
 

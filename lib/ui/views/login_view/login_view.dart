@@ -26,27 +26,22 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Form(
-      key: controller.formKey1,
-      child: Padding(
-        padding: EdgeInsetsDirectional.all(screenWidth(25)),
-        child: SafeArea(
+    return SafeArea(
+      child: Scaffold(
+          body: Form(
+        key: controller.formKey1,
+        child: Padding(
+          padding: EdgeInsetsDirectional.all(screenWidth(25)),
           child: ListView(children: [
-            (screenWidth(10)).ph,
+            // (screenWidth(10)).ph,
             CustomTapBar(title: "تسجيل الدخول", imageName: "img_login"),
             (screenWidth(25)).ph,
             Align(
               alignment: Alignment.centerRight,
-              child: Text(
-                "اسم المستخدم",
-                style: TextStyle(
-                  height: 1.2,
-                  decoration: TextDecoration.none,
-                  color: AppColors.normalPurpleColor,
-                  fontSize: screenWidth(15),
-                  fontWeight: FontWeight.normal,
-                ),
+              child: CustomText(
+                textColor: AppColors.normalPurpleColor,
+                text: "اسم المستخدم",
+                textType: TextStyleType.SUBTITLE,
               ),
             ),
             (screenWidth(25)).ph,
@@ -78,7 +73,7 @@ class _LoginViewState extends State<LoginView> {
               prefixIcon: 'ic_text_field_code',
               controller: controller.codeController,
               validator: (value) {
-                if (value!.isEmpty || StringUtil.isPassword(value)) {
+                if (value!.isEmpty) {
                   return 'please check your Code';
                 }
                 return null;
@@ -107,26 +102,23 @@ class _LoginViewState extends State<LoginView> {
               text1: "ليس لديك حساب ؟",
               text2: "أنشئ حسابك الان",
             ),
-            (screenWidth(5)).ph,
+            (screenHeight(25)).ph,
             InkWell(
               onTap: () {
                 Get.to(MainView());
               },
               child: Center(
-                child: Text(
-                  "المتابعة كزائر",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: AppColors.darkGreyColor,
-                    fontSize: screenWidth(28),
-                    fontWeight: FontWeight.normal,
-                  ),
+                child: CustomText(
+                  text: "المتابعة كزائر",
+                  textColor: AppColors.darkGreyColor,
+                  textDecoration: TextDecoration.underline,
+                  textType: TextStyleType.SUBTITLE,
                 ),
               ),
             )
           ]),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

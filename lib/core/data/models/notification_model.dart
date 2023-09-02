@@ -1,25 +1,21 @@
-class NotifictionModel {
-  String? notifctionType;
+class NotificationModel {
+  int? id;
   String? title;
-  String? text;
-  String? subStatus;
+  String? body;
 
-  NotifictionModel(
-      {this.notifctionType, this.title, this.text, this.subStatus});
+  NotificationModel({this.id, this.title, this.body});
 
-  NotifictionModel.fromJson(Map<String, dynamic> json) {
-    notifctionType = json['notifction_type'];
+  NotificationModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     title = json['title'];
-    text = json['text'];
-    subStatus = json['sub_status'];
+    body = json['body'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['notifction_type'] = this.notifctionType;
+    data['id'] = this.id;
     data['title'] = this.title;
-    data['text'] = this.text;
-    data['sub_status'] = this.subStatus;
+    data['body'] = this.body;
     return data;
   }
 }

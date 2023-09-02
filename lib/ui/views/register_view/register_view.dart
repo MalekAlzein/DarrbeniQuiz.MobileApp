@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_radio.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_rich_text.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_tap_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:flutter_templete/ui/views/register_view/register_controller.dart';
 import 'package:get/get.dart';
 
@@ -54,9 +55,9 @@ class _RegisterViewState extends State<RegisterView> {
                         validator: (value) {
                           if (value!.isEmpty) return 'الرجاء إدخال اسمك';
 
-                          if (!StringUtil.isLastName(value)) {
-                            return 'الرجاء التحقق من اسمك';
-                          }
+                          // if (!StringUtil.isLastName(value)) {
+                          //   return 'الرجاء التحقق من اسمك';
+                          // }
                           return null;
                         },
                         prefixIcon: 'ic_text_field_user',
@@ -90,38 +91,58 @@ class _RegisterViewState extends State<RegisterView> {
                       textType: TextStyleType.SMALL,
                     ),
                     (screenHeight(28)).ph,
-                    Obx(() => CustomShimmer(
-                        child: Center(
-                          child: Wrap(
-                            alignment: WrapAlignment.center,
-                            runSpacing: width * 0.04,
-                            children: List.generate(
-                              controller.specializationList.length,
-                              (index) {
-                                return Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    CustomRadio(
-                                      selected: controller.colegeId.value,
-                                      onTaped: (value) {
-                                        controller.colegeId.value = value!;
-                                      },
-                                      value: controller
-                                          .specializationList[index][1],
-                                    ),
-                                    (screenWidth(28)).pw,
-                                    CustomText(
-                                        textType: TextStyleType.SMALL,
-                                        text: controller
-                                            .specializationList[index][0]),
-                                    (screenWidth(28)).pw,
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                        isLoading: controller.isloading.value)),
+                    Obx(() => controller.isloading.value &&
+                            !controller.returnSent.value
+                        ? SpinKitWave(
+                            color: AppColors.darkPurpleColor,
+                          )
+                        : !controller.isloading.value
+                            ? Center(
+                                child: Wrap(
+                                  alignment: WrapAlignment.center,
+                                  runSpacing: width * 0.04,
+                                  children: List.generate(
+                                    controller.specializationList.length,
+                                    (index) {
+                                      return Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          CustomRadio(
+                                            selected:
+                                                controller.collegeId.value,
+                                            onTaped: (value) {
+                                              controller.collegeId.value =
+                                                  value!;
+                                            },
+                                            value: controller
+                                                .specializationList[index][1],
+                                          ),
+                                          (screenWidth(28)).pw,
+                                          CustomText(
+                                              textType: TextStyleType.SMALL,
+                                              text: controller
+                                                      .specializationList[index]
+                                                  [0]),
+                                          (screenWidth(28)).pw,
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                              )
+                            : InkWell(
+                                onTap: () {
+                                  controller.returnSent.value = false;
+                                  controller.getAllSpecializtions();
+                                },
+                                child: Center(
+                                  child: Icon(
+                                    Icons.refresh,
+                                    color: AppColors.lightPurpleColor,
+                                    size: screenWidth(10),
+                                  ),
+                                ),
+                              )),
                     (screenHeight(28)).ph,
                     CustomButton(
                       onPressed: () {
@@ -138,8 +159,7 @@ class _RegisterViewState extends State<RegisterView> {
                         text1: 'لديك حساب؟',
                         text2: 'تسجيل الدخول',
                         ontap: () {
-                          //!  if Check this code you need to uncomment the line below --**--
-                          // Get.to(() => const LoginView());
+                          Get.offAll(() => const LoginView());
                         }),
                   ],
                 ),

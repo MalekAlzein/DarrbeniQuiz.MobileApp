@@ -19,15 +19,20 @@ class CollegesAndSpecializtionsRepositories {
           needAuth: false,
         ),
       ).then((response) {
+        if (response == null) {
+          return Left("الرجاء التحقق من الانترنت");
+        }
         CommonResponseModel<dynamic> commonResponse =
             CommonResponseModel.fromJson(response);
-        if (commonResponse.getStatus &&response['response']['status']==true) {
+        if (commonResponse.getStatus &&
+            response['response']['status'] == true) {
           List<SpecializationsModel> result = [];
-commonResponse.data.forEach(
-                (element) {
+          commonResponse.data.forEach(
+            (element) {
               result.add(SpecializationsModel.fromJson(element));
             },
-          );          return Right(result);
+          );
+          return Right(result);
         } else {
           return Left(commonResponse.message ?? '');
         }

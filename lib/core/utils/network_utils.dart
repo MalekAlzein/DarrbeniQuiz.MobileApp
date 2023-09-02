@@ -99,6 +99,13 @@ class NetworkUtil {
     Map<String, dynamic>? params,
   }) async {
     try {
+       if (!online) {
+        CustomToast.showMessage(
+            message: tr("key_bot_toast_offline"),
+            messageType: MessageType.WARNING);
+        BotToast.closeAllLoading();
+        return;
+      }
       //!--- Required for request ----
       //*--- Make full api url ------
 

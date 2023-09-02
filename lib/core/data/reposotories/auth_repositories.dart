@@ -24,10 +24,14 @@ class AuthRepositories {
         headers: NetworkConfig.getHeaders(
             needAuth: false, requestType: RequestType.POST),
       ).then((response) {
+        if (response == null) {
+          return Left("الرجاء التحقق من الانترنت");
+        }
         CommonResponseModel<dynamic> commonResponse =
             CommonResponseModel.fromJson(response);
 
-        if (commonResponse.getStatus && response['response']['status']==true) {
+        if (commonResponse.getStatus &&
+            response['response']['status'] == true) {
           return Right(true);
         } else {
           return Left(commonResponse.message ?? '');

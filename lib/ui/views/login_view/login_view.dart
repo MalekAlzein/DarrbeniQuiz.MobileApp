@@ -38,15 +38,10 @@ class _LoginViewState extends State<LoginView> {
             (screenWidth(25)).ph,
             Align(
               alignment: Alignment.centerRight,
-              child: Text(
-                "اسم المستخدم",
-                style: TextStyle(
-                  height: 1.2,
-                  decoration: TextDecoration.none,
-                  color: AppColors.normalPurpleColor,
-                  fontSize: screenWidth(15),
-                  fontWeight: FontWeight.normal,
-                ),
+              child: CustomText(
+                textColor: AppColors.normalPurpleColor,
+                text: "اسم المستخدم",
+                textType: TextStyleType.SUBTITLE,
               ),
             ),
             (screenWidth(25)).ph,
@@ -113,14 +108,11 @@ class _LoginViewState extends State<LoginView> {
                 Get.to(MainView());
               },
               child: Center(
-                child: Text(
-                  "المتابعة كزائر",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    color: AppColors.darkGreyColor,
-                    fontSize: screenWidth(28),
-                    fontWeight: FontWeight.normal,
-                  ),
+                child: CustomText(
+                  text: "المتابعة كزائر",
+                  textColor: AppColors.darkGreyColor,
+                  textDecoration: TextDecoration.underline,
+                  textType: TextStyleType.SUBTITLE,
                 ),
               ),
             )

@@ -45,14 +45,13 @@ class _HomePageViewState extends State<HomePageView> {
               Obx(
                 () {
                   print(controller.silderList);
-                  return  CustomShimmer(
-                          center: true,
-                          isLoading: controller.isLoading,
-                          child:  CustomSlider(
-                          items: [],
-                        ),
-                        );
-                      
+                  return CustomShimmer(
+                    center: true,
+                    isLoading: controller.isLoading,
+                    child: CustomSlider(
+                      items: [],
+                    ),
+                  );
                 },
               ),
               CustomSubTitleContainer(
@@ -70,12 +69,12 @@ class _HomePageViewState extends State<HomePageView> {
                     shrinkWrap: true,
                     itemCount: controller.collegeList.length,
                     itemBuilder: (BuildContext context, int index) {
-                      int collageId = controller.collegeList[index].collegeId;
+                      int collageId = controller.collegeList[index].id!;
                       bool isSelected =
-                          collageId == controller.selectedCategory.value;
+                          collageId == controller.selectedCollegeId.value;
 
                       return HomeViewCategoryWidget(
-                        text: controller.collegeList[index].name,
+                        text: controller.collegeList[index].collageName,
                         onTap: () {
                           controller.getSpecializationspByCollege(collageId);
                         },
@@ -98,7 +97,7 @@ class _HomePageViewState extends State<HomePageView> {
                               showSpecializationBottomSheet(
                                 specialization: controller
                                     .filteredSpecializationsList[index]
-                                    .data![],
+                                    .moreOption!,
                                 specializationsModel: controller
                                     .filteredSpecializationsList[index],
                               );
@@ -106,10 +105,10 @@ class _HomePageViewState extends State<HomePageView> {
                             isSubbed: controller.subbedCollege(index: index),
                             // imageName: "img_login",
                             imageName: controller
-                                    .filteredSpecializationsList[index].logo ??
+                                    .filteredSpecializationsList[index].image ??
                                 "",
-                            text: controller
-                                    .filteredSpecializationsList[index].name ??
+                            text: controller.filteredSpecializationsList[index]
+                                    .specializationName ??
                                 "",
                           ),
                         ),

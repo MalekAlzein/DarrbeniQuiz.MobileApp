@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
@@ -16,9 +15,10 @@ class HomePageController extends BaseController {
       <SpecializationsModel>[].obs;
   RxList<SpecializationsModel> filteredSpecializationsList =
       <SpecializationsModel>[].obs;
-  RxList<CollegeModel> collegeList = <CollegeModel>[].obs;
+  RxList<CollegesModel> collegeList = <CollegesModel>[].obs;
   RxList<String> selectedColleges = <String>[].obs;
   RxString selectedCollege = "الكل".obs;
+  RxInt selectedCollegeId = 0.obs;
 
   @override
   void onInit() {
@@ -31,8 +31,8 @@ class HomePageController extends BaseController {
   bool subbedCollege({
     required int index,
   }) {
-    return storage.getSpecializationsLogin()!.data![id(index)] ==
-        filteredSpecializationsList[index].data![id(index)];
+    return storage.getTokenInfo()!.specializationId ==
+        filteredSpecializationsList[index].id;
     // return storage.getCollegeLogin()!.uuid == specializationsList[index].uuid!;
   }
 
@@ -86,7 +86,7 @@ class HomePageController extends BaseController {
     } else {
       filteredSpecializationsList.value =
           specializationsList.where((specializations) {
-        return specializations.data![collegeId] == collegeId;
+        return specializations.collageId == collegeId;
       }).toList();
     }
   }

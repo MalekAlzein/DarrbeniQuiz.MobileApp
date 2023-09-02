@@ -4,8 +4,16 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-class CustomAppBar extends StatelessWidget{
-  const CustomAppBar({Key? key, this.activeColor, required this.svgName, this.firstText, this.secondText, this.thirdText, this.onTap}) : super(key: key);
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar(
+      {Key? key,
+      this.activeColor,
+      this.svgName,
+      this.firstText,
+      this.secondText,
+      this.thirdText,
+      this.onTap})
+      : super(key: key);
 
   final Color? activeColor;
   final String? svgName;
@@ -21,7 +29,8 @@ class CustomAppBar extends StatelessWidget{
       child: Container(
         width: screenWidth(1),
         height: screenWidth(3),
-        decoration: BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
+        decoration:
+            BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
         child: Padding(
           padding: EdgeInsetsDirectional.only(start: screenWidth(20)),
           child: ListView(
@@ -29,11 +38,11 @@ class CustomAppBar extends StatelessWidget{
             scrollDirection: Axis.horizontal,
             children: [
               InkWell(
-                onTap: (){
+                onTap: () {
                   onTap;
                 },
                 child: SvgPicture.asset(
-                  'assets/svgs/$svgName.svg',
+                  'assets/svgs/${svgName ?? 'ic_back'}.svg',
                   color: Colors.white,
                 ),
               ),
@@ -73,9 +82,6 @@ class CustomAppBar extends StatelessWidget{
     );
   }
 }
-
-
-
 
 class CustomClipPath extends CustomClipper<Path> {
   var radius = 8.0;

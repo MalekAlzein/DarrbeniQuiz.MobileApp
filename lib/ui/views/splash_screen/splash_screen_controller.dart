@@ -1,8 +1,5 @@
-import 'package:flutter_templete/core/data/network/endpoints/specialization_endpoints.dart';
-import 'package:flutter_templete/core/data/reposotories/Home_repository.dart';
 import 'package:flutter_templete/core/data/reposotories/colleges_and_specializtions_repositories.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
-import 'package:flutter_templete/core/enums/operation_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';

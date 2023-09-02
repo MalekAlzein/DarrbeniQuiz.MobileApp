@@ -26,10 +26,8 @@ class AuthRepositories {
       ).then((response) {
         CommonResponseModel<dynamic> commonResponse =
             CommonResponseModel.fromJson(response);
-        String result = '';
-        if (commonResponse.getStatus && commonResponse.data["data"]["status"]) {
-          // result = commonResponse.data["data"]["login_code"];
 
+        if (commonResponse.getStatus && commonResponse.data["data"]["status"]) {
           return Right(true);
         } else {
           return Left(commonResponse.message ?? '');

@@ -54,7 +54,7 @@ class _RegisterViewState extends State<RegisterView> {
                         validator: (value) {
                           if (value!.isEmpty) return 'الرجاء إدخال اسمك';
 
-                          if (!StringUtil.isName(value)) {
+                          if (!StringUtil.isLastName(value)) {
                             return 'الرجاء التحقق من اسمك';
                           }
                           return null;
@@ -94,7 +94,7 @@ class _RegisterViewState extends State<RegisterView> {
                         child: Center(
                           child: Wrap(
                             alignment: WrapAlignment.center,
-                            runSpacing: width * 0.01,
+                            runSpacing: width * 0.04,
                             children: List.generate(
                               controller.specializationList.length,
                               (index) {

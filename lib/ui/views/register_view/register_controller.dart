@@ -16,7 +16,6 @@ class RegisterController extends BaseController {
   List specializationList = [];
   @override
   onInit() {
-    isloading.value = true;
     getAllSpecializtions();
     super.onInit();
   }
@@ -28,7 +27,7 @@ class RegisterController extends BaseController {
         speci_id: colegeId.value,
         name: userController.text,
         phone: phoneController.text,
-      ).then((value) {
+      ).then((value) {  
         value.fold((l) {
           CustomToast.showMessage(
               message: l, messageType: MessageType.REJECTED);

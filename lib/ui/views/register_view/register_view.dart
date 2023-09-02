@@ -26,8 +26,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
           resizeToAvoidBottomInset: false,
           body: SingleChildScrollView(
             child: Padding(
@@ -165,7 +164,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
               ),
             ),
-          )),
+          ),
     );
   }
 }

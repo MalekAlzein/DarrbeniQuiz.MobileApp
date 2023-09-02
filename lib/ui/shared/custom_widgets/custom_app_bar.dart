@@ -6,7 +6,14 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSize {
-  const CustomAppBar({Key? key, this.activeColor, required this.svgName, this.firstText, this.secondText, this.thirdText, this.onTap}) ;
+  const CustomAppBar(
+      {Key? key,
+      this.activeColor,
+      required this.svgName,
+      this.firstText,
+      this.secondText,
+      this.thirdText,
+      this.onTap});
 
   final Color? activeColor;
   final String? svgName;
@@ -15,63 +22,60 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
   final String? thirdText;
   final Function? onTap;
 
-
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: Size.fromHeight(screenWidth(3)),
-      child: ClipPath(
-        clipper: CustomClipPath(),
-        child: Container(
-          width: screenWidth(1),
-          height: screenWidth(3),
-          decoration: BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
-          child: Padding(
-            padding: EdgeInsetsDirectional.only(start: screenWidth(20)),
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              children: [
-                InkWell(
-                  onTap: (){
-                    onTap;
-                  },
-                  child: SvgPicture.asset(
-                    'assets/svgs/${svgName??'ic_back'}.svg',
-                    color: Colors.white,
+    return ClipPath(
+      clipper: CustomClipPath(),
+      child: Container(
+        width: screenWidth(1),
+        height: screenWidth(3),
+        decoration:
+            BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(start: screenWidth(20)),
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            children: [
+              InkWell(
+                onTap: () {
+                  onTap;
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/$svgName.svg',
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(width: screenWidth(30)),
+              if (firstText != null) ...[
+                // screenWidth(35).pw,
+                Center(
+                  child: CustomText(
+                    textType: TextStyleType.SUBTITLE,
+                    text: firstText!,
+                    textColor: AppColors.whiteColor,
                   ),
                 ),
-                SizedBox(width: screenWidth(30)),
-                if (firstText != null) ...[
-                  // screenWidth(35).pw,
-                  Center(
-                    child: CustomText(
-                      textType: TextStyleType.SUBTITLE,
-                      text: firstText!,
-                      textColor: AppColors.whiteColor,
-                    ),
-                  ),
-                ],
-                if (secondText != null) ...[
-                  Center(
-                    child: CustomText(
-                      textType: TextStyleType.SUBTITLE,
-                      text: " / ${secondText!}",
-                      textColor: AppColors.whiteColor,
-                    ),
-                  ),
-                ],
-                if (thirdText != null) ...[
-                  Center(
-                    child: CustomText(
-                      textType: TextStyleType.SUBTITLE,
-                      text: " / ${thirdText!}",
-                      textColor: AppColors.whiteColor,
-                    ),
-                  ),
-                ],
               ],
-            ),
+              if (secondText != null) ...[
+                Center(
+                  child: CustomText(
+                    textType: TextStyleType.SUBTITLE,
+                    text: " / ${secondText!}",
+                    textColor: AppColors.whiteColor,
+                  ),
+                ),
+              ],
+              if (thirdText != null) ...[
+                Center(
+                  child: CustomText(
+                    textType: TextStyleType.SUBTITLE,
+                    text: " / ${thirdText!}",
+                    textColor: AppColors.whiteColor,
+                  ),
+                ),
+              ],
+            ],
           ),
         ),
       ),
@@ -80,20 +84,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
 
   @override
   // TODO: implement child
-  Widget get child =>SizedBox();
+  Widget get child => SizedBox();
 
   @override
   // TODO: implement preferredSize
   Size get preferredSize => Size(screenWidth(1), screenWidth(3));
-
-
 }
-
-
-
-
-
-
 
 class CustomClipPath extends CustomClipper<Path> {
   var radius = 8.0;

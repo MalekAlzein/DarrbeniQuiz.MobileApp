@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_rich_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_tap_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
+import 'package:flutter_templete/ui/views/register_view/register_view.dart';
 import 'package:get/get.dart';
 
 class LoginView extends StatefulWidget {
@@ -27,20 +28,13 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Form(
-      key: controller.formKey,
+      key: controller.formKey1,
       child: Padding(
         padding: EdgeInsetsDirectional.all(screenWidth(25)),
         child: SafeArea(
           child: ListView(children: [
             (screenWidth(10)).ph,
-            Center(
-              child: CustomText(
-                  textType: TextStyleType.SUBTITLE,
-                  textColor: AppColors.darkGreyColor,
-                  text: "تسجيل الدخول"),
-            ),
-            (screenWidth(25)).ph,
-            Center(child: SvgPicture.asset('assets/svgs/img_login.svg')),
+            CustomTapBar(title: "تسجيل الدخول", imageName: "img_login"),
             (screenWidth(25)).ph,
             Align(
               alignment: Alignment.centerRight,
@@ -101,30 +95,14 @@ class _LoginViewState extends State<LoginView> {
                     );
             }),
             (screenWidth(25)).ph,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: CustomText(
-                    textType: TextStyleType.SMALL,
-                    text: "ليس لديك حساب ؟",
-                    textColor: AppColors.darkGreyColor,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    // Get.to(SignupView());
-                  },
-                  child: CustomText(
-                    textType: TextStyleType.SMALL,
-                    text: "أنشئ حسابك الان",
-                    textColor: AppColors.darkPurpleColor,
-                  ),
-                ),
-              ],
+            CustomRichText(
+              ontap: () {
+                Get.to(() => RegisterView());
+              },
+              text1: "ليس لديك حساب ؟",
+              text2: "أنشئ حسابك الان",
             ),
-            (screenWidth(2.5)).ph,
+            (screenWidth(5)).ph,
             InkWell(
               onTap: () {
                 Get.to(MainView());

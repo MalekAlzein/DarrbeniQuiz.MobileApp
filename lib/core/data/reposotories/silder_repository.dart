@@ -10,7 +10,7 @@ class SliderRepository {
   Future<Either<String, List<SliderModel>>> getAllSliders() async {
     try {
       return NetworkUtil.sendRequest(
-        requestType: RequestType.GET,
+        type: RequestType.GET,
         url: SliderEndpoints.slider,
         headers: NetworkConfig.getHeaders(
           needAuth: false,

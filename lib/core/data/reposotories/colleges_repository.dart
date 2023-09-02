@@ -11,7 +11,7 @@ class CollegeRepository {
   Future<Either<String, List<CollegesModel>>> getAllColleges() async {
     try {
       return NetworkUtil.sendRequest(
-        requestType: RequestType.GET,
+        type: RequestType.GET,
         url: SpecializationEndpoints.allCollages,
         headers: NetworkConfig.getHeaders(
           needAuth: false,

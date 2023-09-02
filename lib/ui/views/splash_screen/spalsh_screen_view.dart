@@ -17,42 +17,40 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Stack(
-          alignment: Alignment.bottomCenter,
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              'assets/svgs/darrebnibackground.png',
-              fit: BoxFit.fill,
-              width: screenWidth(1),
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/svgs/darrebnibackground.png',
+            fit: BoxFit.fill,
+            width: screenWidth(1),
+          ),
+          Center(
+              child: Image.asset(
+            width: screenWidth(4),
+            'assets/svgs/logo+text.png',
+          )),
+          Container(
+            margin: EdgeInsets.only(top: screenHeight(4)),
+            height: screenWidth(90),
+            child: SpinKitThreeInOut(
+              size: screenHeight(30),
+              color: AppColors.darkPurpleColor,
             ),
-            Center(
-                child: Image.asset(
-              width: screenWidth(4),
-              'assets/svgs/logo+text.png',
-            )),
-            Container(
-              margin: EdgeInsets.only(top: screenHeight(4)),
-              height: screenWidth(90),
-              child: SpinKitThreeInOut(
-                size: screenHeight(30),
-                color: AppColors.darkPurpleColor,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: screenHeight(40)),
+            child: Align(
+              alignment: AlignmentDirectional.bottomCenter,
+              child: Image.asset(
+                'assets/svgs/Logo & Profile.png',
+                width: screenWidth(5),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: screenHeight(40)),
-              child: Align(
-                alignment: AlignmentDirectional.bottomCenter,
-                child: Image.asset(
-                  'assets/svgs/Logo & Profile.png',
-                  width: screenWidth(5),
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

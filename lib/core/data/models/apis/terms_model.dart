@@ -17,6 +17,6 @@ class TermsModel {
     data['term_name'] = this.termName;
     data['specialization_id'] = this.specializationId;
     return data;
-    //end
+    //end model
   }
 }

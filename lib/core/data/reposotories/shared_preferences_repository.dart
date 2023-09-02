@@ -10,22 +10,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesRepository {
   SharedPreferences globalSharedPreferences = Get.find();
   //!--- Keys ----
-  String PREF_FIRST_LAUNCH = 'first_launch';
+  String PREF_FIRST_LOGIN = 'first_login';
   String PREF_TOKEN = 'token';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
 
-  void setFirstLaunch(bool value) {
+  void setFirstLogin(bool value) {
     setPreference(
       dataType: DataType.BOOL,
-      key: PREF_FIRST_LAUNCH,
+      key: PREF_FIRST_LOGIN,
       value: value,
     );
   }
 
-  bool getFirstLaunch() {
-    if (globalSharedPreferences.containsKey(PREF_FIRST_LAUNCH)) {
-      return getPreference(key: PREF_FIRST_LAUNCH);
+  bool getFirstLogin() {
+    if (globalSharedPreferences.containsKey(PREF_FIRST_LOGIN)) {
+      return getPreference(key: PREF_FIRST_LOGIN);
     } else {
       return true;
     }

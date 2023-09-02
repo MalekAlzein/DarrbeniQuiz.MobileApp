@@ -1,27 +1,27 @@
-import 'package:dartz/dartz.dart';
-import 'package:new_quiz/core/data/models/apis/logout_model.dart';
-import 'package:new_quiz/core/data/models/apis/show_profile_model.dart';
-import 'package:new_quiz/core/data/network/endpoints/profile_endpoints.dart';
-import 'package:new_quiz/core/data/repositories/shared_preference_repositories.dart';
-import 'package:new_quiz/core/enums/request_type.dart';
 
-import '../../utilies/network_utily.dart';
+import 'dart:core';
+
+import 'package:dartz/dartz.dart';
+import 'package:flutter_templete/core/data/models/apis/profile_model.dart';
+import 'package:flutter_templete/core/enums/request_type.dart';
+import '../../utils/network_utils.dart';
 import '../models/common_response.dart';
+import '../network/endpoints/profile_endpoints.dart';
 import '../network/network_config.dart';
 
-class profileRepository {
-  Future<Either<String, showProfileModel>> showProfile() async {
+class ProfileRepository {
+  Future<Either<String, ProfileModel>> getProfileInfo() async {
     try {
       return NetworkUtil.sendRequest(
-        type: requestType.GET,
-        url: profileEndpoints.showProfile,
-        headers: NetworkConfig.getHeaders(needAuth: true),
+        requestType: RequestType.GET,
+        url: ProfileEndpoints.profileInfo,
+        headers: NetworkConfig.getHeaders(needAuth: true,requestType: RequestType.GET),
       ).then((response) {
-        CommonResponse<Map<String, dynamic>> commonResponse =
-        CommonResponse.fromJson(response);
+        CommonResponseModel<Map<String, dynamic>> commonResponse =
+        CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
-          return Right(showProfileModel.fromJson(commonResponse.data ?? {}));
+          return Right(ProfileModel.fromJson(commonResponse.data ?? {}));
         } else {
           return Left(commonResponse.message ?? '');
         }
@@ -32,18 +32,40 @@ class profileRepository {
   }
 
 
-  Future<Either<String, logoutModel>> logout() async {
+  Future<Either<String, dynamic>> logout() async {
     try {
       return NetworkUtil.sendRequest(
-        type: requestType.GET,
-        url: profileEndpoints.logout,
-        headers: NetworkConfig.getHeaders(needAuth: true),
+        requestType:  RequestType.POST,
+        url: ProfileEndpoints.logout,
+        headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.GET),
       ).then((response) {
-        CommonResponse<Map<String, dynamic>> commonResponse =
-        CommonResponse.fromJson(response);
+        CommonResponseModel<Map<String, dynamic>> commonResponse =
+        CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
-          return Right(logoutModel.fromJson(commonResponse.data ?? {}));
+          return Right(commonResponse.data );
+        } else {
+          return Left(commonResponse.message ?? '');
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+
+  Future<Either<String, dynamic>> updateProfileInfo () async {
+    try {
+      return NetworkUtil.sendRequest(
+        requestType:  RequestType.PUT,
+        url: ProfileEndpoints.profileUpdate,
+        headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.PUT),
+      ).then((response) {
+        CommonResponseModel<Map<String, dynamic>> commonResponse =
+        CommonResponseModel.fromJson(response);
+
+        if (commonResponse.getStatus) {
+          return Right(commonResponse.data );
         } else {
           return Left(commonResponse.message ?? '');
         }

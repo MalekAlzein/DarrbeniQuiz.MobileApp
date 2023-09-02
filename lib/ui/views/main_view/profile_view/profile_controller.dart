@@ -1,11 +1,12 @@
 import 'package:flutter_templete/core/utils/general_utils.dart';
+import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 import '../../../../core/data/reposotories/profile_repository.dart';
 import '../../../../core/enums/message_type.dart';
 import '../../../../core/services/base_controller.dart';
 import '../../../shared/custom_widgets/custom_toast.dart';
 
-class profileController extends BaseController {
+class ProfileController extends BaseController {
   RxString name = "".obs;
   RxInt phone = 0.obs;
 
@@ -16,7 +17,7 @@ class profileController extends BaseController {
   }
 
   void getUserInfo() {
-    profileRepository().showProfile().then((value) {
+    ProfileRepository().getProfileInfo().then((value) {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
@@ -28,13 +29,14 @@ class profileController extends BaseController {
 
   Future<void> logout() async {
     runFutureFunction(
-        function: profileRepository().logout().then((value) {
+        function: ProfileRepository().logout().then((value) {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
         storage.clearTokenInfo();
         CustomToast.showMessage(
-            message: r ?? "", messageType: MessageType.SUCCESS);
+            message: "loggedout succesfully" ?? "", messageType: MessageType.SUCCESS);
+        Get.off(ProfileView());
       });
     }));
   }

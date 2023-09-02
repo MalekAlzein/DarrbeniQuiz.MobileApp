@@ -26,12 +26,12 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Form(
-      key: controller.formKey1,
-      child: Padding(
-        padding: EdgeInsetsDirectional.all(screenWidth(25)),
-        child: SafeArea(
+    return SafeArea(
+      child: Scaffold(
+          body: Form(
+        key: controller.formKey1,
+        child: Padding(
+          padding: EdgeInsetsDirectional.all(screenWidth(25)),
           child: ListView(children: [
             // (screenWidth(10)).ph,
             CustomTapBar(title: "تسجيل الدخول", imageName: "img_login"),
@@ -118,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
             )
           ]),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

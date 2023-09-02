@@ -5,7 +5,8 @@ class CustomShimmer extends StatelessWidget {
   final Widget child;
   final bool isLoading;
 
-  CustomShimmer({required this.child, required this.isLoading});
+  CustomShimmer(
+      {required this.child, required this.isLoading, required bool center});
 
   @override
   Widget build(BuildContext context) {

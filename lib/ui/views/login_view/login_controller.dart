@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/core/data/reposotories/user_repository.dart';
+import 'package:flutter_templete/core/data/reposotories/auth_repositories.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
@@ -19,7 +19,7 @@ class LoginController extends BaseController {
   void login() {
     if (formKey1.currentState!.validate()) {
       runFutureFunctionWithFullLoading(
-          function: UserRepository()
+          function: AuthRepositories()
               .login(
                   name: userNameController.text, loginCode: codeController.text)
               .then((value) {

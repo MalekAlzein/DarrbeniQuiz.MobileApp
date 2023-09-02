@@ -86,6 +86,7 @@ class _HomePageViewState extends State<HomePageView> {
               }),
               Obx(
                 () {
+                  print(controller.selectedCollegeId.value);
                   return SizedBox(
                       width: screenWidth(1),
                       child: CustomGrideView(

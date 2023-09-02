@@ -14,6 +14,7 @@ class SharedPreferencesRepository {
   String PREF_TOKEN = 'token';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
+  String PREF_SPECIALIZED_ID = "specialized_id";
 
   void setFirstLaunch(bool value) {
     setPreference(

@@ -1,7 +1,8 @@
 import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/slider_model.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
-import 'package:flutter_templete/core/data/reposotories/colleges_repository.dart';
+import 'package:flutter_templete/core/data/reposotories/colleges_and_specializtions_repositories.dart';
+
 import 'package:flutter_templete/core/data/reposotories/silder_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
@@ -59,7 +60,7 @@ class HomePageController extends BaseController {
 
   void getAllColleges() {
     runFutureFunction(
-      function: CollegeRepository().getAllColleges().then(
+      function: CollegesAndSpecializtionsRepositories().getAllColleges().then(
         (value) {
           value.fold((l) {
             CustomToast.showMessage(

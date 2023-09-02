@@ -6,10 +6,10 @@ class SpecializationEndpoints {
   static String allCollages = NetworkConfig.getFullApiRoute('Collages/all');
   static String allSpecialization =
       NetworkConfig.getFullApiRoute('Specialization/allSpecialization');
-  static String moreOptions =
-      NetworkConfig.getFullApiRoute('Specialization/checkButtons');
-  static String ShowMaster =
+  static String showMaster =
       NetworkConfig.getFullApiRoute('Specialization/filters/type/master');
-  static String ShowGraduation =
+  static String showGraduation =
       NetworkConfig.getFullApiRoute('Specialization/filters/type/graduation');
+  static String showSubject =
+      NetworkConfig.getFullApiRoute('Specialization/filters/specialization/');
 }

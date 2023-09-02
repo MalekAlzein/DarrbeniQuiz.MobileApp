@@ -4,7 +4,6 @@ import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
-import 'package:flutter_templete/core/data/models/cart_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -56,22 +55,6 @@ class SharedPreferencesRepository {
 
   void clearTokenInfo() {
     globalSharedPreferences.clear();
-  }
-
-  void setCartList(List<CartModel> list) {
-    setPreference(
-      dataType: DataType.STRING,
-      key: PREF_CART_LIST,
-      value: CartModel.encode(list),
-    );
-  }
-
-  List<CartModel> getCartList() {
-    if (globalSharedPreferences.containsKey(PREF_CART_LIST)) {
-      return CartModel.decode(getPreference(key: PREF_CART_LIST));
-    } else {
-      return [];
-    }
   }
 
   void setAppLanguage(String value) {

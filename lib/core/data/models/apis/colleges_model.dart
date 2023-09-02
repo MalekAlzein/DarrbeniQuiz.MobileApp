@@ -1,12 +1,12 @@
-class SpecializationsModel {
+class CollegeModel {
   bool? status;
   String? message;
   List<Data>? data;
   int? code;
 
-  SpecializationsModel({this.status, this.message, this.data, this.code});
+  CollegeModel({this.status, this.message, this.data, this.code});
 
-  SpecializationsModel.fromJson(Map<String, dynamic> json) {
+  CollegeModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {

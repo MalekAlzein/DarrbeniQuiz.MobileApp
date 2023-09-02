@@ -8,11 +8,11 @@ import 'package:flutter_templete/core/enums/request_type.dart';
 import 'package:flutter_templete/core/utils/network_utils.dart';
 
 class CollegesAndSpecializtionsRepositories {
-  static Future<Either<String, SpecializationsModel>>
+  static Future<Either<String, List<SpecializationsModel>>>
       getAllSpecializtions() async {
     try {
-      return  NetworkUtil.sendRequest(
-        requestType: RequestType.GET,
+      return NetworkUtil.sendRequest(
+        type: RequestType.GET,
         url: SpecializationEndpoints.allSpecialization,
         headers: NetworkConfig.getHeaders(
           requestType: RequestType.GET,
@@ -21,9 +21,13 @@ class CollegesAndSpecializtionsRepositories {
       ).then((response) {
         CommonResponseModel<dynamic> commonResponse =
             CommonResponseModel.fromJson(response);
-
-        if (commonResponse.getStatus && commonResponse.data["data"]["status"]) {
-          return Right(SpecializationsModel.fromJson(commonResponse.data));
+        if (commonResponse.getStatus &&response['response']['status']==true) {
+          List<SpecializationsModel> result = [];
+commonResponse.data.forEach(
+                (element) {
+              result.add(SpecializationsModel.fromJson(element));
+            },
+          );          return Right(result);
         } else {
           return Left(commonResponse.message ?? '');
         }

@@ -3,7 +3,7 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/core/utils/network_utils.dart';
 
 class NetworkConfig {
-  static String BASE_API = 'api/Darrebni/';
+  static String BASE_API = '/api/Darrebni/';
 
   static String getFullApiRoute(String apiRoute) {
     return BASE_API + apiRoute;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/utils/string_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_radio.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_rich_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_tap_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
@@ -74,7 +74,7 @@ class _RegisterViewState extends State<RegisterView> {
                         if (value!.isEmpty) {
                           return 'الرجاء إدخال رقم الموبايل';
                         }
-                        if (!StringUtil.isMobile(value)) {
+                        if (!StringUtil.isValidSyriaMobileNumber(value)) {
                           return 'الرجاء التحقق من الرقم';
                         }
                         return null;
@@ -90,41 +90,38 @@ class _RegisterViewState extends State<RegisterView> {
                       textType: TextStyleType.SMALL,
                     ),
                     (screenHeight(28)).ph,
-                    Obx(() => controller.isloading.value
-                        ? SpinKitWave(
-                            color: AppColors.darkPurpleColor,
-                            size: width * 0.09,
-                          )
-                        : Center(
-                            child: Wrap(
-                              alignment: WrapAlignment.center,
-                              runSpacing: width * 0.01,
-                              children: List.generate(
-                                controller.specializationList.length,
-                                (index) {
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      CustomRadio(
-                                        selected: controller.colegeId.value,
-                                        onTaped: (value) {
-                                          controller.colegeId.value = value!;
-                                        },
-                                        value: controller
-                                            .specializationList[index][1],
-                                      ),
-                                      (screenWidth(28)).pw,
-                                      CustomText(
-                                          textType: TextStyleType.SMALL,
-                                          text: controller
-                                              .specializationList[index][0]),
-                                      (screenWidth(28)).pw,
-                                    ],
-                                  );
-                                },
-                              ),
+                    Obx(() => CustomShimmer(
+                        child: Center(
+                          child: Wrap(
+                            alignment: WrapAlignment.center,
+                            runSpacing: width * 0.01,
+                            children: List.generate(
+                              controller.specializationList.length,
+                              (index) {
+                                return Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    CustomRadio(
+                                      selected: controller.colegeId.value,
+                                      onTaped: (value) {
+                                        controller.colegeId.value = value!;
+                                      },
+                                      value: controller
+                                          .specializationList[index][1],
+                                    ),
+                                    (screenWidth(28)).pw,
+                                    CustomText(
+                                        textType: TextStyleType.SMALL,
+                                        text: controller
+                                            .specializationList[index][0]),
+                                    (screenWidth(28)).pw,
+                                  ],
+                                );
+                              },
                             ),
-                          )),
+                          ),
+                        ),
+                        isLoading: controller.isloading.value)),
                     (screenHeight(28)).ph,
                     CustomButton(
                       onPressed: () {

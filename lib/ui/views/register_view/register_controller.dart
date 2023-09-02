@@ -46,10 +46,10 @@ class RegisterController extends BaseController {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
-        // for (var specializtion in r.data!) {
-        //   specializationList
-        //       .add([specializtion.specializationName, specializtion.id]);
-        // }
+        for (var specializtion in r) {
+          specializationList
+              .add([specializtion.specializationName, specializtion.id]);
+        }
         isloading.value = false;
       });
     });

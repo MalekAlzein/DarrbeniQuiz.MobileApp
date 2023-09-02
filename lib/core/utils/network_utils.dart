@@ -43,7 +43,7 @@ class NetworkUtil {
 
       switch (requestType) {
         case RequestType.GET:
-          response = await  client.get(
+          response = await client.get(
             uri,
             headers: headers,
           );

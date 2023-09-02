@@ -11,8 +11,7 @@ class CollegesAndSpecializtionsRepositories {
   static Future<Either<String, SpecializationsModel>>
       getAllSpecializtions() async {
     try {
-      return await NetworkUtil.sendMultipartRequest(
-        type: RequestType.GET,
+      return  NetworkUtil.sendRequest(
         requestType: RequestType.GET,
         url: SpecializationEndpoints.allSpecialization,
         headers: NetworkConfig.getHeaders(

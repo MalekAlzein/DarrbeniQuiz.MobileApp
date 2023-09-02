@@ -5,7 +5,7 @@ class CommonResponseModel<T> {
 
   CommonResponseModel.fromJson(dynamic json) {
     // this.statusCode = json['statusCode'];
-    this.statusCode = json['response']['statuscode'];
+    this.statusCode = json['statusCode'];
 
     if (statusCode.toString().startsWith("2"))
     // if (statusCode == 200)

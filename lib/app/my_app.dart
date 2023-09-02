@@ -9,6 +9,8 @@ import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
+import '../ui/views/question_view/question_view.dart';
+
 late BuildContext appContext;
 
 class MyApp extends StatefulWidget {
@@ -55,7 +57,7 @@ class _MyAppState extends State<MyApp> {
             secondary: Colors.transparent.withOpacity(0),
           ),
         ),
-        home: MainView(),
+        home: QuestionView(),
       ),
     );
   }

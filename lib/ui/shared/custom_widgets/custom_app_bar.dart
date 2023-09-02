@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-class CustomAppBar extends StatelessWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSize {
   const CustomAppBar(
       {Key? key,
       this.activeColor,
-      this.svgName,
+      required this.svgName,
       this.firstText,
       this.secondText,
       this.thirdText,
-      this.onTap})
-      : super(key: key);
+      this.onTap});
 
   final Color? activeColor;
   final String? svgName;
@@ -42,7 +42,7 @@ class CustomAppBar extends StatelessWidget {
                   onTap;
                 },
                 child: SvgPicture.asset(
-                  'assets/svgs/${svgName ?? 'ic_back'}.svg',
+                  'assets/svgs/$svgName.svg',
                   color: Colors.white,
                 ),
               ),
@@ -81,6 +81,14 @@ class CustomAppBar extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  // TODO: implement child
+  Widget get child => SizedBox();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(screenWidth(1), screenWidth(3));
 }
 
 class CustomClipPath extends CustomClipper<Path> {

@@ -1,12 +1,12 @@
-class ImporantModel {
+class ImportantModel {
   bool? status;
   String? message;
   List<Data>? data;
   int? code;
 
-  ImporantModel({this.status, this.message, this.data, this.code});
+  ImportantModel({this.status, this.message, this.data, this.code});
 
-  ImporantModel.fromJson(Map<String, dynamic> json) {
+  ImportantModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
@@ -36,10 +36,8 @@ class Data {
   String? questionContent;
   String? reference;
   int? subjectId;
-  int? termId;
-  String? createdAt;
-  String? updatedAt;
-  Pivot? pivot;
+  int? specializationId;
+  int? correctId;
   List<Answers>? answers;
 
   Data(
@@ -48,10 +46,8 @@ class Data {
       this.questionContent,
       this.reference,
       this.subjectId,
-      this.termId,
-      this.createdAt,
-      this.updatedAt,
-      this.pivot,
+      this.specializationId,
+      this.correctId,
       this.answers});
 
   Data.fromJson(Map<String, dynamic> json) {
@@ -60,10 +56,8 @@ class Data {
     questionContent = json['question_content'];
     reference = json['reference'];
     subjectId = json['subject_id'];
-    termId = json['term_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    pivot = json['pivot'] != null ? new Pivot.fromJson(json['pivot']) : null;
+    specializationId = json['specialization_id'];
+    correctId = json['correct_id'];
     if (json['answers'] != null) {
       answers = <Answers>[];
       json['answers'].forEach((v) {
@@ -79,12 +73,8 @@ class Data {
     data['question_content'] = this.questionContent;
     data['reference'] = this.reference;
     data['subject_id'] = this.subjectId;
-    data['term_id'] = this.termId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    if (this.pivot != null) {
-      data['pivot'] = this.pivot!.toJson();
-    }
+    data['specialization_id'] = this.specializationId;
+    data['correct_id'] = this.correctId;
     if (this.answers != null) {
       data['answers'] = this.answers!.map((v) => v.toJson()).toList();
     }
@@ -92,68 +82,21 @@ class Data {
   }
 }
 
-class Pivot {
-  int? userId;
-  int? questionId;
-  String? createdAt;
-  String? updatedAt;
-
-  Pivot({this.userId, this.questionId, this.createdAt, this.updatedAt});
-
-  Pivot.fromJson(Map<String, dynamic> json) {
-    userId = json['user_id'];
-    questionId = json['question_id'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['user_id'] = this.userId;
-    data['question_id'] = this.questionId;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
-  }
-}
-
 class Answers {
+  String? text;
   int? id;
-  String? uuid;
-  String? answerContent;
-  int? questionId;
-  int? isCorrect;
-  Null? createdAt;
-  Null? updatedAt;
 
-  Answers(
-      {this.id,
-      this.uuid,
-      this.answerContent,
-      this.questionId,
-      this.isCorrect,
-      this.createdAt,
-      this.updatedAt});
+  Answers({this.text, this.id});
 
   Answers.fromJson(Map<String, dynamic> json) {
+    text = json['text'];
     id = json['id'];
-    uuid = json['uuid'];
-    answerContent = json['answer_content'];
-    questionId = json['question_id'];
-    isCorrect = json['is_correct'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['text'] = this.text;
     data['id'] = this.id;
-    data['uuid'] = this.uuid;
-    data['answer_content'] = this.answerContent;
-    data['question_id'] = this.questionId;
-    data['is_correct'] = this.isCorrect;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
     return data;
   }
 }

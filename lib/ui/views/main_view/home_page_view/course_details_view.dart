@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import '../../../shared/colors.dart';
 import '../../../shared/custom_widgets/custom_button.dart';
 import '../../../shared/utils.dart';
-import 'home_top_section.dart';
 
 class CourseDetailsView extends StatefulWidget {
   const CourseDetailsView({super.key});
@@ -50,39 +49,39 @@ class _CourseDetailsViewState extends State<CourseDetailsView> {
                 EdgeInsets.symmetric(horizontal: screenWidth(30), vertical: 0),
             child: ListView(
               children: [
-                HomeTopSection(),
+                // HomeTopSection(),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 0, horizontal: 60.0),
                   child: Column(
                     children: [
                       30.ph,
-                  CustomChipList(children: 
-                  List.generate(
+                      CustomChipList(
+                        children: List.generate(
                           homeViewController.collegeSubjects.length,
                           (index) => CustomChipContainer(
-                              text: homeViewController
-                                  .collegeSubjects[index], onTap: 
-                                    onTap: () {
-                                // mainViewController.pageTitle.value =
-                                //     signUpViewController.selectedMajor.value +
-                                //         ' / ' +
-                                //         homeViewController
-                                //             .collegeSubjects[index].name!;
+                            text: homeViewController.collegeSubjects[index],
+                            onTap: () {
+                              // mainViewController.pageTitle.value =
+                              //     signUpViewController.selectedMajor.value +
+                              //         ' / ' +
+                              //         homeViewController
+                              //             .collegeSubjects[index].name!;
 
-                                // context.push(BookCourseButtons(
-                                //   subjectID: homeViewController
-                                //       .collegeSubjects[index].uuid!,
-                                //   specialID: widget.specialId,
-                                // ));
-                              },
-                              ),
+                              // context.push(BookCourseButtons(
+                              //   subjectID: homeViewController
+                              //       .collegeSubjects[index].uuid!,
+                              //   specialID: widget.specialId,
+                              // ));
+                            },
+                          ),
                         ),
-                  )
-                 ,      Padding(
+                      ),
+                      Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: screenHeight(20)),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(

@@ -129,6 +129,10 @@ class _HomePageViewState extends State<HomePageView> {
                                   center: true,
                                   child: CustomGridCollege(
                                     onTap: () {
+                                      print(storage
+                                          .getSpecializationsList()[
+                                              controller.subbedSpecialization]
+                                          .specializationName);
                                       if (controller
                                           .filteredSpecializationsList[index]
                                           .moreOption!) {
@@ -144,9 +148,8 @@ class _HomePageViewState extends State<HomePageView> {
                                       } else {
                                         print("مافي ماستر ولا تخرج");
                                         homeController.getSubjects(
-                                            specialID: storage
-                                                .getTokenInfo()!
-                                                .specializationId!);
+                                            specialID: homeController
+                                                .subbedSpecialization);
                                         Get.to(() => SubjectView());
                                       }
                                     },

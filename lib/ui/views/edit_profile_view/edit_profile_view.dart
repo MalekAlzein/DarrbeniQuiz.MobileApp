@@ -8,7 +8,6 @@ import 'package:get/get.dart';
 
 import '../../shared/colors.dart';
 import '../../shared/utils.dart';
-import '../main_view/profile_view/Profile_view.dart';
 import 'edit_profile_controller.dart';
 
 class editProfileView extends StatefulWidget {

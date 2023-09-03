@@ -173,6 +173,7 @@ void showSpecializationBottomSheet({
                     Get.to(() => SubjectView(
                           master: true,
                         ));
+                    isGraduate = false;
                   }),
               screenHeight(35).ph,
               CustomButton(
@@ -185,6 +186,7 @@ void showSpecializationBottomSheet({
                     homeController.getGraduationSubjects();
 
                     Get.to(() => SubjectView());
+                    isGraduate = true;
                   })
             ],
           ),
@@ -427,7 +429,7 @@ int getCollegeIndex({required int id}) {
 String getUserSelectedCollege() {
   return storage
           .getSpecializationsList()[
-              getCollegeIndex(id: storage.getTokenInfo()!.specializationId!)]
+              getCollegeIndex(id: homeController.subbedSpecialization)]
           .specializationName ??
       '';
 }

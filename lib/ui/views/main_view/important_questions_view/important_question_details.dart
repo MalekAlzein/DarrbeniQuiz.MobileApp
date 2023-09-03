@@ -133,31 +133,21 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
   }
 
   void referenceDialog(BuildContext context) {
-    Get.defaultDialog(
-      barrierDismissible: true,
-      // context: context,
-      content: Container(
-        alignment: Alignment.center,
-        height: screenHeight(10),
-        child: CustomText(
-          text: widget.question.reference.toString(),
-          textType: TextStyleType.SMALL,
-        ),
-      ),
-      // builder: (BuildContext context) {
-      //   return Dialog(
-      //     insetPadding: EdgeInsets.all(screenWidth(30)),
-      //     // shape: CircleBorder(),
-      //     child: Container(
-      //       alignment: Alignment.center,
-      //       height: screenHeight(10),
-      //       child: CustomText(
-      //         text: widget.question.reference.toString(),
-      //         textType: TextStyleType.SMALL,
-      //       ),
-      //     ),
-      //   );
-      // }
-    );
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            insetPadding: EdgeInsets.all(screenWidth(30)),
+            // shape: CircleBorder(),
+            child: Container(
+              alignment: Alignment.center,
+              height: screenHeight(10),
+              child: CustomText(
+                text: widget.question.reference.toString(),
+                textType: TextStyleType.SMALL,
+              ),
+            ),
+          );
+        });
   }
 }

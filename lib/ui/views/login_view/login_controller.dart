@@ -13,7 +13,7 @@ import '../../../core/data/reposotories/profile_repository.dart';
 class LoginController extends BaseController {
   RxBool loader = false.obs;
   TextEditingController userNameController =
-      TextEditingController(text: kDebugMode ? "Shams" : "");
+      TextEditingController(text: kDebugMode ? "ShamsTest50" : "");
   TextEditingController codeController =
       TextEditingController(text: kDebugMode ? "oKTOzi" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
@@ -23,7 +23,9 @@ class LoginController extends BaseController {
       runFutureFunctionWithFullLoading(
           function: AuthRepositories()
               .login(
-                  name: userNameController.text, loginCode: codeController.text)
+                  name: userNameController.text,
+                  loginCode: codeController.text,
+                  fcm_token: storage.getFcmToken())
               .then((value) {
         value.fold((l) {
           loader.value = true;

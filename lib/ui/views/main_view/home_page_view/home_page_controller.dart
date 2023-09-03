@@ -28,10 +28,12 @@ class HomePageController extends BaseController {
   bool get isSubjectsLoading =>
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.SUBJECTS);
+  int subbedSpecialization = 0;
 
   @override
   void onInit() {
     specializationsList.value = storage.getSpecializationsList();
+    subbedSpecialization = storage.getTokenInfo()!.specializationId!;
     getAllSliders();
     getAllColleges();
     super.onInit();
@@ -121,7 +123,7 @@ class HomePageController extends BaseController {
             })));
   }
 
-  Future<void> getSubjects({required specialID}) async {
+  Future<void> getSubjects({required int specialID}) async {
     return runFutureFunctionWithLoading(
         operationType: OperationType.SUBJECTS,
         function: HomeRepository().getSubjects(specialID: specialID).then(

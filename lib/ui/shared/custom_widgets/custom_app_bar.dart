@@ -4,14 +4,22 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 
-class CustomAppBar extends StatelessWidget{
-  const CustomAppBar({Key? key, this.activeColor, required this.svgName, this.firstText, this.secondText, this.thirdText}) : super(key: key);
+class CustomAppBar extends StatelessWidget implements PreferredSize {
+  const CustomAppBar(
+      {Key? key,
+      this.activeColor,
+      this.svgName,
+      this.firstText,
+      this.secondText,
+      this.thirdText,
+      this.onTap});
 
   final Color? activeColor;
   final String? svgName;
   final String? firstText;
   final String? secondText;
   final String? thirdText;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +28,22 @@ class CustomAppBar extends StatelessWidget{
       child: Container(
         width: screenWidth(1),
         height: screenWidth(3),
-        decoration: BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
+        decoration:
+            BoxDecoration(color: activeColor ?? AppColors.darkPurpleColor),
         child: Padding(
           padding: EdgeInsetsDirectional.only(start: screenWidth(20)),
           child: ListView(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             children: [
-              SvgPicture.asset(
-                'assets/svgs/$svgName.svg',
-                color: Colors.white,
+              InkWell(
+                onTap: () {
+                  onTap;
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/${svgName ?? 'ic_back'}.svg',
+                  color: Colors.white,
+                ),
               ),
               SizedBox(width: screenWidth(30)),
               if (firstText != null) ...[
@@ -66,10 +80,15 @@ class CustomAppBar extends StatelessWidget{
       ),
     );
   }
+
+  @override
+  // TODO: implement child
+  Widget get child => SizedBox();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => Size(screenWidth(1), screenWidth(3));
 }
-
-
-
 
 class CustomClipPath extends CustomClipper<Path> {
   var radius = 8.0;

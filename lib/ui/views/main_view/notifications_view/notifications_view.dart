@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:get/get.dart';
-import '../../../shared/custom_widgets/custom_app_bar.dart';
-import '../../../shared/utils.dart';
-import '../main_controller.dart';
-import 'package:flutter_svg/svg.dart';
 
+import '../../../shared/utils.dart';
 import 'notifications_controller.dart';
 
 class NotificationsView extends StatefulWidget {

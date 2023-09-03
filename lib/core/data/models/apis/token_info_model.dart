@@ -1,15 +1,18 @@
 class TokenInfoModel {
-  String? accessToken;
+  String? token;
+  int? specializationId;
 
-  TokenInfoModel({this.accessToken});
+  TokenInfoModel({this.token, this.specializationId});
 
   TokenInfoModel.fromJson(Map<String, dynamic> json) {
-    accessToken = json['accessToken'];
+    token = json['token'];
+    specializationId = json['specialization_id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['accessToken'] = this.accessToken;
+    data['token'] = this.token;
+    data['specialization_id'] = this.specializationId;
     return data;
   }
 }

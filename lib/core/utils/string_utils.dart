@@ -32,6 +32,12 @@ class StringUtil {
     return regExp.hasMatch(value);
   }
 
+  //! This to validate syrian number phone And this better than before (isMobile)
+  static bool isValidSyriaMobileNumber(String value) {
+    RegExp regex = RegExp(r'^(!?(\+|00)?(963)|0)?9\d{8}$');
+    return regex.hasMatch(value);
+  }
+
   static bool isage18(String value) {
     RegExp regExp = RegExp(r'^(?:1[8-9]|[2-9][0-9])$');
     return regExp.hasMatch(value);

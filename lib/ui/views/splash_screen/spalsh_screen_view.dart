@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/splash_screen/splash_screen_controller.dart';
 import 'package:get/get.dart';
@@ -18,41 +17,41 @@ class _SplashScreenViewState extends State<SplashScreenView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height * 0.4,
-        )
-        // Stack(
-        //   alignment: Alignment.bottomCenter,
-        //   fit: StackFit.passthrough,
-        //   children: [
-            // SvgPicture.asset(
-            //   'assets/images/bg_background.svg',
-            //   height: screenHeight(1),
-            //   width: screenWidth(1),
-            // ),
-            // Center(
-            //     child: SvgPicture.asset(
-            //   'assets/images/Logo.svg',
-            //   width: screenWidth(5),
-            //   height: screenHeight(5),
-            // )),
-            // screenWidth(10).ph,
-            // Container(
-            //   margin: EdgeInsets.only(bottom: screenWidth(3)),
-            //   // width: size.width*0.1,
-            //   height: screenWidth(3),
-            //   child: SpinKitThreeBounce(
-            //     color: AppColors.darkPurpleColor,
-            //   ),
-            // ),
-          // ],
-        // ),
+    return Scaffold(
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        fit: StackFit.expand,
+        children: [
+          Image.asset(
+            'assets/svgs/darrebnibackground.png',
+            fit: BoxFit.fill,
+            width: screenWidth(1),
+          ),
+          Center(
+              child: Image.asset(
+            width: screenWidth(4),
+            'assets/svgs/logo+text.png',
+          )),
+          Container(
+            margin: EdgeInsets.only(top: screenHeight(4)),
+            height: screenWidth(90),
+            child: SpinKitThreeInOut(
+              size: screenHeight(30),
+              color: AppColors.darkPurpleColor,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: screenHeight(40)),
+            child: Align(
+              alignment: AlignmentDirectional.bottomCenter,
+              child: Image.asset(
+                'assets/svgs/Logo & Profile.png',
+                width: screenWidth(5),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-
-// top:size.hiegh*0.7

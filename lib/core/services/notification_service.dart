@@ -1,8 +1,8 @@
 import 'dart:async';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_templete/core/data/models/notification_model.dart';
 import 'package:flutter_templete/core/enums/app_state_enum.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:get/utils.dart';
 
 class NotificationService {
@@ -16,7 +16,6 @@ class NotificationService {
   void onInit() async {
     if (GetPlatform.isIOS) {
       FirebaseMessaging messaging = FirebaseMessaging.instance;
-
       NotificationSettings settings = await messaging.requestPermission(
         alert: true,
         announcement: false,
@@ -48,8 +47,15 @@ class NotificationService {
   }
 
   Future<void> registerdFCMToken() async {
-    final fcmToken = await FirebaseMessaging.instance.getToken();
+    final fcmToken;
+    if (storage.getFcmToken() == '') {
+      fcmToken = await FirebaseMessaging.instance.getToken();
+      storage.setFcmToken(fcmToken);
+    } else {
+      fcmToken = storage.getFcmToken();
+    }
     //! -- Call api that register fcm token ---
+    print(storage.getFcmToken());
 
     FirebaseMessaging.instance.onTokenRefresh.listen((fcmToken) {
       //! -- Call api that register fcm token ---

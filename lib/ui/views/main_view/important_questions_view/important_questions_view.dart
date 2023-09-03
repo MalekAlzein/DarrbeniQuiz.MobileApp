@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_templete/core/enums/current_specialization_enum.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
-import 'package:flutter_templete/ui/views/course_details_view/subject_view.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_question_details.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:get/get.dart';
@@ -41,16 +39,10 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
             : controller.importantQuestions.isEmpty
                 ? ListView(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          setCurrentAppMainColor(SpecializationEnum.MASTER);
-                          Get.to(SubjectView());
-                        },
-                        child: Center(
-                          child: CustomText(
-                              textType: TextStyleType.CUSTOM,
-                              text: tr('key_empty_important')),
-                        ),
+                      Center(
+                        child: CustomText(
+                            textType: TextStyleType.CUSTOM,
+                            text: tr('key_empty_important')),
                       ),
                     ],
                   )

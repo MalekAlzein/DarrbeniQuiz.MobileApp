@@ -51,7 +51,7 @@ class _SubjectViewState extends State<SubjectView> {
               return CustomAppBar(
                 onTap: () => Get.back(),
                 activeColor: AppConfig.mainColor,
-                firstText: ' getUserSelectedCollege()',
+                firstText: getUserSelectedCollege(),
               );
             }),
           ),

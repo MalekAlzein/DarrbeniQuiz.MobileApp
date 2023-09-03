@@ -38,7 +38,7 @@ class HomePageController extends BaseController {
   }
 
   void getAllSliders() {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
       function: SliderRepository().getAllSliders().then(
         (value) {
           value.fold((l) {

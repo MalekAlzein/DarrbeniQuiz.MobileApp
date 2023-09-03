@@ -22,15 +22,16 @@ class HomePageView extends StatefulWidget {
 
 class _HomePageViewState extends State<HomePageView> {
   HomePageController controller = Get.put(HomePageController());
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
         Padding(
           padding: EdgeInsetsDirectional.symmetric(
-            vertical: screenHeight(7.5),
-            horizontal: screenWidth(15),
-          ),
+              // vertical: screenHeight(7.5),
+              // horizontal: screenWidth(35),
+              ),
           child: Column(
             children: [
               CustomTextFormField(
@@ -49,7 +50,7 @@ class _HomePageViewState extends State<HomePageView> {
                     center: true,
                     isLoading: controller.isLoading,
                     child: CustomSlider(
-                      items: [],
+                      items: controller.silderList.value,
                     ),
                   );
                 },

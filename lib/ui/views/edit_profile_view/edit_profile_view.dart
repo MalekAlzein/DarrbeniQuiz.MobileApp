@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
+
 import '../../shared/colors.dart';
 import '../../shared/utils.dart';
 import '../main_view/profile_view/Profile_view.dart';
@@ -53,17 +50,15 @@ class _editProfileViewState extends State<editProfileView> {
           children: [
             Padding(
               padding: EdgeInsetsDirectional.only(
-                top: screenWidth(8),
-                bottom: screenWidth(60),
-                start: screenWidth(50)
-              ),
+                  top: screenWidth(8),
+                  bottom: screenWidth(60),
+                  start: screenWidth(50)),
               child: CustomText(
                 textType: TextStyleType.SMALL,
                 text: "اسم المستخدم",
                 textColor: AppColors.darkPurpleColor,
               ),
             ),
-            
             CustomTextFormField(
               hintText: "اسم المستخدم",
               hintTextSize: 11,
@@ -73,37 +68,31 @@ class _editProfileViewState extends State<editProfileView> {
               prefixIconColor: AppColors.darkPurpleColor,
               controller: controller.userNameController,
             ),
-
-
             Padding(
               padding: EdgeInsetsDirectional.only(
                   top: screenWidth(30),
                   bottom: screenWidth(60),
-                  start: screenWidth(50)
-              ),
+                  start: screenWidth(50)),
               child: CustomText(
                 textType: TextStyleType.SMALL,
                 text: "رقم الهاتف",
                 textColor: AppColors.darkPurpleColor,
               ),
             ),
-
             CustomTextFormField(
-                hintText: "رقم الهاتف",
-                hintTextSize: 11,
-                fillColor: AppColors.lightCyanColor,
-                prefixIcon: "ic_text_field_phone",
-                suffixIcon: "ic_edit",
-                controller: controller.phoneController,),
-
+              hintText: "رقم الهاتف",
+              hintTextSize: 11,
+              fillColor: AppColors.lightCyanColor,
+              prefixIcon: "ic_text_field_phone",
+              suffixIcon: "ic_edit",
+              controller: controller.phoneController,
+            ),
             (screenWidth(2.1)).ph,
-
             CustomButton(
                 text: "حفظ التغييرات",
                 buttonTypeEnum: ButtonTypeEnum.CUSTOM,
                 onPressed: () => controller.editProfileInfo()),
             (screenWidth(50)).ph,
-
             Center(
               child: InkWell(
                   onTap: () => Get.off(ProfileView()),

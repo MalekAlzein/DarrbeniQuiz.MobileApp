@@ -157,6 +157,13 @@ class NetworkUtil {
     required RequestType type,
   }) async {
     try {
+      if (!online) {
+        CustomToast.showMessage(
+            message: tr("key_bot_toast_offline"),
+            messageType: MessageType.WARNING);
+        BotToast.closeAllLoading();
+        return;
+      }
       var request = http.MultipartRequest(
         requestType.name,
         Uri.https(baseUrl, url, params),

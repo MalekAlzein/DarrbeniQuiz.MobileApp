@@ -1,4 +1,4 @@
-import 'package:flutter_templete/core/data/models/apis/impotant_model.dart';
+import 'package:flutter_templete/core/data/models/apis/question_model.dart';
 import 'package:flutter_templete/core/data/reposotories/important_questions_repository.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/enums/request_status.dart';
@@ -9,10 +9,11 @@ import '../../../../core/enums/operation_type.dart';
 import '../../../shared/custom_widgets/custom_toast.dart';
 
 class ImportantQuestionsController extends BaseController {
-  RxList<ImportantModel> importantQuestions = <ImportantModel>[].obs;
+  RxList<QuestionModel> importantQuestions = <QuestionModel>[].obs;
   bool get isImportantQuestionsLoading =>
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.QUESTIONS);
+  RxInt selectedAnswer = (-1).obs;
   @override
   void onInit() {
     getImportantQuestions();

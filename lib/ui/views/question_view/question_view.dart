@@ -27,8 +27,10 @@ class _QuestionViewState extends State<QuestionView> {
               ListView.builder(
                 shrinkWrap: true,
                 itemCount: widget.questions?[index].answers!.length,
-                itemBuilder: (BuildContext context, int index) {
+                itemBuilder: (BuildContext context, int index2) {
                   return CustomQuestionContainer(
+                      answerText:
+                          widget.questions?[index].answers![index2].text,
                       isCorrect: false,
                       isVisibleAnswerResult: false,
                       value: index,

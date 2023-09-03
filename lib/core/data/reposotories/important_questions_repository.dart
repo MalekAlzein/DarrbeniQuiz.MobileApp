@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_templete/core/data/models/apis/impotant_model.dart';
 import 'package:flutter_templete/core/data/models/common_response.dart';
 import 'package:flutter_templete/core/data/network/endpoints/important_endpoints.dart';
 
 import '../../enums/request_type.dart';
 import '../../utils/network_utils.dart';
+import '../models/apis/question_model.dart';
 import '../network/network_config.dart';
 
 class ImportantRepository {
-  Future<Either<String, List<ImportantModel>>> getImportantQuestions() async {
+  Future<Either<String, List<QuestionModel>>> getImportantQuestions() async {
     try {
       return NetworkUtil.sendRequest(
         type: RequestType.GET,
@@ -23,10 +23,10 @@ class ImportantRepository {
             CommonResponseModel.fromJson(response);
         if (commonResponse.getStatus &&
             response['response']['status'] == true) {
-          List<ImportantModel> result = [];
+          List<QuestionModel> result = [];
           commonResponse.data.forEach(
             (element) {
-              result.add(ImportantModel.fromJson(element));
+              result.add(QuestionModel.fromJson(element));
             },
           );
           return Right(result);
@@ -44,7 +44,7 @@ class ImportantRepository {
     try {
       return NetworkUtil.sendRequest(
         type: RequestType.DELETE,
-        url: ImportanceEndpoints.deleteImportance + questionID,
+        url: ImportanceEndpoints.deleteImportance + questionID.toString(),
         headers: NetworkConfig.getHeaders(
             needAuth: true, requestType: RequestType.DELETE),
       ).then((response) {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_question_details.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
-import 'package:flutter_templete/ui/views/question_view/question_view.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/colors.dart';
@@ -43,7 +43,9 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                       color: AppColors.darkGreyColorTextField,
                       child: InkWell(
                         onTap: () {
-                          Get.to((QuestionView()));
+                          Get.to((ImportantQuestionDetails(
+                            question: controller.importantQuestions[index],
+                          )));
                         },
                         child: CustomShimmer(
                           isLoading: controller.isImportantQuestionsLoading,

@@ -24,14 +24,15 @@ class ProfileController extends BaseController {
   }
 
   Future<void> logout() async {
-    runFutureFunctionWithFullLoading(
-        function: ProfileRepository().logout().then((value) {
+    runFutureFunctionWithFullLoading(function:
+         ProfileRepository().logout().then((value) {
       value.fold((l) {
         loader.value = true;
         CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
       }, (r) {
         storage.clearTokenInfo();
         Get.off(LoginView());
+
       });
     }));
   }

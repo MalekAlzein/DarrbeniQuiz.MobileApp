@@ -1,15 +1,15 @@
-class SubjectModel {
+class TermsModel {
   int? id;
   String? uuid;
-  String? name;
+  String? termName;
   int? specializationId;
 
-  SubjectModel({this.id, this.uuid, this.name, this.specializationId});
+  TermsModel({this.id, this.uuid, this.termName, this.specializationId});
 
-  SubjectModel.fromJson(Map<String, dynamic> json) {
+  TermsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     uuid = json['uuid'];
-    name = json['name'];
+    termName = json['term_name'];
     specializationId = json['specialization_id'];
   }
 
@@ -17,7 +17,7 @@ class SubjectModel {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['uuid'] = this.uuid;
-    data['name'] = this.name;
+    data['term_name'] = this.termName;
     data['specialization_id'] = this.specializationId;
     return data;
   }

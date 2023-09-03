@@ -15,7 +15,7 @@ Future<void> main() async {
   await Get.putAsync<SharedPreferences>(() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs;
-  });
+  }); 
   await Get.put(SharedPreferencesRepository());
   Get.put(CartService());
   Get.put(ConnectivityService());

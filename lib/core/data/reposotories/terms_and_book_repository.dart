@@ -1,18 +1,20 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_templete/core/data/models/apis/impotant_model.dart';
+import 'package:flutter_templete/core/data/models/apis/question_model.dart';
 import 'package:flutter_templete/core/data/models/common_response.dart';
 import 'package:flutter_templete/core/data/network/endpoints/important_endpoints.dart';
+import 'package:flutter_templete/core/data/network/endpoints/question_endpoints.dart';
 
 import '../../enums/request_type.dart';
 import '../../utils/network_utils.dart';
 import '../network/network_config.dart';
 
-class ImportantRepository {
-  Future<Either<String, List<ImportantModel>>> getImportantQuestions() async {
+class QuestionSrepository {
+  Future<Either<String, List<QuestionModel>>> getBankQuestions(
+      {required specialID}) async {
     try {
       return NetworkUtil.sendRequest(
         type: RequestType.GET,
-        url: ImportanceEndpoints.getImportance,
+        url: QuestionEndpoints.bankQuestions + specialID.toString(),
         headers: NetworkConfig.getHeaders(
             needAuth: true, requestType: RequestType.GET),
       ).then((response) {
@@ -23,10 +25,42 @@ class ImportantRepository {
             CommonResponseModel.fromJson(response);
         if (commonResponse.getStatus &&
             response['response']['status'] == true) {
-          List<ImportantModel> result = [];
+          List<QuestionModel> result = [];
           commonResponse.data.forEach(
             (element) {
-              result.add(ImportantModel.fromJson(element));
+              result.add(QuestionModel.fromJson(element));
+            },
+          );
+          return Right(result);
+        } else {
+          return Left(commonResponse.message ?? '');
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  Future<Either<String, List<QuestionModel>>> getSubjectBookQuestions(
+      {required subjectID}) async {
+    try {
+      return NetworkUtil.sendRequest(
+        type: RequestType.GET,
+        url: QuestionEndpoints.bookQueston + subjectID.toString(),
+        headers: NetworkConfig.getHeaders(
+            needAuth: true, requestType: RequestType.GET),
+      ).then((response) {
+        // if (response == null) {
+        //   return Left("الرجاء التحقق من الانترنت");
+        // }
+        CommonResponseModel<dynamic> commonResponse =
+            CommonResponseModel.fromJson(response);
+        if (commonResponse.getStatus &&
+            response['response']['status'] == true) {
+          List<QuestionModel> result = [];
+          commonResponse.data.forEach(
+            (element) {
+              result.add(QuestionModel.fromJson(element));
             },
           );
           return Right(result);

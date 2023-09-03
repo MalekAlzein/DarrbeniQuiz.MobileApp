@@ -11,39 +11,32 @@ class CustomChipContainer extends StatelessWidget {
     this.borderColor,
     this.width,
     required this.onTap,
+    this.backgroundColor,
   });
   final String text;
   final Color? borderColor;
+  final Color? backgroundColor;
   final double? width;
   final Function onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        onTap;
-        // mainViewController.pageTitle.value =
-        //     signUpViewController.selectedMajor.value +
-        //         ' / ' +
-        //         homeViewController
-        //             .collegeSubjects[index].name!;
-        // context.push(BookCourseButtons(
-        //   subjectID: homeViewController
-        //       .collegeSubjects[index].uuid!,
-        //   specialID: widget.specialId,
-        // ));
+        onTap();
       },
-      child: Container(
-        margin: EdgeInsets.only(left: screenWidth(600)),
-        padding: EdgeInsets.all(screenWidth(600)),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(screenWidth(50)),
-            border: Border.all(
-              color: borderColor ?? AppColors.darkPurpleColor,
-              width: width ?? 1,
-            )),
-        child: CustomText(
+      child: Chip(
+        labelPadding: EdgeInsets.symmetric(
+            horizontal: screenWidth(100), vertical: screenWidth(70)),
+        backgroundColor: backgroundColor ?? AppColors.whiteColor,
+        shape: BeveledRectangleBorder(
+            borderRadius: BorderRadius.circular(screenWidth(100))),
+        side: BorderSide(
+          color: borderColor ?? AppColors.darkPurpleColor,
+        ),
+        label: CustomText(
           text: text,
-          textType: TextStyleType.SMALL,
+          fontSize: screenWidth(27),
+          textType: TextStyleType.CUSTOM,
         ),
       ),
     );

@@ -841,7 +841,7 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_platform_interface
-      sha256: "95465b39f83bfe95fcb9d174829d6476216f2d548b79c38ab2506e0458787618"
+      sha256: "4d0dae953f80dc06fa24c58d0f8381302139c22c2dad301417787ad96f5f73bd"
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
@@ -902,5 +902,5 @@ packages:
     source: hosted
     version: "6.3.0"
 sdks:
-  dart: ">=2.19.3 <3.0.0"
-  flutter: ">=3.7.0"
+  dart: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"

@@ -13,6 +13,7 @@ import 'package:flutter_templete/firebase_options.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -33,7 +34,6 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     Get.put(NotificationService());
-    notificationService.toggleNotification(true);
   } catch (e) {
     print(e);
   }

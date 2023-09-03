@@ -29,6 +29,7 @@ class ProfileController extends BaseController {
         loader.value = true;
         CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
       }, (r) {
+
         storage.clearTokenInfo();
         Get.off(() => SplashScreenView());
       });

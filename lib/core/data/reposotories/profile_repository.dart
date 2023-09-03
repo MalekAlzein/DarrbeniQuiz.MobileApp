@@ -1,4 +1,3 @@
-
 import 'dart:core';
 
 import 'package:dartz/dartz.dart';
@@ -15,10 +14,11 @@ class ProfileRepository {
       return NetworkUtil.sendRequest(
         type: RequestType.GET,
         url: ProfileEndpoints.profileInfo,
-        headers: NetworkConfig.getHeaders(needAuth: true,requestType: RequestType.GET),
+        headers: NetworkConfig.getHeaders(
+            needAuth: true, requestType: RequestType.GET),
       ).then((response) {
         CommonResponseModel<Map<String, dynamic>> commonResponse =
-        CommonResponseModel.fromJson(response);
+            CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
           return Right(ProfileModel.fromJson(commonResponse.data ?? {}));
@@ -31,19 +31,20 @@ class ProfileRepository {
     }
   }
 
-
   Future<Either<String, dynamic>> logout() async {
     try {
       return NetworkUtil.sendRequest(
-        type:  RequestType.POST,
+
+        type: RequestType.POST,
         url: ProfileEndpoints.logout,
-        headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.POST),
+        headers: NetworkConfig.getHeaders(
+            needAuth: true, requestType: RequestType.POST),
       ).then((response) {
         CommonResponseModel<Map<String, dynamic>> commonResponse =
-        CommonResponseModel.fromJson(response);
+            CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
-          return Right(commonResponse.data );
+          return Right(commonResponse.data);
         } else {
           return Left(commonResponse.message ?? '');
         }
@@ -53,11 +54,8 @@ class ProfileRepository {
     }
   }
 
-
-  Future<Either<String, dynamic>> updateProfileInfo ({
-  required String name,
-    required String phone
-}) async {
+  Future<Either<String, dynamic>> updateProfileInfo(
+      {required String name, required String phone}) async {
     try {
       return NetworkUtil.sendRequest(
         type:  RequestType.PUT,
@@ -67,10 +65,10 @@ class ProfileRepository {
           "mobile_phone":phone}
       ).then((response) {
         CommonResponseModel<Map<String, dynamic>> commonResponse =
-        CommonResponseModel.fromJson(response);
+            CommonResponseModel.fromJson(response);
 
         if (commonResponse.getStatus) {
-          return Right(commonResponse.data );
+          return Right(commonResponse.data);
         } else {
           return Left(commonResponse.message ?? '');
         }
@@ -79,5 +77,4 @@ class ProfileRepository {
       return Left(e.toString());
     }
   }
-
 }

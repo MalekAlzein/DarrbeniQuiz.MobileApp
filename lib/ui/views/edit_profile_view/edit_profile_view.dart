@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
@@ -7,8 +6,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
+
 import '../../shared/colors.dart';
 import '../../shared/utils.dart';
 import 'edit_profile_controller.dart';
@@ -65,19 +63,14 @@ class _editProfileViewState extends State<editProfileView> {
                   ),
                 ),
                 CustomTextFormField(
-                    hintText: "اسم المستخدم",
-                    hintTextSize: 11,
-                    fillColor: AppColors.lightCyanColor,
-                    prefixIcon: "ic_text_field_user",
-                    suffixIcon: "ic_edit",
-                    prefixIconColor: AppColors.darkPurpleColor,
-                    controller: controller.userNameController,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'الرجاء إدخال الاسم';
-                      }
-                      ;
-                    }),
+                  hintText: "اسم المستخدم",
+                  hintTextSize: 11,
+                  fillColor: AppColors.lightCyanColor,
+                  prefixIcon: "ic_text_field_user",
+                  suffixIcon: "ic_edit",
+                  prefixIconColor: AppColors.darkPurpleColor,
+                  controller: controller.userNameController,
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.only(
                       top: screenWidth(30),
@@ -96,12 +89,6 @@ class _editProfileViewState extends State<editProfileView> {
                   prefixIcon: "ic_text_field_phone",
                   suffixIcon: "ic_edit",
                   controller: controller.phoneController,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'الرجاء إدخال رقم الهاتف';
-                    }
-                    return null;
-                  },
                 ),
                 (screenWidth(2.1)).ph,
                 CustomButton(

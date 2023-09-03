@@ -1,7 +1,7 @@
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_view.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/data/reposotories/profile_repository.dart';
 import '../../../../core/enums/message_type.dart';
 import '../../../../core/services/base_controller.dart';

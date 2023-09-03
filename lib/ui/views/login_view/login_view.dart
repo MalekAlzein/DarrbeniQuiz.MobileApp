@@ -26,14 +26,14 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Form(
-      key: controller.formKey1,
-      child: Padding(
-        padding: EdgeInsetsDirectional.all(screenWidth(25)),
-        child: SafeArea(
+    return SafeArea(
+      child: Scaffold(
+          body: Form(
+        key: controller.formKey1,
+        child: Padding(
+          padding: EdgeInsetsDirectional.all(screenWidth(25)),
           child: ListView(children: [
-            (screenWidth(10)).ph,
+            // (screenWidth(10)).ph,
             CustomTapBar(title: "تسجيل الدخول", imageName: "img_login"),
             (screenWidth(25)).ph,
             Align(
@@ -73,7 +73,7 @@ class _LoginViewState extends State<LoginView> {
               prefixIcon: 'ic_text_field_code',
               controller: controller.codeController,
               validator: (value) {
-                if (value!.isEmpty || StringUtil.isPassword(value)) {
+                if (value!.isEmpty) {
                   return 'please check your Code';
                 }
                 return null;
@@ -102,7 +102,7 @@ class _LoginViewState extends State<LoginView> {
               text1: "ليس لديك حساب ؟",
               text2: "أنشئ حسابك الان",
             ),
-            (screenWidth(5)).ph,
+            (screenHeight(25)).ph,
             InkWell(
               onTap: () {
                 Get.to(MainView());
@@ -118,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
             )
           ]),
         ),
-      ),
-    ));
+      )),
+    );
   }
 }

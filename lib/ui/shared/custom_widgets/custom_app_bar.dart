@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/diagnostics.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
@@ -9,7 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
   const CustomAppBar(
       {Key? key,
       this.activeColor,
-      required this.svgName,
+      this.svgName,
       this.firstText,
       this.secondText,
       this.thirdText,
@@ -42,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
                   onTap;
                 },
                 child: SvgPicture.asset(
-                  'assets/svgs/$svgName.svg',
+                  'assets/svgs/${svgName ?? 'ic_back'}.svg',
                   color: Colors.white,
                 ),
               ),

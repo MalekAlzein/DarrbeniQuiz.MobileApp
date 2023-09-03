@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_templete/core/enums/current_specialization_enum.dart';
+import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/course_details_view/subject_view.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_question_details.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:get/get.dart';
@@ -19,74 +22,98 @@ class ImportantQuestionsView extends StatefulWidget {
 }
 
 class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
+  ImportantQuestionsController controller =
+      Get.put(ImportantQuestionsController());
+
   @override
   Widget build(BuildContext context) {
-    ImportantQuestionsController controller =
-        Get.put(ImportantQuestionsController());
-
     return RefreshIndicator(
       onRefresh: () {
-        return controller.getImportantQuestions();
+        return Future(() {
+          controller.getImportantQuestions();
+        });
       },
       child: Obx(
         () => controller.isImportantQuestionsLoading
             ? SpinKitCircle(
                 color: AppColors.darkPurpleColor,
               )
-            : Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: screenHeight(80), vertical: screenHeight(30)),
-                child: ListView(
-                  children: [
-                    ListView.separated(
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            width: 100,
-                            height: 50,
-                            color: AppColors.darkGreyColorTextField,
-                            child: InkWell(
-                              onTap: () {
-                                Get.to((ImportantQuestionDetails(
-                                  question:
-                                      controller.importantQuestions[index],
-                                )));
-                              },
-                              child: CustomShimmer(
+            : controller.importantQuestions.isEmpty
+                ? ListView(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          setCurrentAppMainColor(SpecializationEnum.MASTER);
+                          Get.to(SubjectView());
+                        },
+                        child: Center(
+                          child: CustomText(
+                              textType: TextStyleType.CUSTOM,
+                              text: tr('key_empty_important')),
+                        ),
+                      ),
+                    ],
+                  )
+                : Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: screenHeight(80),
+                        vertical: screenHeight(30)),
+                    child: ListView(
+                      children: [
+                        ListView.separated(
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return CustomShimmer(
+                                center: true,
                                 isLoading:
                                     controller.isImportantQuestionsLoading,
-                                center: true,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                      child: CustomText(
-                                        textAlign: TextAlign.start,
-                                        text:
-                                            '${controller.importantQuestions[index].id.toString()}   ${controller.importantQuestions[index].questionContent}',
-                                        fontSize: screenWidth(27),
-                                        textType: TextStyleType.CUSTOM,
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 10),
+                                  width: 100,
+                                  height: 50,
+                                  color: AppColors.darkGreyColorTextField,
+                                  child: InkWell(
+                                    onTap: () {
+                                      Get.to((ImportantQuestionDetails(
+                                        question: controller
+                                            .importantQuestions[index],
+                                      )));
+                                    },
+                                    child: CustomShimmer(
+                                      isLoading: controller
+                                          .isImportantQuestionsLoading,
+                                      center: true,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Expanded(
+                                            child: CustomText(
+                                              textAlign: TextAlign.start,
+                                              text:
+                                                  '${controller.importantQuestions[index].id}   ${controller.importantQuestions[index].questionContent}',
+                                              fontSize: screenWidth(27),
+                                              textType: TextStyleType.CUSTOM,
+                                            ),
+                                          ),
+                                          InkWell(
+                                            child: SvgPicture.asset(
+                                                "assets/svgs/ic_arrow.svg"),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    InkWell(
-                                      child: SvgPicture.asset(
-                                          "assets/svgs/ic_arrow.svg"),
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return 20.ph;
-                        },
-                        itemCount: controller.importantQuestions.length)
-                  ],
-                ),
-              ),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return 20.ph;
+                            },
+                            itemCount: controller.importantQuestions.length)
+                      ],
+                    ),
+                  ),
       ),
     );
   }

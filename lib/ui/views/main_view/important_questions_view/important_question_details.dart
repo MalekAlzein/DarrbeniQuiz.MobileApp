@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/data/models/apis/question_model.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_question_contai
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
+import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:get/get.dart';
 
@@ -24,12 +26,16 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
   Widget build(BuildContext context) {
     ImportantQuestionsController controller =
         Get.put(ImportantQuestionsController());
+    HomePageController homePageController = Get.put(HomePageController());
 
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(screenWidth(3)),
           child: CustomAppBar(
-            firstText: ' registerController.specializationList[0]',
+            firstText: storage
+                .getSpecializationsList()[
+                    storage.getTokenInfo()!.specializationId!]
+                .specializationName,
             secondText: 'الأسئلة المهمة',
             onTap: () => Get.back(),
           )),
@@ -42,7 +48,6 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
             children: [
               CustomText(
                   textType: TextStyleType.BODY,
-                  // fontSize: screenWidth(30),
                   text: '${widget.question.id}. '
                       '${widget.question.questionContent}'),
               screenHeight(30).ph,
@@ -76,30 +81,23 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                   15.pw,
                   InkWell(
                       onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return Dialog(
-                                insetPadding: EdgeInsets.all(30),
-                                // shape: CircleBorder(),
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  height: screenHeight(10),
-                                  child: CustomText(
-                                    text: widget.question.reference.toString(),
-                                    textType: TextStyleType.SMALL,
-                                  ),
-                                ),
-                              );
-                            });
+                        referenceDialog(context);
                       },
                       child: SvgPicture.asset('assets/svgs/ic_reference.svg')),
                   15.pw,
                   InkWell(
                       onTap: () {
-                        controller.removeFromImportants(widget.question.id!);
+                        controller.isImportant.isTrue
+                            ? controller
+                                .removeFromImportants(widget.question.id!)
+                            : controller.addToImportants(widget.question.id!);
+
+                        controller.isImportant.value =
+                            !controller.isImportant.value;
                       },
-                      child: SvgPicture.asset('assets/svgs/ic_star_empty.svg')),
+                      child: SvgPicture.asset(controller.isImportant.isFalse
+                          ? 'assets/svgs/ic_star_empty.svg'
+                          : 'assets/svgs/ic_star_selected.svg')),
                 ],
               ),
               SizedBox(height: screenHeight(16)),
@@ -111,7 +109,6 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                     onPressed: () {},
                     text: 'السابق',
                     borderColor: AppColors.darkPurpleColor,
-                    // borderColor: AppConfig.secondaryAppColor,
                     textColor: AppColors.darkPurpleColor,
                     backgroundColor: AppColors.whiteColor,
                     buttonTypeEnum: ButtonTypeEnum.CUSTOM,
@@ -119,8 +116,8 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                   CustomButton(
                     width: screenWidth(5),
                     onPressed: () {},
-                    text: 'التالي', borderColor: AppColors.normalCyanColor,
-                    // borderColor: AppConfig.secondaryAppColor,
+                    text: 'التالي',
+                    borderColor: AppColors.normalCyanColor,
                     textColor: AppColors.whiteColor,
                     backgroundColor: AppColors.normalCyanColor,
                     buttonTypeEnum: ButtonTypeEnum.CUSTOM,
@@ -132,6 +129,35 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
           ),
         ),
       ),
+    );
+  }
+
+  void referenceDialog(BuildContext context) {
+    Get.defaultDialog(
+      barrierDismissible: true,
+      // context: context,
+      content: Container(
+        alignment: Alignment.center,
+        height: screenHeight(10),
+        child: CustomText(
+          text: widget.question.reference.toString(),
+          textType: TextStyleType.SMALL,
+        ),
+      ),
+      // builder: (BuildContext context) {
+      //   return Dialog(
+      //     insetPadding: EdgeInsets.all(screenWidth(30)),
+      //     // shape: CircleBorder(),
+      //     child: Container(
+      //       alignment: Alignment.center,
+      //       height: screenHeight(10),
+      //       child: CustomText(
+      //         text: widget.question.reference.toString(),
+      //         textType: TextStyleType.SMALL,
+      //       ),
+      //     ),
+      //   );
+      // }
     );
   }
 }

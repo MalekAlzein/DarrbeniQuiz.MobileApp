@@ -46,7 +46,7 @@ class _ProfileViewState extends State<ProfileView> {
                   top: screenWidth(30), bottom: screenWidth(8)),
               child: CustomText(
                 textType: TextStyleType.SMALL,
-                text: storage.getProfileInfo()!.name ?? "",
+                text: storage.getProfileInfo()?.name ?? "",
               ),
             ),
             CustomRow(

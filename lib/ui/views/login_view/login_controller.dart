@@ -15,7 +15,7 @@ class LoginController extends BaseController {
   TextEditingController userNameController =
       TextEditingController(text: kDebugMode ? "Shams" : "");
   TextEditingController codeController =
-      TextEditingController(text: kDebugMode ? "634PuI" : "");
+      TextEditingController(text: kDebugMode ? "oKTOzi" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
 
   void login() {

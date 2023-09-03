@@ -8,6 +8,7 @@ import 'package:flutter_templete/core/services/language_service.dart';
 import 'package:flutter_templete/core/services/notification_service.dart';
 import 'package:flutter_templete/core/services/package_info_service.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
+import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
 import 'package:get/get.dart';
 
 ConnectivityService get connectivityService => Get.find<ConnectivityService>();
@@ -18,6 +19,7 @@ CartService get cartService => Get.find<CartService>();
 NotificationService get notificationService => Get.find<NotificationService>();
 LanguageService get languageService => Get.find<LanguageService>();
 PackageInfoService get packageInfoService => Get.find<PackageInfoService>();
+HomePageController get homeController => Get.find<HomePageController>();
 
 // Future claunchUrl(Uri url) async {
 //   if (!await launchUrl(

@@ -25,5 +25,15 @@ class ENLanguage {
         "key_search": "search",
         "Key_specialization_master": "Master",
         "Key_specialization_graduation": "Graduation",
+        //?---SubjectView---
+
+        "Key_questions_bank": "Bank Questions",
+        "Key_book_questions": "Book Questions",
+        "Key_terms": "Terms",
+
+        //!---- Important View -------
+        "key_empty_important": "Important Questions List still empty",
+        "key_important_added": "Question added to importants",
+        "key_important_removed": "Question removed from importants",
       };
 }

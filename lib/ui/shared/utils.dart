@@ -2,8 +2,11 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
+import 'package:flutter_templete/core/enums/current_specialization_enum.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_blur.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
@@ -13,6 +16,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/course_details_view/subject_view.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:get/get.dart';
 
@@ -164,10 +168,11 @@ void showSpecializationBottomSheet({
                   text: tr('Key_specialization_master'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
-                    // Get.to(() => SubjectView(
-                    //       specialization: !specialization,
-                    //       specializationsModel: specializationsModel,
-                    //     ));
+                    homeController.getMasterSubjects();
+                    setCurrentAppMainColor(SpecializationEnum.MASTER);
+                    Get.to(() => SubjectView(
+                          master: true,
+                        ));
                   }),
               screenHeight(35).ph,
               CustomButton(
@@ -175,10 +180,11 @@ void showSpecializationBottomSheet({
                   text: tr('Key_specialization_graduation'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
-                    // Get.to(() => SubjectView(
-                    //       specialization: specialization,
-                    //       specializationsModel: specializationsModel,
-                    //     ));
+                    setCurrentAppMainColor(SpecializationEnum.GRADUATION);
+
+                    homeController.getGraduationSubjects();
+
+                    Get.to(() => SubjectView());
                   })
             ],
           ),
@@ -410,4 +416,32 @@ void sendFeedBack({
           )),
     ),
   );
+}
+
+int getCollegeIndex({required int id}) {
+  return storage.getSpecializationsList().indexWhere(
+        (element) => element.id == id,
+      );
+}
+
+String getUserSelectedCollege() {
+  return storage
+          .getSpecializationsList()[
+              getCollegeIndex(id: storage.getTokenInfo()!.specializationId!)]
+          .specializationName ??
+      '';
+}
+
+setCurrentAppMainColor(SpecializationEnum currentSpecial) {
+  switch (currentSpecial) {
+    case SpecializationEnum.MASTER:
+      AppConfig.mainColor = AppColors.darkPurpleColor;
+      AppConfig.secondaryColor = AppColors.normalCyanColor;
+
+      break;
+    case SpecializationEnum.GRADUATION:
+      AppConfig.secondaryColor = AppColors.darkPurpleColor;
+      AppConfig.mainColor = AppColors.normalCyanColor;
+      break;
+  }
 }

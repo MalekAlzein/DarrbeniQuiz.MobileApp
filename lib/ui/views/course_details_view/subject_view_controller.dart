@@ -8,7 +8,7 @@ import '../../../core/enums/operation_type.dart';
 import '../../../core/enums/request_status.dart';
 import '../../shared/custom_widgets/custom_toast.dart';
 
-class CourseDetailsController extends BaseController {
+class SubjectViewController extends BaseController {
   List<String> collegeSubjects = [''].obs;
   RxList<QuestionModel> questions = <QuestionModel>[].obs;
   bool get isQuestionsLoading =>

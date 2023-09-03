@@ -13,7 +13,6 @@ class ProfileController extends BaseController {
   RxBool loader = false.obs;
 
   void onInit() {
-    // TODO: implement onInit
     getUserInfo();
     super.onInit();
   }

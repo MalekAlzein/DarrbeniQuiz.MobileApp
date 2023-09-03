@@ -38,7 +38,7 @@ class HomePageController extends BaseController {
   }
 
   void getAllSliders() {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
       function: SliderRepository().getAllSliders().then(
         (value) {
           value.fold((l) {
@@ -59,7 +59,7 @@ class HomePageController extends BaseController {
   }
 
   void getAllColleges() {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
       function: CollegesAndSpecializtionsRepositories().getAllColleges().then(
         (value) {
           value.fold((l) {

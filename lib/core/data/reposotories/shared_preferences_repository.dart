@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
+import 'package:flutter_templete/core/data/models/apis/profile_model.dart';
 import 'package:flutter_templete/core/data/models/apis/token_info_model.dart';
 import 'package:flutter_templete/core/enums/data_type.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class SharedPreferencesRepository {
   //!--- Keys ----
   String PREF_FIRST_LOGIN = 'first_login';
   String PREF_TOKEN = 'token';
+  String PREF_PROFILE_INFO = 'profile_info';
   String PREF_APP_LANG = 'app_lang';
   String PREF_CART_LIST = 'cart_list';
   String PREF_SPECIALIZATION_LIST = 'specialization_list';
@@ -54,6 +56,23 @@ class SharedPreferencesRepository {
 
   void clearTokenInfo() {
     globalSharedPreferences.clear();
+  }
+
+  void setProfileInfo(ProfileModel value) {
+    setPreference(
+      dataType: DataType.STRING,
+      key: PREF_PROFILE_INFO,
+      value: jsonEncode(value.toJson()),
+    );
+  }
+
+  ProfileModel? getProfileInfo() {
+    if (globalSharedPreferences.containsKey(PREF_PROFILE_INFO)) {
+      return ProfileModel.fromJson(
+          jsonDecode(getPreference(key: PREF_PROFILE_INFO)));
+    } else {
+      return null;
+    }
   }
 
   void setAppLanguage(String value) {

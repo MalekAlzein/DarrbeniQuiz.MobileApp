@@ -1,7 +1,7 @@
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/views/login_view/login_view.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
+
 import '../../../../core/data/reposotories/profile_repository.dart';
 import '../../../../core/enums/message_type.dart';
 import '../../../../core/services/base_controller.dart';
@@ -19,23 +19,20 @@ class ProfileController extends BaseController {
   }
 
   void getUserInfo() {
- name.value=storage.getProfileInfo()!.name!;
- phone.value=storage.getProfileInfo()!.mobilePhone!;
+    name.value = storage.getProfileInfo()!.name!;
+    phone.value = storage.getProfileInfo()!.mobilePhone!;
   }
 
   Future<void> logout() async {
     runFutureFunctionWithFullLoading(
-        function: ProfileRepository()
-            .logout()
-            .then((value) {
-          value.fold((l) {
-            loader.value = true;
-            CustomToast.showMessage(
-                messageType: MessageType.REJECTED, message: l);
-          }, (r) {
-            storage.clearTokenInfo();
-            Get.off(LoginView());
-          });
-        }));
+        function: ProfileRepository().logout().then((value) {
+      value.fold((l) {
+        loader.value = true;
+        CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
+      }, (r) {
+        storage.clearTokenInfo();
+        Get.off(LoginView());
+      });
+    }));
   }
 }

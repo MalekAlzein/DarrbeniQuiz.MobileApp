@@ -136,14 +136,15 @@ void showAlertDialoug({
 //   );
 // }
 
-void showSpecializationBottomSheet(
-    {required bool specialization,
-    required SpecializationsModel specializationsModel}) {
+void showSpecializationBottomSheet({
+  required bool specialization,
+  required SpecializationsModel specializationsModel,
+}) {
   Get.bottomSheet(
     CustomPopupWithBlurWidget(
       customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
       child: Container(
-        height: screenHeight(4),
+        // height: screenHeight(4),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadiusDirectional.only(
@@ -243,7 +244,7 @@ void showSudscribeDialog({
       customBlurChildType: CustomBlurChildType.DIALOUG,
       child: Container(
         width: screenWidth(1.2),
-        height: screenHeight(3),
+        height: screenHeight(2.5),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           border: Border.all(color: AppColors.darkPurpleColor, width: 2),
@@ -295,8 +296,8 @@ void showSudscribeDialog({
               ),
               screenHeight(90).ph,
               CustomButton(
-                fontSize: screenWidth(60),
-                buttonTypeEnum: ButtonTypeEnum.SMALL,
+                fontSize: screenWidth(32),
+                buttonTypeEnum: ButtonTypeEnum.NORMAL,
                 height: screenWidth(9),
                 onPressed: () {
                   Get.to(() => const MainView());

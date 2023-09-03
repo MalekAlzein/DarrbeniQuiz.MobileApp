@@ -34,7 +34,7 @@ class _HomeViewCategoryWidgetState extends State<HomeViewCategoryWidget> {
             border: widget.isSelected
                 ? Border(
                     bottom: BorderSide(
-                      width: 1,
+                      width: 2,
                       color: AppColors.normalCyanColor,
                     ),
                   )

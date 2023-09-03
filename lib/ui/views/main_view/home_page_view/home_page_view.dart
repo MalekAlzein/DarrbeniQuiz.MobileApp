@@ -82,15 +82,20 @@ class _HomePageViewState extends State<HomePageView> {
                                     controller.collegeList[index].id!;
                                 bool isSelected =
                                     index == controller.selectedCollegeId.value;
-                                return HomeViewCategoryWidget(
-                                  text:
-                                      controller.collegeList[index].collageName,
-                                  onTap: () {
-                                    controller.getSpecializationspByCollege(
-                                        collageId);
-                                    controller.selectedCollegeId.value = index;
-                                  },
-                                  isSelected: isSelected,
+                                return CustomShimmer(
+                                  isLoading: controller.isLoading,
+                                  center: true,
+                                  child: HomeViewCategoryWidget(
+                                    text: controller
+                                        .collegeList[index].collageName,
+                                    onTap: () {
+                                      controller.getSpecializationspByCollege(
+                                          collageId);
+                                      controller.selectedCollegeId.value =
+                                          index;
+                                    },
+                                    isSelected: isSelected,
+                                  ),
                                 );
                               },
                             );
@@ -106,35 +111,43 @@ class _HomePageViewState extends State<HomePageView> {
                           child: CustomGrideView(
                             children: List.generate(
                               controller.filteredSpecializationsList.length,
-                              (index) => Flexible(
-                                child: CustomGridCollege(
-                                  onTap: () {
-                                    if (controller
-                                        .filteredSpecializationsList[index]
-                                        .moreOption!) {
-                                      // TODO: remove comment inside bottomSheet for SubjectView Navigation
-                                      showSpecializationBottomSheet(
-                                        specialization: controller
+                              (index) => CustomShimmer(
+                                isLoading: controller.isLoading,
+                                center: true,
+                                child: Flexible(
+                                  child: CustomGridCollege(
+                                    onTap: () {
+                                      if (controller
+                                          .filteredSpecializationsList[index]
+                                          .moreOption!) {
+                                        // TODO: remove comment inside bottomSheet for SubjectView Navigation
+                                        showSpecializationBottomSheet(
+                                          specialization: controller
+                                              .filteredSpecializationsList[
+                                                  index]
+                                              .moreOption!,
+                                          specializationsModel: controller
+                                                  .filteredSpecializationsList[
+                                              index],
+                                        );
+                                      } else {
+                                        print("مافي ماستر ولا تخرج");
+                                        // TODO: put SubjectView Navigation
+                                        // Get.to(()=> VIEW );
+                                      }
+                                    },
+                                    isSubbed:
+                                        controller.subbedCollege(index: index),
+                                    // imageName: "img_login",
+                                    imageName: controller
                                             .filteredSpecializationsList[index]
-                                            .moreOption!,
-                                        specializationsModel: controller
-                                            .filteredSpecializationsList[index],
-                                      );
-                                    } else {
-                                      // TODO: put SubjectView Navigation
-                                    }
-                                  },
-                                  isSubbed:
-                                      controller.subbedCollege(index: index),
-                                  // imageName: "img_login",
-                                  imageName: controller
-                                          .filteredSpecializationsList[index]
-                                          .image ??
-                                      "",
-                                  text: controller
-                                          .filteredSpecializationsList[index]
-                                          .specializationName ??
-                                      "",
+                                            .image ??
+                                        "",
+                                    text: controller
+                                            .filteredSpecializationsList[index]
+                                            .specializationName ??
+                                        "",
+                                  ),
                                 ),
                               ),
                             ),

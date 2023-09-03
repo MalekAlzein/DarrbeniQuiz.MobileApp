@@ -10,7 +10,6 @@ import '../../../core/services/base_controller.dart';
 import '../../../core/utils/general_utils.dart';
 import '../../shared/custom_widgets/custom_toast.dart';
 
-
 class EditProfileController extends BaseController {
   TextEditingController userNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -23,28 +22,33 @@ class EditProfileController extends BaseController {
   }
 
   Future<void> editProfileInfo() async {
-    runFutureFunctionWithFullLoading(
-        function: ProfileRepository().updateProfileInfo(name: userNameController.text,phone: phoneController.text).then((value) {
-      value.fold((l) {
-        loader.value = true;
-        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-      }, (r) {
-       getUserInfo();
-
-      });
-    }));
+    if (formKey.currentState!.validate()) {
+      runFutureFunctionWithFullLoading(
+          function: ProfileRepository()
+              .updateProfileInfo(
+                  name: userNameController.text, phone: phoneController.text)
+              .then((value) {
+        value.fold((l) {
+          loader.value = true;
+          CustomToast.showMessage(
+              message: l, messageType: MessageType.REJECTED);
+        }, (r) {
+          getUserInfo();
+          CustomToast.showMessage(
+              message: "تم تحديث بياناتك بنجاح",
+              messageType: MessageType.SUCCESS);
+        });
+      }));
+    }
   }
 
-  Future<void>  getUserInfo()async {
-    runFutureFunctionWithFullLoading(
-        function:
-        ProfileRepository().getProfileInfo().then((value) {
-          value.fold((l) {
-            CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-          }, (r) {
-            storage.setProfileInfo(r);
-            Get.to(ProfileView());
-          });
-        }));
+  getUserInfo() async {
+    ProfileRepository().getProfileInfo().then((value) {
+      value.fold((l) {
+        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
+      }, (r) {
+        storage.setProfileInfo(r);
+      });
+    });
   }
 }

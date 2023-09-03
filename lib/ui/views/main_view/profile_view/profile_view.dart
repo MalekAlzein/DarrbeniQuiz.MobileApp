@@ -7,10 +7,8 @@ import 'package:flutter_templete/ui/views/main_view/profile_view/profile_control
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import '../../../shared/colors.dart';
-import '../../../shared/custom_widgets/custom_app_bar.dart';
 import '../../../shared/custom_widgets/custom_button.dart';
 import '../../../shared/custom_widgets/custom_row.dart';
-import '../../../shared/custom_widgets/custom_shimmer.dart';
 import '../../../shared/custom_widgets/custom_text.dart';
 import '../../../shared/utils.dart';
 import '../../edit_profile_view/edit_profile_view.dart';
@@ -26,29 +24,27 @@ ProfileController controller = Get.put(ProfileController());
 
 class _ProfileViewState extends State<ProfileView> {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(screenWidth(3)),
-        child: CustomAppBar(
-          firstText: "الملف الشخصي",
-          svgName: "ic_nav_bar_profile",
-        ),
-      ),
+
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(17)),
         child: Column(
           children: [
-            SvgPicture.asset(
-              "assets/svgs/user_pic.svg",
+            Padding(
+              padding:  EdgeInsets.only(top: screenWidth(3)),
+              child: SvgPicture.asset(
+                "assets/svgs/user_pic.svg",
+              ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(
                   top: screenWidth(30), bottom: screenWidth(8)),
               child:
                 CustomText(
-                  textType: TextStyleType.SMALL,
-                  text: storage.getProfileInfo()!.name??"",
+                  textType: TextStyleType.BODY,
+                  text: storage.getProfileInfo()?.name??"",
                 ),
             ),
             CustomRow(

@@ -37,10 +37,9 @@ class LoginController extends BaseController {
     }
   }
 
-   void getUserInfo() {
+  void getUserInfo() {
     runFutureFunctionWithFullLoading(
-      function:
-    ProfileRepository().getProfileInfo().then((value) {
+        function: ProfileRepository().getProfileInfo().then((value) {
       value.fold((l) {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {

@@ -14,28 +14,25 @@ class ProfileController extends BaseController {
 
   void onInit() {
     // TODO: implement onInit
-    getUserInfo();
+    getInfo();
     super.onInit();
   }
 
-  void getUserInfo() {
- name.value=storage.getProfileInfo()!.name!;
- phone.value=storage.getProfileInfo()!.mobilePhone!;
+  void getInfo() {
+    name.value = storage.getProfileInfo()!.name!;
+    phone.value = storage.getProfileInfo()!.mobilePhone!;
   }
 
   Future<void> logout() async {
     runFutureFunctionWithFullLoading(
-        function: ProfileRepository()
-            .logout()
-            .then((value) {
-          value.fold((l) {
-            loader.value = true;
-            CustomToast.showMessage(
-                messageType: MessageType.REJECTED, message: l);
-          }, (r) {
-            storage.clearTokenInfo();
-            Get.off(LoginView());
-          });
-        }));
+        function: ProfileRepository().logout().then((value) {
+      value.fold((l) {
+        loader.value = true;
+        CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
+      }, (r) {
+        storage.clearTokenInfo();
+        Get.off(LoginView());
+      });
+    }));
   }
 }

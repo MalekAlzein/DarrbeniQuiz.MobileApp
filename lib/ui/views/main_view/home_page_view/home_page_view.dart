@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_gridview.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
@@ -117,6 +118,10 @@ class _HomePageViewState extends State<HomePageView> {
                                 child: Flexible(
                                   child: CustomGridCollege(
                                     onTap: () {
+                                      print(storage
+                                          .getSpecializationsList()[
+                                              controller.subbedSpecialization]
+                                          .specializationName);
                                       if (controller
                                           .filteredSpecializationsList[index]
                                           .moreOption!) {

@@ -20,10 +20,12 @@ class HomePageController extends BaseController {
   RxList<String> selectedColleges = <String>[].obs;
   RxString selectedCollege = "الكل".obs;
   RxInt selectedCollegeId = 0.obs;
+  int subbedSpecialization = 0;
 
   @override
   void onInit() {
     specializationsList.value = storage.getSpecializationsList();
+    subbedSpecialization = storage.getTokenInfo()!.specializationId!;
     getAllSliders();
     getAllColleges();
     super.onInit();

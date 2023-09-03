@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_blur.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
@@ -164,6 +165,7 @@ void showSpecializationBottomSheet({
                   text: tr('Key_specialization_master'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
+                    isGraduate = false;
                     // Get.to(() => SubjectView(
                     //       specialization: !specialization,
                     //       specializationsModel: specializationsModel,
@@ -175,6 +177,7 @@ void showSpecializationBottomSheet({
                   text: tr('Key_specialization_graduation'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
+                    isGraduate = true;
                     // Get.to(() => SubjectView(
                     //       specialization: specialization,
                     //       specializationsModel: specializationsModel,

@@ -127,11 +127,10 @@ class _HomePageViewState extends State<HomePageView> {
                                           .moreOption!) {
                                         // TODO: remove comment inside bottomSheet for SubjectView Navigation
                                         showSpecializationBottomSheet(
-                                          specialization: isGraduate =
-                                              controller
-                                                  .filteredSpecializationsList[
-                                                      index]
-                                                  .moreOption!,
+                                          specialization: controller
+                                              .filteredSpecializationsList[
+                                                  index]
+                                              .moreOption!,
                                           specializationsModel: controller
                                                   .filteredSpecializationsList[
                                               index],

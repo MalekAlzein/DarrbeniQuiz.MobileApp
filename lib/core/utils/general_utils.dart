@@ -31,6 +31,7 @@ PackageInfoService get packageInfoService => Get.find<PackageInfoService>();
 
 double get taxAmount => 0.18;
 double get deliverAmount => 0.1;
+bool isGraduate = false;
 
 //when value change change
 bool get isOnline =>

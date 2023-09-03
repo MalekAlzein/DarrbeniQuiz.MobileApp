@@ -127,16 +127,19 @@ class _HomePageViewState extends State<HomePageView> {
                                           .moreOption!) {
                                         // TODO: remove comment inside bottomSheet for SubjectView Navigation
                                         showSpecializationBottomSheet(
-                                          specialization: controller
-                                              .filteredSpecializationsList[
-                                                  index]
-                                              .moreOption!,
+                                          specialization: isGraduate =
+                                              controller
+                                                  .filteredSpecializationsList[
+                                                      index]
+                                                  .moreOption!,
                                           specializationsModel: controller
                                                   .filteredSpecializationsList[
                                               index],
                                         );
                                       } else {
                                         print("مافي ماستر ولا تخرج");
+                                        isGraduate = false;
+
                                         // TODO: put SubjectView Navigation
                                         // Get.to(()=> VIEW );
                                       }

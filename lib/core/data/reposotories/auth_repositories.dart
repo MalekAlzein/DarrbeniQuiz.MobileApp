@@ -46,12 +46,13 @@ class AuthRepositories {
   Future<Either<String, TokenInfoModel>> login({
     required String name,
     required String loginCode,
+    required String fcm_token
   }) async {
     try {
       return NetworkUtil.sendMultipartRequest(
         type: RequestType.POST,
         url: AuthEndpoints.login,
-        fields: {'name': name, 'login_code': loginCode},
+        fields: {'name': name, 'login_code': loginCode,'fcm_token':fcm_token},
         headers: NetworkConfig.getHeaders(
           needAuth: false,
           requestType: RequestType.POST,

@@ -7,6 +7,7 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:get/get.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 
 import '../../../core/data/reposotories/profile_repository.dart';
 
@@ -23,7 +24,7 @@ class LoginController extends BaseController {
       runFutureFunctionWithFullLoading(
           function: AuthRepositories()
               .login(
-                  name: userNameController.text, loginCode: codeController.text)
+                  name: userNameController.text, loginCode: codeController.text,fcm_token: storage.getFcmToken())
               .then((value) {
         value.fold((l) {
           loader.value = true;

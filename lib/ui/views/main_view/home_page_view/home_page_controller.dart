@@ -59,7 +59,7 @@ class HomePageController extends BaseController {
   }
 
   void getAllColleges() {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
       function: CollegesAndSpecializtionsRepositories().getAllColleges().then(
         (value) {
           value.fold((l) {

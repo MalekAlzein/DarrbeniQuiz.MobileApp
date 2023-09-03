@@ -39,7 +39,7 @@ class _HomeViewCategoryWidgetState extends State<HomeViewCategoryWidget> {
                     ),
                   )
                 : null,
-            borderRadius: BorderRadius.circular(20),
+            // borderRadius: BorderRadius.circular(20),
           ),
           child: CustomText(
             textType: TextStyleType.SUBTITLE,

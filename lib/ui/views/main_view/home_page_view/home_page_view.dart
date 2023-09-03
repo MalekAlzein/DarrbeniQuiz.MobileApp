@@ -55,70 +55,95 @@ class _HomePageViewState extends State<HomePageView> {
                   );
                 },
               ),
-              CustomSubTitleContainer(
-                text: tr('key_category'),
-                color: AppColors.darkGreyColor,
-              ),
-              Obx(() {
-                print(controller.silderList);
-                return SizedBox(
-                  height: screenHeight(8),
-                  width: screenWidth(1),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: controller.collegeList.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      int collageId = controller.collegeList[index].id!;
-                      bool isSelected =
-                          collageId == controller.selectedCollegeId.value;
-
-                      return HomeViewCategoryWidget(
-                        text: controller.collegeList[index].collageName,
-                        onTap: () {
-                          controller.getSpecializationspByCollege(collageId);
-                        },
-                        isSelected: isSelected,
-                      );
-                    },
-                  ),
-                );
-              }),
-              Obx(
-                () {
-                  print(controller.selectedCollegeId.value);
-                  return SizedBox(
-                      width: screenWidth(1),
-                      child: CustomGrideView(
-                          children: List.generate(
-                        controller.filteredSpecializationsList.length,
-                        (index) => Flexible(
-                          child: CustomGridCollege(
-                            onTap: () {
-                              showSpecializationBottomSheet(
-                                specialization: controller
-                                    .filteredSpecializationsList[index]
-                                    .moreOption!,
-                                specializationsModel: controller
-                                    .filteredSpecializationsList[index],
-                              );
-                            },
-                            isSubbed: controller.subbedCollege(index: index),
-                            // imageName: "img_login",
-                            imageName: controller
-                                    .filteredSpecializationsList[index].image ??
-                                "",
-                            text: controller.filteredSpecializationsList[index]
-                                    .specializationName ??
-                                "",
-                          ),
+              Padding(
+                padding: EdgeInsetsDirectional.symmetric(
+                  horizontal: screenWidth(35),
+                ),
+                child: Column(
+                  children: [
+                    CustomSubTitleContainer(
+                      text: tr('key_category'),
+                      color: AppColors.darkGreyColor,
+                    ),
+                    Obx(() {
+                      // print(controller.silderList);
+                      return SizedBox(
+                        height: screenHeight(8),
+                        width: screenWidth(1),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          physics: BouncingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: controller.collegeList.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Obx(
+                              () {
+                                int collageId =
+                                    controller.collegeList[index].id!;
+                                bool isSelected =
+                                    index == controller.selectedCollegeId.value;
+                                return HomeViewCategoryWidget(
+                                  text:
+                                      controller.collegeList[index].collageName,
+                                  onTap: () {
+                                    controller.getSpecializationspByCollege(
+                                        collageId);
+                                    controller.selectedCollegeId.value = index;
+                                  },
+                                  isSelected: isSelected,
+                                );
+                              },
+                            );
+                          },
                         ),
-                      ))
-                      //
-
                       );
-                },
+                    }),
+                    Obx(
+                      () {
+                        print(controller.selectedCollegeId.value);
+                        return SizedBox(
+                          width: screenWidth(1),
+                          child: CustomGrideView(
+                            children: List.generate(
+                              controller.filteredSpecializationsList.length,
+                              (index) => Flexible(
+                                child: CustomGridCollege(
+                                  onTap: () {
+                                    if (controller
+                                        .filteredSpecializationsList[index]
+                                        .moreOption!) {
+                                      // TODO: remove comment inside bottomSheet for SubjectView Navigation
+                                      showSpecializationBottomSheet(
+                                        specialization: controller
+                                            .filteredSpecializationsList[index]
+                                            .moreOption!,
+                                        specializationsModel: controller
+                                            .filteredSpecializationsList[index],
+                                      );
+                                    } else {
+                                      // TODO: put SubjectView Navigation
+                                    }
+                                  },
+                                  isSubbed:
+                                      controller.subbedCollege(index: index),
+                                  // imageName: "img_login",
+                                  imageName: controller
+                                          .filteredSpecializationsList[index]
+                                          .image ??
+                                      "",
+                                  text: controller
+                                          .filteredSpecializationsList[index]
+                                          .specializationName ??
+                                      "",
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

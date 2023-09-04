@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
 import 'package:get/get.dart';
@@ -24,16 +23,14 @@ ProfileController controller = Get.put(ProfileController());
 
 class _ProfileViewState extends State<ProfileView> {
   @override
-
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(17)),
         child: Column(
           children: [
             Padding(
-              padding:  EdgeInsets.only(top: screenWidth(3)),
+              padding: EdgeInsets.only(top: screenWidth(3)),
               child: SvgPicture.asset(
                 "assets/svgs/user_pic.svg",
               ),
@@ -41,14 +38,12 @@ class _ProfileViewState extends State<ProfileView> {
             Padding(
               padding: EdgeInsetsDirectional.only(
                   top: screenWidth(30), bottom: screenWidth(8)),
-
-              child: Obx((){
+              child: Obx(() {
                 return CustomText(
                   textType: TextStyleType.BODY,
                   text: controller.name.value,
-                );}
-              ),
-
+                );
+              }),
             ),
             CustomRow(
               svgname: 'ic_edit',

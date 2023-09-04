@@ -4,7 +4,6 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 
 import '../../shared/colors.dart';

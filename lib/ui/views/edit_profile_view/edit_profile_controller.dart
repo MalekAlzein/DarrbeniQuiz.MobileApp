@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
 import 'package:get/get.dart';
 
 import '../../../core/data/reposotories/profile_repository.dart';
@@ -10,10 +7,6 @@ import '../../../core/enums/message_type.dart';
 import '../../../core/services/base_controller.dart';
 import '../../../core/utils/general_utils.dart';
 import '../../shared/custom_widgets/custom_toast.dart';
-import '../main_view/profile_view/profile_controller.dart';
-import '../main_view/profile_view/profile_controller.dart';
-import '../main_view/profile_view/profile_controller.dart';
-import '../main_view/profile_view/profile_controller.dart';
 
 class EditProfileController extends BaseController {
   TextEditingController userNameController = TextEditingController();
@@ -54,13 +47,13 @@ class EditProfileController extends BaseController {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
         storage.setProfileInfo(r);
-       // Get.to(ProfileView());
+        // Get.to(ProfileView());
       });
     }));
   }
 
-  void onClose(){
-    final controller =Get.find<ProfileController>();
+  void onClose() {
+    final controller = Get.find<ProfileController>();
     controller.onInit();
     super.onClose();
   }

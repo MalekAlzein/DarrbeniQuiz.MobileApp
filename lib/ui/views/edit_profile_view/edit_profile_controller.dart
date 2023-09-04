@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_templete/ui/views/main_view/profile_view/profile_view.dart';
+import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../core/data/reposotories/profile_repository.dart';
@@ -20,18 +20,24 @@ class EditProfileController extends BaseController {
   }
 
   Future<void> editProfileInfo() async {
-    runFutureFunctionWithFullLoading(
-        function: ProfileRepository()
-            .updateProfileInfo(
-                name: userNameController.text, phone: phoneController.text)
-            .then((value) {
-      value.fold((l) {
-        loader.value = true;
-        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-      }, (r) {
-        getUserInfo();
-      });
-    }));
+    if (formKey.currentState!.validate()) {
+      runFutureFunctionWithFullLoading(
+          function: ProfileRepository()
+              .updateProfileInfo(
+                  name: userNameController.text, phone: phoneController.text)
+              .then((value) {
+        value.fold((l) {
+          loader.value = true;
+          CustomToast.showMessage(
+              message: l, messageType: MessageType.REJECTED);
+        }, (r) {
+          getUserInfo();
+          CustomToast.showMessage(
+              message: "تم تحديث بياناتك بنجاح",
+              messageType: MessageType.SUCCESS);
+        });
+      }));
+    }
   }
 
   Future<void> getUserInfo() async {
@@ -41,8 +47,14 @@ class EditProfileController extends BaseController {
         CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
       }, (r) {
         storage.setProfileInfo(r);
-        Get.to(ProfileView());
+        // Get.to(ProfileView());
       });
     }));
+  }
+
+  void onClose() {
+    final controller = Get.find<ProfileController>();
+    controller.onInit();
+    super.onClose();
   }
 }

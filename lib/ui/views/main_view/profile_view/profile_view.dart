@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/colors.dart';
-import '../../../shared/custom_widgets/custom_app_bar.dart';
 import '../../../shared/custom_widgets/custom_button.dart';
 import '../../../shared/custom_widgets/custom_row.dart';
 import '../../../shared/custom_widgets/custom_text.dart';
@@ -27,27 +25,25 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(screenWidth(3)),
-        child: CustomAppBar(
-          firstText: "الملف الشخصي",
-          svgName: "ic_nav_bar_profile",
-        ),
-      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(17)),
         child: Column(
           children: [
-            SvgPicture.asset(
-              "assets/svgs/user_pic.svg",
+            Padding(
+              padding: EdgeInsets.only(top: screenWidth(3)),
+              child: SvgPicture.asset(
+                "assets/svgs/user_pic.svg",
+              ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(
                   top: screenWidth(30), bottom: screenWidth(8)),
-              child: CustomText(
-                textType: TextStyleType.SMALL,
-                text: storage.getProfileInfo()!.name ?? "",
-              ),
+              child: Obx(() {
+                return CustomText(
+                  textType: TextStyleType.BODY,
+                  text: controller.name.value,
+                );
+              }),
             ),
             CustomRow(
               svgname: 'ic_edit',

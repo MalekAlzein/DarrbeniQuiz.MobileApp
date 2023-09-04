@@ -29,141 +29,134 @@ class _HomePageViewState extends State<HomePageView> {
     return ListView(
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.symmetric(
-              // vertical: screenHeight(7.5),
-              // horizontal: screenWidth(35),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth(30)),
+          child: CustomTextFormField(
+            hintText: tr("key_search"),
+            hintTextSize: screenWidth(30),
+            fillColor: AppColors.darkGreyColorTextField,
+            hintTextColor: AppColors.darkGreyColorOpacity,
+            prefixIcon: 'ic_search',
+            prefixIconColor: AppColors.darkGreyColorOpacity,
+          ),
+        ),
+        screenHeight(40).ph,
+        Obx(
+          () {
+            print(controller.sliderList);
+            return CustomShimmer(
+              center: true,
+              isLoading: controller.isLoading,
+              child: CustomSlider(
+                items: controller.sliderList.value,
               ),
+            );
+          },
+        ),
+
+        screenWidth(8).ph,
+
+        Padding(
+          padding: EdgeInsetsDirectional.symmetric(
+            horizontal: screenWidth(35),
+          ),
           child: Column(
             children: [
-              CustomTextFormField(
-                hintText: tr("key_search"),
-                hintTextSize: screenWidth(30),
-                fillColor: AppColors.darkGreyColorTextField,
-                hintTextColor: AppColors.darkGreyColorOpacity,
-                prefixIcon: 'ic_search',
-                prefixIconColor: AppColors.darkGreyColorOpacity,
+              CustomSubTitleContainer(
+                text: tr('key_category'),
+                color: AppColors.darkGreyColor,
               ),
-              screenHeight(40).ph,
+              Obx(() {
+                // print(controller.silderList);
+                return SizedBox(
+                  height: screenHeight(8),
+                  width: screenWidth(1),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.collegeList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Obx(
+                        () {
+                          int collageId =
+                              controller.collegeList[index].id!;
+                          bool isSelected =
+                              index == controller.selectedCollegeId.value;
+                          return CustomShimmer(
+                            isLoading: controller.isLoading,
+                            center: true,
+                            child: HomeViewCategoryWidget(
+                              text: controller
+                                  .collegeList[index].collageName,
+                              onTap: () {
+                                controller.getSpecializationspByCollege(
+                                    collageId);
+                                controller.selectedCollegeId.value =
+                                    index;
+                              },
+                              isSelected: isSelected,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                );
+              }),
               Obx(
                 () {
-                  print(controller.silderList);
-                  return CustomShimmer(
-                    center: true,
-                    isLoading: controller.isLoading,
-                    child: CustomSlider(
-                      items: controller.silderList.value,
+                  print(controller.selectedCollegeId.value);
+                  return SizedBox(
+                    width: screenWidth(1),
+                    child: CustomGrideView(
+                      children: List.generate(
+                        controller.filteredSpecializationsList.length,
+                        (index) => CustomShimmer(
+                          isLoading: controller.isLoading,
+                          center: true,
+                          child: Flexible(
+                            child: CustomGridCollege(
+                              onTap: () {
+                                print(storage
+                                    .getSpecializationsList()[
+                                        controller.subbedSpecialization]
+                                    .specializationName);
+                                if (controller
+                                    .filteredSpecializationsList[index]
+                                    .moreOption!) {
+                                  // TODO: remove comment inside bottomSheet for SubjectView Navigation
+                                  showSpecializationBottomSheet(
+                                    specialization: controller
+                                        .filteredSpecializationsList[
+                                            index]
+                                        .moreOption!,
+                                    specializationsModel: controller
+                                            .filteredSpecializationsList[
+                                        index],
+                                  );
+                                } else {
+                                  print("مافي ماستر ولا تخرج");
+                                  isGraduate = false;
+
+                                  // TODO: put SubjectView Navigation
+                                  // Get.to(()=> VIEW );
+                                }
+                              },
+                              isSubbed:
+                                  controller.subbedCollege(index: index),
+                              // imageName: "img_login",
+                              imageName: "http://via.placeholder.com/50x50",
+                              text: controller
+                                      .filteredSpecializationsList[index]
+                                      .specializationName ??
+                                  "",
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.symmetric(
-                  horizontal: screenWidth(35),
-                ),
-                child: Column(
-                  children: [
-                    CustomSubTitleContainer(
-                      text: tr('key_category'),
-                      color: AppColors.darkGreyColor,
-                    ),
-                    Obx(() {
-                      // print(controller.silderList);
-                      return SizedBox(
-                        height: screenHeight(8),
-                        width: screenWidth(1),
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          physics: BouncingScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: controller.collegeList.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Obx(
-                              () {
-                                int collageId =
-                                    controller.collegeList[index].id!;
-                                bool isSelected =
-                                    index == controller.selectedCollegeId.value;
-                                return CustomShimmer(
-                                  isLoading: controller.isLoading,
-                                  center: true,
-                                  child: HomeViewCategoryWidget(
-                                    text: controller
-                                        .collegeList[index].collageName,
-                                    onTap: () {
-                                      controller.getSpecializationspByCollege(
-                                          collageId);
-                                      controller.selectedCollegeId.value =
-                                          index;
-                                    },
-                                    isSelected: isSelected,
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      );
-                    }),
-                    Obx(
-                      () {
-                        print(controller.selectedCollegeId.value);
-                        return SizedBox(
-                          width: screenWidth(1),
-                          child: CustomGrideView(
-                            children: List.generate(
-                              controller.filteredSpecializationsList.length,
-                              (index) => CustomShimmer(
-                                isLoading: controller.isLoading,
-                                center: true,
-                                child: Flexible(
-                                  child: CustomGridCollege(
-                                    onTap: () {
-                                      print(storage
-                                          .getSpecializationsList()[
-                                              controller.subbedSpecialization]
-                                          .specializationName);
-                                      if (controller
-                                          .filteredSpecializationsList[index]
-                                          .moreOption!) {
-                                        // TODO: remove comment inside bottomSheet for SubjectView Navigation
-                                        showSpecializationBottomSheet(
-                                          specialization: controller
-                                              .filteredSpecializationsList[
-                                                  index]
-                                              .moreOption!,
-                                          specializationsModel: controller
-                                                  .filteredSpecializationsList[
-                                              index],
-                                        );
-                                      } else {
-                                        print("مافي ماستر ولا تخرج");
-                                        isGraduate = false;
-
-                                        // TODO: put SubjectView Navigation
-                                        // Get.to(()=> VIEW );
-                                      }
-                                    },
-                                    isSubbed:
-                                        controller.subbedCollege(index: index),
-                                    // imageName: "img_login",
-                                    imageName: controller
-                                            .filteredSpecializationsList[index]
-                                            .image ??
-                                        "",
-                                    text: controller
-                                            .filteredSpecializationsList[index]
-                                            .specializationName ??
-                                        "",
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
               ),
             ],
           ),

@@ -21,43 +21,46 @@ class CustomGridCollege extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: isSubbed
-          ? () {
-              if (onTap != null) onTap!();
-            }
-          : () {
-              showSudscribeDialog();
-            },
-      child: Container(
-        padding: EdgeInsetsDirectional.symmetric(
-          vertical: screenWidth(40),
-        ),
-        decoration: BoxDecoration(
-            border: Border(
-          bottom: BorderSide(
-            width: 5,
-            color: isSubbed
-                ? AppColors.darkPurpleColor
-                : AppColors.transparentWhiteColor,
+    return Padding(
+      padding: EdgeInsets.only(bottom: screenWidth(40)),
+      child: InkWell(
+        onTap: isSubbed
+            ? () {
+                if (onTap != null) onTap!();
+              }
+            : () {
+                showSudscribeDialog();
+              },
+        child: Container(
+          padding: EdgeInsetsDirectional.symmetric(
+            vertical: screenWidth(40),
           ),
-        )),
-        child: Column(
-          children: [
-            CustomImages(
-              networkImage: true,
-              imageName: imageName,
-              imageSize: screenWidth(6),
-            ),
-            screenHeight(80).ph,
-            CustomText(
-              textType: TextStyleType.SMALL,
-              text: text,
-              textColor: isSubbed
+          decoration: BoxDecoration(
+              border: Border(
+            bottom: BorderSide(
+              width: 2,
+              color: isSubbed
                   ? AppColors.darkPurpleColor
-                  : AppColors.darkGreyColor,
+                  : AppColors.transparentWhiteColor,
             ),
-          ],
+          )),
+          child: Column(
+            children: [
+              CustomImages(
+                networkImage: true,
+                imageName: imageName,
+                imageSize: screenWidth(6),
+              ),
+              screenHeight(80).ph,
+              CustomText(
+                textType: TextStyleType.SMALL,
+                text: text,
+                textColor: isSubbed
+                    ? AppColors.darkPurpleColor
+                    : AppColors.darkGreyColor,
+              ),
+            ],
+          ),
         ),
       ),
     );

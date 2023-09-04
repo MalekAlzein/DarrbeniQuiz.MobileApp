@@ -11,7 +11,7 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:get/get.dart';
 
 class HomePageController extends BaseController {
-  RxList<SliderModel> silderList = <SliderModel>[].obs;
+  RxList<SliderModel> sliderList = <SliderModel>[].obs;
   RxList<SpecializationsModel> specializationsList =
       <SpecializationsModel>[].obs;
   RxList<SpecializationsModel> filteredSpecializationsList =
@@ -49,7 +49,7 @@ class HomePageController extends BaseController {
               message: l,
             );
           }, (r) {
-            silderList.addAll(r);
+            sliderList.addAll(r);
             CustomToast.showMessage(
               message: "Success",
               messageType: MessageType.SUCCESS,

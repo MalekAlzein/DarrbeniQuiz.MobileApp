@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_templete/core/data/reposotories/auth_repositories.dart';
-import 'package:flutter_templete/core/data/reposotories/colleges_and_specializtions_repositories.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/base_controller.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:get/get.dart';
@@ -18,8 +18,15 @@ class RegisterController extends BaseController {
   List specializationList = [];
   @override
   onInit() {
-    getAllSpecializtions();
+    getAllSpecialization();
     super.onInit();
+  }
+
+  void getAllSpecialization() {
+    storage.getSpecializationsList().forEach((element) {
+      specializationList.add([element.specializationName, element.id]);
+    });
+    isloading.value = false;
   }
 
   void register() {
@@ -43,19 +50,19 @@ class RegisterController extends BaseController {
     }
   }
 
-  Future getAllSpecializtions() async {
-    await CollegesAndSpecializtionsRepositories.getAllSpecializtions()
-        .then((value) {
-      value.fold((l) {
-        CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
-        returnSent.value = true;
-      }, (r) {
-        for (var specializtion in r) {
-          specializationList
-              .add([specializtion.specializationName, specializtion.id]);
-        }
-        isloading.value = false;
-      });
-    });
-  }
+  // Future getAllSpecializtions() async {
+  //   await CollegesAndSpecializtionsRepositories.getAllSpecializtions()
+  //       .then((value) {
+  //     value.fold((l) {
+  //       CustomToast.showMessage(message: l, messageType: MessageType.REJECTED);
+  //       returnSent.value = true;
+  //     }, (r) {
+  //       for (var specializtion in r) {
+  //         specializationList
+  //             .add([specializtion.specializationName, specializtion.id]);
+  //       }
+  //       isloading.value = false;
+  //     });
+  //   });
+  // }
 }

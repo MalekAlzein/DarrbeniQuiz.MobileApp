@@ -426,10 +426,10 @@ int getCollegeIndex({required int id}) {
       );
 }
 
-String getUserSelectedCollege() {
+String get getUserSelectedCollege {
   return storage
           .getSpecializationsList()[
-              getCollegeIndex(id: homeController.subbedSpecialization)]
+              getCollegeIndex(id: storage.getTokenInfo()!.specialization!.id!)]
           .specializationName ??
       '';
 }

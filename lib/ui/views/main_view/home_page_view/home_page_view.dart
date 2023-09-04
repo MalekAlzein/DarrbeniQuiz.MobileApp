@@ -130,8 +130,10 @@ class _HomePageViewState extends State<HomePageView> {
                                   child: CustomGridCollege(
                                     onTap: () {
                                       print(storage
-                                          .getSpecializationsList()[
-                                              controller.subbedSpecialization]
+                                          .getSpecializationsList()[storage
+                                              .getTokenInfo()!
+                                              .specialization!
+                                              .id!]
                                           .specializationName);
                                       if (controller
                                           .filteredSpecializationsList[index]
@@ -147,9 +149,14 @@ class _HomePageViewState extends State<HomePageView> {
                                         );
                                       } else {
                                         print("مافي ماستر ولا تخرج");
-                                        homeController.getSubjects(
-                                            specialID: homeController
-                                                .subbedSpecialization);
+                                        controller.getSubjects(
+                                            specialID: storage
+                                                .getTokenInfo()!
+                                                .specialization!
+                                                .id!
+                                            // controller
+                                            //     .subbedSpecialization
+                                            );
                                         Get.to(() => SubjectView());
                                       }
                                     },

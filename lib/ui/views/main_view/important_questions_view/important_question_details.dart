@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/data/models/apis/question_model.dart';
-import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
@@ -32,10 +31,7 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(screenWidth(3)),
           child: CustomAppBar(
-            firstText: storage
-                .getSpecializationsList()[
-                    storage.getTokenInfo()!.specializationId!]
-                .specializationName,
+            firstText: getUserSelectedCollege,
             secondText: 'الأسئلة المهمة',
             onTap: () => Get.back(),
           )),

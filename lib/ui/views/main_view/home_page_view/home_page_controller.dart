@@ -28,12 +28,12 @@ class HomePageController extends BaseController {
   bool get isSubjectsLoading =>
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.SUBJECTS);
-  int subbedSpecialization = 0;
+  // int subbedSpecialization = 0;
 
   @override
   void onInit() {
     specializationsList.value = storage.getSpecializationsList();
-    subbedSpecialization = storage.getTokenInfo()!.specializationId!;
+    // subbedSpecialization = storage.getTokenInfo()!.specialization!.id!;
     getAllSliders();
     getAllColleges();
     super.onInit();
@@ -42,7 +42,7 @@ class HomePageController extends BaseController {
   bool subbedCollege({
     required int index,
   }) {
-    return storage.getTokenInfo()!.specializationId ==
+    return storage.getTokenInfo()!.specialization!.id! ==
         filteredSpecializationsList[index].id;
     // return storage.getCollegeLogin()!.uuid == specializationsList[index].uuid!;
   }

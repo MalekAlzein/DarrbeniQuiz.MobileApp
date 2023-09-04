@@ -38,7 +38,7 @@ class _BookCourseButtonsState extends State<BookCourseButtons> {
           child: Obx(() {
             print(subjectViewController.questions);
             return CustomAppBar(
-              firstText: getUserSelectedCollege(),
+              firstText: getUserSelectedCollege,
               secondText: widget.subject.name,
               onTap: () => Get.back(),
             );

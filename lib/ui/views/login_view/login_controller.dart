@@ -17,6 +17,10 @@ class LoginController extends BaseController {
   TextEditingController codeController =
       TextEditingController(text: kDebugMode ? "oKTOzi" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   void login() {
     if (formKey1.currentState!.validate()) {

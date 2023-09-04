@@ -42,9 +42,11 @@ class _ProfileViewState extends State<ProfileView> {
               padding: EdgeInsetsDirectional.only(
                   top: screenWidth(30), bottom: screenWidth(8)),
 
-              child: CustomText(
-                textType: TextStyleType.BODY,
-                text: storage.getProfileInfo()?.name ?? "",
+              child: Obx((){
+                return CustomText(
+                  textType: TextStyleType.BODY,
+                  text: controller.name.value,
+                );}
               ),
 
             ),

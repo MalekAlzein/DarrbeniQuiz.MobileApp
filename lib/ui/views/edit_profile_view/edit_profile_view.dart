@@ -98,7 +98,7 @@ class _editProfileViewState extends State<editProfileView> {
                 (screenWidth(50)).ph,
                 Center(
                   child: InkWell(
-                      onTap: () => Get.off(ProfileView()),
+                      onTap: () => Get.back(),
                       child: CustomText(
                         textType: TextStyleType.BODY,
                         text: 'تراجع',

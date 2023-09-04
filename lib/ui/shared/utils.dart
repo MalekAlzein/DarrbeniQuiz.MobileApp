@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_blur.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
@@ -136,14 +137,15 @@ void showAlertDialoug({
 //   );
 // }
 
-void showSpecializationBottomSheet(
-    {required bool specialization,
-    required SpecializationsModel specializationsModel}) {
+void showSpecializationBottomSheet({
+  required bool specialization,
+  required SpecializationsModel specializationsModel,
+}) {
   Get.bottomSheet(
     CustomPopupWithBlurWidget(
       customBlurChildType: CustomBlurChildType.BOTTOMSHEET,
       child: Container(
-        height: screenHeight(4),
+        // height: screenHeight(4),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           borderRadius: BorderRadiusDirectional.only(
@@ -163,6 +165,7 @@ void showSpecializationBottomSheet(
                   text: tr('Key_specialization_master'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
+                    isGraduate = false;
                     // Get.to(() => SubjectView(
                     //       specialization: !specialization,
                     //       specializationsModel: specializationsModel,
@@ -174,6 +177,7 @@ void showSpecializationBottomSheet(
                   text: tr('Key_specialization_graduation'),
                   buttonTypeEnum: ButtonTypeEnum.NORMAL,
                   onPressed: () {
+                    isGraduate = true;
                     // Get.to(() => SubjectView(
                     //       specialization: specialization,
                     //       specializationsModel: specializationsModel,
@@ -243,7 +247,7 @@ void showSudscribeDialog({
       customBlurChildType: CustomBlurChildType.DIALOUG,
       child: Container(
         width: screenWidth(1.2),
-        height: screenHeight(3),
+        height: screenHeight(2.5),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
           border: Border.all(color: AppColors.darkPurpleColor, width: 2),
@@ -295,8 +299,8 @@ void showSudscribeDialog({
               ),
               screenHeight(90).ph,
               CustomButton(
-                fontSize: screenWidth(60),
-                buttonTypeEnum: ButtonTypeEnum.SMALL,
+                fontSize: screenWidth(32),
+                buttonTypeEnum: ButtonTypeEnum.NORMAL,
                 height: screenWidth(9),
                 onPressed: () {
                   Get.to(() => const MainView());

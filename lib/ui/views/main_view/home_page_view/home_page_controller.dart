@@ -20,10 +20,12 @@ class HomePageController extends BaseController {
   RxList<String> selectedColleges = <String>[].obs;
   RxString selectedCollege = "الكل".obs;
   RxInt selectedCollegeId = 0.obs;
+  int subbedSpecialization = 0;
 
   @override
   void onInit() {
     specializationsList.value = storage.getSpecializationsList();
+    subbedSpecialization = storage.getTokenInfo()!.specializationId!;
     getAllSliders();
     getAllColleges();
     super.onInit();
@@ -38,7 +40,7 @@ class HomePageController extends BaseController {
   }
 
   void getAllSliders() {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
       function: SliderRepository().getAllSliders().then(
         (value) {
           value.fold((l) {
@@ -59,7 +61,7 @@ class HomePageController extends BaseController {
   }
 
   void getAllColleges() {
-    runFutureFunction(
+    runFutureFunctionWithLoading(
       function: CollegesAndSpecializtionsRepositories().getAllColleges().then(
         (value) {
           value.fold((l) {

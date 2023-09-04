@@ -1,5 +1,4 @@
 import 'package:flutter_templete/core/utils/general_utils.dart';
-import 'package:flutter_templete/ui/views/login_view/login_view.dart';
 import 'package:flutter_templete/ui/views/splash_screen/spalsh_screen_view.dart';
 import 'package:get/get.dart';
 
@@ -25,15 +24,14 @@ class ProfileController extends BaseController {
   }
 
   Future<void> logout() async {
-    runFutureFunctionWithFullLoading(function:
-         ProfileRepository().logout().then((value) {
+    runFutureFunctionWithFullLoading(
+        function: ProfileRepository().logout().then((value) {
       value.fold((l) {
         loader.value = true;
         CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
       }, (r) {
         storage.clearTokenInfo();
-        Get.off(LoginView());
-
+        Get.off(() => SplashScreenView());
       });
     }));
   }

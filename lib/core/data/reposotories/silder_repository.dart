@@ -20,13 +20,13 @@ class SliderRepository {
         params: {},
       ).then(
         (response) {
-          CommonResponseModel<Map<String, dynamic>> commonResponse =
+          CommonResponseModel<List<dynamic>> commonResponse =
               CommonResponseModel.fromJson(response);
 
           if (commonResponse.getStatus) {
             List<SliderModel> resultList = [];
 
-            commonResponse.data!["sliders"].forEach(
+            commonResponse.data!.forEach(
               (element) {
                 resultList.add(SliderModel.fromJson(element));
               },

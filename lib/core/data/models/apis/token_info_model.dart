@@ -1,18 +1,27 @@
+import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
+
 class TokenInfoModel {
   String? token;
-  int? specializationId;
+  SpecializationsModel? specialization;
 
-  TokenInfoModel({this.token, this.specializationId});
+  TokenInfoModel({
+    this.token,
+    this.specialization,
+  });
 
   TokenInfoModel.fromJson(Map<String, dynamic> json) {
     token = json['token'];
-    specializationId = json['specialization_id'];
+    specialization = json['specialization'] != null
+        ? new SpecializationsModel.fromJson(json['specialization'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['token'] = this.token;
-    data['specialization_id'] = this.specializationId;
+    if (this.specialization != null) {
+      data['specialization'] = this.specialization!.toJson();
+    }
     return data;
   }
 }

@@ -13,11 +13,12 @@ class ProfileController extends BaseController {
   RxBool loader = false.obs;
 
   void onInit() {
-    getUserInfo();
+    // TODO: implement onInit
+    getInfo();
     super.onInit();
   }
 
-  void getUserInfo() {
+  void getInfo() {
     name.value = storage.getProfileInfo()!.name!;
     phone.value = storage.getProfileInfo()!.mobilePhone!;
   }
@@ -29,7 +30,6 @@ class ProfileController extends BaseController {
         loader.value = true;
         CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
       }, (r) {
-
         storage.clearTokenInfo();
         Get.off(() => SplashScreenView());
       });

@@ -35,12 +35,9 @@ class _editProfileViewState extends State<editProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(screenWidth(3)),
-        child: CustomAppBar(
-          firstText: "الملف الشخصي",
-          svgName: "ic_nav_bar_profile",
-        ),
+      appBar: CustomAppBar(
+        firstText: "الملف الشخصي",
+        svgName: "ic_nav_bar_profile",
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(17)),

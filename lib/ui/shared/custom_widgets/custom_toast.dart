@@ -10,7 +10,7 @@ class CustomToast {
   static showMessage(
       {required String message, MessageType? messageType = MessageType.INFO}) {
     BotToast.showCustomText(
-      duration: Duration(seconds: 6),
+      duration: Duration(seconds: 3),
       toastBuilder: (cancelFunc) {
         String imageName;
         Color shadowColor;

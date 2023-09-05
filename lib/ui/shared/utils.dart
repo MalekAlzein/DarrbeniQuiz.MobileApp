@@ -17,7 +17,8 @@ import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart
 import 'package:flutter_templete/ui/shared/custom_widgets/text_button.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/course_details_view/subject_view.dart';
-import 'package:flutter_templete/ui/views/main_view/main_view.dart';
+import 'package:flutter_templete/ui/views/login_view/login_view.dart';
+import 'package:flutter_templete/ui/views/register_view/register_view.dart';
 import 'package:get/get.dart';
 
 double width = Get.size.shortestSide;
@@ -310,7 +311,7 @@ void showSudscribeDialog({
                 buttonTypeEnum: ButtonTypeEnum.NORMAL,
                 height: screenWidth(9),
                 onPressed: () {
-                  Get.to(() => const MainView());
+                  Get.to(() => const LoginView());
                 },
                 backgroundColor: AppColors.darkPurpleColor,
                 text: tr('key_login'),
@@ -330,7 +331,7 @@ void showSudscribeDialog({
                       textSize: screenWidth(40),
                       title: tr('key_create_account_now'),
                       onTap: () {
-                        // Get.to(() => const SignupView());
+                        Get.to(() => const RegisterView());
                       },
                       textColor: AppColors.darkPurpleColor,
                     ),

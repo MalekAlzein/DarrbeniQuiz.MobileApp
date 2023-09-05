@@ -15,7 +15,7 @@ class LoginController extends BaseController {
   TextEditingController userNameController =
       TextEditingController(text: kDebugMode ? "ShamsTest50" : "");
   TextEditingController codeController =
-      TextEditingController(text: kDebugMode ? "oKTOzi" : "");
+      TextEditingController(text: kDebugMode ? "lxeKlc" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   @override
   void onInit() {
@@ -32,7 +32,7 @@ class LoginController extends BaseController {
                   fcm_token: storage.getFcmToken())
               .then((value) {
         value.fold((l) {
-          loader.value = true;
+          loader.value = false;
           CustomToast.showMessage(
               messageType: MessageType.REJECTED, message: l);
         }, (r) {

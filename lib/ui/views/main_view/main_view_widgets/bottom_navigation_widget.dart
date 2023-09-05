@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/core/enums/bottom_Navigation.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_overalay.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view_widgets/bottom_navigation_controller.dart';
 import 'package:get/get.dart';
@@ -83,7 +82,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   }) {
     return InkWell(
       onTap: () {
-        storage.isLoggedIn ? onTap() : showCustomAlertDialog();
+        storage.isLoggedIn ? onTap() : showSudscribeDialog();
       },
       child: Padding(
         padding: EdgeInsetsDirectional.only(top: screenWidth(30)),

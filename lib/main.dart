@@ -20,7 +20,7 @@ Future<void> main() async {
   });
 
   await Get.put(SharedPreferencesRepository());
-
+  // SharedPreferencesRepository().globalSharedPreferences.clear();
   Get.put(CartService());
   Get.put(ConnectivityService());
   await Get.put(LanguageService());

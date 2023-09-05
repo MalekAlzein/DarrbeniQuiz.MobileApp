@@ -19,34 +19,33 @@ class _NotificationsViewState extends State<NotificationsView> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-            body: Column(children: [
-      Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenWidth(15)),
-        child: Column(
-          children: [
-            (screenWidth(18)).ph,
-            Center(
-              child: SvgPicture.asset("assets/svgs/img_notifications.svg"),
-            ),
-            (screenWidth(18)).ph,
-            CustomText(
-              text: "الإشعارات",
-              textType: TextStyleType.TITLE,
-            ),
-            (screenWidth(20)).ph,
-            CustomText(
-              textType: TextStyleType.BODY,
-              text:
+    return Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: screenWidth(15)),
+            child: Column(
+              children: [
+                (screenWidth(2.8)).ph,
+                Center(
+                  child: SvgPicture.asset("assets/svgs/img_notifications.svg"),
+                ), 
+                (screenWidth(18)).ph, 
+                CustomText(
+                  text: "الإشعارات", 
+                  textType: TextStyleType.TITLE,
+                ), 
+                (screenWidth(20)).ph, 
+                CustomText(
+                  textType: TextStyleType.BODY, 
+                  text: 
                   'أبقى على إطلاع بمواعيد الإمتحان الوطني\n صدور النتائج، إضافة أسئلة، والكثير من\n الأخبار',
+                ), 
+                // Column(children: List.generate(length, (index) => null),)
+                (screenWidth(20)).ph,
+              ],
             ),
-            // Column(children: List.generate(length, (index) => null),)
-
-            (screenWidth(20)).ph,
-          ],
-        ),
-      )
-    ])));
+          )
+        ]
+    );
   }
 }

@@ -22,8 +22,9 @@ import '../../shared/utils.dart';
 import '../question_view/question_view.dart';
 
 class SubjectView extends StatefulWidget {
-  const SubjectView({super.key, this.master = false});
+  const SubjectView({super.key, this.master = false, this.grad = false});
   final bool? master;
+  final bool? grad;
   @override
   State<SubjectView> createState() => _SubjectViewState();
 }
@@ -36,114 +37,117 @@ class _SubjectViewState extends State<SubjectView> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // onRefresh: () {
-        //     return Future(() {
-        //       widget.master!
-        //           ? homeController.getMasterSubjects()
-        //           : homeController.getGraduationSubjects();
-        //       homeController.getSubjects(
-        //           specialID: storage.getTokenInfo()!.specialization!.id!);
-        //       homeController.getAllSliders();
-        //     });
-        //   },
-        Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(screenWidth(3)),
-        child: Obx(() {
-          print(courseDetailsController.questions);
-          return CustomAppBar(
-            onTap: () => Get.back(),
-            activeColor: AppConfig.mainColor,
-            firstText: getUserSelectedCollege,
-          );
-        }),
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: screenWidth(30),
+    return RefreshIndicator(
+      onRefresh: () {
+        return Future(() {
+          widget.master!
+              ? homeController.getMasterSubjects()
+              : widget.grad!
+                  ? homeController.getGraduationSubjects()
+                  : homeController.getSubjects(
+                      specialID: homeController.subbedSpecialization);
+          homeController.getAllSliders();
+        });
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(screenWidth(3)),
+          child: Obx(() {
+            print(courseDetailsController.questions);
+            return CustomAppBar(
+              onTap: () => Get.back(),
+              activeColor: AppConfig.mainColor,
+              firstText: getUserSelectedCollege,
+            );
+          }),
         ),
-        child: Obx(
-          () => ListView(
-            shrinkWrap: true,
-            children: [
-              HomeTopSection(),
-              CustomSubTitleContainer(
-                text: tr('key_category'),
-                color: AppColors.darkGreyColor,
-              ),
-              screenHeight(30).ph,
-              homeController.isSubjectsLoading
-                  ? SpinKitCircle(
-                      color: AppColors.darkPurpleColor,
-                    )
-                  : homeController.subjects.isEmpty
-                      ? Center(
-                          child: CustomText(
-                            textType: TextStyleType.CUSTOM,
-                            text: 'No subject yet',
-                            textColor: AppColors.darkPurpleColor,
-                          ),
-                        )
-                      : Center(
-                          child: CustomChipList(
-                            direction: homeController.subjects.length < 4
-                                ? Axis.vertical
-                                : Axis.horizontal,
-                            children: List.generate(
-                              homeController.subjects.length,
-                              (index) => CustomChipContainer(
-                                text: homeController.subjects[index].name ?? '',
-                                onTap: () {
-                                  Get.to(BookCourseButtons(
-                                    subject: homeController.subjects[index],
-                                  ));
-                                },
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: screenWidth(30),
+          ),
+          child: Obx(
+            () => ListView(
+              shrinkWrap: true,
+              children: [
+                HomeTopSection(),
+                CustomSubTitleContainer(
+                  text: tr('key_category'),
+                  color: AppColors.darkGreyColor,
+                ),
+                screenHeight(30).ph,
+                homeController.isSubjectsLoading
+                    ? SpinKitCircle(
+                        color: AppColors.darkPurpleColor,
+                      )
+                    : homeController.subjects.isEmpty
+                        ? Center(
+                            child: CustomText(
+                              textType: TextStyleType.CUSTOM,
+                              text: 'No subject yet',
+                              textColor: AppColors.darkPurpleColor,
+                            ),
+                          )
+                        : Center(
+                            child: CustomChipList(
+                              direction: homeController.subjects.length < 4
+                                  ? Axis.vertical
+                                  : Axis.horizontal,
+                              children: List.generate(
+                                homeController.subjects.length,
+                                (index) => CustomChipContainer(
+                                  text:
+                                      homeController.subjects[index].name ?? '',
+                                  onTap: () {
+                                    Get.to(BookCourseButtons(
+                                      subject: homeController.subjects[index],
+                                    ));
+                                  },
+                                ),
                               ),
                             ),
                           ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: screenWidth(7), horizontal: screenWidth(7)),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          text: tr("Key_terms"),
+                          backgroundColor: AppColors.normalCyanColor,
+                          onPressed: () {
+                            //Get.to(TermsView(
+                            //     specialId: widget.specialId));
+                          },
+                          fontSize: screenWidth(27),
+                          buttonTypeEnum: ButtonTypeEnum.SMALL,
                         ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: screenWidth(7), horizontal: screenWidth(7)),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        text: tr("Key_terms"),
-                        backgroundColor: AppColors.normalCyanColor,
-                        onPressed: () {
-                          //Get.to(TermsView(
-                          //     specialId: widget.specialId));
-                        },
-                        fontSize: screenWidth(27),
-                        buttonTypeEnum: ButtonTypeEnum.SMALL,
                       ),
-                    ),
-                    30.pw,
-                    Expanded(
-                      child: CustomButton(
-                        text: tr("Key_questions_bank"),
-                        onPressed: () {
-                          courseDetailsController
-                              .getBankQuestions(
-                                  specialid: storage
-                                      .getTokenInfo()!
-                                      .specialization!
-                                      .id!)
-                              .then((value) => Get.to(QuestionView(
-                                    questions:
-                                        courseDetailsController.questions,
-                                  )));
-                        },
-                        fontSize: screenWidth(27),
-                        buttonTypeEnum: ButtonTypeEnum.SMALL,
+                      30.pw,
+                      Expanded(
+                        child: CustomButton(
+                          text: tr("Key_questions_bank"),
+                          onPressed: () {
+                            courseDetailsController
+                                .getBankQuestions(
+                                    specialid: storage
+                                        .getTokenInfo()!
+                                        .specialization!
+                                        .id!)
+                                .then((value) => Get.to(QuestionView(
+                                      questions:
+                                          courseDetailsController.questions,
+                                    )));
+                          },
+                          fontSize: screenWidth(27),
+                          buttonTypeEnum: ButtonTypeEnum.SMALL,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-            ],
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -28,12 +28,12 @@ class HomePageController extends BaseController {
   bool get isSubjectsLoading =>
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.SUBJECTS);
-  // int subbedSpecialization = 0;
+  int subbedSpecialization = 0;
 
   @override
   void onInit() {
     specializationsList.value = storage.getSpecializationsList();
-    // subbedSpecialization = storage.getTokenInfo()!.specialization!.id!;
+    subbedSpecialization = storage.getTokenInfo()!.specialization!.id!;
     getAllSliders();
     getAllColleges();
     super.onInit();

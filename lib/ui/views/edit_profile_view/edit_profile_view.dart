@@ -44,65 +44,70 @@ class _editProfileViewState extends State<editProfileView> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(17)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsetsDirectional.only(
-                  top: screenWidth(8),
-                  bottom: screenWidth(60),
-                  start: screenWidth(50)),
-              child: CustomText(
-                textType: TextStyleType.SMALL,
-                text: "اسم المستخدم",
-                textColor: AppColors.darkPurpleColor,
-              ),
-            ),
-            CustomTextFormField(
-              hintText: "اسم المستخدم",
-              hintTextSize: 11,
-              fillColor: AppColors.lightCyanColor,
-              prefixIcon: "ic_text_field_user",
-              suffixIcon: "ic_edit",
-              prefixIconColor: AppColors.darkPurpleColor,
-              controller: controller.userNameController,
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.only(
-                  top: screenWidth(30),
-                  bottom: screenWidth(60),
-                  start: screenWidth(50)),
-              child: CustomText(
-                textType: TextStyleType.SMALL,
-                text: "رقم الهاتف",
-                textColor: AppColors.darkPurpleColor,
-              ),
-            ),
-            CustomTextFormField(
-              hintText: "رقم الهاتف",
-              hintTextSize: 11,
-              fillColor: AppColors.lightCyanColor,
-              prefixIcon: "ic_text_field_phone",
-              suffixIcon: "ic_edit",
-              controller: controller.phoneController,
-            ),
-            (screenWidth(2.1)).ph,
-            CustomButton(
-                text: "حفظ التغييرات",
-                buttonTypeEnum: ButtonTypeEnum.CUSTOM,
-                onPressed: () => controller.editProfileInfo()),
-            (screenWidth(50)).ph,
-            Center(
-              child: InkWell(
-                  onTap: () => Get.back(),
+        child: Form(
+          key: controller.formKey,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.only(
+                      top: screenWidth(8),
+                      bottom: screenWidth(60),
+                      start: screenWidth(50)),
                   child: CustomText(
-                    textType: TextStyleType.BODY,
-                    text: 'تراجع',
-                    textDecoration: TextDecoration.underline,
+                    textType: TextStyleType.SMALL,
+                    text: "اسم المستخدم",
                     textColor: AppColors.darkPurpleColor,
-                  )),
+                  ),
+                ),
+                CustomTextFormField(
+                  hintText: "اسم المستخدم",
+                  hintTextSize: 11,
+                  fillColor: AppColors.lightCyanColor,
+                  prefixIcon: "ic_text_field_user",
+                  suffixIcon: "ic_edit",
+                  prefixIconColor: AppColors.darkPurpleColor,
+                  controller: controller.userNameController,
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.only(
+                      top: screenWidth(30),
+                      bottom: screenWidth(60),
+                      start: screenWidth(50)),
+                  child: CustomText(
+                    textType: TextStyleType.SMALL,
+                    text: "رقم الهاتف",
+                    textColor: AppColors.darkPurpleColor,
+                  ),
+                ),
+                CustomTextFormField(
+                  hintText: "رقم الهاتف",
+                  hintTextSize: 11,
+                  fillColor: AppColors.lightCyanColor,
+                  prefixIcon: "ic_text_field_phone",
+                  suffixIcon: "ic_edit",
+                  controller: controller.phoneController,
+                ),
+                (screenWidth(2.1)).ph,
+                CustomButton(
+                    text: "حفظ التغييرات",
+                    buttonTypeEnum: ButtonTypeEnum.CUSTOM,
+                    onPressed: () => controller.editProfileInfo()),
+                (screenWidth(50)).ph,
+                Center(
+                  child: InkWell(
+                      onTap: () => Get.back(),
+                      child: CustomText(
+                        textType: TextStyleType.BODY,
+                        text: 'تراجع',
+                        textDecoration: TextDecoration.underline,
+                        textColor: AppColors.darkPurpleColor,
+                      )),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

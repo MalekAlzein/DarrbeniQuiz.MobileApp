@@ -34,6 +34,7 @@ class ProfileRepository {
   Future<Either<String, dynamic>> logout() async {
     try {
       return NetworkUtil.sendRequest(
+
         type: RequestType.POST,
         url: ProfileEndpoints.logout,
         headers: NetworkConfig.getHeaders(
@@ -57,11 +58,12 @@ class ProfileRepository {
       {required String name, required String phone}) async {
     try {
       return NetworkUtil.sendRequest(
-          type: RequestType.PUT,
-          url: ProfileEndpoints.profileUpdate,
-          headers: NetworkConfig.getHeaders(
-              needAuth: true, requestType: RequestType.PUT),
-          body: {"name": name, "mobile_phone": phone}).then((response) {
+        type:  RequestType.PUT,
+        url: ProfileEndpoints.profileUpdate,
+        headers: NetworkConfig.getHeaders(needAuth: true,requestType:  RequestType.PUT),
+        body: {"name":name,
+          "mobile_phone":phone}
+      ).then((response) {
         CommonResponseModel<Map<String, dynamic>> commonResponse =
             CommonResponseModel.fromJson(response);
 

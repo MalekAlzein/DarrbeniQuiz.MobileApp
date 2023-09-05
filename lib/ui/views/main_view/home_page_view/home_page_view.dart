@@ -3,6 +3,7 @@ import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_gridview.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_overalay.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
@@ -129,36 +130,33 @@ class _HomePageViewState extends State<HomePageView> {
                                   center: true,
                                   child: CustomGridCollege(
                                     onTap: () {
-                                      print(storage
-                                          .getSpecializationsList()[storage
-                                              .getTokenInfo()!
-                                              .specialization!
-                                              .id!]
-                                          .specializationName);
-                                      if (controller
-                                          .filteredSpecializationsList[index]
-                                          .moreOption!) {
-                                        showSpecializationBottomSheet(
-                                          specialization: controller
-                                              .filteredSpecializationsList[
-                                                  index]
-                                              .moreOption!,
-                                          specializationsModel: controller
+                                      storage.isLoggedIn
+                                          ? {
+                                              if (controller
                                                   .filteredSpecializationsList[
-                                              index],
-                                        );
-                                      } else {
-                                        print("مافي ماستر ولا تخرج");
-                                        controller.getSubjects(
-                                            specialID: storage
-                                                .getTokenInfo()!
-                                                .specialization!
-                                                .id!
-                                            // controller
-                                            //     .subbedSpecialization
-                                            );
-                                        Get.to(() => SubjectView());
-                                      }
+                                                      index]
+                                                  .moreOption!)
+                                                {
+                                                  showSpecializationBottomSheet(
+                                                    specialization: controller
+                                                        .filteredSpecializationsList[
+                                                            index]
+                                                        .moreOption!,
+                                                    specializationsModel: controller
+                                                            .filteredSpecializationsList[
+                                                        index],
+                                                  ),
+                                                }
+                                              else
+                                                {
+                                                  print("مافي ماستر ولا تخرج"),
+                                                  controller.getSubjects(
+                                                      specialID: controller
+                                                          .subbedSpecialization),
+                                                  Get.to(() => SubjectView()),
+                                                }
+                                            }
+                                          : showCustomAlertDialog();
                                     },
                                     isSubbed:
                                         controller.subbedCollege(index: index),

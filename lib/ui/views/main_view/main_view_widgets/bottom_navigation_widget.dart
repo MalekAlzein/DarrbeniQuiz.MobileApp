@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/core/enums/bottom_Navigation.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_overalay.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view_widgets/bottom_navigation_controller.dart';
 import 'package:get/get.dart';
@@ -46,11 +48,12 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
               navItem(
                   onTap: () {
                     widget.onTap(BottomNavigationEnum.IMPORTANT_QUESTIONS, 2);
-                    controller.enumType.value = BottomNavigationEnum.IMPORTANT_QUESTIONS;
+                    controller.enumType.value =
+                        BottomNavigationEnum.IMPORTANT_QUESTIONS;
                   },
                   imageName: "ic_nav_bar_important_questions",
-                  isSelected:
-                  controller.enumType.value == BottomNavigationEnum.IMPORTANT_QUESTIONS),
+                  isSelected: controller.enumType.value ==
+                      BottomNavigationEnum.IMPORTANT_QUESTIONS),
               navItem(
                   onTap: () {
                     widget.onTap(BottomNavigationEnum.HOME, 1);
@@ -58,7 +61,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
                   },
                   imageName: "ic_nav_bar_home",
                   isSelected:
-                  controller.enumType.value == BottomNavigationEnum.HOME),
+                      controller.enumType.value == BottomNavigationEnum.HOME),
               navItem(
                   onTap: () {
                     widget.onTap(BottomNavigationEnum.NOTIFICATIONS, 0);
@@ -71,7 +74,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             ],
           );
         }));
-
   }
 
   Widget navItem({
@@ -81,7 +83,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   }) {
     return InkWell(
       onTap: () {
-        onTap();
+        storage.isLoggedIn ? onTap() : showCustomAlertDialog();
       },
       child: Padding(
         padding: EdgeInsetsDirectional.only(top: screenWidth(30)),
@@ -99,7 +101,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
               width: screenWidth(10),
               height: screenWidth(200),
               color:
-              isSelected ? AppColors.normalPurpleColor : Colors.transparent,
+                  isSelected ? AppColors.normalPurpleColor : Colors.transparent,
             ),
           ],
         ),

@@ -185,7 +185,9 @@ void showSpecializationBottomSheet({
 
                     homeController.getGraduationSubjects();
 
-                    Get.to(() => SubjectView());
+                    Get.to(() => SubjectView(
+                          grad: true,
+                        ));
                     isGraduate = true;
                   })
             ],
@@ -429,7 +431,7 @@ int getCollegeIndex({required int id}) {
 String get getUserSelectedCollege {
   return storage
           .getSpecializationsList()[
-              getCollegeIndex(id: storage.getTokenInfo()!.specialization!.id!)]
+              getCollegeIndex(id: homeController.subbedSpecialization)]
           .specializationName ??
       '';
 }

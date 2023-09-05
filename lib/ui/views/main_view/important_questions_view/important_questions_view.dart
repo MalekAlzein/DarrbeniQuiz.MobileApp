@@ -71,29 +71,24 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                                             .importantQuestions[index],
                                       )));
                                     },
-                                    child: CustomShimmer(
-                                      isLoading: controller
-                                          .isImportantQuestionsLoading,
-                                      center: true,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: CustomText(
-                                              textAlign: TextAlign.start,
-                                              text:
-                                                  '${controller.importantQuestions[index].id}   ${controller.importantQuestions[index].questionContent}',
-                                              fontSize: screenWidth(27),
-                                              textType: TextStyleType.CUSTOM,
-                                            ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Expanded(
+                                          child: CustomText(
+                                            textAlign: TextAlign.start,
+                                            text:
+                                                '${controller.importantQuestions[index].id}   ${controller.importantQuestions[index].questionContent}',
+                                            fontSize: screenWidth(27),
+                                            textType: TextStyleType.CUSTOM,
                                           ),
-                                          InkWell(
-                                            child: SvgPicture.asset(
-                                                "assets/svgs/ic_arrow.svg"),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                        InkWell(
+                                          child: SvgPicture.asset(
+                                              "assets/svgs/ic_arrow.svg"),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

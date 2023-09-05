@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/data/models/apis/subject_model.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
@@ -38,6 +39,7 @@ class _BookCourseButtonsState extends State<BookCourseButtons> {
           child: Obx(() {
             print(subjectViewController.questions);
             return CustomAppBar(
+              activeColor: AppConfig.mainColor,
               firstText: getUserSelectedCollege,
               secondText: widget.subject.name,
               onTap: () => Get.back(),

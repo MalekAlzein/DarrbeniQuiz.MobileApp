@@ -39,6 +39,7 @@ class _CustomSliderState extends State<CustomSlider> {
                     imageUrl: item.imageUrl ?? "",
                     fit: BoxFit.cover,
                     width: screenWidth(0.9),
+                    height: screenWidth(2),
                   ),
                 ),
               ),

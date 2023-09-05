@@ -3,11 +3,9 @@ import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_gridview.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_overalay.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_slider.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_text_field.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:flutter_templete/ui/views/course_details_view/subject_view.dart';
@@ -15,6 +13,8 @@ import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_con
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_widgets/custom_grid_college.dart';
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_widgets/home_view_category.dart';
 import 'package:get/get.dart';
+
+import '../../../shared/custom_widgets/custom_text_field.dart';
 
 class HomePageView extends StatefulWidget {
   const HomePageView({Key? key}) : super(key: key);
@@ -38,10 +38,7 @@ class _HomePageViewState extends State<HomePageView> {
       child: ListView(
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.symmetric(
-                // vertical: screenHeight(7.5),
-                // horizontal: screenWidth(35),
-                ),
+            padding: EdgeInsets.symmetric(horizontal: screenWidth(30)),
             child: Column(
               children: [
                 CustomTextFormField(
@@ -55,16 +52,17 @@ class _HomePageViewState extends State<HomePageView> {
                 screenHeight(40).ph,
                 Obx(
                   () {
-                    print(controller.silderList);
+                    print(controller.sliderList);
                     return CustomShimmer(
                       center: true,
                       isLoading: controller.isLoading,
                       child: CustomSlider(
-                        items: controller.silderList.value,
+                        items: controller.sliderList.value,
                       ),
                     );
                   },
                 ),
+                screenWidth(8).ph,
                 Padding(
                   padding: EdgeInsetsDirectional.symmetric(
                     horizontal: screenWidth(35),
@@ -77,45 +75,55 @@ class _HomePageViewState extends State<HomePageView> {
                       ),
                       Obx(() {
                         // print(controller.silderList);
-                        return SizedBox(
-                          height: screenHeight(8),
-                          width: screenWidth(1),
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            physics: BouncingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: controller.collegeList.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Obx(
-                                () {
-                                  int collageId =
-                                      controller.collegeList[index].id!;
-                                  bool isSelected = index ==
-                                      controller.selectedCollegeId.value;
-                                  return CustomShimmer(
-                                    isLoading: controller.isLoading,
-                                    center: true,
-                                    child: HomeViewCategoryWidget(
-                                      text: controller
-                                          .collegeList[index].collageName,
-                                      onTap: () {
-                                        print(storage
-                                            .getSpecializationsList()[controller
-                                                .selectedCollegeId.value]
-                                            .specializationName);
-                                        controller.getSpecializationspByCollege(
-                                            collageId);
-                                        controller.selectedCollegeId.value =
-                                            index;
+                        return storage.isLoggedIn
+                            ? SizedBox(
+                                height: screenHeight(8),
+                                width: screenWidth(1),
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  physics: BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: controller.collegeList.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Obx(
+                                      () {
+                                        int collageId =
+                                            controller.collegeList[index].id!;
+                                        bool isSelected = index ==
+                                            controller.selectedCollegeId.value;
+                                        return CustomShimmer(
+                                          isLoading: controller.isLoading,
+                                          center: true,
+                                          child: HomeViewCategoryWidget(
+                                            text: controller
+                                                .collegeList[index].collageName,
+                                            onTap: () {
+                                              controller
+                                                  .getSpecializationspByCollege(
+                                                      collageId);
+                                              controller.selectedCollegeId
+                                                  .value = index;
+                                            },
+                                            isSelected: isSelected,
+                                          ),
+                                        );
                                       },
-                                      isSelected: isSelected,
-                                    ),
-                                  );
+                                    );
+                                  },
+                                ),
+                              )
+                            : HomeViewCategoryWidget(
+                                text: controller.collegeList.isNotEmpty
+                                    ? controller.collegeList[0].collageName
+                                    : '',
+                                onTap: () {
+                                  controller.getSpecializationspByCollege(
+                                      controller.collegeList[0].id!);
+                                  controller.selectedCollegeId.value = 0;
                                 },
+                                isSelected: true,
                               );
-                            },
-                          ),
-                        );
                       }),
                       Obx(
                         () {
@@ -130,41 +138,37 @@ class _HomePageViewState extends State<HomePageView> {
                                   center: true,
                                   child: CustomGridCollege(
                                     onTap: () {
-                                      storage.isLoggedIn
-                                          ? {
-                                              if (controller
+                                      if (controller
+                                          .filteredSpecializationsList[index]
+                                          .moreOption!) {
+                                        showSpecializationBottomSheet(
+                                          specialization: controller
+                                              .filteredSpecializationsList[
+                                                  index]
+                                              .moreOption!,
+                                          specializationsModel: controller
                                                   .filteredSpecializationsList[
-                                                      index]
-                                                  .moreOption!)
-                                                {
-                                                  showSpecializationBottomSheet(
-                                                    specialization: controller
-                                                        .filteredSpecializationsList[
-                                                            index]
-                                                        .moreOption!,
-                                                    specializationsModel: controller
-                                                            .filteredSpecializationsList[
-                                                        index],
-                                                  ),
-                                                }
-                                              else
-                                                {
-                                                  print("مافي ماستر ولا تخرج"),
-                                                  controller.getSubjects(
-                                                      specialID: controller
-                                                          .subbedSpecialization),
-                                                  Get.to(() => SubjectView()),
-                                                }
-                                            }
-                                          : showCustomAlertDialog();
+                                              index],
+                                        );
+                                      } else {
+                                        print("مافي ماستر ولا تخرج");
+                                        controller.getSubjects(
+                                            specialID: controller
+                                                .subbedSpecialization);
+                                        Get.to(() => SubjectView());
+                                      }
                                     },
-                                    isSubbed:
-                                        controller.subbedCollege(index: index),
-                                    // imageName: "img_login",
-                                    imageName: controller
-                                            .filteredSpecializationsList[index]
-                                            .image ??
-                                        "",
+                                    isSubbed: storage.isLoggedIn
+                                        ? controller.subbedCollege(index: index)
+                                        : false,
+
+                                    imageName:
+                                        "http://via.placeholder.com/50x50",
+
+                                    //  controller
+                                    //         .filteredSpecializationsList[index]
+                                    //         .image ??
+                                    //     "",
                                     text: controller
                                             .filteredSpecializationsList[index]
                                             .specializationName ??

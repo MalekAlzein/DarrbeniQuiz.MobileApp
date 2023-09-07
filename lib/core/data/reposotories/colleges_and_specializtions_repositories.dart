@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_templete/core/data/models/apis/colleges_model.dart';
 import 'package:flutter_templete/core/data/models/apis/specialization_model.dart';
 import 'package:flutter_templete/core/data/models/common_response.dart';
 
@@ -37,6 +38,43 @@ class CollegesAndSpecializtionsRepositories {
           return Left(commonResponse.message ?? '');
         }
       });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  Future<Either<String, List<CollegesModel>>> getAllColleges() async {
+    try {
+      return NetworkUtil.sendRequest(
+        type: RequestType.GET,
+        url: SpecializationEndpoints.allCollages,
+        headers: NetworkConfig.getHeaders(
+          needAuth: false,
+          requestType: RequestType.GET,
+        ),
+        body: {},
+        params: {},
+      ).then(
+        (response) {
+          CommonResponseModel<dynamic> commonResponse =
+              CommonResponseModel.fromJson(response);
+
+          if (commonResponse.getStatus) {
+            List<CollegesModel> resultList = [];
+            resultList.add(CollegesModel(id: 0, collageName: "الكل"));
+
+            commonResponse.data.forEach(
+              (element) {
+                resultList.add(CollegesModel.fromJson(element));
+              },
+            );
+
+            return Right(resultList);
+          } else {
+            return Left(commonResponse.message ?? "");
+          }
+        },
+      );
     } catch (e) {
       return Left(e.toString());
     }

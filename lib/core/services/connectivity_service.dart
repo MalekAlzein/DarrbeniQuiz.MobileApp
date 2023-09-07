@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_templete/core/enums/connectivity_status.dart';
+import 'package:flutter_templete/core/utils/network_utils.dart';
 
 class ConnectivityService {
   //type
@@ -16,6 +17,7 @@ class ConnectivityService {
     connectivity.onConnectivityChanged.listen((event) {
       //feature in controller
       connectivityStatusController.add(getStatus(event));
+      NetworkUtil.online = getStatus(event) == ConnectivityStatus.ONLINE;
     });
   }
 

@@ -14,12 +14,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Get.putAsync<SharedPreferences>(() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs;
   });
+
   await Get.put(SharedPreferencesRepository());
+  // SharedPreferencesRepository().globalSharedPreferences.clear();
   Get.put(CartService());
   Get.put(ConnectivityService());
   await Get.put(LanguageService());

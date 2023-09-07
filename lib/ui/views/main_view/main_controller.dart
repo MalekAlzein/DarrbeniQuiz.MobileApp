@@ -4,7 +4,6 @@ import 'package:flutter_templete/core/services/base_controller.dart';
 import 'package:get/get.dart';
 
 class MainController extends BaseController {
-
   PageController pageController = PageController(initialPage: 1);
   late Rx<BottomNavigationEnum> selected = BottomNavigationEnum.HOME.obs;
 
@@ -35,26 +34,25 @@ class MainController extends BaseController {
       case 0:
         viewTitle[pageNumber] = "الإشعارات";
         viewSVG[pageNumber] = "ic_nav_bar_notifications";
-        pageIndex.value =0;
+        pageIndex.value = 0;
         break;
       case 1:
         viewTitle[pageNumber] = "الرئيسية";
         viewSVG[pageNumber] = "ic_nav_bar_home";
-        pageIndex.value =1;
+        pageIndex.value = 1;
         break;
       case 2:
         viewTitle[pageNumber] = "الأسئلة المهمة";
         viewSVG[pageNumber] = "ic_nav_bar_important_questions";
-        pageIndex.value =2;
+        pageIndex.value = 2;
         break;
       case 3:
         viewTitle[pageNumber] = "الملف الشخصي";
         viewSVG[pageNumber] = "ic_nav_bar_profile";
-        pageIndex.value =3;
+        pageIndex.value = 3;
         break;
       default:
         break;
     }
   }
-
 }

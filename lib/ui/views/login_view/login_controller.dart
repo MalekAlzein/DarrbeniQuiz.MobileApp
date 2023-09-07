@@ -17,6 +17,10 @@ class LoginController extends BaseController {
   TextEditingController codeController =
       TextEditingController(text: kDebugMode ? "lxeKlc" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   void login() {
     if (formKey1.currentState!.validate()) {
@@ -28,7 +32,7 @@ class LoginController extends BaseController {
                   fcm_token: storage.getFcmToken())
               .then((value) {
         value.fold((l) {
-          loader.value = true;
+          loader.value = false;
           CustomToast.showMessage(
               messageType: MessageType.REJECTED, message: l);
         }, (r) {

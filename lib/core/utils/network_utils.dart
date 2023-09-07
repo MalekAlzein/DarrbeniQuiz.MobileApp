@@ -100,7 +100,6 @@ class NetworkUtil {
   }) async {
     try {
       if (!online) {
-      if (!online) {
         CustomToast.showMessage(
             message: tr("key_bot_toast_offline"),
             messageType: MessageType.WARNING);

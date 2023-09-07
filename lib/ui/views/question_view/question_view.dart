@@ -5,6 +5,8 @@
 // import 'package:flutter_templete/ui/views/question_view/question_controller.dart';
 // import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_question_container.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 
 // import '../../shared/colors.dart';
 // import '../../shared/custom_widgets/custom_button.dart';

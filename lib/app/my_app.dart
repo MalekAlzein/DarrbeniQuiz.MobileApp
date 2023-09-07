@@ -1,14 +1,17 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_templete/core/data/models/apis/question_model.dart';
 import 'package:flutter_templete/core/enums/connectivity_status.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
+import 'package:flutter_templete/ui/views/question_view/question_view.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import '../ui/views/login_view/login_view.dart';
+import '../ui/views/splash_screen/spalsh_screen_view.dart';
 
 late BuildContext appContext;
 
@@ -56,8 +59,9 @@ class _MyAppState extends State<MyApp> {
             secondary: Colors.transparent.withOpacity(0),
           ),
         ),
-        home: LoginView(),
+        home: SplashScreenView(),
       ),
     );
+    //
   }
 }

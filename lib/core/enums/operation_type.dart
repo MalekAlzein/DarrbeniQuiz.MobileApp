@@ -1,4 +1,1 @@
-enum OperationType{
-  NONE,
-
-}
+enum OperationType { NONE, QUESTION }

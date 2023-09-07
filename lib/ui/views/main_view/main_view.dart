@@ -17,15 +17,12 @@ class MainView extends StatefulWidget {
 }
 
 class _MainViewState extends State<MainView> {
-
   MainController controller = MainController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       extendBodyBehindAppBar: true,
-
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(screenWidth(3)),
         child: Obx(() {
@@ -33,10 +30,8 @@ class _MainViewState extends State<MainView> {
             firstText: controller.viewTitle[controller.pageIndex.value],
             svgName: controller.viewSVG[controller.pageIndex.value],
           );
-        }
-        ),
+        }),
       ),
-
       bottomNavigationBar: Obx(() {
         return BottomNavigationWidget(
           bottomNavigation: controller.selected.value,

@@ -24,6 +24,7 @@ class _HomeViewCategoryWidgetState extends State<HomeViewCategoryWidget> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: screenWidth(18)),
       child: Align(
+        alignment: AlignmentDirectional.centerStart,
         child: Container(
           height: screenWidth(12),
           decoration: BoxDecoration(

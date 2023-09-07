@@ -23,6 +23,7 @@ class CustomImages extends StatelessWidget {
       child: networkImage
           ? CachedNetworkImage(
               // alignment: Alignment.topCenter,
+              errorWidget: (context, url, error) => Icon(Icons.error),
               imageUrl: imageName,
               width: imageSize ?? screenWidth(2.1),
               height: imageSize,

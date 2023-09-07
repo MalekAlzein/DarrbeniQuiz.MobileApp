@@ -38,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
             children: [
               InkWell(
                 onTap: () {
-                  onTap;
+                  onTap != null ? onTap!() : null;
                 },
                 child: SvgPicture.asset(
                   'assets/svgs/${svgName ?? 'ic_back'}.svg',

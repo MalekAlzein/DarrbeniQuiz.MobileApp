@@ -82,6 +82,8 @@ flutter:
     - assets/lottie/
     - assets/svgs/
     - assets/lottie/
+ 
+
     # - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see

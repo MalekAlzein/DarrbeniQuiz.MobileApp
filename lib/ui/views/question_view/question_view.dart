@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 // import 'package:flutter/material.dart';
 // import 'package:flutter_svg/svg.dart';
 // import 'package:flutter_templete/core/data/models/apis/question_model.dart';
 // import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 // import 'package:flutter_templete/ui/views/question_view/question_controller.dart';
 // import 'package:get/get.dart';
-=======
 import 'package:flutter/material.dart';
->>>>>>> 1cd9f9754b01608acbe74b8d8524a561b141b1b4
 
 // import '../../shared/colors.dart';
 // import '../../shared/custom_widgets/custom_button.dart';
@@ -15,15 +12,13 @@ import 'package:flutter/material.dart';
 // import '../../shared/custom_widgets/custom_text.dart';
 // import '../../shared/utils.dart';
 
-// class QuestionView extends StatefulWidget {
-//   final List<dynamic> questions;
-//   const QuestionView({super.key, required this.questions});
-  
+class QuestionView extends StatefulWidget {
+  final List<dynamic> questions;
+  const QuestionView({super.key, required this.questions});
 
-<<<<<<< HEAD
-//   @override
-//   State<QuestionView> createState() => _QuestionViewState();
-// }
+  @override
+  State<QuestionView> createState() => _QuestionViewState();
+}
 
 // class _QuestionViewState extends State<QuestionView> {
 //   QuestionsController controller = Get.put(QuestionsController());
@@ -319,12 +314,10 @@ import 'package:flutter/material.dart';
 //     ),
 //   );
 // }
-=======
 class _QuestionViewState extends State<QuestionView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold();
   }
 }
->>>>>>> 1cd9f9754b01608acbe74b8d8524a561b141b1b4
 //qamar

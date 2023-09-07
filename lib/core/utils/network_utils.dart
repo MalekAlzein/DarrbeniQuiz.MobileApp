@@ -10,7 +10,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart' as path;
 
 class NetworkUtil {
-  static String baseUrl = 'febc-5-155-14-48.ngrok-free.app';
+  static String baseUrl = 'https://59ab-188-133-14-8.ngrok-free.app';
   static var client = http.Client();
   static bool online = true;
 
@@ -99,7 +99,7 @@ class NetworkUtil {
     Map<String, dynamic>? params,
   }) async {
     try {
-       if (!online) {
+      if (!online) {
         CustomToast.showMessage(
             message: tr("key_bot_toast_offline"),
             messageType: MessageType.WARNING);

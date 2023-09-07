@@ -67,6 +67,15 @@ class ARLanguage {
         //?---SubjectView---
 
         "Key_questions_bank": "بنك الأسئلة",
+        "Key_book-questions": "أسئلة الكتاب",
+
+        "Key_terms": "الدورات",
+
+        //!---- Important View -------
+        "key_empty_important": "قائمة الأسئلة المهمة فارغة",
+        "key_important_added": "تمت إضافة السؤال الى الأسئلة المهمة",
+        "key_important_removed": "تمت إزالة السؤال من الأسئلة المهمة",
+
         // "":"",
         // "key_reset": "إعادة تعيين كلمة المرور",
         // "key_send": "إرسال",

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color whiteColor = Color.fromRGBO(255, 255, 255, 1);
   static const Color blackColor = Color.fromRGBO(0, 0, 0, 1);
+
   static const Color mainOrangeColor = Color.fromRGBO(252, 96, 17, 1);
   static const Color transparentColor = Color.fromRGBO(255, 255, 255, 0);
   static const Color maingrey = Color.fromRGBO(242, 242, 242, 1);

@@ -317,7 +317,35 @@ class QuestionView extends StatefulWidget {
 class _QuestionViewState extends State<QuestionView> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: ListView.builder(
+        shrinkWrap: true,
+        itemCount: widget.questions?.length ?? 0,
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: [
+              CustomText(
+                  textType: TextStyleType.SMALL,
+                  text: widget.questions?[index].questionContent ?? ''),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: widget.questions?[index].answers!.length,
+                itemBuilder: (BuildContext context, int index2) {
+                  return CustomQuestionContainer(
+                      answerText:
+                          widget.questions?[index].answers![index2].text,
+                      isCorrect: false,
+                      isVisibleAnswerResult: false,
+                      value: index,
+                      onTaped: () {},
+                      selected: index);
+                },
+              ),
+            ],
+          );
+        },
+      ),
+    );
   }
 }
 //qamar

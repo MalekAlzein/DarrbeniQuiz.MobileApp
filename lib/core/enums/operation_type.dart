@@ -1,1 +1,6 @@
-enum OperationType { NONE, HOME, QUESTION }
+enum OperationType {
+  NONE,
+  QUESTIONS,
+  SUBJECTS,
+  HOME,
+}

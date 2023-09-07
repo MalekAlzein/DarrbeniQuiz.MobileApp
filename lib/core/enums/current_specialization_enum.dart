@@ -1,0 +1,4 @@
+enum SpecializationEnum {
+  MASTER,
+  GRADUATION,
+}

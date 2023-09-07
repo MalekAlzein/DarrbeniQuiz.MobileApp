@@ -39,6 +39,7 @@ class _CustomSliderState extends State<CustomSlider> {
                     imageUrl: item.imageUrl ?? "",
                     fit: BoxFit.cover,
                     width: screenWidth(0.9),
+                    height: screenWidth(2),
                   ),
                 ),
               ),
@@ -59,23 +60,26 @@ class _CustomSliderState extends State<CustomSlider> {
         ),
         SizedBox(height: screenWidth(26)),
         Obx(
-          () => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.items.map((item) {
-              int index = widget.items.indexOf(item);
-              return Container(
-                width: screenWidth(45),
-                height: screenWidth(45),
-                margin: EdgeInsets.symmetric(horizontal: screenWidth(65)),
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  color: currentIndex.value == index
-                      ? AppColors.darkPurpleColor
-                      : AppColors.darkGreyColorTextField,
-                ),
-              );
-            }).toList(),
-          ),
+          () {
+            print(currentIndex);
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: widget.items.map((item) {
+                int index = widget.items.indexOf(item);
+                return Container(
+                  width: screenWidth(45),
+                  height: screenWidth(45),
+                  margin: EdgeInsets.symmetric(horizontal: screenWidth(65)),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    color: currentIndex.value == index
+                        ? AppColors.darkPurpleColor
+                        : AppColors.darkGreyColorTextField,
+                  ),
+                );
+              }).toList(),
+            );
+          },
         ),
       ],
     );

@@ -15,11 +15,13 @@ import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_wid
 import 'package:flutter_templete/ui/views/register_view/register_controller.dart';
 import 'package:get/get.dart';
 
+import '../../../core/enums/terms_type.dart';
 import '../../shared/colors.dart';
 import '../../shared/custom_widgets/custom_app_bar.dart';
 import '../../shared/custom_widgets/custom_button.dart';
 import '../../shared/utils.dart';
 import '../question_view/question_view.dart';
+import '../years_questions_view/years_questions_view.dart';
 
 class SubjectView extends StatefulWidget {
   const SubjectView({super.key, this.master = false, this.grad = false});
@@ -116,8 +118,10 @@ class _SubjectViewState extends State<SubjectView> {
                           text: tr("Key_terms"),
                           backgroundColor: AppColors.normalCyanColor,
                           onPressed: () {
-                            //Get.to(TermsView(
-                            //     specialId: widget.specialId));
+                            Get.to(YearsQuestionsView(
+                              subjectId: 0,
+                              termsType: TermsType.ALL_SUBJECTS,
+                            ));
                           },
                           fontSize: screenWidth(27),
                           buttonTypeEnum: ButtonTypeEnum.SMALL,

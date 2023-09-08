@@ -8,9 +8,11 @@ import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.da
 import 'package:flutter_templete/ui/views/question_view/question_view.dart';
 import 'package:get/get.dart';
 
+import '../../../core/enums/terms_type.dart';
 import '../../shared/custom_widgets/custom_app_bar.dart';
 import '../../shared/utils.dart';
 import '../register_view/register_controller.dart';
+import '../years_questions_view/years_questions_view.dart';
 import 'subject_view_controller.dart';
 
 class BookCourseButtons extends StatefulWidget {
@@ -56,7 +58,10 @@ class _BookCourseButtonsState extends State<BookCourseButtons> {
               text: tr("Key_terms"),
               backgroundColor: AppColors.normalCyanColor,
               onPressed: () {
-                //Get.to(()=>TermsView);
+                Get.to(() => YearsQuestionsView(
+                      subjectId: widget.subject.id!,
+                      termsType: TermsType.SINGLE_SUBJECT,
+                    ));
               },
               buttonTypeEnum: ButtonTypeEnum.CUSTOM,
             ),

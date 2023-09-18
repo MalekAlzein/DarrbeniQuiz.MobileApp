@@ -3,7 +3,7 @@ class CommonResponseModel<T> {
   T? data;
   String? message;
 
-  CommonResponseModel.fromJson(dynamic json) {
+  CommonResponseModel.fromJson(Map<String,dynamic> json) {
     // this.statusCode = json['statusCode'];
     this.statusCode = json['response']['code'];
 

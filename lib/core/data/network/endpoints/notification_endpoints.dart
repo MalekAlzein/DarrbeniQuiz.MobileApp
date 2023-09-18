@@ -4,5 +4,5 @@ class EndpoinNotifictionts {
   static String notifictionUpdate =
       NetworkConfig.getFullApiRoute('dashboard/Notification/update');
   static String getAllNotifiction =
-      NetworkConfig.getFullApiRoute('dashboard/Notification/getall');
+      NetworkConfig.getFullApiRoute('Notification/getall');
 }

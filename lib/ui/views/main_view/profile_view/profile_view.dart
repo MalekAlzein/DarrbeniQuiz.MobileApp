@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
+import 'package:flutter_templete/ui/views/about_us/about_us_view.dart';
 import 'package:flutter_templete/ui/views/main_view/profile_view/profile_controller.dart';
 import 'package:get/get.dart';
 import '../../../shared/colors.dart';
@@ -69,7 +70,7 @@ class _ProfileViewState extends State<ProfileView> {
                   svgname: 'ic_about_us',
                   text: "عن التطبيق",
                   color: AppColors.blackColor,
-                  onTap: () {}),
+                  onTap: () {Get.to(AboutAppView());}),
               (screenWidth(5)).ph,
               Obx(() {
                 return controller.loader.value

@@ -59,10 +59,6 @@ class HomePageController extends BaseController {
             );
           }, (r) {
             sliderList.addAll(r);
-            CustomToast.showMessage(
-              message: "Success",
-              messageType: MessageType.SUCCESS,
-            );
           });
         },
       ),
@@ -82,10 +78,6 @@ class HomePageController extends BaseController {
             collegeList.clear();
             collegeList.addAll(r);
             getSpecializationspByCollege(0);
-            CustomToast.showMessage(
-              message: "Success",
-              messageType: MessageType.SUCCESS,
-            );
           });
         },
       ),

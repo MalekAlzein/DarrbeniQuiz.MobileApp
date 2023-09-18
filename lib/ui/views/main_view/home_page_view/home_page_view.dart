@@ -54,7 +54,6 @@ class _HomePageViewState extends State<HomePageView> {
                   () {
                     print(controller.sliderList);
                     return CustomShimmer(
-                      center: true,
                       isLoading: controller.isLoading,
                       child: CustomSlider(
                         items: controller.sliderList.value,
@@ -94,7 +93,6 @@ class _HomePageViewState extends State<HomePageView> {
                                             controller.selectedCollegeId.value;
                                         return CustomShimmer(
                                           isLoading: controller.isLoading,
-                                          center: true,
                                           child: HomeViewCategoryWidget(
                                             text: controller
                                                 .collegeList[index].collageName,
@@ -135,7 +133,6 @@ class _HomePageViewState extends State<HomePageView> {
                                 controller.filteredSpecializationsList.length,
                                 (index) => CustomShimmer(
                                   isLoading: controller.isLoading,
-                                  center: true,
                                   child: CustomGridCollege(
                                     onTap: () {
                                       if (controller

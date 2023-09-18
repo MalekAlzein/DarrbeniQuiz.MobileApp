@@ -56,7 +56,6 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return CustomShimmer(
-                                center: true,
                                 isLoading:
                                     controller.isImportantQuestionsLoading,
                                 child: Container(

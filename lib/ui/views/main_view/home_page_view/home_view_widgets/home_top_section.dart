@@ -36,7 +36,6 @@ class _HomeTopSectionState extends State<HomeTopSection> {
           () {
             print(controller.sliderList);
             return CustomShimmer(
-              center: true,
               isLoading: controller.isLoading,
               child: CustomSlider(
                 items: controller.sliderList.value,

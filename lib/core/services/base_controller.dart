@@ -6,8 +6,7 @@ import 'package:flutter_templete/ui/shared/utils.dart';
 import 'package:get/get.dart';
 
 class BaseController extends GetxController {
-  var requestStatus = RequestStatus.DEFAULT.obs;
-  // var operationType = OperationType.NONE.obs;
+  Rx<RequestStatus> requestStatus = RequestStatus.DEFAULT.obs;
   RxList<OperationType> operationTypeList = <OperationType>[].obs;
 
   bool get isLoading =>

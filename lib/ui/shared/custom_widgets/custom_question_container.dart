@@ -100,11 +100,11 @@ class _CustomQuestionContainerState extends State<CustomQuestionContainer> {
                   visible: widget.isVisibleAnswerResult,
                   child: widget.isCorrect
                       ? SvgPicture.asset(
-                          'assets/images/ic_correct.svg',
+                          'assets/svgs/ic_answer_correct.svg',
                           color: AppColors.mainBlueColor,
                         )
                       : SvgPicture.asset(
-                          'assets/images/ic_wrong.svg',
+                          'assets/svgs/ic_answer_wrong.svg',
                         ))
             ]),
           ),

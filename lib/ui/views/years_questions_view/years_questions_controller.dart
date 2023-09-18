@@ -60,7 +60,7 @@ class YearsQuestionsController extends BaseController {
           CustomToast.showMessage(
               message: "خطأ, حاول مجددا", messageType: MessageType.REJECTED);
         }, (r) {
-          Get.to(QuestionView(questions: r));
+          Get.off(QuestionView(questions: r));
         });
       }));
     } else {
@@ -71,7 +71,7 @@ class YearsQuestionsController extends BaseController {
           CustomToast.showMessage(
               message: "خطأ, حاول مجددا", messageType: MessageType.REJECTED);
         }, (r) {
-          Get.to(QuestionView(questions: r));
+          Get.off(QuestionView(questions: r));
         });
       }));
     }

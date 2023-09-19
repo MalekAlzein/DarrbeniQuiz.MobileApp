@@ -11,7 +11,7 @@ import '../../../shared/custom_widgets/custom_toast.dart';
 
 class ImportantQuestionsController extends BaseController {
   RxList<QuestionModel> importantQuestions = <QuestionModel>[].obs;
-  RxBool isImportant = true.obs;
+  // RxBool isImportant = true.obs;
   bool get isImportantQuestionsLoading =>
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.QUESTIONS);
@@ -37,8 +37,8 @@ class ImportantQuestionsController extends BaseController {
                 )));
   }
 
-  removeFromImportants(int id) {
-    runFutureFunctionWithLoading(
+  Future removeFromImportants(int id) {
+    return runFutureFunctionWithLoading(
         function: ImportantRepository()
             .removeFromImportants(questionID: id)
             .then((value) => value.fold(
@@ -48,8 +48,8 @@ class ImportantQuestionsController extends BaseController {
                     messageType: MessageType.SUCCESS))));
   }
 
-  addToImportants(int id) {
-    runFutureFunctionWithLoading(
+  Future addToImportants(int id) {
+    return runFutureFunctionWithLoading(
         function: ImportantRepository().addToImportants(questionID: id).then(
             (value) => value.fold(
                 (l) => CustomToast.showMessage(message: l),

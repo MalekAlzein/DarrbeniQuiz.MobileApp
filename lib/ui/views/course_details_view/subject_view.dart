@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
-import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_list.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
@@ -51,16 +50,10 @@ class _SubjectViewState extends State<SubjectView> {
         });
       },
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(screenWidth(3)),
-          child: Obx(() {
-            print(courseDetailsController.questions);
-            return CustomAppBar(
-              onTap: () => Get.back(closeOverlays: true),
-              activeColor: AppConfig.mainColor,
-              firstText: getUserSelectedCollege,
-            );
-          }),
+        appBar: CustomAppBar(
+          onTap: () => Get.back(closeOverlays: true),
+          activeColor: AppConfig.mainColor,
+          firstText: getUserSelectedCollege,
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(
@@ -84,7 +77,7 @@ class _SubjectViewState extends State<SubjectView> {
                         ? Center(
                             child: CustomText(
                               textType: TextStyleType.CUSTOM,
-                              text: 'No subject yet',
+                              text: tr('key_no_subjects'),
                               textColor: AppColors.darkPurpleColor,
                             ),
                           )
@@ -133,10 +126,8 @@ class _SubjectViewState extends State<SubjectView> {
                           onPressed: () {
                             courseDetailsController
                                 .getBankQuestions(
-                                    specialid: storage
-                                        .getTokenInfo()!
-                                        .specialization!
-                                        .id!)
+                                    specialid:
+                                        homeController.subbedSpecialization)
                                 .then((value) => Get.to(QuestionView(
                                       questions:
                                           courseDetailsController.questions,

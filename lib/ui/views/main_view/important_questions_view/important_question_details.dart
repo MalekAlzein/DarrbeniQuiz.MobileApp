@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/data/models/apis/question_model.dart';
+import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_question_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:get/get.dart';
 
@@ -25,16 +26,12 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
   Widget build(BuildContext context) {
     ImportantQuestionsController controller =
         Get.put(ImportantQuestionsController());
-    HomePageController homePageController = Get.put(HomePageController());
-
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(screenWidth(3)),
-          child: CustomAppBar(
-            firstText: getUserSelectedCollege,
-            secondText: 'الأسئلة المهمة',
-            onTap: () => Get.back(),
-          )),
+      appBar: CustomAppBar(
+        firstText: getUserSelectedCollege,
+        secondText: 'الأسئلة المهمة',
+        onTap: () => Get.back(),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -69,7 +66,12 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
               Row(
                 children: [
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        CustomToast.showMessage(
+                            messageType: MessageType.WARNING,
+                            message:
+                                ' لا يمكن رؤية الجواب الصحيح الا اثناء حل الاختبار');
+                      },
                       child: SvgPicture.asset(
                         'assets/svgs/ic_answer_correct.svg',
                         color: AppColors.normalCyanColor,
@@ -77,21 +79,18 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                   15.pw,
                   InkWell(
                       onTap: () {
-                        referenceDialog(context);
+                        // referenceDialog(context);
                       },
                       child: SvgPicture.asset('assets/svgs/ic_reference.svg')),
                   15.pw,
                   InkWell(
                       onTap: () {
-                        controller.isImportant.isTrue
+                        widget.question.isImportant!
                             ? controller
                                 .removeFromImportants(widget.question.id!)
                             : controller.addToImportants(widget.question.id!);
-
-                        controller.isImportant.value =
-                            !controller.isImportant.value;
                       },
-                      child: SvgPicture.asset(controller.isImportant.isFalse
+                      child: SvgPicture.asset(!widget.question.isImportant!
                           ? 'assets/svgs/ic_star_empty.svg'
                           : 'assets/svgs/ic_star_selected.svg')),
                 ],
@@ -120,7 +119,7 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                   ),
                 ],
               ),
-              30.ph,
+              screenHeight(30).ph,
             ],
           ),
         ),
@@ -128,22 +127,25 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
     );
   }
 
-  void referenceDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return Dialog(
-            insetPadding: EdgeInsets.all(screenWidth(30)),
-            // shape: CircleBorder(),
-            child: Container(
-              alignment: Alignment.center,
-              height: screenHeight(10),
-              child: CustomText(
-                text: widget.question.reference.toString(),
-                textType: TextStyleType.SMALL,
-              ),
-            ),
-          );
-        });
-  }
+  // void referenceDialog(BuildContext context) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return Dialog(
+  //           insetPadding: EdgeInsets.all(screenWidth(30)),
+  //           // shape: CircleBorder(),
+  //           child: Container(
+  //             alignment: Alignment.center,
+  //             height: screenHeight(10),
+  //             child: InkWell(
+  //               onTap: () => {},
+  //               child: CustomText(
+  //                 text: widget.question.reference.toString(),
+  //                 textType: TextStyleType.SMALL,
+  //               ),
+  //             ),
+  //           ),
+  //         );
+  //       });
+  // }
 }

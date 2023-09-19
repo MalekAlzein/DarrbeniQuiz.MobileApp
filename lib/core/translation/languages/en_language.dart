@@ -26,7 +26,7 @@ class ENLanguage {
         "Key_specialization_master": "Master",
         "Key_specialization_graduation": "Graduation",
         //?---SubjectView---
-
+        "key_no_subjects": "no subjects yet",
         "Key_questions_bank": "Bank Questions",
         "Key_book_questions": "Book Questions",
         "Key_terms": "Terms",

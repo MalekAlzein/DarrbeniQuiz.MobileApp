@@ -3,7 +3,6 @@ import '../../../core/data/models/apis/question_model.dart';
 import '../../../core/enums/Operation_type.dart';
 import '../../../core/enums/request_status.dart';
 import '../../../core/services/base_controller.dart';
-import '../main_view/main_view.dart';
 
 class QuestionsController extends BaseController {
   QuestionsController(this.questions);
@@ -24,7 +23,7 @@ class QuestionsController extends BaseController {
   RxList selectedAnswers = [].obs;
   RxList showAnswer = [].obs;
   RxList isCorrectAnswer = [].obs;
-  RxBool isSelectImportant = false.obs;
+  // RxBool isSelectImportant = false.obs;
 
   @override
   void onReady() {}

@@ -8,7 +8,6 @@ import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/views/main_view/main_view.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../ui/views/about_us/about_us_view.dart';
 import '../ui/views/splash_screen/spalsh_screen_view.dart';
 
 late BuildContext appContext;

@@ -27,13 +27,11 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
     ImportantQuestionsController controller =
         Get.put(ImportantQuestionsController());
     return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(screenWidth(3)),
-          child: CustomAppBar(
-            firstText: getUserSelectedCollege,
-            secondText: 'الأسئلة المهمة',
-            onTap: () => Get.back(),
-          )),
+      appBar: CustomAppBar(
+        firstText: getUserSelectedCollege,
+        secondText: 'الأسئلة المهمة',
+        onTap: () => Get.back(),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -81,23 +79,18 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                   15.pw,
                   InkWell(
                       onTap: () {
-                        referenceDialog(context);
+                        // referenceDialog(context);
                       },
                       child: SvgPicture.asset('assets/svgs/ic_reference.svg')),
                   15.pw,
                   InkWell(
                       onTap: () {
-                        controller.isImportant.isTrue
+                        widget.question.isImportant!
                             ? controller
                                 .removeFromImportants(widget.question.id!)
-                                .then((value) => controller.isImportant.value =
-                                    !controller.isImportant.value)
-                            : controller
-                                .addToImportants(widget.question.id!)
-                                .then((value) => controller.isImportant.value =
-                                    !controller.isImportant.value);
+                            : controller.addToImportants(widget.question.id!);
                       },
-                      child: SvgPicture.asset(controller.isImportant.isFalse
+                      child: SvgPicture.asset(!widget.question.isImportant!
                           ? 'assets/svgs/ic_star_empty.svg'
                           : 'assets/svgs/ic_star_selected.svg')),
                 ],
@@ -134,25 +127,25 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
     );
   }
 
-  void referenceDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return Dialog(
-            insetPadding: EdgeInsets.all(screenWidth(30)),
-            // shape: CircleBorder(),
-            child: Container(
-              alignment: Alignment.center,
-              height: screenHeight(10),
-              child: InkWell(
-                onTap: () => {},
-                child: CustomText(
-                  text: widget.question.reference.toString(),
-                  textType: TextStyleType.SMALL,
-                ),
-              ),
-            ),
-          );
-        });
-  }
+  // void referenceDialog(BuildContext context) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return Dialog(
+  //           insetPadding: EdgeInsets.all(screenWidth(30)),
+  //           // shape: CircleBorder(),
+  //           child: Container(
+  //             alignment: Alignment.center,
+  //             height: screenHeight(10),
+  //             child: InkWell(
+  //               onTap: () => {},
+  //               child: CustomText(
+  //                 text: widget.question.reference.toString(),
+  //                 textType: TextStyleType.SMALL,
+  //               ),
+  //             ),
+  //           ),
+  //         );
+  //       });
+  // }
 }

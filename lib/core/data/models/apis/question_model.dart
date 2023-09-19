@@ -6,6 +6,7 @@ class QuestionModel {
   int? subjectId;
   int? specializationId;
   int? correctId;
+  bool? isImportant;
   List<Answers>? answers;
 
   QuestionModel(
@@ -16,6 +17,7 @@ class QuestionModel {
       this.subjectId,
       this.specializationId,
       this.correctId,
+      this.isImportant,
       this.answers});
 
   QuestionModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class QuestionModel {
     subjectId = json['subject_id'];
     specializationId = json['specialization_id'];
     correctId = json['correct_id'];
+    isImportant = json['IsImportant'];
     if (json['answers'] != null) {
       answers = <Answers>[];
       json['answers'].forEach((v) {
@@ -43,6 +46,7 @@ class QuestionModel {
     data['subject_id'] = this.subjectId;
     data['specialization_id'] = this.specializationId;
     data['correct_id'] = this.correctId;
+    data['IsImportant'] = this.isImportant;
     if (this.answers != null) {
       data['answers'] = this.answers!.map((v) => v.toJson()).toList();
     }

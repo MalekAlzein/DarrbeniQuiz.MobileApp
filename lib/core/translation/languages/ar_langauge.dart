@@ -65,6 +65,7 @@ class ARLanguage {
         "Key_specialization_graduation": "تخرج",
         "Key_book_questions": "أسئلة الكتاب",
         //?---SubjectView---
+        "key_no_subjects": "لا يوجد مواد",
 
         "Key_questions_bank": "بنك الأسئلة",
         "Key_book-questions": "أسئلة الكتاب",

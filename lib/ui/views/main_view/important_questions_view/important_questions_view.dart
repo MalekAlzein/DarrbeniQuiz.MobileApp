@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_shimmer.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_question_details.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
@@ -55,40 +54,36 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                         ListView.separated(
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              return CustomShimmer(
-                                isLoading:
-                                    controller.isImportantQuestionsLoading,
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  width: 100,
-                                  height: 50,
-                                  color: AppColors.darkGreyColorTextField,
-                                  child: InkWell(
-                                    onTap: () {
-                                      Get.to((ImportantQuestionDetails(
-                                        question: controller
-                                            .importantQuestions[index],
-                                      )));
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Expanded(
-                                          child: CustomText(
-                                            textAlign: TextAlign.start,
-                                            text:
-                                                '${controller.importantQuestions[index].id}   ${controller.importantQuestions[index].questionContent}',
-                                            fontSize: screenWidth(27),
-                                            textType: TextStyleType.CUSTOM,
-                                          ),
+                              return Container(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                width: 100,
+                                height: 50,
+                                color: AppColors.darkGreyColorTextField,
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.to((ImportantQuestionDetails(
+                                      question:
+                                          controller.importantQuestions[index],
+                                    )));
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: CustomText(
+                                          textAlign: TextAlign.start,
+                                          text:
+                                              '${controller.importantQuestions[index].id}   ${controller.importantQuestions[index].questionContent}',
+                                          fontSize: screenWidth(27),
+                                          textType: TextStyleType.CUSTOM,
                                         ),
-                                        InkWell(
-                                          child: SvgPicture.asset(
-                                              "assets/svgs/ic_arrow.svg"),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                      InkWell(
+                                        child: SvgPicture.asset(
+                                            "assets/svgs/ic_arrow.svg"),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               );

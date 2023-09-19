@@ -50,16 +50,10 @@ class _SubjectViewState extends State<SubjectView> {
         });
       },
       child: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(screenWidth(3)),
-          child: Obx(() {
-            print(courseDetailsController.questions);
-            return CustomAppBar(
-              onTap: () => Get.back(closeOverlays: true),
-              activeColor: AppConfig.mainColor,
-              firstText: getUserSelectedCollege,
-            );
-          }),
+        appBar: CustomAppBar(
+          onTap: () => Get.back(closeOverlays: true),
+          activeColor: AppConfig.mainColor,
+          firstText: getUserSelectedCollege,
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(
@@ -83,7 +77,7 @@ class _SubjectViewState extends State<SubjectView> {
                         ? Center(
                             child: CustomText(
                               textType: TextStyleType.CUSTOM,
-                              text: 'No subject yet',
+                              text: tr('key_no_subjects'),
                               textColor: AppColors.darkPurpleColor,
                             ),
                           )

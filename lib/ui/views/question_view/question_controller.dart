@@ -27,10 +27,15 @@ class QuestionsController extends BaseController {
   RxBool isSelectImportant = false.obs;
 
   @override
+  void onReady() {}
+
   void onInit() {
-    Future.delayed(Duration(seconds: 8), () {
+    Future.delayed(Duration(seconds: 3), () {
       isShimmerLoader.value = false;
+      update();
     });
+    super.onReady();
+
     selectedAnswers.value = List.filled(questions.length, -1).obs;
     showAnswer.value = List.filled(questions.length, -1).obs;
     isCorrectAnswer.value = List.filled(questions.length, false).obs;

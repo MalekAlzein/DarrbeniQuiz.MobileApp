@@ -91,14 +91,22 @@ class _ResultViewState extends State<ResultView> {
                     shrinkWrap: true,
                     itemBuilder: (BuildContext context, int index) {
                       return Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: screenWidth(20)),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: screenWidth(30),
+                            vertical: screenWidth(20)),
                         child: Column(children: [
-                          CustomText(
-                            text: widget.questions[index].questionContent!,
-                            fontSize: screenWidth(29),
-                            textColor: AppColors.mainblack,
-                            textType: TextStyleType.CUSTOM,
+                          Padding(
+                            padding: EdgeInsetsDirectional.only(
+                                start: screenWidth(30)),
+                            child: Align(
+                              alignment: AlignmentDirectional.topStart,
+                              child: CustomText(
+                                text: widget.questions[index].questionContent!,
+                                fontSize: screenWidth(29),
+                                textColor: AppColors.mainblack,
+                                textType: TextStyleType.CUSTOM,
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height: screenWidth(30),

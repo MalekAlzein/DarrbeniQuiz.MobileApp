@@ -14,7 +14,6 @@ import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_con
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_widgets/home_top_section.dart';
 import 'package:flutter_templete/ui/views/register_view/register_controller.dart';
 import 'package:get/get.dart';
-
 import '../../../core/enums/terms_type.dart';
 import '../../shared/colors.dart';
 import '../../shared/custom_widgets/custom_app_bar.dart';
@@ -57,7 +56,7 @@ class _SubjectViewState extends State<SubjectView> {
           child: Obx(() {
             print(courseDetailsController.questions);
             return CustomAppBar(
-              onTap: () => Get.back(),
+              onTap: () => Get.back(closeOverlays: true),
               activeColor: AppConfig.mainColor,
               firstText: getUserSelectedCollege,
             );

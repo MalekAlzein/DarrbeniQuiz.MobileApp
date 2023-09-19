@@ -13,9 +13,9 @@ import '../../../core/data/reposotories/profile_repository.dart';
 class LoginController extends BaseController {
   RxBool loader = false.obs;
   TextEditingController userNameController =
-      TextEditingController(text: kDebugMode ? "ShamsTest50" : "");
+      TextEditingController(text: kDebugMode ? "Shams" : "");
   TextEditingController codeController =
-      TextEditingController(text: kDebugMode ? "lxeKlc" : "");
+      TextEditingController(text: kDebugMode ? "iqnBUI" : "");
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   @override
   void onInit() {

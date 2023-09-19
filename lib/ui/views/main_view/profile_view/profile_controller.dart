@@ -1,5 +1,6 @@
 import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/views/splash_screen/spalsh_screen_view.dart';
+import 'package:flutter_templete/ui/views/splash_screen/splash_screen_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/data/reposotories/profile_repository.dart';
@@ -31,7 +32,8 @@ class ProfileController extends BaseController {
         CustomToast.showMessage(messageType: MessageType.REJECTED, message: l);
       }, (r) {
         storage.clearTokenInfo();
-        Get.off(() => SplashScreenView());
+        Get.delete<SplashScreenController>();
+        Get.offAll(() => SplashScreenView());
       });
     }));
   }

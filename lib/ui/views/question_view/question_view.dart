@@ -262,7 +262,12 @@ class _QuestionViewState extends State<QuestionView> {
                                       onTap: () {
                                         if (controller.showAnswer[controller
                                                 .currentQuestionIndex.value] !=
-                                            -1) {}
+                                            -1) {
+                                          widget
+                                              .questions[controller
+                                                  .currentQuestionIndex.value]
+                                              .reference;
+                                        }
                                       },
                                     )),
                                 CustomIconsItem(

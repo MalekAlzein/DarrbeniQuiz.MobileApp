@@ -148,7 +148,7 @@ class _HomePageViewState extends State<HomePageView> {
                                               index],
                                         );
                                       } else {
-                                        print("مافي ماستر ولا تخرج");
+                                        // print("مافي ماستر ولا تخرج");
                                         controller.getSubjects(
                                             specialID: controller
                                                 .subbedSpecialization);

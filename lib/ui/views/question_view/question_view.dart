@@ -12,6 +12,7 @@ import '../../shared/custom_widgets/custom_app_bar.dart';
 import '../../shared/custom_widgets/custom_button.dart';
 import '../../shared/custom_widgets/custom_shimmer.dart';
 import '../../shared/utils.dart';
+import '../main_view/important_questions_view/important_questions_controller.dart';
 import 'question_controller.dart';
 
 class QuestionView extends StatefulWidget {
@@ -23,6 +24,9 @@ class QuestionView extends StatefulWidget {
 }
 
 class _QuestionViewState extends State<QuestionView> {
+  ImportantQuestionsController importantQuestionsController =
+      Get.put(ImportantQuestionsController());
+
   @override
   Widget build(BuildContext context) {
     int temp = -1;
@@ -266,12 +270,23 @@ class _QuestionViewState extends State<QuestionView> {
                                       ? "ic_star_selected"
                                       : "ic_star_empty",
                                   onTap: () {
-                                    if (controller.isSelectImportant.value) {
-                                      controller.isSelectImportant.value =
-                                          false;
-                                    } else {
-                                      controller.isSelectImportant.value = true;
-                                    }
+                                    controller.isSelectImportant.isTrue
+                                        ? importantQuestionsController
+                                            .removeFromImportants(widget
+                                                .questions[controller
+                                                    .currentQuestionIndex.value]
+                                                .id!)
+                                            .then((value) => controller
+                                                .isSelectImportant
+                                                .value = false)
+                                        : importantQuestionsController
+                                            .addToImportants(widget
+                                                .questions[controller
+                                                    .currentQuestionIndex.value]
+                                                .id!)
+                                            .then((value) => controller
+                                                .isSelectImportant
+                                                .value = true);
                                   },
                                 )
                               ],

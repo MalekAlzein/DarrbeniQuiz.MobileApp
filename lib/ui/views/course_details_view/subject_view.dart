@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
-import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_list.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
@@ -134,10 +133,8 @@ class _SubjectViewState extends State<SubjectView> {
                           onPressed: () {
                             courseDetailsController
                                 .getBankQuestions(
-                                    specialid: storage
-                                        .getTokenInfo()!
-                                        .specialization!
-                                        .id!)
+                                    specialid:
+                                        homeController.subbedSpecialization)
                                 .then((value) => Get.to(QuestionView(
                                       questions:
                                           courseDetailsController.questions,

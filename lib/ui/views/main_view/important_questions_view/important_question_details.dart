@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_templete/core/data/models/apis/question_model.dart';
+import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_app_bar.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_button.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_question_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
+import 'package:flutter_templete/ui/shared/custom_widgets/custom_toast.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/shared/utils.dart';
-import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
 import 'package:get/get.dart';
 
@@ -25,8 +26,6 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
   Widget build(BuildContext context) {
     ImportantQuestionsController controller =
         Get.put(ImportantQuestionsController());
-    HomePageController homePageController = Get.put(HomePageController());
-
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(screenWidth(3)),
@@ -69,7 +68,12 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
               Row(
                 children: [
                   InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        CustomToast.showMessage(
+                            messageType: MessageType.WARNING,
+                            message:
+                                ' لا يمكن رؤية الجواب الصحيح الا اثناء حل الاختبار');
+                      },
                       child: SvgPicture.asset(
                         'assets/svgs/ic_answer_correct.svg',
                         color: AppColors.normalCyanColor,
@@ -86,10 +90,12 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                         controller.isImportant.isTrue
                             ? controller
                                 .removeFromImportants(widget.question.id!)
-                            : controller.addToImportants(widget.question.id!);
-
-                        controller.isImportant.value =
-                            !controller.isImportant.value;
+                                .then((value) => controller.isImportant.value =
+                                    !controller.isImportant.value)
+                            : controller
+                                .addToImportants(widget.question.id!)
+                                .then((value) => controller.isImportant.value =
+                                    !controller.isImportant.value);
                       },
                       child: SvgPicture.asset(controller.isImportant.isFalse
                           ? 'assets/svgs/ic_star_empty.svg'
@@ -120,7 +126,7 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
                   ),
                 ],
               ),
-              30.ph,
+              screenHeight(30).ph,
             ],
           ),
         ),
@@ -138,9 +144,12 @@ class _ImportantQuestionDetailsState extends State<ImportantQuestionDetails> {
             child: Container(
               alignment: Alignment.center,
               height: screenHeight(10),
-              child: CustomText(
-                text: widget.question.reference.toString(),
-                textType: TextStyleType.SMALL,
+              child: InkWell(
+                onTap: () => {},
+                child: CustomText(
+                  text: widget.question.reference.toString(),
+                  textType: TextStyleType.SMALL,
+                ),
               ),
             ),
           );

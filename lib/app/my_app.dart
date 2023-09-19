@@ -7,7 +7,6 @@ import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/colors.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../ui/views/about_us/about_us_view.dart';
 import '../ui/views/splash_screen/spalsh_screen_view.dart';
 
 late BuildContext appContext;
@@ -56,7 +55,7 @@ class _MyAppState extends State<MyApp> {
             secondary: Colors.transparent.withOpacity(0),
           ),
         ),
-        home: AboutAppView(),
+        home: SplashScreenView(),
       ),
     );
     //

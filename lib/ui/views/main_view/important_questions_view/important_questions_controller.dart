@@ -48,8 +48,8 @@ class ImportantQuestionsController extends BaseController {
                     messageType: MessageType.SUCCESS))));
   }
 
-  addToImportants(int id) {
-    runFutureFunctionWithLoading(
+  Future addToImportants(int id) {
+    return runFutureFunctionWithLoading(
         function: ImportantRepository().addToImportants(questionID: id).then(
             (value) => value.fold(
                 (l) => CustomToast.showMessage(message: l),

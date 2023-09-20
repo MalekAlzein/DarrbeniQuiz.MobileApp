@@ -21,40 +21,62 @@ class _NotificationsViewState extends State<NotificationsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
-          screenWidth(2.5).ph,
+    return SafeArea(
+      child:
+      Scaffold(
+        body:Column(
 
-          controller.notificationsModel.value.data == null ? SpinKitCircle(color: AppColors.darkPurpleColor,) : Container(
-            width: screenWidth(1.1),
-            height: screenWidth(7.5),
-            decoration: BoxDecoration(
-              color: AppColors.normalCyanColorOpacity
-            ),
-            child: Row(
-              children: [
-                screenWidth(40).pw,
-                SvgPicture.asset('assets/svgs/ic_nav_bar_notifications.svg' , color: AppColors.darkPurpleColor,),
+          children: [
+            screenWidth(2.5).ph,
+            Obx((){
+              return controller.notificationsModel.value.isEmpty
+                  ? SpinKitCircle(
+                color: Colors.red,
+              )
+                :
+              ListView.builder(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: controller.notificationsModel.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding:  EdgeInsets.only(left: screenWidth(20),right: screenWidth(20),top: screenWidth(20)),
+                    child: Container(
+                      width: double.infinity,
+                      color: AppColors.lightCyanColorOpacity,
+                      child: Row(
+                        children: [
+                          screenWidth(40).pw,
+                          Image.asset('assets/svgs/not.png',
+                          width: screenWidth(7),
+                          height:screenWidth(7),
+                          color: AppColors.blackColor.withOpacity(0.6),),
+                          screenWidth(30).pw,
+                          Column(
+                            children: [
+                              CustomText(
+                                text: controller.notificationsModel[index].title??'', textType: TextStyleType.BODY ,
+                              ),
+                              screenWidth(60).pw,
 
-                 Obx(() {
-                  return controller.notificationsModel.value.data == null ? SpinKitCircle(color: AppColors.darkPurpleColor,) :
-                  ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: controller.notificationsModel.value.data!.length,
-                      itemBuilder: (context , index){
-                        return CustomText(
-                            textType: TextStyleType.BODY,
-                            text: controller.notificationsModel.value.data![index].body ?? ''
-                        );
-                      }
+                              CustomText(
+                                text: controller.notificationsModel[index].body??'', textType: TextStyleType.BODY ,
+                              ),
+                            ],
+                          )
+
+                        ],
+
+                      ),
+                    ),
                   );
-                })
+                },
+              );
+            }),
 
-
-              ],
-            ),
-          ),
-        ]
+          ],
+        ),
+      ),
     );
   }
 }

@@ -10,7 +10,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:path/path.dart' as path;
 
 class NetworkUtil {
-  static String baseUrl = '8ced-5-155-150-48.ngrok-free.app';
+  static String baseUrl = 'ae87-5-155-150-48.ngrok-free.app';
   static var client = http.Client();
   static bool online = true;
 

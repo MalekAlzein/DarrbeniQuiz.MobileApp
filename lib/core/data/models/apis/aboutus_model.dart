@@ -1,7 +1,7 @@
 class AboutUsModel {
   bool? status;
   String? message;
-  List<Data>? data;
+  Data? data;
   int? code;
 
   AboutUsModel({this.status, this.message, this.data, this.code});
@@ -9,12 +9,7 @@ class AboutUsModel {
   AboutUsModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
-    if (json['data'] != null) {
-      data = <Data>[];
-      json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
-      });
-    }
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     code = json['code'];
   }
 
@@ -23,7 +18,7 @@ class AboutUsModel {
     data['status'] = this.status;
     data['message'] = this.message;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.toJson();
     }
     data['code'] = this.code;
     return data;

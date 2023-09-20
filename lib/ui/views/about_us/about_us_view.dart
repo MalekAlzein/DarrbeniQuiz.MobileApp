@@ -32,7 +32,6 @@ class _AboutAppViewState extends State<AboutAppView> {
       ),
 
       body: ListView(
-        physics: BouncingScrollPhysics(),
         children: [
 
           SvgPicture.asset('assets/svgs/about_app.svg'),
@@ -41,15 +40,9 @@ class _AboutAppViewState extends State<AboutAppView> {
 
           Obx(() {
             return controller.aboutModel.value.data == null ? SpinKitCircle(color: AppColors.darkPurpleColor,) :
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: controller.aboutModel.value.data!.length,
-                  itemBuilder: (context , index) {
-                    return CustomText(
+                 CustomText(
                         textType: TextStyleType.BODYBIG,
-                        text: controller.aboutModel.value.data![index].content ?? '');
-                  }
-                );
+                        text: controller.aboutModel.value.data!.content ?? '');
           })
         ],
       ),

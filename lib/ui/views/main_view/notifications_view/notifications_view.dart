@@ -27,11 +27,11 @@ class _NotificationsViewState extends State<NotificationsView> {
         body:Column(
 
           children: [
-            screenWidth(2.5).ph,
+            screenWidth(3.2).ph,
             Obx((){
               return controller.notificationsModel.value.isEmpty
                   ? SpinKitCircle(
-                color: Colors.red,
+                color: AppColors.darkPurpleColor,
               )
                 :
               ListView.builder(

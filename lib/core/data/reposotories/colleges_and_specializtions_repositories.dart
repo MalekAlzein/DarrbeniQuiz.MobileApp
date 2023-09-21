@@ -79,4 +79,44 @@ class CollegesAndSpecializtionsRepositories {
       return Left(e.toString());
     }
   }
+
+  static Future<Either<String, List<SpecializationsModel>>>
+      searchSpecializtionsByName({
+    required String? specializationName,
+  }) async {
+    try {
+      return NetworkUtil.sendMultipartRequest(
+          requestType: RequestType.POST,
+          type: RequestType.POST,
+          url: SpecializationEndpoints.searchSpecialization,
+          headers: NetworkConfig.getHeaders(
+            requestType: RequestType.POST,
+            needAuth: false,
+          ),
+          fields: {
+            "specialization_name":
+                specializationName != null ? specializationName.trim() : "",
+          }).then((response) {
+        if (response == null) {
+          return Left("الرجاء التحقق من الانترنت");
+        }
+        CommonResponseModel<dynamic> commonResponse =
+            CommonResponseModel.fromJson(response);
+        if (commonResponse.getStatus &&
+            response['response']['status'] == true) {
+          List<SpecializationsModel> result = [];
+          commonResponse.data.forEach(
+            (element) {
+              result.add(SpecializationsModel.fromJson(element));
+            },
+          );
+          return Right(result);
+        } else {
+          return Left(commonResponse.message ?? '');
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
 }

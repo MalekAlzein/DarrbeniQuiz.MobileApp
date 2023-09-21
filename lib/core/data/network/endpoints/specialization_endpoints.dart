@@ -1,7 +1,7 @@
 import '../network_config.dart';
 
 class SpecializationEndpoints {
-  static String searchCollages =
+  static String searchSpecialization =
       NetworkConfig.getFullApiRoute('Specialization/search');
   static String allCollages = NetworkConfig.getFullApiRoute('Collages/all');
   static String allSpecialization =

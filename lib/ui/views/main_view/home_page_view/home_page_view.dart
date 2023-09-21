@@ -38,7 +38,9 @@ class _HomePageViewState extends State<HomePageView> {
       child: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenWidth(30)),
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth(30),
+            ),
             child: Column(
               children: [
                 CustomTextFormField(
@@ -48,6 +50,14 @@ class _HomePageViewState extends State<HomePageView> {
                   hintTextColor: AppColors.darkGreyColorOpacity,
                   prefixIcon: 'ic_search',
                   prefixIconColor: AppColors.darkGreyColorOpacity,
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      controller.searchSpecializationspByQuery(query: value);
+                    }
+                  },
+                  onFieldSubmitted: (value) {
+                    controller.searchSpecializationspByQuery(query: value);
+                  },
                 ),
                 screenHeight(40).ph,
                 Obx(
@@ -61,7 +71,7 @@ class _HomePageViewState extends State<HomePageView> {
                     );
                   },
                 ),
-                screenWidth(8).ph,
+                // screenWidth(8).ph,
                 Padding(
                   padding: EdgeInsetsDirectional.symmetric(
                     horizontal: screenWidth(35),
@@ -99,7 +109,7 @@ class _HomePageViewState extends State<HomePageView> {
                                             onTap: () {
                                               controller
                                                   .getSpecializationspByCollege(
-                                                      collageId);
+                                                      collegeId: collageId);
                                               controller.selectedCollegeId
                                                   .value = index;
                                             },
@@ -117,7 +127,7 @@ class _HomePageViewState extends State<HomePageView> {
                                     : '',
                                 onTap: () {
                                   controller.getSpecializationspByCollege(
-                                      controller.collegeList[0].id!);
+                                      collegeId: controller.collegeList[0].id!);
                                   controller.selectedCollegeId.value = 0;
                                 },
                                 isSelected: true,
@@ -126,50 +136,56 @@ class _HomePageViewState extends State<HomePageView> {
                       Obx(
                         () {
                           print(controller.selectedCollegeId.value);
-                          return SizedBox(
-                            width: screenWidth(1),
-                            child: CustomGrideView(
-                              children: List.generate(
-                                controller.filteredSpecializationsList.length,
-                                (index) => CustomShimmer(
-                                  isLoading: controller.isLoading,
-                                  child: CustomGridCollege(
-                                    onTap: () {
-                                      if (controller
-                                          .filteredSpecializationsList[index]
-                                          .moreOption!) {
-                                        showSpecializationBottomSheet(
-                                          specialization: controller
+                          return Visibility(
+                            visible: true,
+                            // visible: !controller.searchMode.value,
+                            child: SizedBox(
+                              width: screenWidth(1),
+                              child: CustomGrideView(
+                                children: List.generate(
+                                  controller.filteredSpecializationsList.length,
+                                  (index) => CustomShimmer(
+                                    isLoading: controller.isLoading,
+                                    child: CustomGridCollege(
+                                      onTap: () {
+                                        if (controller
+                                            .filteredSpecializationsList[index]
+                                            .moreOption!) {
+                                          showSpecializationBottomSheet(
+                                            specialization: controller
+                                                .filteredSpecializationsList[
+                                                    index]
+                                                .moreOption!,
+                                            specializationsModel: controller
+                                                    .filteredSpecializationsList[
+                                                index],
+                                          );
+                                        } else {
+                                          // print("مافي ماستر ولا تخرج");
+                                          controller.getSubjects(
+                                              specialID: controller
+                                                  .subbedSpecialization);
+                                          Get.to(() => SubjectView());
+                                        }
+                                      },
+                                      isSubbed: storage.isLoggedIn
+                                          ? controller.subbedCollege(
+                                              index: index)
+                                          : false,
+
+                                      imageName:
+                                          "http://via.placeholder.com/50x50",
+
+                                      //  controller
+                                      //         .filteredSpecializationsList[index]
+                                      //         .image ??
+                                      //     "",
+                                      text: controller
                                               .filteredSpecializationsList[
                                                   index]
-                                              .moreOption!,
-                                          specializationsModel: controller
-                                                  .filteredSpecializationsList[
-                                              index],
-                                        );
-                                      } else {
-                                        // print("مافي ماستر ولا تخرج");
-                                        controller.getSubjects(
-                                            specialID: controller
-                                                .subbedSpecialization);
-                                        Get.to(() => SubjectView());
-                                      }
-                                    },
-                                    isSubbed: storage.isLoggedIn
-                                        ? controller.subbedCollege(index: index)
-                                        : false,
-
-                                    imageName:
-                                        "http://via.placeholder.com/50x50",
-
-                                    //  controller
-                                    //         .filteredSpecializationsList[index]
-                                    //         .image ??
-                                    //     "",
-                                    text: controller
-                                            .filteredSpecializationsList[index]
-                                            .specializationName ??
-                                        "",
+                                              .specializationName ??
+                                          "",
+                                    ),
                                   ),
                                 ),
                               ),
@@ -177,6 +193,64 @@ class _HomePageViewState extends State<HomePageView> {
                           );
                         },
                       ),
+                      // if (controller.searchMode.value) ...[
+                      //   Obx(
+                      //     () {
+                      //       print(controller.selectedCollegeId.value);
+                      //       return SizedBox(
+                      //         width: screenWidth(1),
+                      //         child: CustomGrideView(
+                      //           children: List.generate(
+                      //             controller.filteredSpecializationsList.length,
+                      //             (index) => CustomShimmer(
+                      //               isLoading: controller.isLoading,
+                      //               child: CustomGridCollege(
+                      //                 onTap: () {
+                      //                   if (controller
+                      //                       .filteredSpecializationsList[index]
+                      //                       .moreOption!) {
+                      //                     showSpecializationBottomSheet(
+                      //                       specialization: controller
+                      //                           .filteredSpecializationsList[
+                      //                               index]
+                      //                           .moreOption!,
+                      //                       specializationsModel: controller
+                      //                               .filteredSpecializationsList[
+                      //                           index],
+                      //                     );
+                      //                   } else {
+                      //                     // print("مافي ماستر ولا تخرج");
+                      //                     controller.getSubjects(
+                      //                         specialID: controller
+                      //                             .subbedSpecialization);
+                      //                     Get.to(() => SubjectView());
+                      //                   }
+                      //                 },
+                      //                 isSubbed: storage.isLoggedIn
+                      //                     ? controller.subbedCollege(
+                      //                         index: index)
+                      //                     : false,
+
+                      //                 imageName:
+                      //                     "http://via.placeholder.com/50x50",
+
+                      //                 //  controller
+                      //                 //         .filteredSpecializationsList[index]
+                      //                 //         .image ??
+                      //                 //     "",
+                      //                 text: controller
+                      //                         .filteredSpecializationsList[
+                      //                             index]
+                      //                         .specializationName ??
+                      //                     "",
+                      //               ),
+                      //             ),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ]
                     ],
                   ),
                 ),

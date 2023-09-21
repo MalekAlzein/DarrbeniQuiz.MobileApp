@@ -10,7 +10,9 @@ import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_con
 import 'package:get/get.dart';
 
 class HomeTopSection extends StatefulWidget {
-  const HomeTopSection({super.key});
+  const HomeTopSection({
+    super.key,
+  });
 
   @override
   State<HomeTopSection> createState() => _HomeTopSectionState();

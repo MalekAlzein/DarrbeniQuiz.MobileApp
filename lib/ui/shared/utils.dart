@@ -171,6 +171,7 @@ void showSpecializationBottomSheet({
                   onPressed: () {
                     homeController.getMasterSubjects();
                     setCurrentAppMainColor(SpecializationEnum.MASTER);
+                    Get.back();
                     Get.to(() => SubjectView(
                           master: true,
                         ));
@@ -185,7 +186,7 @@ void showSpecializationBottomSheet({
                     setCurrentAppMainColor(SpecializationEnum.GRADUATION);
 
                     homeController.getGraduationSubjects();
-
+                    Get.back();
                     Get.to(() => SubjectView(
                           grad: true,
                         ));

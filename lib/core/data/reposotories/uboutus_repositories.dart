@@ -16,10 +16,9 @@ class AboutUsRepositories {
         headers: NetworkConfig.getHeaders(
             needAuth: true, requestType: RequestType.GET),
       ).then((response) {
-        CommonResponseModel<dynamic> commonResponse =
+        CommonResponseModel<Map<String,dynamic>> commonResponse =
         CommonResponseModel.fromJson(response);
-        if (commonResponse.getStatus &&
-            response['response']['status'] == true) {
+        if (commonResponse.getStatus) {
           return Right(AboutUsModel.fromJson(commonResponse.data ?? {}));
         } else {
           return Left(commonResponse.message ?? '');

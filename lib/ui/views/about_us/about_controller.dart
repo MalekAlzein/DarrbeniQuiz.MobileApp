@@ -9,7 +9,6 @@ import '../../../core/enums/message_type.dart';
 class AboutController extends BaseController {
 
   Rx<AboutUsModel> aboutModel = AboutUsModel().obs;
-  RxList<AboutUsModel> aboutList = <AboutUsModel>[].obs;
 
   @override
   void onInit() {
@@ -18,7 +17,7 @@ class AboutController extends BaseController {
   }
 
 
-  void getAboutUS (){
+  void getAboutUS () {
     runFutureFunctionWithLoading(
         function: AboutUsRepositories().aboutUs().then((value) {
           value.fold((l) {

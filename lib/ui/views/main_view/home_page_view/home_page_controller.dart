@@ -29,7 +29,7 @@ class HomePageController extends BaseController {
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.SUBJECTS);
   int subbedSpecialization = 0;
-  // RxBool searchMode = false.obs;
+  RxBool searchMode = false.obs;
 
   @override
   void onInit() {
@@ -102,10 +102,10 @@ class HomePageController extends BaseController {
   }) async {
     //filteredspecializationsList.clear();
     if (query == null || query.isEmpty) {
-      // searchMode.value = false;
+      searchMode.value = false;
       filteredSpecializationsList.value = specializationsList.value;
     } else {
-      // searchMode.value = true;
+      searchMode.value = true;
       runFutureFunctionWithLoading(
         function:
             CollegesAndSpecializtionsRepositories.searchSpecializtionsByName(

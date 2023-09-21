@@ -12,7 +12,12 @@ import 'package:get/get.dart';
 class HomeTopSection extends StatefulWidget {
   const HomeTopSection({
     super.key,
+    this.onFieldSubmitted,
+    this.onChanged,
   });
+
+  final Function(String)? onFieldSubmitted;
+  final Function(String)? onChanged;
 
   @override
   State<HomeTopSection> createState() => _HomeTopSectionState();
@@ -32,6 +37,8 @@ class _HomeTopSectionState extends State<HomeTopSection> {
           hintTextColor: AppColors.darkGreyColorOpacity,
           prefixIcon: 'ic_search',
           prefixIconColor: AppColors.darkGreyColorOpacity,
+          onChanged: widget.onChanged,
+          onFieldSubmitted: widget.onFieldSubmitted,
         ),
         screenHeight(40).ph,
         Obx(

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 class NotificationsController extends BaseController {
 
-  Rx<NotificationModel> notificationsModel = NotificationModel().obs;
+  RxList<NotificationModel> notificationsModel = <NotificationModel>[].obs;
 
   @override
   void onInit() {
@@ -17,14 +17,16 @@ class NotificationsController extends BaseController {
 
   void getNotifications() {
     runFutureFunctionWithLoading(
-        function: NotificationsRepository().getNotifications().then((value) {
+        function: NotificationsRepository().getAll().then((value) {
           value.fold((l) {
             CustomToast.showMessage(message: l , messageType: MessageType.REJECTED);
           }, (r) {
-            notificationsModel.value = r;
+            notificationsModel.addAll(r);
           });
         })
     );
   }
+
+
 
 }

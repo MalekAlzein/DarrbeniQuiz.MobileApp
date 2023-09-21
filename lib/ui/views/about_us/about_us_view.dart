@@ -23,28 +23,34 @@ class _AboutAppViewState extends State<AboutAppView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: CustomAppBar(
         firstText: 'عن التطبيق',
-        onTap: (){
+        onTap: () {
           Get.back();
         },
       ),
-
-      body: ListView(
-        children: [
-
-          SvgPicture.asset('assets/svgs/about_app.svg'),
-
-          (screenWidth(30)).ph,
-
-          Obx(() {
-            return controller.aboutModel.value.data == null ? SpinKitCircle(color: AppColors.darkPurpleColor,) :
-                 CustomText(
-                        textType: TextStyleType.BODYBIG,
-                        text: controller.aboutModel.value.data!.content ?? '');
-          })
-        ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.onInit();
+        },
+        child: ListView(
+          children: [
+            Obx(() {
+              return controller.aboutModel.value.content == null
+                  ? SpinKitCircle(
+                      color: AppColors.darkPurpleColor,
+                    )
+                  : Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: screenWidth(25)),
+                      child: CustomText(
+                          textAlign: TextAlign.right,
+                          textType: TextStyleType.BODYBIG,
+                          text: controller.aboutModel.value.content!),
+                    );
+            })
+          ],
+        ),
       ),
     );
   }

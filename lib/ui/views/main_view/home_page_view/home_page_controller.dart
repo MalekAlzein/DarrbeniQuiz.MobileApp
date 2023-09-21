@@ -29,6 +29,7 @@ class HomePageController extends BaseController {
       requestStatus.value == RequestStatus.LOADING &&
       operationTypeList.contains(OperationType.SUBJECTS);
   int subbedSpecialization = 0;
+  RxBool searchMode = false.obs;
 
   @override
   void onInit() {
@@ -77,14 +78,14 @@ class HomePageController extends BaseController {
           }, (r) {
             collegeList.clear();
             collegeList.addAll(r);
-            getSpecializationspByCollege(0);
+            getSpecializationspByCollege(collegeId: 0);
           });
         },
       ),
     );
   }
 
-  Future<void> getSpecializationspByCollege(int collegeId) async {
+  Future<void> getSpecializationspByCollege({required int collegeId}) async {
     //filteredspecializationsList.clear();
     if (collegeId == 0) {
       filteredSpecializationsList.value = specializationsList.value;
@@ -93,6 +94,38 @@ class HomePageController extends BaseController {
           specializationsList.where((specializations) {
         return specializations.collageId == collegeId;
       }).toList();
+    }
+  }
+
+  Future<void> searchSpecializationspByQuery({
+    required String? query,
+  }) async {
+    //filteredspecializationsList.clear();
+    if (query == null || query.isEmpty) {
+      searchMode.value = false;
+      filteredSpecializationsList.value = specializationsList.value;
+    } else {
+      searchMode.value = true;
+      runFutureFunctionWithLoading(
+        function:
+            CollegesAndSpecializtionsRepositories.searchSpecializtionsByName(
+          specializationName: query,
+        ).then(
+          (value) {
+            return value.fold(
+              (l) {
+                return CustomToast.showMessage(
+                  message: l,
+                  messageType: MessageType.WARNING,
+                );
+              },
+              (r) {
+                filteredSpecializationsList.value = r;
+              },
+            );
+          },
+        ),
+      );
     }
   }
 

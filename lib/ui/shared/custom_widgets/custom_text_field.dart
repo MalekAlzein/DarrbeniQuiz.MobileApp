@@ -21,6 +21,8 @@ class CustomTextFormField extends StatelessWidget {
     this.maxWidth,
     this.hintTextSize,
     this.maxLines,
+    this.onFieldSubmitted,
+    this.onChanged,
   });
 
   final String hintText;
@@ -38,13 +40,15 @@ class CustomTextFormField extends StatelessWidget {
   final double? maxWidth;
   final double? hintTextSize;
   final int? maxLines;
+  final Function(String)? onFieldSubmitted;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
 
-      // onChanged: myValidator,
+      onChanged: onChanged,
       controller: controller,
       validator: validator,
       // autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -100,6 +104,7 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: fillColor,
       ),
       keyboardType: keyboardType ?? TextInputType.text,
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 }

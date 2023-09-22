@@ -59,6 +59,7 @@ class HomePageController extends BaseController {
               message: l,
             );
           }, (r) {
+            sliderList.clear();
             sliderList.addAll(r);
           });
         },

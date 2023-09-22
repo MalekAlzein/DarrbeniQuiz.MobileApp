@@ -24,7 +24,7 @@ class _ResultViewState extends State<ResultView> {
   @override
   Widget build(BuildContext context) {
     QuestionsController controller =
-        Get.put(QuestionsController(widget.questions));
+        Get.put(QuestionsController(widget.questions as RxList<QuestionModel>));
     return Scaffold(
       appBar: CustomAppBar(
         activeColor: AppConfig.mainColor,

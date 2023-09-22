@@ -5,6 +5,7 @@ import 'package:flutter_templete/app/my_app_controller.dart';
 import 'package:flutter_templete/core/data/reposotories/shared_preferences_repository.dart';
 import 'package:flutter_templete/core/services/cart_services.dart';
 import 'package:flutter_templete/core/services/connectivity_service.dart';
+import 'package:flutter_templete/core/services/importance_service.dart';
 import 'package:flutter_templete/core/services/language_service.dart';
 import 'package:flutter_templete/core/services/notification_service.dart';
 import 'package:flutter_templete/core/services/package_info_service.dart';
@@ -26,6 +27,7 @@ Future<void> main() async {
   await Get.put(LanguageService());
   Get.put(PackageInfoService());
   Get.put(MyAppController());
+  Get.put(ImportanceService());
 
   try {
     await Firebase.initializeApp(

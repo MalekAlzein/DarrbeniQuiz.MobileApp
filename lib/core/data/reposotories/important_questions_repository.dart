@@ -24,11 +24,12 @@ class ImportantRepository {
         if (commonResponse.getStatus &&
             response['response']['status'] == true) {
           List<QuestionModel> result = [];
-          commonResponse.data.forEach(
-            (element) {
-              result.add(QuestionModel.fromJson(element));
-            },
-          );
+          if (response['response']['message'] == "All Importance Questions")
+            commonResponse.data.forEach(
+              (element) {
+                result.add(QuestionModel.fromJson(element));
+              },
+            );
           return Right(result);
         } else {
           return Left(commonResponse.message ?? '');
@@ -65,7 +66,7 @@ class ImportantRepository {
     try {
       return NetworkUtil.sendRequest(
         type: RequestType.POST,
-        url: ImportanceEndpoints.addImportance + questionID,
+        url: ImportanceEndpoints.addImportance + questionID.toString(),
         headers: NetworkConfig.getHeaders(
             needAuth: true, requestType: RequestType.POST),
       ).then((response) {

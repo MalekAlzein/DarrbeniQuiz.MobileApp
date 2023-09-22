@@ -71,11 +71,11 @@ class _CustomSliderState extends State<CustomSlider> {
                   height: screenWidth(45),
                   margin: EdgeInsets.symmetric(horizontal: screenWidth(65)),
                   decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: currentIndex.value == index
-                        ? AppColors.darkPurpleColor
-                        : AppColors.darkGreyColorTextField,
-                  ),
+                      shape: BoxShape.rectangle,
+                      color: currentIndex.value == index
+                          ? AppColors.darkPurpleColor
+                          : AppColors.darkGreyColorTextField,
+                      border: Border.all(color: AppColors.darkPurpleColor)),
                 );
               }).toList(),
             );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_question_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/views/question_view/result_view.dart';
@@ -292,32 +293,26 @@ class _QuestionViewState extends State<QuestionView> {
                                               }
                                             },
                                           )),
-                                      CustomIconsItem(
-                                        imageName: widget
-                                                .questions[controller
-                                                    .currentQuestionIndex.value]
-                                                .isImportant!
-                                            ? "ic_star_selected"
-                                            : "ic_star_empty",
-                                        onTap: () {
-                                          widget
-                                                  .questions[controller
-                                                      .currentQuestionIndex
-                                                      .value]
+                                      Obx(
+                                        () => CustomIconsItem(
+                                          imageName: importanceService
+                                                  .currentQuestion
+                                                  .value
                                                   .isImportant!
-                                              ? importantQuestionsController
-                                                  .removeFromImportants(widget
-                                                      .questions[controller
-                                                          .currentQuestionIndex
-                                                          .value]
-                                                      .id!)
-                                              : importantQuestionsController
-                                                  .addToImportants(widget
-                                                      .questions[controller
-                                                          .currentQuestionIndex
-                                                          .value]
-                                                      .id!);
-                                        },
+                                              ? "ic_star_selected"
+                                              : "ic_star_empty",
+                                          onTap: () {
+                                            importantQuestionsController
+                                                .toggleQuestionImportance(widget
+                                                    .questions[controller
+                                                        .currentQuestionIndex
+                                                        .value]
+                                                    .id!);
+                                            // controller.getSingleQuestion(
+                                            //     controller
+                                            //         .currentQuestion.value.id!);
+                                          },
+                                        ),
                                       )
                                     ],
                                   ),

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_templete/app/app_config.dart';
 import 'package:flutter_templete/core/translation/app_translation.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_container.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_chip_list.dart';
 import 'package:flutter_templete/ui/shared/custom_widgets/custom_subtitle_container.dart';
-import 'package:flutter_templete/ui/shared/custom_widgets/custom_text.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/course_details_view/book_terms_buttons_view.dart';
 import 'package:flutter_templete/ui/views/course_details_view/subject_view_controller.dart';
+import 'package:flutter_templete/ui/views/course_details_view/subjects_shimmer.dart';
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_page_controller.dart';
 import 'package:flutter_templete/ui/views/main_view/home_page_view/home_view_widgets/home_top_section.dart';
 import 'package:flutter_templete/ui/views/register_view/register_controller.dart';
@@ -17,6 +16,7 @@ import '../../../core/enums/terms_type.dart';
 import '../../shared/colors.dart';
 import '../../shared/custom_widgets/custom_app_bar.dart';
 import '../../shared/custom_widgets/custom_button.dart';
+import '../../shared/custom_widgets/custom_text.dart';
 import '../../shared/utils.dart';
 import '../question_view/question_view.dart';
 import '../years_questions_view/years_questions_view.dart';
@@ -70,9 +70,7 @@ class _SubjectViewState extends State<SubjectView> {
                 ),
                 screenHeight(30).ph,
                 homeController.isSubjectsLoading
-                    ? SpinKitCircle(
-                        color: AppColors.darkPurpleColor,
-                      )
+                    ? SubjectsShimmer()
                     : homeController.subjects.isEmpty
                         ? Center(
                             child: CustomText(

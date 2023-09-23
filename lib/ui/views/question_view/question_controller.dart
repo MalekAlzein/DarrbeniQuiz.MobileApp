@@ -1,3 +1,4 @@
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:get/get.dart';
 import '../../../core/data/models/apis/question_model.dart';
 import '../../../core/enums/Operation_type.dart';
@@ -23,7 +24,7 @@ class QuestionsController extends BaseController {
   RxList selectedAnswers = [].obs;
   RxList showAnswer = [].obs;
   RxList isCorrectAnswer = [].obs;
-  // RxBool isSelectImportant = false.obs;
+  RxList isImportantQuestion = [].obs;
 
   @override
   void onReady() {}
@@ -34,10 +35,11 @@ class QuestionsController extends BaseController {
       update();
     });
     super.onReady();
-
     selectedAnswers.value = List.filled(questions.length, -1).obs;
     showAnswer.value = List.filled(questions.length, -1).obs;
     isCorrectAnswer.value = List.filled(questions.length, false).obs;
+    importanceService.setcurrentQuestion =
+        questions.isNotEmpty ? questions[0] : QuestionModel();
     super.onInit();
   }
 
@@ -61,7 +63,10 @@ class QuestionsController extends BaseController {
         currentQuestionIndex.value) {
       correctAnswers.value = currentQuestionIndex.value - erroranswer.value;
     }
+
     currentQuestionIndex.value++;
+    importanceService.setcurrentQuestion =
+        questions[currentQuestionIndex.value];
 
     update();
   }
@@ -69,6 +74,8 @@ class QuestionsController extends BaseController {
   void backQuestion() {
     if (currentQuestionIndex.value > 0) {
       currentQuestionIndex.value--;
+      importanceService.setcurrentQuestion =
+          questions[currentQuestionIndex.value];
     }
     update();
   }

@@ -43,7 +43,7 @@ class _HomeTopSectionState extends State<HomeTopSection> {
         screenHeight(40).ph,
         Obx(
           () {
-            print(controller.sliderList);
+            // print(controller.sliderList);
             return CustomShimmer(
               isLoading: controller.isLoading,
               child: CustomSlider(

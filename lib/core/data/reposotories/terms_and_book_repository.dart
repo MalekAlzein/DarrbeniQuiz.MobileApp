@@ -73,6 +73,38 @@ class QuestionSrepository {
     }
   }
 
+  Future<Either<String, QuestionModel>> getSingleQuestion(
+      {required questionID}) async {
+    try {
+      return NetworkUtil.sendRequest(
+        type: RequestType.GET,
+        url: QuestionEndpoints.singleQueston + questionID.toString(),
+        headers: NetworkConfig.getHeaders(
+            needAuth: true, requestType: RequestType.GET),
+      ).then((response) {
+        // if (response == null) {
+        //   return Left("الرجاء التحقق من الانترنت");
+        // }
+        CommonResponseModel<dynamic> commonResponse =
+            CommonResponseModel.fromJson(response);
+        if (commonResponse.getStatus &&
+            response['response']['status'] == true) {
+          // QuestionModel result = [];
+          // commonResponse.data.forEach(
+          //   (element) {
+          //     result.add(QuestionModel.fromJson(element));
+          //   },
+          // );
+          return Right(QuestionModel.fromJson(commonResponse.data));
+        } else {
+          return Left(commonResponse.message ?? '');
+        }
+      });
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
   Future<Either<String, bool>> removeFromImportants(
       {required questionID}) async {
     try {

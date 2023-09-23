@@ -5,6 +5,7 @@ import 'package:flutter_templete/core/enums/connectivity_status.dart';
 import 'package:flutter_templete/core/enums/message_type.dart';
 import 'package:flutter_templete/core/services/cart_services.dart';
 import 'package:flutter_templete/core/services/connectivity_service.dart';
+import 'package:flutter_templete/core/services/importance_service.dart';
 import 'package:flutter_templete/core/services/language_service.dart';
 import 'package:flutter_templete/core/services/notification_service.dart';
 import 'package:flutter_templete/core/services/package_info_service.dart';
@@ -22,7 +23,7 @@ NotificationService get notificationService => Get.find<NotificationService>();
 LanguageService get languageService => Get.find<LanguageService>();
 PackageInfoService get packageInfoService => Get.find<PackageInfoService>();
 HomePageController get homeController => Get.find<HomePageController>();
-
+ImportanceService get importanceService => Get.find<ImportanceService>();
 // Future claunchUrl(Uri url) async {
 //   if (!await launchUrl(
 //     url,

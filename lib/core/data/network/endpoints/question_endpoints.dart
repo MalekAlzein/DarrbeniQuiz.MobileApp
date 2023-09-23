@@ -10,4 +10,6 @@ class QuestionEndpoints {
   static String questionByTermOfSubject =
       NetworkConfig.getFullApiRoute('Questions/Terms/term_id/');
   static String SubjectByTerm = '/Subjects/subject_id/';
+  static String singleQueston =
+      NetworkConfig.getFullApiRoute('Question/single/');
 }

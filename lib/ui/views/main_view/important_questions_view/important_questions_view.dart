@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_templete/core/translation/app_translation.dart';
+import 'package:flutter_templete/core/utils/general_utils.dart';
 import 'package:flutter_templete/ui/shared/extensions/custom_sized_box_shared.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_question_details.dart';
 import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_controller.dart';
+import 'package:flutter_templete/ui/views/main_view/important_questions_view/important_questions_shimmer.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/translation/app_translation.dart';
 import '../../../shared/colors.dart';
 import '../../../shared/custom_widgets/custom_text.dart';
 import '../../../shared/utils.dart';
@@ -32,9 +33,7 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
       },
       child: Obx(
         () => controller.isImportantQuestionsLoading
-            ? SpinKitCircle(
-                color: AppColors.darkPurpleColor,
-              )
+            ? ImportantQuestionsShimmer()
             : controller.importantQuestions.isEmpty
                 ? ListView(
                     children: [
@@ -55,13 +54,18 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
                               return Container(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                width: 100,
-                                height: 50,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: screenWidth(30)),
+                                width: screenWidth(30),
+                                height: screenHeight(15),
                                 color: AppColors.darkGreyColorTextField,
                                 child: InkWell(
                                   onTap: () {
+                                    importanceService.setcurrentQuestion =
+                                        controller.importantQuestions[index];
+
                                     Get.to((ImportantQuestionDetails(
+                                      index: index + 1,
                                       question:
                                           controller.importantQuestions[index],
                                     )));
@@ -74,7 +78,7 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                                         child: CustomText(
                                           textAlign: TextAlign.start,
                                           text:
-                                              '${controller.importantQuestions[index].id}   ${controller.importantQuestions[index].questionContent}',
+                                              '${index + 1}   ${controller.importantQuestions[index].questionContent}',
                                           fontSize: screenWidth(27),
                                           textType: TextStyleType.CUSTOM,
                                         ),
@@ -89,7 +93,7 @@ class _ImportantQuestionsViewState extends State<ImportantQuestionsView> {
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return 20.ph;
+                              return screenHeight(20).ph;
                             },
                             itemCount: controller.importantQuestions.length)
                       ],
